@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using System.Collections.Generic;
 
 [CustomEditor(typeof(ContainedRoom))]
 public class RoomBuilder : Editor
@@ -13,8 +14,6 @@ public class RoomBuilder : Editor
 	{
 		base.OnInspectorGUI();
 		ContainedRoom cont = (ContainedRoom)target;
-		cont.baseManager = GameObject.FindGameObjectWithTag("Base").GetComponent<BaseManager>();
-
 		if(cont.transform.childCount == 0)
 		{
 			cont.ContainedRoomName = EditorGUILayout.TextField("Room Name", cont.ContainedRoomName);
@@ -27,13 +26,13 @@ public class RoomBuilder : Editor
 				cont.transform.name = "[CONTROOM] " + cont.ContainedRoomName;
 
 				Vector2Int size = cont.roomDimensions;
-				cont.roomCompositionMatrix = new RoomTile[size.x][];
-				for (int x = 0; x < size.x; x++)
+				cont.containedRooms = new List<RoomTile>();
+				for (int y = size.y-1; y >= 0; y--)
 				{
-					cont.roomCompositionMatrix[x] = new RoomTile[size.y];
-					for (int y = 0; y < size.y; y++)
+					for (int x = 0; x < size.x; x++)
 					{
-						RoomTile a = cont.roomCompositionMatrix[x][y] = new GameObject("Room " + x + ", " + y + " of " + cont.ContainedRoomName).AddComponent<RoomTile>();
+						RoomTile a = new GameObject("Room " + x + ", " + y + " of " + cont.ContainedRoomName).AddComponent<RoomTile>();
+						cont.containedRooms.Add(a);
 						a.tileType = (SO_TileType)AssetDatabase.LoadAssetAtPath("Assets/ScriptableObjects/TileTypes/DefaultTile.asset", typeof(SO_TileType));
 						a.gameObject.AddComponent<SpriteRenderer>().sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Square.png", typeof(Sprite));
 						a.transform.SetParent(cont.transform);
@@ -55,18 +54,19 @@ public class RoomBuilder : Editor
 				ResetRoom(cont);
 			}
 
-			for (int y = cont.roomDimensions.y-1; y >= 0; y--)
+			for (int y = 0; y < cont.roomDimensions.y; y++)
 			{
 				GUILayout.BeginHorizontal();
 				for (int x = 0; x < cont.roomDimensions.x; x++)
 				{
-					if(cont.roomCompositionMatrix != null)
+					if(cont.containedRooms != null)
 					{
-						cont.roomCompositionMatrix[x][y].tileType = (SO_TileType)EditorGUILayout.ObjectField(cont.roomCompositionMatrix[x][y].tileType, typeof(SO_TileType), false);
-						if (cont.roomCompositionMatrix[x][y].tileType != null)
-							cont.roomCompositionMatrix[x][y].GetComponent<SpriteRenderer>().sprite = cont.roomCompositionMatrix[x][y].tileType.backgroundSprite;
+						int index = x + (y * cont.roomDimensions.x);
+						cont.containedRooms[index].tileType = (SO_TileType)EditorGUILayout.ObjectField(cont.containedRooms[index].tileType, typeof(SO_TileType), false);
+						if (cont.containedRooms[index].tileType != null)
+							cont.containedRooms[index].GetComponent<SpriteRenderer>().sprite = cont.containedRooms[index].tileType.backgroundSprite;
 						else
-							cont.roomCompositionMatrix[x][y].GetComponent<SpriteRenderer>().sprite = null;
+							cont.containedRooms[index].GetComponent<SpriteRenderer>().sprite = null;
 					}
 				}
 				GUILayout.EndHorizontal();
@@ -77,7 +77,7 @@ public class RoomBuilder : Editor
 	}
 	private void ResetRoom(ContainedRoom cont)
 	{
-		cont.roomCompositionMatrix = null;
+		cont.containedRooms.Clear();
 		while (cont.transform.childCount > 0)
 			DestroyImmediate(cont.transform.GetChild(0).gameObject, false);
 		cont.transform.name = "EMPTY ROOM";

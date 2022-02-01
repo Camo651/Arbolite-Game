@@ -6,6 +6,11 @@ public class ContainedRoom : MonoBehaviour
 {
 	[HideInInspector]public Vector2Int roomDimensions;
 	[HideInInspector]public string ContainedRoomName;
-	[HideInInspector] public BaseManager baseManager;
-	public RoomTile[][] roomCompositionMatrix;
+	public BaseManager baseManager;
+	public List<RoomTile> containedRooms;
+
+	private void Awake()
+	{
+		baseManager.baseRooms.Add(this);
+	}
 }
