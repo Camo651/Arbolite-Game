@@ -6,6 +6,6 @@ using UnityEngine;
 public class SO_TileType : ScriptableObject
 {
 	public string tileTypeName;
-	public bool topNode, rightNode, bottomNode, leftNode;
+	[Tooltip("0=indifferent | 1=connector | 2=locked"),Range(0,2)]public int topNodeState, rightNodeState, bottomNodeState, leftNodeState;
 	public Sprite backgroundSprite;
 }

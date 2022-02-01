@@ -5,5 +5,5 @@ using UnityEngine;
 public class ContainedRoom : MonoBehaviour
 {
 	public Vector2Int roomDimensions;
-	public SO_TileType[][] roomCompositionMatrix;
+	public RoomTile[][] roomCompositionMatrix;
 }
