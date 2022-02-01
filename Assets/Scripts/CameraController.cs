@@ -28,6 +28,6 @@ public class CameraController : MonoBehaviour
 			else
 				cameraZoomAccelereation = 0f;
 		}
-		mainCamera.orthographicSize = Mathf.Clamp(mainCamera.orthographicSize + cameraZoomAccelereation * cameraZoomSpeed * Time.deltaTime, cameraZoomBounds.x, cameraZoomBounds.y);
+		mainCamera.orthographicSize = Mathf.Clamp(mainCamera.orthographicSize + (cameraZoomAccelereation * cameraZoomSpeed * Time.deltaTime), cameraZoomBounds.x, cameraZoomBounds.y);
 	}
 }

@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1be5f2b6374540a4aaf910d7624b4246, type: 3}
-  m_Name: New SO_Tile Type
+  m_Name: Dirt
   m_EditorClassIdentifier: 
-  tileTypeName: 
-  topNodeState: 0
-  rightNodeState: 0
+  tileTypeName: Dirt
+  tileInformation: 
+  backgroundSprite: {fileID: 21300000, guid: a99435fc2e375fa4d9164c4f8ba3ab14, type: 3}
+  topNodeState: 1
+  rightNodeState: 1
   bottomNodeState: 0
   leftNodeState: 0
-  backgroundSprite: {fileID: 0}

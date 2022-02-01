@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ContainedRoom : MonoBehaviour
 {
-	public Vector2Int roomDimensions;
+	[HideInInspector]public Vector2Int roomDimensions;
+	[HideInInspector]public string ContainedRoomName;
+	[HideInInspector] public BaseManager baseManager;
 	public RoomTile[][] roomCompositionMatrix;
 }
