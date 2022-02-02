@@ -40,6 +40,7 @@ public class RoomBuilder : Editor
 						a.transform.position = new Vector2(x, y);
 						a.roomContainer = cont;
 						a.neighborWelds = new bool[] { !(y + 1 == size.y), !(x + 1 == size.x), !(y == 0), !(x == 0) };
+						a.neighborRooms = new RoomTile[4];
 					}
 				}
 			}
@@ -64,7 +65,7 @@ public class RoomBuilder : Editor
 					{
 						int index = x + (y * cont.roomDimensions.x);
 						cont.containedRooms[index].tileType = (SO_TileType)EditorGUILayout.ObjectField(cont.containedRooms[index].tileType, typeof(SO_TileType), false);
-						if (cont.containedRooms[index].tileType != null)
+						cont.containedRooms[index].spriteRenderer = cont.containedRooms[index].GetComponent<SpriteRenderer>();						if (cont.containedRooms[index].tileType != null)
 							cont.containedRooms[index].spriteRenderer.sprite = cont.containedRooms[index].tileType.backgroundSprite;
 						else
 							cont.containedRooms[index].spriteRenderer.sprite = null;

@@ -21,10 +21,11 @@ public class BaseManager : MonoBehaviour
 	{
 		if(currentPlayerState == PlayerState.BuildMode)
 		{
+			string selectedRoom = "Complex Room";
 			if(currentlySelectedRoom.transform.childCount == 0)
 			{
 				currentlySelectedRoom.gameObject.SetActive(true);
-				ContainedRoom cr = Instantiate(globalRefManager.contentManager.GetRoomPrefabByName("Hallway"));
+				ContainedRoom cr = Instantiate(globalRefManager.contentManager.GetRoomPrefabByName(selectedRoom));
 				cr.transform.SetParent(currentlySelectedRoom.transform);
 				cr.activeAndEnabled = false;
 				cr.transform.position = currentlySelectedRoom.transform.position;
@@ -47,10 +48,12 @@ public class BaseManager : MonoBehaviour
 					{
 						room.spriteRenderer.color = placementColourAllow;
 					}
+
+					//CHECK FOR NODE ATTACTCHMENT
 				}
 				if(Input.GetMouseButtonDown(0) && !colliding)
 				{
-					TryCreateRoomAtPos(new Vector2Int(Mathf.RoundToInt(currentlySelectedRoom.transform.position.x), Mathf.RoundToInt(currentlySelectedRoom.transform.position.y)), globalRefManager.contentManager.GetRoomPrefabByName("Hallway"));
+					TryCreateRoomAtPos(new Vector2Int(Mathf.RoundToInt(currentlySelectedRoom.transform.position.x), Mathf.RoundToInt(currentlySelectedRoom.transform.position.y)), globalRefManager.contentManager.GetRoomPrefabByName(selectedRoom));
 					Destroy(currentlySelectedRoom.transform.GetChild(0).gameObject);
 				}
 			}
@@ -79,16 +82,19 @@ public class BaseManager : MonoBehaviour
 		}
 		return null;
 	}
-	
+
 	public void TryCreateRoomAtPos(Vector2Int pos, ContainedRoom roomPrefab)
 	{
 		ContainedRoom newGen = Instantiate(roomPrefab);
 		baseRooms.Add(newGen);
 		newGen.globalRefManager = globalRefManager;
-		newGen.transform.position = new Vector3(pos.x,pos.y,0f);
-		newGen.containedRooms[0].UpdateTile();
+		newGen.transform.position = new Vector3(pos.x, pos.y, 0f);
 		newGen.activeAndEnabled = true;
 		globalUpdateID++;
-		newGen.containedRooms[0].UpdateNeighboringTiles(globalUpdateID);
+		foreach (RoomTile tile in newGen.containedRooms)
+		{
+			tile.UpdateNeighboringTiles(globalUpdateID);
+			tile.UpdateTile();
+		}
 	}
 }

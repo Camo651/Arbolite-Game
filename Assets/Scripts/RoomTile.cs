@@ -17,7 +17,7 @@ public class RoomTile : MonoBehaviour
 	{
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		spriteRenderer.sprite = tileType.backgroundSprite;
-		UpdateNeighboringTiles(0L);
+		//UpdateNeighboringTiles(0L);
 	}
 	public void UpdateNeighboringTiles(long updateID)
 	{

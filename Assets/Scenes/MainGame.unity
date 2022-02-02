@@ -485,7 +485,7 @@ MonoBehaviour:
   globalRefManager: {fileID: 0}
   baseRooms: []
   globalUpdateID: 0
-  currentPlayerState: 0
+  currentPlayerState: 1
   currentlySelectedRoom: {fileID: 412323067}
   placementColourAllow: {r: 0.51436454, g: 0.6698113, b: 0.5336898, a: 1}
   placementColourDeny: {r: 0.745283, g: 0.24186541, b: 0.24186541, a: 1}
@@ -523,6 +523,7 @@ MonoBehaviour:
   - {fileID: 8057671918482371835, guid: aa839b9cda98c234ebe312cfaccebd34, type: 3}
   - {fileID: 1276427737369093462, guid: 5221e0cd2926b5742934c8cec22121be, type: 3}
   - {fileID: 2111620679136429905, guid: f8f1eb900ffcee64289682109d40031a, type: 3}
+  - {fileID: 6828374592014506049, guid: 98af01cb342867b4cb3c3c108f655909, type: 3}
 --- !u!114 &998491158
 MonoBehaviour:
   m_ObjectHideFlags: 0

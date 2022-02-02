@@ -49,6 +49,7 @@ MonoBehaviour:
   neighborRooms: []
   neighborWelds: 00000000
   previousUpdateID: 0
+  spriteRenderer: {fileID: 2448867970703805544}
 --- !u!212 &2448867970703805544
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -89,7 +90,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 9be3cebd48d2722449d05e1292d922a7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 68996a8a3009a844aa64659b7c3e7358, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -144,8 +145,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d196d09a5686d44872af4d99c725ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  globalRefManager: {fileID: 0}
   roomDimensions: {x: 1, y: 1}
   ContainedRoomName: BedrockTerrain
-  baseManager: {fileID: 0}
+  activeAndEnabled: 0
   containedRooms:
   - {fileID: 7807205929895531081}
