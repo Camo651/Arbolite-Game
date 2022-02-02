@@ -34,7 +34,8 @@ public class RoomBuilder : Editor
 						RoomTile a = new GameObject("Room " + x + ", " + y + " of " + cont.ContainedRoomName).AddComponent<RoomTile>();
 						cont.containedRooms.Add(a);
 						a.tileType = (SO_TileType)AssetDatabase.LoadAssetAtPath("Assets/ScriptableObjects/TileTypes/DefaultTile.asset", typeof(SO_TileType));
-						a.gameObject.AddComponent<SpriteRenderer>().sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Square.png", typeof(Sprite));
+						a.spriteRenderer = a.gameObject.AddComponent<SpriteRenderer>();
+						a.spriteRenderer.sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Square.png", typeof(Sprite));
 						a.transform.SetParent(cont.transform);
 						a.transform.position = new Vector2(x, y);
 						a.roomContainer = cont;
@@ -64,9 +65,9 @@ public class RoomBuilder : Editor
 						int index = x + (y * cont.roomDimensions.x);
 						cont.containedRooms[index].tileType = (SO_TileType)EditorGUILayout.ObjectField(cont.containedRooms[index].tileType, typeof(SO_TileType), false);
 						if (cont.containedRooms[index].tileType != null)
-							cont.containedRooms[index].GetComponent<SpriteRenderer>().sprite = cont.containedRooms[index].tileType.backgroundSprite;
+							cont.containedRooms[index].spriteRenderer.sprite = cont.containedRooms[index].tileType.backgroundSprite;
 						else
-							cont.containedRooms[index].GetComponent<SpriteRenderer>().sprite = null;
+							cont.containedRooms[index].spriteRenderer.sprite = null;
 					}
 				}
 				GUILayout.EndHorizontal();

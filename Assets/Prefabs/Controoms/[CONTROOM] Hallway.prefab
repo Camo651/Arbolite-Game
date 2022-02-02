@@ -49,6 +49,7 @@ MonoBehaviour:
   neighborRooms: []
   neighborWelds: 00000000
   previousUpdateID: 0
+  spriteRenderer: {fileID: 5098231323461371450}
 --- !u!212 &5098231323461371450
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -144,8 +145,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d196d09a5686d44872af4d99c725ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  globalRefManager: {fileID: 0}
   roomDimensions: {x: 1, y: 1}
   ContainedRoomName: Hallway
-  baseManager: {fileID: 0}
+  activeAndEnabled: 0
   containedRooms:
   - {fileID: 4278880974044732749}

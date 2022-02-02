@@ -4,6 +4,7 @@ using System.Collections;
 public class CameraController : MonoBehaviour
 {
 	public Camera mainCamera;
+	[HideInInspector] public GlobalRefManager globalRefManager;
 	[Tooltip("Xmin Xmax Ymin Ymax")]public Vector4 cameraBounds;
 	public Vector2 cameraMoveSpeed;
 	public float cameraZoomSpeed;

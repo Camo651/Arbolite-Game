@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class BaseManager : MonoBehaviour
 {
+	[HideInInspector]public GlobalRefManager globalRefManager;
 	public List<ContainedRoom> baseRooms = new List<ContainedRoom>();
 	public long globalUpdateID;
 	public PlayerState currentPlayerState;
-	public ContainedRoom currentlySelectedRoom;
+	public GameObject currentlySelectedRoom;
+	public Color placementColourAllow, placementColourDeny;
 	public enum PlayerState
 	{
 		Player,
@@ -19,7 +21,47 @@ public class BaseManager : MonoBehaviour
 	{
 		if(currentPlayerState == PlayerState.BuildMode)
 		{
-			
+			if(currentlySelectedRoom.transform.childCount == 0)
+			{
+				currentlySelectedRoom.gameObject.SetActive(true);
+				ContainedRoom cr = Instantiate(globalRefManager.contentManager.GetRoomPrefabByName("Hallway"));
+				cr.transform.SetParent(currentlySelectedRoom.transform);
+				cr.activeAndEnabled = false;
+				cr.transform.position = currentlySelectedRoom.transform.position;
+			}
+			else
+			{
+				Vector3 mousePos = globalRefManager.cameraController.mainCamera.ScreenToWorldPoint(Input.mousePosition);
+				currentlySelectedRoom.transform.position = new Vector3(Mathf.Round(mousePos.x), Mathf.Round(mousePos.y), 0f);
+
+				bool colliding = false;
+				foreach (RoomTile room in currentlySelectedRoom.transform.GetChild(0).GetComponent<ContainedRoom>().containedRooms)
+				{
+					room.spriteRenderer.sortingOrder = 10;
+					if(GetRoomAtPosition(room.GetTrueTilePosision()) != null)
+					{
+						colliding = true;
+						room.spriteRenderer.color = placementColourDeny;
+					}
+					else
+					{
+						room.spriteRenderer.color = placementColourAllow;
+					}
+				}
+				if(Input.GetMouseButtonDown(0) && !colliding)
+				{
+					TryCreateRoomAtPos(new Vector2Int(Mathf.RoundToInt(currentlySelectedRoom.transform.position.x), Mathf.RoundToInt(currentlySelectedRoom.transform.position.y)), globalRefManager.contentManager.GetRoomPrefabByName("Hallway"));
+					Destroy(currentlySelectedRoom.transform.GetChild(0).gameObject);
+				}
+			}
+
+		}
+		else
+		{
+			if(currentlySelectedRoom.transform.childCount > 0)
+			{
+				Destroy(currentlySelectedRoom.transform.GetChild(0).gameObject);
+			}
 		}
 	}
 
@@ -42,9 +84,10 @@ public class BaseManager : MonoBehaviour
 	{
 		ContainedRoom newGen = Instantiate(roomPrefab);
 		baseRooms.Add(newGen);
-		newGen.baseManager = this;
+		newGen.globalRefManager = globalRefManager;
 		newGen.transform.position = new Vector3(pos.x,pos.y,0f);
 		newGen.containedRooms[0].UpdateTile();
+		newGen.activeAndEnabled = true;
 		globalUpdateID++;
 		newGen.containedRooms[0].UpdateNeighboringTiles(globalUpdateID);
 	}
