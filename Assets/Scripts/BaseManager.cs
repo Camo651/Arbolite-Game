@@ -15,6 +15,14 @@ public class BaseManager : MonoBehaviour
 		DestroyMode
 	}
 
+	private void Update()
+	{
+		if(currentPlayerState == PlayerState.BuildMode)
+		{
+			
+		}
+	}
+
 	public RoomTile GetRoomAtPosition(Vector2Int pos)
 	{
 		foreach(ContainedRoom cont in baseRooms)
