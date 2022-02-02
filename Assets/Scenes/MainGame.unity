@@ -288,5 +288,5 @@ MonoBehaviour:
   baseManager: {fileID: 998491155}
   Dirt: {fileID: 1276427737369093462, guid: 5221e0cd2926b5742934c8cec22121be, type: 3}
   Bedrock: {fileID: 8057671918482371835, guid: aa839b9cda98c234ebe312cfaccebd34, type: 3}
-  terrainWidth: 50
+  terrainWidth: 200
   terrainBottomLayer: -5
