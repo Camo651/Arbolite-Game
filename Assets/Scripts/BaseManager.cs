@@ -38,6 +38,24 @@ public class BaseManager : MonoBehaviour
 				bool colliding = false;
 				foreach (RoomTile room in currentlySelectedRoom.transform.GetChild(0).GetComponent<ContainedRoom>().containedRooms)
 				{
+					int[] roomNodeStates = { room.tileType.topNodeState, room.tileType.rightNodeState, room.tileType.bottomNodeState, room.tileType.leftNodeState};
+					for (int i = 0; i < 4; i++)
+					{
+						RoomTile other = GetRoomAtPosition(room.GetTrueTilePosision() + room.offsets[i]);
+						if (other != null)
+						{
+							int[] otherNodeStates = { other.tileType.topNodeState, other.tileType.rightNodeState, other.tileType.bottomNodeState, other.tileType.leftNodeState };
+							if(roomNodeStates[i]!=2 && otherNodeStates[room.inverseOffsets[i]]!=2 && (roomNodeStates[i] == 1 || otherNodeStates[room.inverseOffsets[i]] == 1))
+							{
+								room.spriteRenderer.color = placementColourAllow;
+							}
+							else
+							{
+								room.spriteRenderer.color = placementColourDeny;
+
+							}
+						}
+					}
 					room.spriteRenderer.sortingOrder = 10;
 					if(GetRoomAtPosition(room.GetTrueTilePosision()) != null)
 					{
@@ -48,8 +66,6 @@ public class BaseManager : MonoBehaviour
 					{
 						room.spriteRenderer.color = placementColourAllow;
 					}
-
-					//CHECK FOR NODE ATTACTCHMENT
 				}
 				if(Input.GetMouseButtonDown(0) && !colliding)
 				{

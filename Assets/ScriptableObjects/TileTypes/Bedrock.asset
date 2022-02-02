@@ -15,7 +15,7 @@ MonoBehaviour:
   tileTypeName: Bedrock
   tileInformation: 
   backgroundSprite: {fileID: 21300000, guid: 68996a8a3009a844aa64659b7c3e7358, type: 3}
-  topNodeState: 1
-  rightNodeState: 1
+  topNodeState: 0
+  rightNodeState: 0
   bottomNodeState: 1
-  leftNodeState: 1
+  leftNodeState: 0

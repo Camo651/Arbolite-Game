@@ -11,8 +11,8 @@ public class RoomTile : MonoBehaviour
 	public long previousUpdateID;
 	public SpriteRenderer spriteRenderer;
 
-	private readonly Vector2Int[] offsets = { Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left };
-	private readonly int[] inverseOffsets = { 2, 3, 0, 1 };
+	[HideInInspector] public readonly Vector2Int[] offsets = { Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left };
+	[HideInInspector] public readonly int[] inverseOffsets = { 2, 3, 0, 1 };
 	public void UpdateTile()
 	{
 		spriteRenderer = GetComponent<SpriteRenderer>();
