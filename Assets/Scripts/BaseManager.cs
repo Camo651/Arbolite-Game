@@ -33,6 +33,11 @@ public class BaseManager : MonoBehaviour
 	public void TryCreateRoomAtPos(Vector2Int pos, ContainedRoom roomPrefab)
 	{
 		ContainedRoom newGen = Instantiate(roomPrefab);
+		baseRooms.Add(newGen);
+		newGen.baseManager = this;
 		newGen.transform.position = new Vector3(pos.x,pos.y,0f);
+		newGen.containedRooms[0].UpdateTile();
+		globalUpdateID++;
+		newGen.containedRooms[0].UpdateNeighboringTiles(globalUpdateID);
 	}
 }

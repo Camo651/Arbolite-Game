@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileTypeName: Dirt
   tileInformation: 
-  backgroundSprite: {fileID: 7482667652216324306, guid: 9be3cebd48d2722449d05e1292d922a7, type: 3}
+  backgroundSprite: {fileID: 21300000, guid: da9d9c2890eab6d49a1300d7b9c7b9f8, type: 3}
   topNodeState: 1
   rightNodeState: 1
-  bottomNodeState: 0
-  leftNodeState: 0
+  bottomNodeState: 1
+  leftNodeState: 1

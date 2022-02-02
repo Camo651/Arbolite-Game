@@ -11,16 +11,23 @@ public class RoomTile : MonoBehaviour
 	public long previousUpdateID;
 
 	private readonly Vector2Int[] offsets = { Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left };
-	
+	private readonly int[] inverseOffsets = { 2, 3, 0, 1 };
+	public void UpdateTile()
+	{
+		GetComponent<SpriteRenderer>().sprite = tileType.backgroundSprite;
+		UpdateNeighboringTiles(0L);
+	}
 	public void UpdateNeighboringTiles(long updateID)
 	{
+		neighborRooms = new RoomTile[4];
 		previousUpdateID = updateID;
 		for (int i = 0; i < 4; i++)
 		{
-			RoomTile rt = neighborRooms[i] = roomContainer.baseManager.GetRoomAtPosition(GetTrueTilePosision() + offsets[i]);
-			if (rt && rt.previousUpdateID != updateID)
+			RoomTile rt = roomContainer.baseManager.GetRoomAtPosition(GetTrueTilePosision() + offsets[i]);
+			if (rt != null)
 			{
-				rt.UpdateNeighboringTiles(updateID);
+				rt.neighborRooms[inverseOffsets[i]] = this;
+				neighborRooms[i] = rt;
 			}
 		}
 	}
