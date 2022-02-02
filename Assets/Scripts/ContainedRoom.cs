@@ -8,9 +8,4 @@ public class ContainedRoom : MonoBehaviour
 	[HideInInspector]public string ContainedRoomName;
 	public BaseManager baseManager;
 	public List<RoomTile> containedRooms;
-
-	private void Awake()
-	{
-		baseManager.baseRooms.Add(this);
-	}
 }

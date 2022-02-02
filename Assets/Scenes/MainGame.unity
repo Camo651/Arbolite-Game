@@ -235,6 +235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 998491154}
   - component: {fileID: 998491155}
+  - component: {fileID: 998491156}
   m_Layer: 0
   m_Name: Base
   m_TagString: Base
@@ -269,4 +270,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseRooms: []
+  globalUpdateID: 0
   currentPlayerState: 0
+  currentlySelectedRoom: {fileID: 2111620679136429905, guid: f8f1eb900ffcee64289682109d40031a, type: 3}
+--- !u!114 &998491156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998491153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65bbb505df05824ab654ad755a2bf16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseManager: {fileID: 998491155}
+  Dirt: {fileID: 1276427737369093462, guid: 5221e0cd2926b5742934c8cec22121be, type: 3}
+  Bedrock: {fileID: 8057671918482371835, guid: aa839b9cda98c234ebe312cfaccebd34, type: 3}
+  terrainWidth: 50
+  terrainBottomLayer: -5

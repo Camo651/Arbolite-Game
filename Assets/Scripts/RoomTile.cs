@@ -29,7 +29,5 @@ public class RoomTile : MonoBehaviour
 	{
 		return new Vector2Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
 	}
-
-
 }
 

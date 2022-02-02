@@ -7,6 +7,7 @@ public class BaseManager : MonoBehaviour
 	public List<ContainedRoom> baseRooms = new List<ContainedRoom>();
 	public long globalUpdateID;
 	public PlayerState currentPlayerState;
+	public ContainedRoom currentlySelectedRoom;
 	public enum PlayerState
 	{
 		Player,
@@ -27,5 +28,11 @@ public class BaseManager : MonoBehaviour
 			}
 		}
 		return null;
+	}
+	
+	public void TryCreateRoomAtPos(Vector2Int pos, ContainedRoom roomPrefab)
+	{
+		ContainedRoom newGen = Instantiate(roomPrefab);
+		newGen.transform.position = new Vector3(pos.x,pos.y,0f);
 	}
 }
