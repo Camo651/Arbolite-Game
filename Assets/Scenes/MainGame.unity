@@ -485,11 +485,13 @@ MonoBehaviour:
   globalRefManager: {fileID: 0}
   baseRooms: []
   globalUpdateID: 0
-  currentPlayerState: 1
+  currentPlayerState: 2
   currentlySelectedRoom: {fileID: 412323067}
   placementColourAllow: {r: 0.51436454, g: 0.6698113, b: 0.5336898, a: 1}
   placementColourDeny: {r: 0.745283, g: 0.24186541, b: 0.24186541, a: 1}
   selectedRoomName: Complex Room
+  editModeSelectedRoomTile: {fileID: 0}
+  editModePermSelectedRoomTile: {fileID: 0}
 --- !u!114 &998491156
 MonoBehaviour:
   m_ObjectHideFlags: 0

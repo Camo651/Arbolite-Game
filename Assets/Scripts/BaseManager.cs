@@ -131,21 +131,13 @@ public class BaseManager : MonoBehaviour
 					currentSelectionCoords.x = Mathf.RoundToInt(mousePos.x);
 					currentSelectionCoords.y = Mathf.RoundToInt(mousePos.y);
 					RoomTile roomAtSelectionCoords = GetRoomAtPosition(currentSelectionCoords);
-					if (editModePermSelectedRoomTile == null || (editModePermSelectedRoomTile && roomAtSelectionCoords && editModePermSelectedRoomTile.roomContainer != roomAtSelectionCoords.roomContainer))
-					{
-						if (editModeSelectedRoomTile != null)
-						{
-							foreach (RoomTile tile in editModeSelectedRoomTile.roomContainer.containedRooms)
-							{
-								tile.spriteRenderer.color = Color.white;
-							}
-						}
-						editModeSelectedRoomTile = roomAtSelectionCoords;
-						if (editModeSelectedRoomTile != null)
-						{
-							editModeSelectedRoomTile.roomContainer.SetRoomTint(Color.gray);
-						}
-					}
+
+					//if the selected room is the hover room : ignore
+					//if the hover room is edit room : ignore
+					//if hover room is not edit room : reset edit room then set edit room to hover room
+					
+					//FUCK
+					
 				}
 			}
 		}
