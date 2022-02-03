@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour
 	{
 		//Camera Movements
 		trueCameraPosition.x = Mathf.Clamp(trueCameraPosition.x + (Input.GetAxis("Horizontal") * cameraMoveSpeed.x * mainCamera.orthographicSize * Time.deltaTime), cameraBounds.x, cameraBounds.y);
-		trueCameraPosition.y = Mathf.Clamp(trueCameraPosition.y + (Input.GetAxis("Vertical") * cameraMoveSpeed.y * mainCamera.orthographicSize * Time.deltaTime), cameraBounds.z, cameraBounds.w);
+		trueCameraPosition.y = Mathf.Clamp(trueCameraPosition.y + (Input.GetAxis("Vertical") * cameraMoveSpeed.y * mainCamera.orthographicSize * Time.deltaTime), mainCamera.orthographicSize + cameraBounds.z, mainCamera.orthographicSize +  cameraBounds.w);
 		mainCamera.transform.position = trueCameraPosition;
 
 		//Camera Zooming
@@ -24,7 +24,7 @@ public class CameraController : MonoBehaviour
 			cameraZoomAccelereation = -Input.mouseScrollDelta.y;
 		else
 		{
-			if (Mathf.Abs(cameraZoomAccelereation) > 0.0001f)
+			if (Mathf.Abs(cameraZoomAccelereation) > 0.1f)
 				cameraZoomAccelereation -= (cameraAccelSpeed * Time.deltaTime * Mathf.Sign(cameraZoomAccelereation));
 			else
 				cameraZoomAccelereation = 0f;

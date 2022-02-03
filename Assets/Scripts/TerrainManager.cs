@@ -14,6 +14,8 @@ public class TerrainManager : MonoBehaviour
 	}
 	public void GenerateTerrain()
 	{
+		globalRefManager.baseManager.roomIndexingVectors = new List<List<RoomTile>>();
+
 		for (int x = 0; x < terrainWidth; x++)
 		{
 
@@ -27,5 +29,6 @@ public class TerrainManager : MonoBehaviour
 				globalRefManager.baseManager.TryCreateRoomAtPos(pos, Bedrock);
 			}
 		}
+
 	}
 }

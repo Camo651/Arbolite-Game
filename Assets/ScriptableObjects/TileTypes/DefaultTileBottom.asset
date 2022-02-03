@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1be5f2b6374540a4aaf910d7624b4246, type: 3}
-  m_Name: Hallway
+  m_Name: DefaultTileBottom
   m_EditorClassIdentifier: 
-  tileTypeName: Hallway
+  tileTypeName: Defalut Floor
   tileInformation: 
   backgroundSprite: {fileID: 7482667652216324306, guid: 9be3cebd48d2722449d05e1292d922a7, type: 3}
   topNodeState: 0
-  rightNodeState: 1
-  bottomNodeState: 0
+  rightNodeState: 0
+  bottomNodeState: 1
   leftNodeState: 0

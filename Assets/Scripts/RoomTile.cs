@@ -17,7 +17,6 @@ public class RoomTile : MonoBehaviour
 	{
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		spriteRenderer.sprite = tileType.backgroundSprite;
-		//UpdateNeighboringTiles(0L);
 	}
 	public void UpdateNeighboringTiles(long updateID)
 	{
@@ -25,7 +24,7 @@ public class RoomTile : MonoBehaviour
 		previousUpdateID = updateID;
 		for (int i = 0; i < 4; i++)
 		{
-			RoomTile rt = roomContainer.globalRefManager.baseManager.GetRoomAtPosition(GetTrueTilePosision() + offsets[i]);
+			RoomTile rt = roomContainer.globalRefManager.baseManager.GetRoomAtPosition(GetIndexdTilePosition() + offsets[i]);
 			if (rt != null)
 			{
 				rt.neighborRooms[inverseOffsets[i]] = this;
@@ -34,9 +33,13 @@ public class RoomTile : MonoBehaviour
 		}
 	}
 
-	public Vector2Int GetTrueTilePosision()
+	public Vector2Int GetTrueTilePosition()
 	{
 		return new Vector2Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
+	}
+	public Vector2Int GetIndexdTilePosition()
+	{
+		return new Vector2Int(Mathf.RoundToInt(transform.position.x + (roomContainer.globalRefManager.terrainManager.terrainWidth / 2)), Mathf.RoundToInt(transform.position.y + roomContainer.globalRefManager.terrainManager.terrainBottomLayer));
 	}
 }
 
