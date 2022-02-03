@@ -24,7 +24,7 @@ public class RoomTile : MonoBehaviour
 		previousUpdateID = updateID;
 		for (int i = 0; i < 4; i++)
 		{
-			RoomTile rt = roomContainer.globalRefManager.baseManager.GetRoomAtPosition(GetIndexdTilePosition() + offsets[i]);
+			RoomTile rt = roomContainer.globalRefManager.baseManager.GetRoomAtPosition(GetTrueTilePosition() + offsets[i]);
 			if (rt != null)
 			{
 				rt.neighborRooms[inverseOffsets[i]] = this;

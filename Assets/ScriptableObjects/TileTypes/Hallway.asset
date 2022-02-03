@@ -16,6 +16,6 @@ MonoBehaviour:
   tileInformation: 
   backgroundSprite: {fileID: 7482667652216324306, guid: 9be3cebd48d2722449d05e1292d922a7, type: 3}
   topNodeState: 0
-  rightNodeState: 1
-  bottomNodeState: 0
+  rightNodeState: 0
+  bottomNodeState: 1
   leftNodeState: 0

@@ -9,4 +9,13 @@ public class ContainedRoom : MonoBehaviour
 	[HideInInspector]public string ContainedRoomName;
 	public bool activeAndEnabled;
 	public List<RoomTile> containedRooms;
+
+
+	public void SetRoomTint(Color tint)
+	{
+		foreach (RoomTile tile in containedRooms)
+		{
+			tile.spriteRenderer.color = tint;
+		}
+	}
 }

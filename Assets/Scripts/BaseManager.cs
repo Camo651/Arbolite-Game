@@ -11,121 +11,159 @@ public class BaseManager : MonoBehaviour
 	public PlayerState currentPlayerState;
 	public GameObject currentlySelectedRoom;
 	public Color placementColourAllow, placementColourDeny;
-	public string selectedRoom;
+	public string selectedRoomName;
+	private bool colliding, nodeConditionsMet;
+	public RoomTile editModeSelectedRoomTile, editModePermSelectedRoomTile;
+	private Vector2Int currentSelectionCoords;
+
+
 	public enum PlayerState
 	{
 		Player,
 		BuildMode,
-		EditMode,
-		DestroyMode
+		EditMode
 	}
 
 	private void Update()
 	{
-		foreach (var item in roomIndexingVectors)
-		{
-			foreach (var gaeg in item)
-			{
-				print(gaeg);
-			}
-			print("--------");
-		}
 		if(currentPlayerState == PlayerState.BuildMode)
 		{
-			if(currentlySelectedRoom.transform.childCount == 0)
+			if (selectedRoomName == "")
 			{
-				currentlySelectedRoom.gameObject.SetActive(true);
-				ContainedRoom cr = Instantiate(globalRefManager.contentManager.GetRoomPrefabByName(selectedRoom));
-				cr.globalRefManager = globalRefManager;
-				cr.transform.SetParent(currentlySelectedRoom.transform);
-				cr.activeAndEnabled = false;
-				cr.transform.position = currentlySelectedRoom.transform.position;
+				if (currentlySelectedRoom.transform.childCount > 0)
+				{
+					Destroy(currentlySelectedRoom.transform.GetChild(0).gameObject);
+				}
 			}
 			else
 			{
-				Vector3 mousePos = globalRefManager.cameraController.mainCamera.ScreenToWorldPoint(Input.mousePosition);
-
-				if (currentlySelectedRoom.transform.position.x != Mathf.Round(mousePos.x) && currentlySelectedRoom.transform.position.y != Mathf.Round(mousePos.y))
+				if (currentlySelectedRoom.transform.childCount == 0)
 				{
-					currentlySelectedRoom.transform.position = new Vector3(Mathf.Round(mousePos.x), Mathf.Round(mousePos.y), 0f);
-
-					bool colliding = false, nodeConditionsMet = true;
-					foreach (RoomTile room in currentlySelectedRoom.transform.GetChild(0).GetComponent<ContainedRoom>().containedRooms)
+					currentlySelectedRoom.gameObject.SetActive(true);
+					ContainedRoom cr = Instantiate(globalRefManager.contentManager.GetRoomPrefabByName(selectedRoomName));
+					cr.globalRefManager = globalRefManager;
+					cr.transform.SetParent(currentlySelectedRoom.transform);
+					cr.activeAndEnabled = false;
+					cr.transform.position = currentlySelectedRoom.transform.position;
+				}
+				else
+				{
+					Vector3 mousePos = globalRefManager.cameraController.mainCamera.ScreenToWorldPoint(Input.mousePosition);
+					if (currentlySelectedRoom.transform.position.x != Mathf.Round(mousePos.x) || currentlySelectedRoom.transform.position.y != Mathf.Round(mousePos.y))
 					{
-						room.spriteRenderer.sortingOrder = 10;
-						int[] roomNodeStates = { room.tileType.topNodeState, room.tileType.rightNodeState, room.tileType.bottomNodeState, room.tileType.leftNodeState };
-						for (int i = 0; i < 4; i++)
+						currentlySelectedRoom.transform.position = new Vector3(Mathf.Round(mousePos.x), Mathf.Round(mousePos.y), 0f);
+						colliding = false;
+						nodeConditionsMet = true;
+						ContainedRoom contRoom = currentlySelectedRoom.transform.GetChild(0).GetComponent<ContainedRoom>();
+						foreach (RoomTile room in contRoom.containedRooms)
 						{
-							RoomTile other = GetRoomAtPosition(room.GetIndexdTilePosition() + room.offsets[i]);
-							bool hasRoomOnLockedSide = other && roomNodeStates[i] == 2;
-							bool connectorNodeMet = (roomNodeStates[i] == 1 && other) || roomNodeStates[i] != 1;
-							bool otherHasLockedSideOnRoom = false;
-							if (other != null)
+							room.spriteRenderer.sortingOrder = 10;
+							int[] roomNodeStates = { room.tileType.topNodeState, room.tileType.rightNodeState, room.tileType.bottomNodeState, room.tileType.leftNodeState };
+							for (int i = 0; i < 4; i++)
 							{
-
-								int[] otherNodeStates = { other.tileType.bottomNodeState, other.tileType.leftNodeState, other.tileType.topNodeState, other.tileType.rightNodeState };
-								if (otherNodeStates[i] == 2)
+								RoomTile other = GetRoomAtPosition(room.GetTrueTilePosition() + room.offsets[i]);
+								bool hasRoomOnLockedSide = other && roomNodeStates[i] == 2;
+								bool connectorNodeMet = (roomNodeStates[i] == 1 && other) || roomNodeStates[i] != 1;
+								bool otherHasLockedSideOnRoom = false;
+								if (other != null)
 								{
-									otherHasLockedSideOnRoom = true;
+
+									int[] otherNodeStates = { other.tileType.bottomNodeState, other.tileType.leftNodeState, other.tileType.topNodeState, other.tileType.rightNodeState };
+									if (otherNodeStates[i] == 2)
+									{
+										otherHasLockedSideOnRoom = true;
+									}
+								}
+
+								if (hasRoomOnLockedSide || !connectorNodeMet || otherHasLockedSideOnRoom)
+								{
+									nodeConditionsMet = false;
+									room.spriteRenderer.color = placementColourDeny;
+								}
+								else
+								{
+									room.spriteRenderer.color = placementColourAllow;
 								}
 							}
-
-							if (hasRoomOnLockedSide || !connectorNodeMet || otherHasLockedSideOnRoom)
+							if (nodeConditionsMet)
 							{
-								nodeConditionsMet = false;
-								room.spriteRenderer.color = placementColourDeny;
-							}
-							else
-							{
-								room.spriteRenderer.color = placementColourAllow;
-							}
-						}
-						if (nodeConditionsMet)
-						{
-							if (GetRoomAtPosition(room.GetIndexdTilePosition()) != null)
-							{
-								colliding = true;
-								room.spriteRenderer.color = placementColourDeny;
-							}
-							else
-							{
-								room.spriteRenderer.color = placementColourAllow;
+								if (GetRoomAtPosition(room.GetTrueTilePosition()) != null)
+								{
+									colliding = true;
+									room.spriteRenderer.color = placementColourDeny;
+								}
+								else
+								{
+									room.spriteRenderer.color = placementColourAllow;
+								}
 							}
 						}
 					}
 					if (Input.GetMouseButtonDown(0) && !colliding && nodeConditionsMet)
 					{
-						TryCreateRoomAtPos(new Vector2Int(Mathf.RoundToInt(currentlySelectedRoom.transform.position.x), Mathf.RoundToInt(currentlySelectedRoom.transform.position.y)), globalRefManager.contentManager.GetRoomPrefabByName(selectedRoom));
+						TryCreateRoomAtPos(new Vector2Int(Mathf.RoundToInt(currentlySelectedRoom.transform.position.x), Mathf.RoundToInt(currentlySelectedRoom.transform.position.y)), globalRefManager.contentManager.GetRoomPrefabByName(selectedRoomName));
 						Destroy(currentlySelectedRoom.transform.GetChild(0).gameObject);
 					}
 				}
 			}
-
 		}
-		else
+		else if(currentPlayerState == PlayerState.EditMode)
 		{
-			if(currentlySelectedRoom.transform.childCount > 0)
+			if (currentlySelectedRoom.transform.childCount > 0)
+			{
+				Destroy(currentlySelectedRoom.transform.GetChild(0).gameObject);
+			}
+			else
+			{
+				if (editModeSelectedRoomTile != null)
+				{
+					if (Input.GetMouseButtonDown(0))
+					{
+						if(editModePermSelectedRoomTile!=null)
+							editModePermSelectedRoomTile.roomContainer.SetRoomTint(Color.white);
+						editModePermSelectedRoomTile = editModeSelectedRoomTile;
+						editModePermSelectedRoomTile.roomContainer.SetRoomTint(Color.cyan);
+					}
+				}
+				Vector3 mousePos = globalRefManager.cameraController.mainCamera.ScreenToWorldPoint(Input.mousePosition);
+				if (currentSelectionCoords.x != Mathf.Round(mousePos.x) || currentSelectionCoords.y != Mathf.Round(mousePos.y))
+				{
+					currentSelectionCoords.x = Mathf.RoundToInt(mousePos.x);
+					currentSelectionCoords.y = Mathf.RoundToInt(mousePos.y);
+					RoomTile roomAtSelectionCoords = GetRoomAtPosition(currentSelectionCoords);
+					if (editModePermSelectedRoomTile == null || (editModePermSelectedRoomTile && roomAtSelectionCoords && editModePermSelectedRoomTile.roomContainer != roomAtSelectionCoords.roomContainer))
+					{
+						if (editModeSelectedRoomTile != null)
+						{
+							foreach (RoomTile tile in editModeSelectedRoomTile.roomContainer.containedRooms)
+							{
+								tile.spriteRenderer.color = Color.white;
+							}
+						}
+						editModeSelectedRoomTile = roomAtSelectionCoords;
+						if (editModeSelectedRoomTile != null)
+						{
+							editModeSelectedRoomTile.roomContainer.SetRoomTint(Color.gray);
+						}
+					}
+				}
+			}
+		}
+		else if(currentPlayerState == PlayerState.Player)
+		{
+			if (currentlySelectedRoom.transform.childCount > 0)
 			{
 				Destroy(currentlySelectedRoom.transform.GetChild(0).gameObject);
 			}
 		}
 	}
 
-	public RoomTile GetRoomAtPosition(Vector2Int pos)
+	public RoomTile GetRoomAtPosition(Vector2Int pos)//always call with the true world position
 	{
-		//foreach(ContainedRoom cont in baseRooms)
-		//{
-		//	foreach (RoomTile room in cont.containedRooms)
-		//	{
-		//		if (room.GetTrueTilePosition().x == pos.x && room.GetTrueTilePosition().y == pos.y)
-		//		{
-		//			return room;
-		//		}
-		//	}
-		//}
-		//return null;
+		pos.x += (globalRefManager.terrainManager.terrainWidth / 2);
+		pos.y += globalRefManager.terrainManager.terrainBottomLayer;
 
-		if(roomIndexingVectors.Count > pos.y && pos.y >=0 && roomIndexingVectors[pos.y].Count > pos.x && pos.x>=0)
+		if (roomIndexingVectors.Count > pos.y && pos.y >=0 && roomIndexingVectors[pos.y].Count > pos.x && pos.x>=0)
 		{
 			return roomIndexingVectors[pos.y][pos.x];
 		}
@@ -161,5 +199,3 @@ public class BaseManager : MonoBehaviour
 		}
 	}
 }
-
-//TRY CREATE ROOM IS ALWAYS ADDING ROOM 0, 0 TO THE ARRAY IN PLAXCE OF ALL OTHER ONES????
