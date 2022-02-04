@@ -115,15 +115,13 @@ public class BaseManager : MonoBehaviour
 			}
 			else
 			{
-				if (editModeSelectedRoomTile != null)
+				if (Input.GetMouseButtonDown(0))
 				{
-					if (Input.GetMouseButtonDown(0))
-					{
-						if(editModePermSelectedRoomTile!=null)
-							editModePermSelectedRoomTile.roomContainer.SetRoomTint(Color.white);
-						editModePermSelectedRoomTile = editModeSelectedRoomTile;
+					if (editModePermSelectedRoomTile != null)
+						editModePermSelectedRoomTile.roomContainer.SetRoomTint(Color.white);
+					editModePermSelectedRoomTile = editModeSelectedRoomTile;
+					if (editModePermSelectedRoomTile != null)
 						editModePermSelectedRoomTile.roomContainer.SetRoomTint(Color.cyan);
-					}
 				}
 				Vector3 mousePos = globalRefManager.cameraController.mainCamera.ScreenToWorldPoint(Input.mousePosition);
 				if (currentSelectionCoords.x != Mathf.Round(mousePos.x) || currentSelectionCoords.y != Mathf.Round(mousePos.y))
@@ -131,12 +129,14 @@ public class BaseManager : MonoBehaviour
 					currentSelectionCoords.x = Mathf.RoundToInt(mousePos.x);
 					currentSelectionCoords.y = Mathf.RoundToInt(mousePos.y);
 					RoomTile roomAtSelectionCoords = GetRoomAtPosition(currentSelectionCoords);
-
-					//if the selected room is the hover room : ignore
-					//if the hover room is edit room : ignore
-					//if hover room is not edit room : reset edit room then set edit room to hover room
-					
-					//FUCK
+					if (roomAtSelectionCoords != editModeSelectedRoomTile)
+					{
+						if (editModeSelectedRoomTile != null &&((editModePermSelectedRoomTile == null)||(editModePermSelectedRoomTile&&editModeSelectedRoomTile&&editModePermSelectedRoomTile.roomContainer != editModeSelectedRoomTile.roomContainer)))
+							editModeSelectedRoomTile.roomContainer.SetRoomTint(Color.white);
+						editModeSelectedRoomTile = roomAtSelectionCoords;
+						if (editModeSelectedRoomTile != null && ((editModePermSelectedRoomTile == null) || (editModePermSelectedRoomTile && editModeSelectedRoomTile && editModePermSelectedRoomTile.roomContainer != editModeSelectedRoomTile.roomContainer)))
+							editModeSelectedRoomTile.roomContainer.SetRoomTint(Color.gray);
+					}
 					
 				}
 			}
@@ -183,6 +183,7 @@ public class BaseManager : MonoBehaviour
 					roomIndexingVectors[roomIndexingVectors.Count - 1].Add(null);
 			}
 			roomIndexingVectors[tile.GetIndexdTilePosition().y][tile.GetIndexdTilePosition().x] = tile;
+			tile.transform.name = "Room " + tile.GetTrueTilePosition().x + ", " + tile.GetTrueTilePosition().y + " of " + tile.roomContainer.ContainedRoomName;
 		}
 		foreach (RoomTile tile in newGen.containedRooms)
 		{
