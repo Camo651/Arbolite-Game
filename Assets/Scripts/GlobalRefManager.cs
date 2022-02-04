@@ -10,6 +10,7 @@ public class GlobalRefManager : MonoBehaviour
 	public InterfaceManager interfaceManager;
 	public CameraController cameraController;
 	public FlowManager flowManager;
+	public LanguangeManager langManager;
 
 	private void Awake()
 	{

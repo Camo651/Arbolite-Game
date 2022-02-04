@@ -449,6 +449,7 @@ GameObject:
   - component: {fileID: 998491156}
   - component: {fileID: 998491158}
   - component: {fileID: 998491159}
+  - component: {fileID: 998491160}
   m_Layer: 0
   m_Name: Base
   m_TagString: Base
@@ -558,6 +559,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   globalRefManager: {fileID: 0}
+--- !u!114 &998491160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998491153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b149d467121738a4e85aff92cc4e681b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textAssetLanguageOptions:
+  - {fileID: 4900000, guid: acbe8101fc2dd34489de0f188518463a, type: 3}
+  textFormattingDelimiter: 34
 --- !u!1 &1279674977
 GameObject:
   m_ObjectHideFlags: 0
