@@ -546,6 +546,7 @@ MonoBehaviour:
   interfaceManager: {fileID: 752596401}
   cameraController: {fileID: 775592889}
   flowManager: {fileID: 998491159}
+  langManager: {fileID: 998491160}
 --- !u!114 &998491159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -571,6 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b149d467121738a4e85aff92cc4e681b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  globalRefManager: {fileID: 0}
   textAssetLanguageOptions:
   - {fileID: 4900000, guid: acbe8101fc2dd34489de0f188518463a, type: 3}
   textFormattingDelimiter: 34

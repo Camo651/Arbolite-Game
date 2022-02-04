@@ -187,7 +187,6 @@ public class BaseManager : MonoBehaviour
 		}
 		foreach (RoomTile tile in newGen.containedRooms)
 		{
-			tile.UpdateNeighboringTiles(globalUpdateID);
 			tile.UpdateTile();
 		}
 	}

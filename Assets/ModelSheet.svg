@@ -2,21 +2,21 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="210mm"
    height="297mm"
    viewBox="0 0 210 297"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
-   sodipodi:docname="ModelSheet.svg">
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="ModelSheet.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs2">
     <linearGradient
@@ -49,18 +49,19 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.16"
-     inkscape:cx="2073.4616"
-     inkscape:cy="136.81077"
+     inkscape:zoom="0.13025889"
+     inkscape:cx="6936.1869"
+     inkscape:cy="1569.9504"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1017"
-     inkscape:window-x="-8"
-     inkscape:window-y="892"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
      inkscape:window-maximized="1"
-     showborder="false" />
+     showborder="false"
+     inkscape:pagecheckerboard="0" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -77,6 +78,10 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
+    <path
+       id="rect816-8-5-2"
+       style="fill:#2e4b3c;fill-opacity:1;stroke:none;stroke-width:27.4384;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       d="m 2226.7065,166.52678 -132.2917,130.47317 h 264.5833 z" />
     <rect
        style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:27.43827057;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
        id="rect816"
@@ -96,6 +101,50 @@
        inkscape:export-filename="C:\Users\camoc\Desktop\Code\UnityProjects\BuildingGameProject\Assets\Images\Tiles\Terrain\GHrassTexturepng.png"
        inkscape:export-xdpi="95.999985"
        inkscape:export-ydpi="95.999985" />
+    <path
+       id="rect816-8-5"
+       style="fill:#2e4b3c;fill-opacity:1;stroke:none;stroke-width:27.4384;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       d="M 1792.2604,32.416625 V 296.99995 h 264.5833 V 32.416625 L 1924.5521,162.8898 Z" />
+    <path
+       id="rect816-8-9"
+       style="fill:#2e4b3c;fill-opacity:1;stroke:none;stroke-width:27.4384;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       d="M 1204.885,32.416625 V 296.99995 h 264.5834 z" />
+    <path
+       id="rect816-8-9-5"
+       style="fill:#2e4b3c;fill-opacity:1;stroke:none;stroke-width:27.4384;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       d="M 1749.9267,32.416627 V 296.99995 h -264.5833 z" />
+    <path
+       id="rect816-8-5-2-0"
+       style="fill:#2e4b3c;fill-opacity:1;stroke:none;stroke-width:27.4384;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       d="M 2226.7064,474.19098 2094.4147,343.71781 h 264.5833 z" />
+    <path
+       id="rect816-8-5-1"
+       style="fill:#2e4b3c;fill-opacity:1;stroke:none;stroke-width:27.4384;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       d="M 1792.2603,608.30114 V 343.71781 h 264.5833 V 608.30114 L 1924.552,477.82796 Z" />
+    <path
+       id="rect816-8-9-7"
+       style="fill:#2e4b3c;fill-opacity:1;stroke:none;stroke-width:27.4384;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       d="M 1204.8849,608.30114 V 343.71781 h 264.5834 z" />
+    <path
+       id="rect816-8-9-5-3"
+       style="fill:#2e4b3c;fill-opacity:1;stroke:none;stroke-width:27.4384;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       d="M 1749.9266,608.30114 V 343.71781 h -264.5833 z" />
+    <path
+       id="rect816-8-5-2-4"
+       style="fill:#2e4b3c;fill-opacity:1;stroke:none;stroke-width:27.4384;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       d="M 2832.4646,467.96749 2701.9915,335.67579 V 600.2591 Z" />
+    <path
+       id="rect816-8-5-6"
+       style="fill:#2e4b3c;fill-opacity:1;stroke:none;stroke-width:27.4384;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       d="M 2966.0456,71.092497 H 2701.4623 V 335.67579 h 264.5833 L 2835.5724,203.3842 Z" />
+    <path
+       id="rect816-8-5-2-0-2"
+       style="fill:#2e4b3c;fill-opacity:1;stroke:none;stroke-width:27.4384;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       d="m 2534.4762,467.96739 130.4731,-132.2917 v 264.5833 z" />
+    <path
+       id="rect816-8-5-1-6"
+       style="fill:#2e4b3c;fill-opacity:1;stroke:none;stroke-width:27.4384;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       d="m 2400.366,71.092397 h 264.5833 V 335.67569 H 2400.366 L 2530.8392,203.3841 Z" />
     <rect
        style="opacity:1;fill:#181c1e;fill-opacity:1;stroke:none;stroke-width:27.43827057;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
        id="rect816-8-8"

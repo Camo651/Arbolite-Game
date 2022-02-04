@@ -16,17 +16,28 @@ public class TerrainManager : MonoBehaviour
 	{
 		globalRefManager.baseManager.roomIndexingVectors = new List<List<RoomTile>>();
 
-		for (int x = 0; x < terrainWidth; x++)
+		for (int x = -(terrainWidth/2); x < terrainWidth/2; x++)
 		{
 
-			Vector2Int pos = Vector2Int.right * (x-(terrainWidth/2));
-			pos.y = (int)(10f*Mathf.PerlinNoise((x * .1f) - 0.51f, 1.123f));
-			pos.y += (int)(5f*Mathf.Cos((Mathf.PI / 1) * ((x-(terrainWidth/2f)) / terrainWidth)));
+			Vector2Int pos = Vector2Int.right * x;
+			pos.y = (int)(10f*Mathf.PerlinNoise((x * .24321f) - 0.51f, 1.123f));
+			pos.y += (int)(15f*Mathf.Cos((Mathf.PI) * x / terrainWidth));
 			globalRefManager.baseManager.TryCreateRoomAtPos(pos, Dirt);
 			while(pos.y > terrainBottomLayer)
 			{
 				pos.y--;
 				globalRefManager.baseManager.TryCreateRoomAtPos(pos, Bedrock);
+			}
+		}
+		foreach(ContainedRoom tile in globalRefManager.baseManager.baseRooms)
+		{
+			if (tile.isNaturalTerrainTile)
+			{
+				//TODO save the few types of tiles that can make up any config
+				//check the 4 neighboring tiles
+				//select which type of terain tile to build based on the config around it
+				//if none, idk??
+
 			}
 		}
 

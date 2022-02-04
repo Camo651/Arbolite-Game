@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class ContainedRoom : MonoBehaviour
 {
- public GlobalRefManager globalRefManager;
+	public GlobalRefManager globalRefManager;
 	[HideInInspector]public Vector2Int roomDimensions;
 	[HideInInspector]public string ContainedRoomName;
 	public bool activeAndEnabled;
+	public bool isNaturalTerrainTile;
 	public List<RoomTile> containedRooms;
 
 

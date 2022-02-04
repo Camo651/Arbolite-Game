@@ -17,11 +17,12 @@ public class RoomTile : MonoBehaviour
 	{
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		spriteRenderer.sprite = tileType.backgroundSprite;
+
+		UpdateNeighboringTiles();
 	}
-	public void UpdateNeighboringTiles(long updateID)
+	public void UpdateNeighboringTiles()
 	{
 		neighborRooms = new RoomTile[4];
-		previousUpdateID = updateID;
 		for (int i = 0; i < 4; i++)
 		{
 			RoomTile rt = roomContainer.globalRefManager.baseManager.GetRoomAtPosition(GetTrueTilePosition() + offsets[i]);
@@ -29,6 +30,12 @@ public class RoomTile : MonoBehaviour
 			{
 				rt.neighborRooms[inverseOffsets[i]] = this;
 				neighborRooms[i] = rt;
+
+				//@Start tile updates here
+				if (roomContainer.isNaturalTerrainTile)
+				{
+					//figure out the dirt shit
+				}
 			}
 		}
 	}
