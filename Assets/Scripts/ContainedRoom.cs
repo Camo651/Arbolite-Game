@@ -18,5 +18,6 @@ public class ContainedRoom : MonoBehaviour
 		{
 			tile.spriteRenderer.color = tint;
 		}
+
 	}
 }
