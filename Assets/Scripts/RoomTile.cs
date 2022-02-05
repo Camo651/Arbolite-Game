@@ -25,18 +25,27 @@ public class RoomTile : MonoBehaviour
 		neighborRooms = new RoomTile[4];
 		for (int i = 0; i < 4; i++)
 		{
-			RoomTile rt = roomContainer.globalRefManager.baseManager.GetRoomAtPosition(GetTrueTilePosition() + offsets[i]);
-			if (rt != null)
+			RoomTile other = roomContainer.globalRefManager.baseManager.GetRoomAtPosition(GetTrueTilePosition() + offsets[i]);
+			if (other != null)
 			{
-				rt.neighborRooms[inverseOffsets[i]] = this;
-				neighborRooms[i] = rt;
-
-				//@Start tile updates here
-				if (roomContainer.isNaturalTerrainTile)
-				{
-					//figure out the dirt shit
-				}
+				other.neighborRooms[inverseOffsets[i]] = this;
+				neighborRooms[i] = other;
 			}
+		}
+		if (roomContainer.isNaturalTerrainTile)
+		{
+			SO_TileType newTile;
+			switch(neighborRooms[0] != null, neighborRooms[1] != null, neighborRooms[2] != null, neighborRooms[3] != null)
+			{
+				case (false, true, true, false) : newTile = roomContainer.globalRefManager.terrainManager.DirtRight; break;
+				case (false, false, true, true) : newTile = roomContainer.globalRefManager.terrainManager.DirtLeft; break;
+				case (false, false, true, false) : newTile = roomContainer.globalRefManager.terrainManager.DirtSmall; break;
+				default: newTile = roomContainer.globalRefManager.terrainManager.Dirt.containedRooms[0].tileType; break;
+			}
+			if (neighborRooms[0] != null)
+				newTile = roomContainer.globalRefManager.terrainManager.Bedrock.containedRooms[0].tileType;
+			tileType = newTile;
+			spriteRenderer.sprite = newTile.backgroundSprite;
 		}
 	}
 

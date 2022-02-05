@@ -166,13 +166,14 @@ public class BaseManager : MonoBehaviour
 
 	}
 
-	public void TryCreateRoomAtPos(Vector2Int pos, ContainedRoom roomPrefab)
+	public void TryCreateRoomAtPos(Vector2Int pos, ContainedRoom roomPrefab) //call with the real world position
 	{
 		ContainedRoom newGen = Instantiate(roomPrefab);
 		baseRooms.Add(newGen);
 		newGen.globalRefManager = globalRefManager;
 		newGen.transform.position = new Vector3(pos.x, pos.y, 0f);
 		newGen.activeAndEnabled = true;
+		newGen.isNaturalTerrainTile = (newGen.containedRooms[0].tileType == globalRefManager.terrainManager.Dirt.containedRooms[0].tileType) || (newGen.containedRooms[0].tileType == globalRefManager.terrainManager.Bedrock.containedRooms[0].tileType);
 		globalUpdateID++;
 		foreach (RoomTile tile in newGen.containedRooms)
 		{

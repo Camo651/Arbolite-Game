@@ -2,21 +2,21 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="210mm"
    height="297mm"
    viewBox="0 0 210 297"
    version="1.1"
    id="svg8"
-   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
-   sodipodi:docname="ModelSheet.svg"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:dc="http://purl.org/dc/elements/1.1/">
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="ModelSheet.svg">
   <defs
      id="defs2">
     <linearGradient
@@ -41,6 +41,16 @@
        y2="429.29172"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(2,0,0,1,-2010.1773,427.29688)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient857"
+       id="linearGradient884"
+       x1="-584.5639"
+       y1="3358.0305"
+       x2="-78.377686"
+       y2="3358.0305"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(40.215929,109.15753)" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -49,19 +59,20 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.13025889"
-     inkscape:cx="6936.1869"
-     inkscape:cy="1569.9504"
+     inkscape:zoom="0.065129445"
+     inkscape:cx="6079.7294"
+     inkscape:cy="-1153.7417"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1001"
-     inkscape:window-x="-9"
-     inkscape:window-y="-9"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="892"
      inkscape:window-maximized="1"
      showborder="false"
-     inkscape:pagecheckerboard="0" />
+     inkscape:pagecheckerboard="0"
+     inkscape:snap-global="true" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -78,10 +89,37 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
+    <rect
+       style="opacity:1;fill:#2d2d2d;fill-opacity:1;stroke:none;stroke-width:27.43827057;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect816-8-05-8"
+       width="264.58337"
+       height="264.58337"
+       x="1174.6316"
+       y="-818.39795"
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\UnityProjects\BuildingGameProject\Assets\Images\Tiles\Terrain\GHrassTexturepng.png"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985" />
+    <path
+       id="rect816-8-5-6"
+       style="fill:#2e4b3c;fill-opacity:1;stroke:none;stroke-width:27.43840027;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       d="M 2966.5748,71.092494 H 2701.9915 V 335.67579 h 264.5833 L 2836.1016,203.3842 Z"
+       inkscape:connector-curvature="0" />
+    <rect
+       style="opacity:1;fill:#2e4b3c;fill-opacity:0;stroke:none;stroke-width:27.43827057;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect816-8-0"
+       width="264.58337"
+       height="264.58337"
+       x="2094.4148"
+       y="32.416592"
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\UnityProjects\BuildingGameProject\Assets\Images\Tiles\Terrain\GrassSmall.png"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985" />
     <path
        id="rect816-8-5-2"
        style="fill:#2e4b3c;fill-opacity:1;stroke:none;stroke-width:27.4384;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
-       d="m 2226.7065,166.52678 -132.2917,130.47317 h 264.5833 z" />
+       d="m 2226.7065,166.52678 -132.2917,130.47317 h 264.5833 z"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
     <rect
        style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:27.43827057;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
        id="rect816"
@@ -97,7 +135,7 @@
        width="264.58337"
        height="264.58337"
        x="459.71356"
-       y="32.416637"
+       y="32.416626"
        inkscape:export-filename="C:\Users\camoc\Desktop\Code\UnityProjects\BuildingGameProject\Assets\Images\Tiles\Terrain\GHrassTexturepng.png"
        inkscape:export-xdpi="95.999985"
        inkscape:export-ydpi="95.999985" />
@@ -108,11 +146,15 @@
     <path
        id="rect816-8-9"
        style="fill:#2e4b3c;fill-opacity:1;stroke:none;stroke-width:27.4384;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
-       d="M 1204.885,32.416625 V 296.99995 h 264.5834 z" />
+       d="M 1204.885,32.416625 V 296.99995 h 264.5834 z"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
     <path
        id="rect816-8-9-5"
        style="fill:#2e4b3c;fill-opacity:1;stroke:none;stroke-width:27.4384;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
-       d="M 1749.9267,32.416627 V 296.99995 h -264.5833 z" />
+       d="M 1749.9267,32.416627 V 296.99995 h -264.5833 z"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
     <path
        id="rect816-8-5-2-0"
        style="fill:#2e4b3c;fill-opacity:1;stroke:none;stroke-width:27.4384;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
@@ -133,10 +175,6 @@
        id="rect816-8-5-2-4"
        style="fill:#2e4b3c;fill-opacity:1;stroke:none;stroke-width:27.4384;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
        d="M 2832.4646,467.96749 2701.9915,335.67579 V 600.2591 Z" />
-    <path
-       id="rect816-8-5-6"
-       style="fill:#2e4b3c;fill-opacity:1;stroke:none;stroke-width:27.4384;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
-       d="M 2966.0456,71.092497 H 2701.4623 V 335.67579 h 264.5833 L 2835.5724,203.3842 Z" />
     <path
        id="rect816-8-5-2-0-2"
        style="fill:#2e4b3c;fill-opacity:1;stroke:none;stroke-width:27.4384;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
@@ -186,5 +224,104 @@
        inkscape:export-xdpi="95.999985"
        inkscape:export-ydpi="95.999985"
        transform="rotate(-90)" />
+    <rect
+       style="opacity:1;fill:url(#linearGradient884);fill-opacity:1;stroke:none;stroke-width:38.80357361;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect816-8-8-6-8-1"
+       width="529.16675"
+       height="264.58337"
+       x="-544.34796"
+       y="3334.8962"
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\UnityProjects\BuildingGameProject\Assets\Images\Tiles\Terrain\DepthGradientTexture.png"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985"
+       transform="rotate(-90)" />
+    <rect
+       style="opacity:1;fill:#565656;fill-opacity:1;stroke:none;stroke-width:27.43827057;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect816-8-05"
+       width="264.58337"
+       height="264.58337"
+       x="1153.4651"
+       y="-818.39795"
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\UnityProjects\BuildingGameProject\Assets\Images\Tiles\Terrain\GHrassTexturepng.png"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985" />
+    <rect
+       style="opacity:1;fill:#b0b0b0;fill-opacity:1;stroke:none;stroke-width:7.7606802;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect816-8-05-8-3"
+       width="21.166481"
+       height="264.58337"
+       x="1153.4651"
+       y="-818.39795"
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\UnityProjects\BuildingGameProject\Assets\Images\Tiles\Terrain\GHrassTexturepng.png"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985" />
+    <rect
+       style="opacity:1;fill:#402a1d;fill-opacity:1;stroke:none;stroke-width:21.16666603;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect931-3"
+       width="52.424339"
+       height="49.551777"
+       x="1234.6976"
+       y="-604.76062" />
+    <rect
+       style="opacity:1;fill:#805539;fill-opacity:1;stroke:none;stroke-width:21.16666603;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect931"
+       width="52.424339"
+       height="49.551777"
+       x="1226.7601"
+       y="-604.76062" />
+    <rect
+       style="opacity:1;fill:#afafaf;fill-opacity:0.89686275;stroke:none;stroke-width:27.43827057;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect816-8-05-8-8"
+       width="264.58337"
+       height="264.58337"
+       x="1176.6917"
+       y="-534.04352"
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\UnityProjects\BuildingGameProject\Assets\Images\Tiles\Terrain\GHrassTexturepng.png"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985" />
+    <rect
+       style="opacity:1;fill:#565656;fill-opacity:1;stroke:none;stroke-width:27.43827057;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect816-8-05-0"
+       width="264.58337"
+       height="264.58337"
+       x="1155.5251"
+       y="-534.04352"
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\UnityProjects\BuildingGameProject\Assets\Images\Tiles\Terrain\GHrassTexturepng.png"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985" />
+    <rect
+       style="opacity:1;fill:#2d2d2d;fill-opacity:1;stroke:none;stroke-width:7.7606802;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect816-8-05-8-3-9"
+       width="21.166481"
+       height="264.58337"
+       x="1155.5251"
+       y="-534.04352"
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\UnityProjects\BuildingGameProject\Assets\Images\Tiles\Terrain\GHrassTexturepng.png"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985" />
+    <rect
+       style="opacity:1;fill:#402a1d;fill-opacity:1;stroke:none;stroke-width:21.16666603;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect931-3-2"
+       width="52.424339"
+       height="49.551777"
+       x="-1274.1353"
+       y="-321.42172"
+       transform="scale(-1,1)" />
+    <rect
+       style="opacity:1;fill:#805539;fill-opacity:1;stroke:none;stroke-width:21.16666603;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect931-7"
+       width="52.424339"
+       height="49.551777"
+       x="-1282.0728"
+       y="-321.42172"
+       transform="scale(-1,1)" />
+    <path
+       style="opacity:1;fill:#878787;fill-opacity:1;stroke:none;stroke-width:0.33768103;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       d="m 2118.6471,908.48739 -556.384,556.38401 h 1112.768 z"
+       id="rect1014"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\UnityProjects\BuildingGameProject\Assets\Images\WhiteTriangle.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
   </g>
 </svg>

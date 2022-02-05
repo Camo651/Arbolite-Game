@@ -12,10 +12,11 @@ public class CameraController : MonoBehaviour
 	[Tooltip("Min Max")] public Vector2 cameraZoomBounds;
 	private Vector3 trueCameraPosition = Vector3.back * 10;
 	private float cameraZoomAccelereation = 0;
+
 	private void Update()
 	{
 		//Camera Movements
-		trueCameraPosition.x = Mathf.Clamp(trueCameraPosition.x + (Input.GetAxis("Horizontal") * cameraMoveSpeed.x * mainCamera.orthographicSize * Time.deltaTime), cameraBounds.x, cameraBounds.y);
+		trueCameraPosition.x = Mathf.Clamp(trueCameraPosition.x + (Input.GetAxis("Horizontal") * cameraMoveSpeed.x * mainCamera.orthographicSize * Time.deltaTime),cameraBounds.x - mainCamera.orthographicSize, cameraBounds.y + mainCamera.orthographicSize);
 		trueCameraPosition.y = Mathf.Clamp(trueCameraPosition.y + (Input.GetAxis("Vertical") * cameraMoveSpeed.y * mainCamera.orthographicSize * Time.deltaTime), mainCamera.orthographicSize + cameraBounds.z, mainCamera.orthographicSize +  cameraBounds.w);
 		mainCamera.transform.position = trueCameraPosition;
 
