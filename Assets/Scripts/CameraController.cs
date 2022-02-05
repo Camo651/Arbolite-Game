@@ -16,8 +16,8 @@ public class CameraController : MonoBehaviour
 	private void Update()
 	{
 		//Camera Movements
-		trueCameraPosition.x = Mathf.Clamp(trueCameraPosition.x + (Input.GetAxis("Horizontal") * cameraMoveSpeed.x * mainCamera.orthographicSize * Time.deltaTime),cameraBounds.x - mainCamera.orthographicSize, cameraBounds.y + mainCamera.orthographicSize);
-		trueCameraPosition.y = Mathf.Clamp(trueCameraPosition.y + (Input.GetAxis("Vertical") * cameraMoveSpeed.y * mainCamera.orthographicSize * Time.deltaTime), mainCamera.orthographicSize + cameraBounds.z, mainCamera.orthographicSize +  cameraBounds.w);
+		trueCameraPosition.x = Mathf.Clamp(trueCameraPosition.x + (Input.GetAxis("Horizontal") * cameraMoveSpeed.x * mainCamera.orthographicSize * Time.deltaTime),cameraBounds.x + (mainCamera.orthographicSize * mainCamera.aspect), cameraBounds.y - (mainCamera.orthographicSize * mainCamera.aspect));
+		trueCameraPosition.y = Mathf.Clamp(trueCameraPosition.y + (Input.GetAxis("Vertical") * cameraMoveSpeed.y * mainCamera.orthographicSize * Time.deltaTime),cameraBounds.z + mainCamera.orthographicSize, cameraBounds.w - mainCamera.orthographicSize);
 		mainCamera.transform.position = trueCameraPosition;
 
 		//Camera Zooming
