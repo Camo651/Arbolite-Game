@@ -21,6 +21,7 @@ public class RoomBuilder : Editor
 			cont.roomDimensions.x = EditorGUILayout.IntSlider("Room Width", cont.roomDimensions.x, 1, 10);
 			cont.roomDimensions.y = EditorGUILayout.IntSlider("Room Height", cont.roomDimensions.y, 1, 10);
 
+			//makes a new room and preloads it with tiles
 			if (GUILayout.Button("Generate Room"))
 			{
 				cont.transform.name = "[CONTROOM] " + cont.ContainedRoomName;
@@ -56,6 +57,7 @@ public class RoomBuilder : Editor
 				ResetRoom(cont);
 			}
 
+			//gives a layout for tile types to make it easier to edit them on the fly
 			for (int y = 0; y < cont.roomDimensions.y; y++)
 			{
 				GUILayout.BeginHorizontal();

@@ -13,6 +13,8 @@ public class RoomTile : MonoBehaviour
 
 	[HideInInspector] public readonly Vector2Int[] offsets = { Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left };
 	[HideInInspector] public readonly int[] inverseOffsets = { 2, 3, 0, 1 };
+	
+	// updates the values for this tile based on its conditions
 	public void UpdateTile()
 	{
 		spriteRenderer = GetComponent<SpriteRenderer>();
@@ -20,6 +22,8 @@ public class RoomTile : MonoBehaviour
 
 		UpdateNeighboringTiles();
 	}
+
+	//updates the 4 cardinal tiles around it (if they exist) and updates their values. Does not recursively flood the updates
 	public void UpdateNeighboringTiles()
 	{
 		neighborRooms = new RoomTile[4];
@@ -32,6 +36,8 @@ public class RoomTile : MonoBehaviour
 				neighborRooms[i] = other;
 			}
 		}
+
+		//as it stands: natural tiles get smoothed textures
 		if (roomContainer.isNaturalTerrainTile)
 		{
 			SO_TileType newTile;
@@ -49,10 +55,14 @@ public class RoomTile : MonoBehaviour
 		}
 	}
 
+
+	//returns the tile's position in real world space
 	public Vector2Int GetTrueTilePosition()
 	{
 		return new Vector2Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
 	}
+
+	//returns the tile's position in matrix indexed space
 	public Vector2Int GetIndexdTilePosition()
 	{
 		return new Vector2Int(Mathf.RoundToInt(transform.position.x + (roomContainer.globalRefManager.terrainManager.terrainWidth / 2)), Mathf.RoundToInt(transform.position.y + roomContainer.globalRefManager.terrainManager.terrainBottomLayer));

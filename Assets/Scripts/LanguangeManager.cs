@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class LanguangeManager : MonoBehaviour
 {
+	//controls all the text translations in the game
 	public GlobalRefManager globalRefManager;
 	public List<TextAsset> textAssetLanguageOptions;
 	public List<LanguageOption> allLanguageOptions;
@@ -11,12 +12,14 @@ public class LanguangeManager : MonoBehaviour
 
 	private void Awake()
 	{
+		//default the language to english for now
 		InitializeLanguage();
 		SetLanguage("en_us");
 	}
 
 	public void InitializeLanguage()
 	{
+		// initialize and index all the possible translations into an indexer
 		allLanguageOptions = new List<LanguageOption>();
 		foreach (TextAsset textAsset in textAssetLanguageOptions)
 		{
@@ -41,6 +44,8 @@ public class LanguangeManager : MonoBehaviour
 			allLanguageOptions.Add(langOpt);
 		}
 	}
+
+	//sets the current language to the langID and (eventually) sets all the text in the game to that language
 	public void SetLanguage(string langID)
 	{
 		foreach (LanguageOption lang in allLanguageOptions)
@@ -51,6 +56,8 @@ public class LanguangeManager : MonoBehaviour
 			}
 		}
 	}
+
+	//returns the text in the current language based on the id of the text box
 	public string GetTranslation(string callbackID)
 	{
 		int index = currentLanguage.callbackIDs.IndexOf(callbackID.ToLower());
@@ -59,6 +66,8 @@ public class LanguangeManager : MonoBehaviour
 		return "'" + callbackID + "' "+GetTranslation("no_translation_found")+" "+currentLanguage.langNativeName;
 	}
 }
+
+//a seperate class to index all the language options
 public class LanguageOption
 {
 	public string langID, langNativeName;

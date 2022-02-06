@@ -26,6 +26,7 @@ public class BaseManager : MonoBehaviour
 
 	private void Update()
 	{
+		//build mode is for making new rooms
 		if(currentPlayerState == PlayerState.BuildMode)
 		{
 			if (selectedRoomName == "")
@@ -37,6 +38,7 @@ public class BaseManager : MonoBehaviour
 			}
 			else
 			{
+				//if there is no ghost room, make one
 				if (currentlySelectedRoom.transform.childCount == 0)
 				{
 					currentlySelectedRoom.gameObject.SetActive(true);
@@ -48,6 +50,7 @@ public class BaseManager : MonoBehaviour
 				}
 				else
 				{
+					//move the ghost room to the mouse position
 					Vector3 mousePos = globalRefManager.cameraController.mainCamera.ScreenToWorldPoint(Input.mousePosition);
 					if (currentlySelectedRoom.transform.position.x != Mathf.Round(mousePos.x) || currentlySelectedRoom.transform.position.y != Mathf.Round(mousePos.y))
 					{
@@ -55,6 +58,7 @@ public class BaseManager : MonoBehaviour
 						colliding = false;
 						nodeConditionsMet = true;
 						ContainedRoom contRoom = currentlySelectedRoom.transform.GetChild(0).GetComponent<ContainedRoom>();
+						// \/ checks if all the tiles in the room's conditions are met and the room can be placed there
 						foreach (RoomTile room in contRoom.containedRooms)
 						{
 							room.spriteRenderer.sortingOrder = 10;
@@ -99,7 +103,7 @@ public class BaseManager : MonoBehaviour
 							}
 						}
 					}
-					if (Input.GetMouseButtonDown(0) && !colliding && nodeConditionsMet)
+					if (Input.GetMouseButtonDown(0) && !colliding && nodeConditionsMet) //place a copy of the ghost room at the postion if possible
 					{
 						TryCreateRoomAtPos(new Vector2Int(Mathf.RoundToInt(currentlySelectedRoom.transform.position.x), Mathf.RoundToInt(currentlySelectedRoom.transform.position.y)), globalRefManager.contentManager.GetRoomPrefabByName(selectedRoomName));
 						Destroy(currentlySelectedRoom.transform.GetChild(0).gameObject);
@@ -107,7 +111,7 @@ public class BaseManager : MonoBehaviour
 				}
 			}
 		}
-		else if(currentPlayerState == PlayerState.EditMode)
+		else if(currentPlayerState == PlayerState.EditMode) //edit mode is to change values or delete rooms
 		{
 			if (currentlySelectedRoom.transform.childCount > 0)
 			{
@@ -115,6 +119,7 @@ public class BaseManager : MonoBehaviour
 			}
 			else
 			{
+				//click on a room to perm select it
 				if (Input.GetMouseButtonDown(0))
 				{
 					if (editModePermSelectedRoomTile != null)
@@ -123,6 +128,7 @@ public class BaseManager : MonoBehaviour
 					if (editModePermSelectedRoomTile != null)
 						editModePermSelectedRoomTile.roomContainer.SetRoomTint(Color.cyan);
 				}
+				//move the hover tint around to the currently hivered room
 				Vector3 mousePos = globalRefManager.cameraController.mainCamera.ScreenToWorldPoint(Input.mousePosition);
 				if (currentSelectionCoords.x != Mathf.Round(mousePos.x) || currentSelectionCoords.y != Mathf.Round(mousePos.y))
 				{
@@ -141,7 +147,7 @@ public class BaseManager : MonoBehaviour
 				}
 			}
 		}
-		else if(currentPlayerState == PlayerState.Player)
+		else if(currentPlayerState == PlayerState.Player) //player mode is for the physical character walking around and doing stuff that cant be automated
 		{
 			if (currentlySelectedRoom.transform.childCount > 0)
 			{
@@ -150,11 +156,15 @@ public class BaseManager : MonoBehaviour
 		}
 	}
 
-	public RoomTile GetRoomAtPosition(Vector2Int pos)//always call with the true world position
+	//returns the room at the world coordinate space position
+	public RoomTile GetRoomAtPosition(Vector2Int pos)//always call with the real world position
 	{
+
+		//transforms the position to be relative to the indexing array
 		pos.x += (globalRefManager.terrainManager.terrainWidth / 2);
 		pos.y += globalRefManager.terrainManager.terrainBottomLayer;
 
+		//called by the indexing array to save on proccessing time cause loops suck
 		if (roomIndexingVectors.Count > pos.y && pos.y >=0 && roomIndexingVectors[pos.y].Count > pos.x && pos.x>=0)
 		{
 			return roomIndexingVectors[pos.y][pos.x];
@@ -166,6 +176,7 @@ public class BaseManager : MonoBehaviour
 		
 	}
 
+	//instantiates and preloads a contained room at a given position. Does not check if that place is a valid spot
 	public void TryCreateRoomAtPos(Vector2Int pos, ContainedRoom roomPrefab) //call with the real world position
 	{
 		ContainedRoom newGen = Instantiate(roomPrefab);
@@ -177,6 +188,7 @@ public class BaseManager : MonoBehaviour
 		globalUpdateID++;
 		foreach (RoomTile tile in newGen.containedRooms)
 		{
+			//corrects the indexing based on the new placements
 			while(roomIndexingVectors.Count <= tile.GetIndexdTilePosition().y)
 			{
 				roomIndexingVectors.Add(new List<RoomTile>());
@@ -186,6 +198,7 @@ public class BaseManager : MonoBehaviour
 			roomIndexingVectors[tile.GetIndexdTilePosition().y][tile.GetIndexdTilePosition().x] = tile;
 			tile.transform.name = "Room " + tile.GetTrueTilePosition().x + ", " + tile.GetTrueTilePosition().y + " of " + tile.roomContainer.ContainedRoomName;
 		}
+		//auto updates the tiles around it, but not the full map
 		foreach (RoomTile tile in newGen.containedRooms)
 		{
 			tile.UpdateTile();

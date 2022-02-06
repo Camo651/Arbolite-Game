@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GlobalRefManager : MonoBehaviour
 {
+	//a script to give every manager in the game a way to reference any other manager with ease
 	public BaseManager baseManager;
 	public TerrainManager terrainManager;
 	public ContentManager contentManager;

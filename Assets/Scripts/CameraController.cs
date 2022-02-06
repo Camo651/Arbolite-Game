@@ -25,6 +25,7 @@ public class CameraController : MonoBehaviour
 			cameraZoomAccelereation = -Input.mouseScrollDelta.y;
 		else
 		{
+			//stops the camera from deccelerating when it reaches a low enough speed
 			if (Mathf.Abs(cameraZoomAccelereation) > 0.1f)
 				cameraZoomAccelereation -= (cameraAccelSpeed * Time.deltaTime * Mathf.Sign(cameraZoomAccelereation));
 			else

@@ -5,4 +5,6 @@ using UnityEngine;
 public class FlowManager : MonoBehaviour
 {
 	[HideInInspector] public GlobalRefManager globalRefManager;
+
+	//[in theory] controls the flow of the game progression
 }

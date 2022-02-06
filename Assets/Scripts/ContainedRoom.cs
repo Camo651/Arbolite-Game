@@ -13,7 +13,7 @@ public class ContainedRoom : MonoBehaviour
 
 
 	public void SetRoomTint(Color tint)
-	{
+	{ // sets the colour of all the tiles in the room
 		foreach (RoomTile tile in containedRooms)
 		{
 			tile.spriteRenderer.color = tint;

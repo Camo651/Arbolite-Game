@@ -18,6 +18,7 @@ public class ContentAdditionVerifier : Editor
 		cr = (ContainedRoom)EditorGUILayout.ObjectField(cr,typeof(ContainedRoom),false);
 		if (GUILayout.Button(msg))
 		{
+			//checks if the element exists and that it is not already in the array before adding it
 			if (cr != null)
 			{
 				if (content.GetRoomPrefabByName(cr.ContainedRoomName) == null)
@@ -45,9 +46,9 @@ public class ContentAdditionVerifier : Editor
 			msg = "Verify";
 		}
 		GUILayout.Space(20);
+		//cleans up the empty spaces from the list
 		if(GUILayout.Button("Clean Up"))
 		{
-			//[CONTROOM] Hallway
 			List<ContainedRoom> newContent = new List<ContainedRoom>();
 			foreach(ContainedRoom room in content.allPlaceableRooms)
 			{
