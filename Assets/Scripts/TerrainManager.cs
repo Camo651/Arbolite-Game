@@ -16,7 +16,8 @@ public class TerrainManager : MonoBehaviour
 	private List<List<SpriteRenderer>> backgroundSprites;
 	public Gradient dayNightCycleTints;
 	public Color[] parallaxLayerBaseColours;
-	public GameObject backgroundFullTint;
+	public Color skytint;
+	public GameObject sunmoon;
 
 	public void Start()
 	{
@@ -29,11 +30,10 @@ public class TerrainManager : MonoBehaviour
 				backgroundSprites[backgroundSprites.Count - 1].Add(layer.transform.GetChild(i).GetComponent<SpriteRenderer>());
 			}
 		}
-
-		GenerateTerrain();
-
 		globalRefManager.cameraController.cameraBounds.x = terrainWidth / -2f;
 		globalRefManager.cameraController.cameraBounds.y = terrainWidth / 2f;
+		GenerateTerrain();
+
 	}
 	public void GenerateTerrain()
 	{
@@ -68,34 +68,32 @@ public class TerrainManager : MonoBehaviour
 
 	private void PeripheralWorldHandle()
 	{
-		timeOfDay++;
+		timeOfDay += (int)(Time.deltaTime * 100);
 		if (timeOfDay >= dayCycleLength)
 		{
 			timeOfDay = 0;
 			dayCount++;
 		}
 		timeOfDayNormalized = timeOfDay / (float)dayCycleLength;
-		globalRefManager.cameraController.mainCamera.backgroundColor = dayNightCycleTints.Evaluate(timeOfDayNormalized);
+		Color bkgCol = dayNightCycleTints.Evaluate(timeOfDayNormalized);
+		bkgCol.a = 1f;
+		globalRefManager.cameraController.mainCamera.backgroundColor = bkgCol + skytint;
+
 		for (int layer = 0; layer < backgroundSprites.Count; layer++)
 		{
 			backgroundLayers[layer].transform.position = new Vector3(globalRefManager.cameraController.mainCamera.transform.position.x / backgroundParallaxScales[layer],
 				(globalRefManager.cameraController.mainCamera.transform.position.y - globalRefManager.cameraController.cameraBounds.z - globalRefManager.cameraController.mainCamera.orthographicSize) / (backgroundParallaxScales[layer] * 1.25f), 0f);
+
 			for (int i = 0; i < backgroundSprites[layer].Count; i++)
 			{
-				if (backgroundSprites[layer][i].sprite.name == "WhiteTriangleHalf")
-				{
-					backgroundSprites[layer][i].color = parallaxLayerBaseColours[layer] * dayNightCycleTints.Evaluate(timeOfDayNormalized);
-				}
-				else
-				{
-					backgroundSprites[layer][i].color = parallaxLayerBaseColours[layer];
-				}
+				backgroundSprites[layer][i].color = Color.Lerp(bkgCol, parallaxLayerBaseColours[layer], .2f);
 			}
 		}
-		backgroundFullTint.transform.position = globalRefManager.cameraController.transform.position-Vector3.back*10f;
+
+		sunmoon.transform.localEulerAngles = Vector3.forward * -360 * timeOfDayNormalized;
 	}
 
-	private void FixedUpdate()
+	private void Update()
 	{
 		PeripheralWorldHandle();
 	}
