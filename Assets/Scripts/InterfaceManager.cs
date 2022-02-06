@@ -5,5 +5,4 @@ using UnityEngine;
 public class InterfaceManager : MonoBehaviour
 {
 	[HideInInspector] public GlobalRefManager globalRefManager;
-
 }
