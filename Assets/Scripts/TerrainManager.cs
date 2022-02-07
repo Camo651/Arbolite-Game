@@ -11,7 +11,7 @@ public class TerrainManager : MonoBehaviour
 	public SO_TileType DirtSmall, DirtLeft, DirtRight;
 	public int terrainWidth, terrainBottomLayer, terrainRaiseBuffer, terrainPerlinAmplitude;
 	public float terrainFalloffThresh, terrainFalloffAmp;
-	public int timeOfDay, dayCycleLength, dayCount;
+	public float timeOfDay, dayCycleLength, dayCount;
 	public float timeOfDayNormalized;
 	public List<GameObject> backgroundLayers;
 	public float[] backgroundParallaxScales;
@@ -82,13 +82,13 @@ public class TerrainManager : MonoBehaviour
 	private void PeripheralWorldHandle()
 	{
 		//increment time based on the update cycle
-		timeOfDay += (int)(Time.deltaTime * 100);
+		timeOfDay += Time.deltaTime;
 		if (timeOfDay >= dayCycleLength)
 		{
 			timeOfDay = 0;
 			dayCount++;
 		}
-		timeOfDayNormalized = timeOfDay / (float)dayCycleLength;
+		timeOfDayNormalized = timeOfDay / dayCycleLength;
 
 		//set the background colour based on the time of day
 		Color bkgCol = dayNightCycleTints.Evaluate(timeOfDayNormalized);
@@ -110,6 +110,7 @@ public class TerrainManager : MonoBehaviour
 
 		//rotate the sun - moon pivot axis to increments time of day (tuning done by sun/mon normal pos from pivot in editor)
 		sunmoon.transform.localEulerAngles = Vector3.forward * -360 * timeOfDayNormalized;
+		sunmoon.transform.position = (Vector3.right * globalRefManager.cameraController.mainCamera.transform.position.y / 11f) + (Vector3.up * globalRefManager.cameraController.mainCamera.transform.position.y / 10f); ;
 	}
 
 	private void Update()

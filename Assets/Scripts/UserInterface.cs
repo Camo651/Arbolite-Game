@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
-public class UserInterface : MonoBehaviour
+public class UserInterface : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
 	// any UI panel in game
 	[HideInInspector]public InterfaceManager interfaceManager;
@@ -41,6 +42,17 @@ public class UserInterface : MonoBehaviour
 		while (interfaceManager.globalRefManager.baseManager.gameIsActivelyFrozen)
 			yield return null;
 		interfaceManager.DequeueNotification(this);
+	}
+
+
+	public void OnPointerEnter(PointerEventData eventData)
+	{
+		interfaceManager.SetInterfaceHoverState(true);
+	}
+
+	public void OnPointerExit(PointerEventData eventData)
+	{
+		interfaceManager.SetInterfaceHoverState(false);
 	}
 
 	public enum InterfaceType

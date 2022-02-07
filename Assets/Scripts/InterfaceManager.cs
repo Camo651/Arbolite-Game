@@ -11,6 +11,7 @@ public class InterfaceManager : MonoBehaviour
 	public UserInterface activeUserInterface, errorModal;
 	public GameObject notificationInterfacePrefab, notificationHolder;
 	public int notificationPersistUptimeSeconds;
+	public bool userIsHoveredOnInterfaceElement;
 	public List<UserInterface> allUserInterfaces;
 	public List<SO_NotificationType> notificationTypes;
 	[HideInInspector] public Queue<UserInterface> activeNotificationQueue;
@@ -31,7 +32,10 @@ public class InterfaceManager : MonoBehaviour
 		foreach (UserInterface userInterface in allUserInterfaces)
 		{
 			userInterface.interfaceManager = this;
-			userInterface.gameObject.SetActive(false); //sets even the assets to disables >_<
+			if(userInterface.interfaceType != UserInterface.InterfaceType.HUD && 
+				userInterface.interfaceType != UserInterface.InterfaceType.WorldSpace && 
+				userInterface.interfaceType != UserInterface.InterfaceType.Notification)
+			userInterface.gameObject.SetActive(false);
 		}
 		activeNotificationQueue = new Queue<UserInterface>();
 	}
@@ -53,6 +57,13 @@ public class InterfaceManager : MonoBehaviour
 		SetBackgroundBlur(false);
 		globalRefManager.baseManager.gameIsActivelyFrozen = false;
 		activeUserInterface.gameObject.SetActive(false);
+		userIsHoveredOnInterfaceElement = false;
+	}
+
+	//toggles the state of the player hovering over a UI element
+	public void SetInterfaceHoverState(bool state)
+	{
+		userIsHoveredOnInterfaceElement = state;
 	}
 
 	//returns the interface with the given ID, or defaults to the error modal

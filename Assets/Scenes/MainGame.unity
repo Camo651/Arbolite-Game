@@ -1005,6 +1005,7 @@ MonoBehaviour:
   notificationInterfacePrefab: {fileID: 8387734145013794343, guid: 3ea53fa2407ef234f88968ce6d269fcf, type: 3}
   notificationHolder: {fileID: 342836255}
   notificationPersistUptimeSeconds: 5
+  userIsHoveredOnInterfaceElement: 0
   allUserInterfaces: []
   notificationTypes:
   - {fileID: 11400000, guid: 3a3dc4409dc33e14dabca841282e37f7, type: 2}
@@ -1434,6 +1435,7 @@ GameObject:
   - component: {fileID: 903304796}
   - component: {fileID: 903304795}
   - component: {fileID: 903304794}
+  - component: {fileID: 903304797}
   m_Layer: 5
   m_Name: MenuButton
   m_TagString: Untagged
@@ -1520,6 +1522,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 903304792}
   m_CullTransparentMesh: 1
+--- !u!114 &903304797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903304792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 903304795}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 903304794}
+        m_TargetAssemblyTypeName: UserInterface, Assembly-CSharp
+        m_MethodName: SetInterface
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Home
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &998491153
 GameObject:
   m_ObjectHideFlags: 0
@@ -1578,6 +1636,7 @@ MonoBehaviour:
   selectedRoomName: Complex Room
   editModeSelectedRoomTile: {fileID: 0}
   editModePermSelectedRoomTile: {fileID: 0}
+  gameIsActivelyFrozen: 0
 --- !u!114 &998491156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1603,7 +1662,7 @@ MonoBehaviour:
   terrainFalloffThresh: 2.5
   terrainFalloffAmp: 1.5
   timeOfDay: 0
-  dayCycleLength: 500
+  dayCycleLength: 120
   dayCount: 0
   timeOfDayNormalized: 0
   backgroundLayers:
@@ -2720,7 +2779,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1648108000704272719
 MonoBehaviour:
   m_ObjectHideFlags: 0

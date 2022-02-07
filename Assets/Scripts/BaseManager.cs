@@ -26,7 +26,7 @@ public class BaseManager : MonoBehaviour
 
 	private void Update()
 	{
-		if (!gameIsActivelyFrozen)
+		if (!gameIsActivelyFrozen && !globalRefManager.interfaceManager.userIsHoveredOnInterfaceElement)
 		{
 			//build mode is for making new rooms
 			if (currentPlayerState == PlayerState.BuildMode)
