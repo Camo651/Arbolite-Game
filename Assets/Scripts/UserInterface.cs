@@ -7,7 +7,7 @@ using TMPro;
 public class UserInterface : MonoBehaviour
 {
 	// any UI panel in game
-	public InterfaceManager interfaceManager;
+	[HideInInspector]public InterfaceManager interfaceManager;
 	public Image interfaceBackground;
 	public InterfaceType interfaceType;
 	[HideInInspector] public bool interfaceLocked; //to be set on init
@@ -18,6 +18,30 @@ public class UserInterface : MonoBehaviour
 	public bool saveNotification;
 
 
+	//transfer method for closing all the currently open interfaces
+	public void CloseAllInterfaces()
+	{
+		interfaceManager.CloseAllInterfaces();
+	}
+	//transfer method for sending a notification
+	public void SendNotification(string ID)
+	{
+		interfaceManager.EnqueueNotification(interfaceManager.GetNotificationType(ID), "");
+	}
+	//transfer method for opening a menu
+	public void SetInterface(string ID)
+	{
+		interfaceManager.SetMajorInterface(interfaceManager.GetUserInterface(ID));
+	}
+
+	//wait the designated time, then close the notification if the game is not currently frozen for whatever reason
+	public IEnumerator DelayToClose(int seconds)
+	{
+		yield return new WaitForSeconds(seconds);
+		while (interfaceManager.globalRefManager.baseManager.gameIsActivelyFrozen)
+			yield return null;
+		interfaceManager.DequeueNotification(this);
+	}
 
 	public enum InterfaceType
 	{

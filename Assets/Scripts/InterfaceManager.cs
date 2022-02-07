@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,10 +8,10 @@ public class InterfaceManager : MonoBehaviour
 	//controls all the UI in the game
 	[HideInInspector] public GlobalRefManager globalRefManager;
 	public Image backgroundBlur;
-	public UserInterface activeUserInterface;
+	public UserInterface activeUserInterface, errorModal;
 	public GameObject notificationInterfacePrefab, notificationHolder;
 	public int notificationPersistUptimeSeconds;
-	public int timeOfLastNotificationUpdate;
+	public List<UserInterface> allUserInterfaces;
 	public List<SO_NotificationType> notificationTypes;
 	[HideInInspector] public Queue<UserInterface> activeNotificationQueue;
 	//[HideInInspector] public Stack<UserInterface> pastNotificationsStack;
@@ -25,26 +25,50 @@ public class InterfaceManager : MonoBehaviour
 	private void InitializeUserInterface()
 	{
 		SetBackgroundBlur(false);
+		globalRefManager.baseManager.gameIsActivelyFrozen = false;
+		allUserInterfaces = new List<UserInterface>();
+		allUserInterfaces.AddRange((UserInterface[])Resources.FindObjectsOfTypeAll(typeof(UserInterface)));
+		foreach (UserInterface userInterface in allUserInterfaces)
+		{
+			userInterface.interfaceManager = this;
+			userInterface.gameObject.SetActive(false); //sets even the assets to disables >_<
+		}
 		activeNotificationQueue = new Queue<UserInterface>();
-		timeOfLastNotificationUpdate = (int)Time.unscaledTime;
 	}
-
-	private void Update()
+	
+	//opens up a fullscreen interface / menu
+	public void SetMajorInterface(UserInterface UI)
 	{
-		if(activeNotificationQueue.Count > 0 && Time.unscaledTime - timeOfLastNotificationUpdate > notificationPersistUptimeSeconds)
-		{
-			DequeueNotification();
-
-			timeOfLastNotificationUpdate = (int)Time.unscaledTime;
-		}
-
-		if (Input.GetKeyDown(KeyCode.Space))
-		{
-			EnqueueNotification(GetNotificationType("Default"),"");
-		}
+		if(activeUserInterface!=null)
+			activeUserInterface.gameObject.SetActive(false);
+		activeUserInterface = UI;
+		activeUserInterface.gameObject.SetActive(true);
+		SetBackgroundBlur(UI.interfaceType == UserInterface.InterfaceType.FullScreen || UI.interfaceType == UserInterface.InterfaceType.Modal);
+		globalRefManager.baseManager.gameIsActivelyFrozen = UI.interfaceType == UserInterface.InterfaceType.FullScreen || UI.interfaceType == UserInterface.InterfaceType.Modal;
 	}
 
+	//close the currently open interface
+	public void CloseAllInterfaces()
+	{
+		SetBackgroundBlur(false);
+		globalRefManager.baseManager.gameIsActivelyFrozen = false;
+		activeUserInterface.gameObject.SetActive(false);
+	}
 
+	//returns the interface with the given ID, or defaults to the error modal
+	public UserInterface GetUserInterface(string callbackID)
+	{
+		foreach (UserInterface userInterface in allUserInterfaces)
+		{
+			if (userInterface.interfaceCallbackID.ToLower() == callbackID.ToLower())
+			{
+				return userInterface;
+			}
+		}
+		return errorModal; //defaults to the error modal
+	}
+
+	//returns a notification type if it exits
 	public SO_NotificationType GetNotificationType(string ID)
 	{
 		foreach (SO_NotificationType type in notificationTypes)
@@ -52,13 +76,14 @@ public class InterfaceManager : MonoBehaviour
 			if (type.callbackID.ToLower() == ID.ToLower())
 				return type;
 		}
-		return null;
+		return notificationTypes[0]; //defaults to the not found notification, does not show error modal and interrupt tho
 	}
 
 	//adds a notification to the end of the stream of notifications to be seen
 	public void EnqueueNotification(SO_NotificationType type, string customDescription)
 	{
 		GameObject note = Instantiate(notificationInterfacePrefab);
+		note.SetActive(true);
 		note.transform.SetParent(notificationHolder.transform);
 		UserInterface ui = note.GetComponent<UserInterface>();
 		ui.interfaceName.text = type.notificationName;
@@ -66,18 +91,22 @@ public class InterfaceManager : MonoBehaviour
 		ui.mainInterfaceIcon.sprite = type.notificationIcon;
 		ui.saveNotification = type.shouldBeSaved;
 		ui.interfaceManager = this;
-		timeOfLastNotificationUpdate = (int)Time.unscaledTime;
 		activeNotificationQueue.Enqueue(ui);
+		StartCoroutine(ui.DelayToClose(notificationPersistUptimeSeconds));
 	}
-	public void DequeueNotification()
+
+	//removes the oldest notification
+	public void DequeueNotification(UserInterface ui)
 	{
-		UserInterface notification = activeNotificationQueue.Dequeue();
-		Destroy(notification.gameObject);
+		activeNotificationQueue.Dequeue();
+		Destroy(ui.gameObject);
 
 		//NOTE notification UI gets destroyed cause useless.. idk what to put here. figure it out when making old notes UI ig
 		//if (notification.saveNotification)
 		//	pastNotificationsStack.Push(notification);
 	}
+
+	//sets the state of the background blur
 	public void SetBackgroundBlur(bool state)
 	{
 		backgroundBlur.enabled = state;

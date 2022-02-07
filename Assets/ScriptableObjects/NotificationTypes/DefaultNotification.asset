@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8917966dd0f02b4caaadb9ee59f185c, type: 3}
   m_Name: DefaultNotification
   m_EditorClassIdentifier: 
-  callbackID: Default
-  notificationName: Test Notification
-  notificationDescription: This is a test notification
+  callbackID: NotFound
+  notificationName: Error
+  notificationDescription: Notification Requested Not Found
   shouldBeSaved: 0
-  notificationIcon: {fileID: 21300000, guid: a99435fc2e375fa4d9164c4f8ba3ab14, type: 3}
+  notificationIcon: {fileID: -2413806693520163455, guid: c265ed9efa21f2f4da1e973c8a0ae50a, type: 3}
