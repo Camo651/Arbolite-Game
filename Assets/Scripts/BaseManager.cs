@@ -183,7 +183,7 @@ public class BaseManager : MonoBehaviour
 		baseRooms.Add(newGen);
 		newGen.globalRefManager = globalRefManager;
 		newGen.transform.position = new Vector3(pos.x, pos.y, 0f);
-		newGen.transform.SetParent(this.transform);
+		newGen.transform.SetParent(transform);
 		newGen.activeAndEnabled = true;
 		newGen.isNaturalTerrainTile = (newGen.containedRooms[0].tileType == globalRefManager.terrainManager.Dirt.containedRooms[0].tileType) || (newGen.containedRooms[0].tileType == globalRefManager.terrainManager.Bedrock.containedRooms[0].tileType);
 		globalUpdateID++;

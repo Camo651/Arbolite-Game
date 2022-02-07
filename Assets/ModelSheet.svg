@@ -59,9 +59,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.028284271"
-     inkscape:cx="27019.246"
-     inkscape:cy="-13878.012"
+     inkscape:zoom="0.32"
+     inkscape:cx="30979.154"
+     inkscape:cy="-9734.5462"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -73,7 +73,8 @@
      showborder="false"
      inkscape:pagecheckerboard="0"
      inkscape:snap-global="true"
-     inkscape:snap-midpoints="true" />
+     inkscape:snap-midpoints="true"
+     inkscape:snap-center="true" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -368,11 +369,92 @@
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
     <rect
-       style="opacity:1;fill:#8c8c8c;fill-opacity:1;stroke:none;stroke-width:0.13197641;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#2e2e2e;stroke-width:5.232;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
        id="rect854"
        width="1096.8525"
        height="616.97955"
        x="6211.6777"
        y="2621.1143" />
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#797979;stroke-width:14;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect854-0"
+       width="1096.8525"
+       height="616.97961"
+       x="6223.2534"
+       y="1948.0804"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#4b4b4b;stroke-width:3.6;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect854-0-8"
+       width="628.61938"
+       height="160.64668"
+       x="7649.5107"
+       y="2448.2395"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <circle
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#4b4b4b;stroke-width:2.92803836;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="path890"
+       cx="7723.2539"
+       cy="2902.2097"
+       r="138.8528" />
+    <rect
+       style="opacity:1;fill:#686868;fill-opacity:1;stroke:none;stroke-width:3.5999999;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect892"
+       width="280.633"
+       height="46.772167"
+       x="7988.686"
+       y="2793.4644"
+       ry="23.386084"
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\UnityProjects\BuildingGameProject\Assets\Images\UI Elements\HamburgerMenu.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:1;fill:#686868;fill-opacity:1;stroke:none;stroke-width:3.60000038;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect892-9-2"
+       width="280.633"
+       height="46.772175"
+       x="7988.686"
+       y="2877.2788"
+       ry="23.386087"
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\UnityProjects\BuildingGameProject\Assets\Images\UI Elements\HamburgerMenu.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:1;fill:#444444;fill-opacity:1;stroke:none;stroke-width:3.60000038;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect892-9-2-5"
+       width="280.633"
+       height="46.772175"
+       x="7988.6865"
+       y="2961.0933"
+       ry="23.386087"
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\UnityProjects\BuildingGameProject\Assets\Images\UI Elements\HamburgerMenuSingle.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:1;fill:#494949;fill-opacity:1;stroke:none;stroke-width:1.8425566;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect892-8"
+       width="143.63393"
+       height="23.93899"
+       x="7651.437"
+       y="2847.3423"
+       ry="11.969495" />
+    <rect
+       style="opacity:1;fill:#494949;fill-opacity:1;stroke:none;stroke-width:1.84255672;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect892-9-2-9"
+       width="143.63393"
+       height="23.938992"
+       x="7651.437"
+       y="2890.2402"
+       ry="11.969496" />
+    <rect
+       style="opacity:1;fill:#494949;fill-opacity:1;stroke:none;stroke-width:1.84255672;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect892-9-2-5-4"
+       width="143.63393"
+       height="23.938992"
+       x="7651.4375"
+       y="2933.1382"
+       ry="11.969496" />
   </g>
 </svg>

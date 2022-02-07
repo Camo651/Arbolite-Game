@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UserInterface : MonoBehaviour
 {
@@ -10,14 +11,11 @@ public class UserInterface : MonoBehaviour
 	public Image interfaceBackground;
 	public InterfaceType interfaceType;
 	[HideInInspector] public bool interfaceLocked; //to be set on init
-	public string interfaceName;
-
-
-
-
-
-
-
+	public string interfaceCallbackID;
+	public TextMeshProUGUI interfaceName;
+	public TextMeshProUGUI interfaceDescription;
+	public Image mainInterfaceIcon;
+	public bool saveNotification;
 
 
 
