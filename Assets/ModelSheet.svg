@@ -59,9 +59,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.056568542"
-     inkscape:cx="15814.211"
-     inkscape:cy="-3320.034"
+     inkscape:zoom="0.028284271"
+     inkscape:cx="27019.246"
+     inkscape:cy="-13878.012"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -367,5 +367,12 @@
        inkscape:export-filename="C:\Users\camoc\Desktop\Code\UnityProjects\BuildingGameProject\Assets\Images\RadialGradient.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:1;fill:#8c8c8c;fill-opacity:1;stroke:none;stroke-width:0.13197641;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect854"
+       width="1096.8525"
+       height="616.97955"
+       x="6211.6777"
+       y="2621.1143" />
   </g>
 </svg>
