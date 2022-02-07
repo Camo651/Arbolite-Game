@@ -18,6 +18,28 @@ public class UserInterface : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 	public Image mainInterfaceIcon;
 	public bool saveNotification;
 
+	public List<TranslationKey> interfaceKeys;
+
+	private void Awake()
+	{
+		//indexes all the child keys
+		interfaceKeys = new List<TranslationKey>();
+		var tryGetComp = transform.GetComponentsInChildren(typeof(TranslationKey), true);
+		if(tryGetComp != null && tryGetComp.Length > 0)
+			foreach (Component component in tryGetComp)
+			{
+				interfaceKeys.Add((TranslationKey)component);
+			}
+	}
+
+	//Sets the texts for the interface in the current language
+	public void SetChildrenKeys()
+	{
+		foreach(TranslationKey key in interfaceKeys)
+		{
+			key.textBox.text = interfaceManager.globalRefManager.langManager.GetTranslation(key.callBackID);
+		}
+	}
 
 	//transfer method for closing all the currently open interfaces
 	public void CloseAllInterfaces()
@@ -32,7 +54,7 @@ public class UserInterface : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 	//transfer method for opening a menu
 	public void SetInterface(string ID)
 	{
-		interfaceManager.SetMajorInterface(interfaceManager.GetUserInterface(ID));
+		interfaceManager.SetMajorInterface(ID);
 	}
 
 	//wait the designated time, then close the notification if the game is not currently frozen for whatever reason

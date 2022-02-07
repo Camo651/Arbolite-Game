@@ -21,6 +21,23 @@ public class InterfaceManager : MonoBehaviour
 	{
 		InitializeUserInterface();
 	}
+	private void Update()
+	{
+		HandlePlayerInputCycle();
+	}
+
+	//should be a mess and take care of all the keyboard input in one place so it doesnt get spread around the other managers
+	private void HandlePlayerInputCycle()
+	{
+		if (Input.GetKeyDown(KeyCode.E))
+		{
+			SetMajorInterface("Home");
+		}
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			SetMajorInterface("Pause");
+		}
+	}
 
 	// sets all the default or player pref values for what all the interfaces should look like on startup of the main game
 	private void InitializeUserInterface()
@@ -41,12 +58,14 @@ public class InterfaceManager : MonoBehaviour
 	}
 	
 	//opens up a fullscreen interface / menu
-	public void SetMajorInterface(UserInterface UI)
+	public void SetMajorInterface(string UiName)
 	{
+		UserInterface UI = GetUserInterface(UiName);
 		if(activeUserInterface!=null)
 			activeUserInterface.gameObject.SetActive(false);
 		activeUserInterface = UI;
 		activeUserInterface.gameObject.SetActive(true);
+		SetInterfaceLanguage(UI);
 		SetBackgroundBlur(UI.interfaceType == UserInterface.InterfaceType.FullScreen || UI.interfaceType == UserInterface.InterfaceType.Modal);
 		globalRefManager.baseManager.gameIsActivelyFrozen = UI.interfaceType == UserInterface.InterfaceType.FullScreen || UI.interfaceType == UserInterface.InterfaceType.Modal;
 	}
@@ -58,6 +77,12 @@ public class InterfaceManager : MonoBehaviour
 		globalRefManager.baseManager.gameIsActivelyFrozen = false;
 		activeUserInterface.gameObject.SetActive(false);
 		userIsHoveredOnInterfaceElement = false;
+	}
+
+	//finds all the text elements in an interface and translates them
+	public void SetInterfaceLanguage(UserInterface ui)
+	{
+		ui.SetChildrenKeys();
 	}
 
 	//toggles the state of the player hovering over a UI element
@@ -97,8 +122,7 @@ public class InterfaceManager : MonoBehaviour
 		note.SetActive(true);
 		note.transform.SetParent(notificationHolder.transform);
 		UserInterface ui = note.GetComponent<UserInterface>();
-		ui.interfaceName.text = type.notificationName;
-		ui.interfaceDescription.text = (customDescription == "" ? type.notificationDescription : customDescription);
+		SetInterfaceLanguage(ui);
 		ui.mainInterfaceIcon.sprite = type.notificationIcon;
 		ui.saveNotification = type.shouldBeSaved;
 		ui.interfaceManager = this;

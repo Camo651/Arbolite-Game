@@ -98,7 +98,7 @@ public class TerrainManager : MonoBehaviour
 		//update the position of the background layers based on the position of the camera to make the parallax effect
 		for (int layer = 0; layer < backgroundSprites.Count; layer++)
 		{
-			backgroundLayers[layer].transform.position = new Vector3(globalRefManager.cameraController.mainCamera.transform.position.x / backgroundParallaxScales[layer],
+			backgroundLayers[layer].transform.localPosition = new Vector3(globalRefManager.cameraController.mainCamera.transform.position.x / backgroundParallaxScales[layer],
 				(globalRefManager.cameraController.mainCamera.transform.position.y - globalRefManager.cameraController.cameraBounds.z - globalRefManager.cameraController.mainCamera.orthographicSize) / (backgroundParallaxScales[layer] * 1.25f), 0f);
 
 			//update the bkg colour layers based on the time of day

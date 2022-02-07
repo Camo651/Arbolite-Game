@@ -1,2 +1,8 @@
-en_us "English"
-no_translation_found "does not exist for language"
+en_us                          "English"
+no_translation_found           "does not exist for language"
+error_modal_title              "Oops!"
+error_modal_info               "An error occured somewhere! If this keeps happening please submit a bug report so the developers can fix it."
+ok_button                      "Ok"
+
+
+
