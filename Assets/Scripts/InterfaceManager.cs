@@ -103,7 +103,7 @@ public class InterfaceManager : MonoBehaviour
 	//recives the call to delete the currently seleced tile
 	public void DeleteCurrentltySelecedTile()
 	{
-
+		globalRefManager.baseManager.TryDestroyCurrentlySelectedTile();
 	}
 
 	//close the currently open interface

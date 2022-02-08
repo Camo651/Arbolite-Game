@@ -18,4 +18,4 @@ MonoBehaviour:
   topNodeState: 0
   rightNodeState: 0
   bottomNodeState: 1
-  leftNodeState: 1
+  leftNodeState: 3

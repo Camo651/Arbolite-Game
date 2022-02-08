@@ -16,6 +16,7 @@ public class BaseManager : MonoBehaviour
 	public RoomTile editModeSelectedRoomTile, editModePermSelectedRoomTile;
 	private Vector2Int currentSelectionCoords;
 	public bool gameIsActivelyFrozen;
+	public ContainedRoom[] roomsToDelete;
 
 	public enum PlayerState
 	{
@@ -35,6 +36,9 @@ public class BaseManager : MonoBehaviour
 
 		currentPlayerState = state;
 	}
+
+
+	//standard unity update cycle
 	private void Update()
 	{
 		if (!gameIsActivelyFrozen && !globalRefManager.interfaceManager.userIsHoveredOnInterfaceElement)
@@ -166,6 +170,82 @@ public class BaseManager : MonoBehaviour
 		}
 	}
 
+	public void TryDestroyCurrentlySelectedTile()
+	{
+		if (editModePermSelectedRoomTile)
+		{
+			ContainedRoom contRoom = editModePermSelectedRoomTile.roomContainer;
+			List<ContainedRoom> roomsThatWillBeDestroyed = new List<ContainedRoom>();
+			roomsThatWillBeDestroyed.Add(contRoom);
+			RoomsThatWillBeDestroyedOnCall(contRoom, roomsThatWillBeDestroyed, 0);
+			string deletion = "";
+			foreach (ContainedRoom c in roomsThatWillBeDestroyed)
+			{
+				deletion += c.containedRooms[0].tileType.tileTypeName + " ";
+			}
+			globalRefManager.interfaceManager.SetMajorInterface("ConfirmDelete");
+			globalRefManager.interfaceManager.activeUserInterface.interfaceDescription.text = globalRefManager.langManager.GetTranslation("delete_modal_info") + ": " + deletion;
+			roomsToDelete = roomsThatWillBeDestroyed.ToArray();
+		}
+	}
+
+	//either acutally goes through the list and deletes the tiles, or cancels the action
+	public void ActuallyDeleteRooms(bool delete)
+	{
+		if (delete)
+		{
+			globalRefManager.interfaceManager.SetWorldPositionViewerState(false, null);
+			for (int i = 0; i < roomsToDelete.Length; i++)
+			{
+				DeleteRoom(roomsToDelete[i]);
+			}
+		}
+		else
+		{
+			roomsToDelete = null;
+		}
+	}
+
+	//standardizes the removal of rooms to ensure all reqs met
+	public void DeleteRoom(ContainedRoom room)
+	{
+		foreach(RoomTile rt in room.containedRooms)
+		{
+			roomIndexingVectors[rt.GetIndexdTilePosition().y][rt.GetIndexdTilePosition().x] = null;
+			rt.UpdateNeighboringTiles();
+		}
+
+		Destroy(room.gameObject);
+	}
+
+	//recursively calls itself to get all the tiles that would be deleted given the initaial location
+	public void RoomsThatWillBeDestroyedOnCall(ContainedRoom prev, List<ContainedRoom> roomsThatWillBeDestroyed, int iteration)
+	{
+		foreach (RoomTile room in prev.containedRooms)
+		{
+			for (int i = 0; i < 4; i++)
+			{
+				RoomTile other = GetRoomAtPosition(room.GetTrueTilePosition() + room.offsets[i]);
+				if (other != null)
+				{
+					int[] otherNodeStates = { other.tileType.bottomNodeState, other.tileType.leftNodeState, other.tileType.topNodeState, other.tileType.rightNodeState };
+					if (otherNodeStates[i] == 1)
+					{
+						if (!roomsThatWillBeDestroyed.Contains(other.roomContainer))
+						{
+							roomsThatWillBeDestroyed.Add(other.roomContainer);
+;							if (iteration < 100000)
+								RoomsThatWillBeDestroyedOnCall(other.roomContainer, roomsThatWillBeDestroyed, iteration++);
+							else
+								globalRefManager.interfaceManager.SetMajorInterface("Error");
+						}
+					}
+				}
+			}
+		}
+	}
+
+	//to be called when the player clicks on a tile in edit mode
 	public void OnClickOnTile()
 	{
 		if (editModePermSelectedRoomTile != null)

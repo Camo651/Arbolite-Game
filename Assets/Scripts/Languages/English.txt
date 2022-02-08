@@ -3,6 +3,9 @@ no_translation_found           "does not exist for language"
 error_modal_title              "Oops!"
 error_modal_info               "An error occured somewhere! If this keeps happening please submit a bug report so the developers can fix it."
 ok_button                      "Ok"
-
+delete_modal_info              "You are about to destroy"
+delete_modal_title             "Confirm Destruction?"
+confirm_button                 "Confirm"
+cancel_button                  "Cancel"
 
 
