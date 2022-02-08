@@ -15,17 +15,13 @@ public class RoomTile : MonoBehaviour
 	[HideInInspector] public readonly int[] inverseOffsets = { 2, 3, 0, 1 };
 	
 	// updates the values for this tile based on its conditions
-	public void UpdateTile()
+	public void UpdateTile(bool updateNeighbors)
 	{
+		//set the current room's sprite
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		spriteRenderer.sprite = tileType.backgroundSprite;
 
-		UpdateNeighboringTiles();
-	}
-
-	//updates the 4 cardinal tiles around it (if they exist) and updates their values. Does not recursively flood the updates
-	public void UpdateNeighboringTiles()
-	{
+		//re-establish connection with the surrounding tiles
 		neighborRooms = new RoomTile[4];
 		for (int i = 0; i < 4; i++)
 		{
@@ -37,21 +33,36 @@ public class RoomTile : MonoBehaviour
 			}
 		}
 
+		//send the update pulse to the neighbors if permits
+		if (updateNeighbors)
+			UpdateNeighboringTiles();
+
 		//as it stands: natural tiles get smoothed textures
 		if (roomContainer.isNaturalTerrainTile)
 		{
 			SO_TileType newTile;
-			switch(neighborRooms[0] != null, neighborRooms[1] != null, neighborRooms[2] != null, neighborRooms[3] != null)
+			switch (neighborRooms[0] != null, neighborRooms[1] != null, neighborRooms[2] != null, neighborRooms[3] != null)
 			{
-				case (false, true, true, false) : newTile = roomContainer.globalRefManager.terrainManager.DirtRight; break;
-				case (false, false, true, true) : newTile = roomContainer.globalRefManager.terrainManager.DirtLeft; break;
-				case (false, false, true, false) : newTile = roomContainer.globalRefManager.terrainManager.DirtSmall; break;
+				case (false, true, true, false): newTile = roomContainer.globalRefManager.terrainManager.DirtRight; break;
+				case (false, false, true, true): newTile = roomContainer.globalRefManager.terrainManager.DirtLeft; break;
+				case (false, false, true, false): newTile = roomContainer.globalRefManager.terrainManager.DirtSmall; break;
 				default: newTile = roomContainer.globalRefManager.terrainManager.Dirt.containedRooms[0].tileType; break;
 			}
 			if (neighborRooms[0] != null)
 				newTile = roomContainer.globalRefManager.terrainManager.Bedrock.containedRooms[0].tileType;
 			tileType = newTile;
 			spriteRenderer.sprite = newTile.backgroundSprite;
+		}
+	}
+
+	//updates the 4 cardinal tiles around it (if they exist) and updates their values. Does not recursively flood the updates
+	public void UpdateNeighboringTiles()
+	{
+		//connection w/ neighbors established earlier
+		for (int i = 0; i < 4; i++)
+		{	
+			if(neighborRooms[i] != null)
+				neighborRooms[i].UpdateTile(false);
 		}
 	}
 

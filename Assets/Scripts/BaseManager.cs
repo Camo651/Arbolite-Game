@@ -170,6 +170,7 @@ public class BaseManager : MonoBehaviour
 		}
 	}
 
+	//Initiates the UI modal for confirming if the tiles should be deleted
 	public void TryDestroyCurrentlySelectedTile()
 	{
 		if (editModePermSelectedRoomTile)
@@ -181,8 +182,9 @@ public class BaseManager : MonoBehaviour
 			string deletion = "";
 			foreach (ContainedRoom c in roomsThatWillBeDestroyed)
 			{
-				deletion += c.containedRooms[0].tileType.tileTypeName + " ";
+				deletion += c.containedRooms[0].tileType.tileTypeName + ", ";
 			}
+			deletion = deletion.Substring(0, deletion.Length - 2);
 			globalRefManager.interfaceManager.SetMajorInterface("ConfirmDelete");
 			globalRefManager.interfaceManager.activeUserInterface.interfaceDescription.text = globalRefManager.langManager.GetTranslation("delete_modal_info") + ": " + deletion;
 			roomsToDelete = roomsThatWillBeDestroyed.ToArray();
@@ -212,7 +214,7 @@ public class BaseManager : MonoBehaviour
 		foreach(RoomTile rt in room.containedRooms)
 		{
 			roomIndexingVectors[rt.GetIndexdTilePosition().y][rt.GetIndexdTilePosition().x] = null;
-			rt.UpdateNeighboringTiles();
+			rt.UpdateTile(true);
 		}
 
 		Destroy(room.gameObject);
@@ -277,7 +279,6 @@ public class BaseManager : MonoBehaviour
 		{
 			return null;
 		}
-		
 	}
 
 	//instantiates and preloads a contained room at a given position. Does not check if that place is a valid spot
@@ -306,7 +307,7 @@ public class BaseManager : MonoBehaviour
 		//auto updates the tiles around it, but not the full map
 		foreach (RoomTile tile in newGen.containedRooms)
 		{
-			tile.UpdateTile();
+			tile.UpdateTile(true);
 		}
 	}
 }

@@ -73,7 +73,7 @@ public class TerrainManager : MonoBehaviour
 		{
 			if (tile.isNaturalTerrainTile)
 			{
-				tile.containedRooms[0].UpdateTile();
+				tile.containedRooms[0].UpdateTile(true);
 			}
 		}
 	}
