@@ -12,6 +12,9 @@ public class InterfaceManager : MonoBehaviour
 	public GameObject notificationInterfacePrefab, notificationHolder;
 	public int notificationPersistUptimeSeconds;
 	public bool userIsHoveredOnInterfaceElement;
+	public UserInterface worldPosHoverHUD;
+	public bool hoverHUDEnabled;
+	public Vector3 hoverHudOffset;
 	public List<UserInterface> allUserInterfaces;
 	public List<SO_NotificationType> notificationTypes;
 	[HideInInspector] public Queue<UserInterface> activeNotificationQueue;
@@ -24,6 +27,7 @@ public class InterfaceManager : MonoBehaviour
 	private void Update()
 	{
 		HandlePlayerInputCycle();
+
 	}
 
 	//should be a mess and take care of all the keyboard input in one place so it doesnt get spread around the other managers
@@ -68,6 +72,38 @@ public class InterfaceManager : MonoBehaviour
 		SetInterfaceLanguage(UI);
 		SetBackgroundBlur(UI.interfaceType == UserInterface.InterfaceType.FullScreen || UI.interfaceType == UserInterface.InterfaceType.Modal);
 		globalRefManager.baseManager.gameIsActivelyFrozen = UI.interfaceType == UserInterface.InterfaceType.FullScreen || UI.interfaceType == UserInterface.InterfaceType.Modal;
+	}
+
+	//set worldposition viewer state
+	public void SetWorldPositionViewerState(bool enabled, RoomTile rt)
+	{
+		hoverHUDEnabled = enabled;
+		worldPosHoverHUD.gameObject.SetActive(enabled);
+		if (enabled)
+		{
+			worldPosHoverHUD.transform.position = hoverHudOffset + globalRefManager.baseManager.editModePermSelectedRoomTile.transform.position;
+			worldPosHoverHUD.interfaceName.text = rt.tileType.tileTypeName;
+			worldPosHoverHUD.interfaceDescription.text = rt.tileType.tileInformation;
+		}
+		else
+		{
+			userIsHoveredOnInterfaceElement = false;
+		}
+	}
+
+	//closes the currently hovered tile menu thing
+	public void CloseWorldPositionViewer()
+	{
+		SetWorldPositionViewerState(false, null);
+		if (globalRefManager.baseManager.editModePermSelectedRoomTile != null)
+			globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.SetRoomTint(Color.white);
+		globalRefManager.baseManager.editModePermSelectedRoomTile = null;
+	}
+
+	//recives the call to delete the currently seleced tile
+	public void DeleteCurrentltySelecedTile()
+	{
+
 	}
 
 	//close the currently open interface

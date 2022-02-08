@@ -24,6 +24,17 @@ public class BaseManager : MonoBehaviour
 		EditMode
 	}
 
+
+	//prepares and consolidates switching modes
+	public void SetPlayerState(PlayerState state)
+	{
+		if(currentPlayerState == PlayerState.EditMode)
+			globalRefManager.interfaceManager.SetWorldPositionViewerState(false, editModePermSelectedRoomTile);
+		editModePermSelectedRoomTile = null;
+		OnClickOnTile();
+
+		currentPlayerState = state;
+	}
 	private void Update()
 	{
 		if (!gameIsActivelyFrozen && !globalRefManager.interfaceManager.userIsHoveredOnInterfaceElement)
@@ -124,11 +135,7 @@ public class BaseManager : MonoBehaviour
 					//click on a room to perm select it
 					if (Input.GetMouseButtonDown(0))
 					{
-						if (editModePermSelectedRoomTile != null)
-							editModePermSelectedRoomTile.roomContainer.SetRoomTint(Color.white);
-						editModePermSelectedRoomTile = editModeSelectedRoomTile;
-						if (editModePermSelectedRoomTile != null)
-							editModePermSelectedRoomTile.roomContainer.SetRoomTint(Color.cyan);
+						OnClickOnTile();
 					}
 					//move the hover tint around to the currently hivered room
 					Vector3 mousePos = globalRefManager.cameraController.mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -157,6 +164,20 @@ public class BaseManager : MonoBehaviour
 				}
 			}
 		}
+	}
+
+	public void OnClickOnTile()
+	{
+		if (editModePermSelectedRoomTile != null)
+			editModePermSelectedRoomTile.roomContainer.SetRoomTint(Color.white);
+		editModePermSelectedRoomTile = editModeSelectedRoomTile;
+		if (editModePermSelectedRoomTile != null)
+		{
+			editModePermSelectedRoomTile.roomContainer.SetRoomTint(Color.cyan);
+			globalRefManager.interfaceManager.SetWorldPositionViewerState(true, editModePermSelectedRoomTile);
+		}
+		else
+			globalRefManager.interfaceManager.CloseWorldPositionViewer();
 	}
 
 	//returns the room at the world coordinate space position
