@@ -12,6 +12,7 @@ public class GlobalRefManager : MonoBehaviour
 	public CameraController cameraController;
 	public FlowManager flowManager;
 	public LanguangeManager langManager;
+	public SettingsManager settingsManager;
 
 	private void Awake()
 	{
@@ -21,5 +22,7 @@ public class GlobalRefManager : MonoBehaviour
 		interfaceManager.globalRefManager = this;
 		cameraController.globalRefManager = this;
 		flowManager.globalRefManager = this;
+		langManager.globalRefManager = this;
+		settingsManager.globalRefManager = this;
 	}
 }

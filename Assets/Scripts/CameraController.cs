@@ -17,11 +17,7 @@ public class CameraController : MonoBehaviour
 	{
 		if (!globalRefManager.baseManager.gameIsActivelyFrozen)
 		{
-			//Camera Movements
-			trueCameraPosition.x = Mathf.Clamp(trueCameraPosition.x + (Input.GetAxis("Horizontal") * cameraMoveSpeed.x * mainCamera.orthographicSize * Time.deltaTime), cameraBounds.x + (mainCamera.orthographicSize * mainCamera.aspect), cameraBounds.y - (mainCamera.orthographicSize * mainCamera.aspect));
-			trueCameraPosition.y = Mathf.Clamp(trueCameraPosition.y + (Input.GetAxis("Vertical") * cameraMoveSpeed.y * mainCamera.orthographicSize * Time.deltaTime), cameraBounds.z + mainCamera.orthographicSize, cameraBounds.w - mainCamera.orthographicSize);
-			mainCamera.transform.position = trueCameraPosition;
-
+			
 			//Camera Zooming
 			if (Input.mouseScrollDelta.y != 0)
 				cameraZoomAccelereation = -Input.mouseScrollDelta.y;
@@ -34,6 +30,21 @@ public class CameraController : MonoBehaviour
 					cameraZoomAccelereation = 0f;
 			}
 			mainCamera.orthographicSize = Mathf.Clamp(mainCamera.orthographicSize + (cameraZoomAccelereation * cameraZoomSpeed * Time.deltaTime), cameraZoomBounds.x, cameraZoomBounds.y);
+
+			//moves the camera towards the cursor so it gives a better zooming effect
+			Vector3 lateralZoomBuffer = Vector3.zero;
+			if(mainCamera.orthographicSize > cameraZoomBounds.x && mainCamera.orthographicSize < cameraZoomBounds.y)
+			{
+				lateralZoomBuffer = new Vector3(Screen.width / 2f - Input.mousePosition.x, Screen.height / 2f - Input.mousePosition.y, 0f);
+				lateralZoomBuffer *= cameraZoomAccelereation / (Screen.width * 10f);
+				trueCameraPosition += lateralZoomBuffer;
+			}
+
+			//Camera Movements
+			trueCameraPosition.x = Mathf.Clamp(trueCameraPosition.x + (Input.GetAxis("Horizontal") * cameraMoveSpeed.x * mainCamera.orthographicSize * Time.deltaTime), cameraBounds.x + (mainCamera.orthographicSize * mainCamera.aspect), cameraBounds.y - (mainCamera.orthographicSize * mainCamera.aspect));
+			trueCameraPosition.y = Mathf.Clamp(trueCameraPosition.y + (Input.GetAxis("Vertical") * cameraMoveSpeed.y * mainCamera.orthographicSize * Time.deltaTime), cameraBounds.z + mainCamera.orthographicSize, cameraBounds.w - mainCamera.orthographicSize);
+			mainCamera.transform.position = trueCameraPosition;
+
 		}
 	}
 }
