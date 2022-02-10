@@ -17,7 +17,6 @@ public class CameraController : MonoBehaviour
 	{
 		if (!globalRefManager.baseManager.gameIsActivelyFrozen)
 		{
-			
 			//Camera Zooming
 			if (Input.mouseScrollDelta.y != 0)
 				cameraZoomAccelereation = -Input.mouseScrollDelta.y;

@@ -139,15 +139,49 @@ public class InterfaceManager : MonoBehaviour
 	//finds all the text elements in an interface and translates them
 	public void SetInterfaceLanguage(UserInterface ui)
 	{
-		ui.SetChildrenKeys();
-	}
-	//finds all the text elements in an interface and translates them
-	public void SetInterfaceLanguage(UserInterface ui, SO_NotificationType type)
-	{
-		ui.GetTranslationKey("notification_title").textBox.text = globalRefManager.langManager.GetTranslation(type.notificationName);
-		ui.GetTranslationKey("notification_info").textBox.text = globalRefManager.langManager.GetTranslation(type.notificationDescription);
+		foreach (TranslationKey key in ui.interfaceKeys)
+		{
+			key.textBox.text = ui.interfaceManager.globalRefManager.langManager.GetTranslation(key.callBackID);
+		}
 	}
 
+	//finds all the text elements in an interface and translates them
+	public void SetInterfaceLanguage(UserInterface ui, string[] customData, string customDataCallbackID)
+	{
+		foreach (TranslationKey key in ui.interfaceKeys)
+		{
+			if(key.callBackID == customDataCallbackID && customData != null)
+				key.textBox.text = InsertCustomData(ui.interfaceManager.globalRefManager.langManager.GetTranslation(key.callBackID),customData);
+			else
+				key.textBox.text = ui.interfaceManager.globalRefManager.langManager.GetTranslation(key.callBackID);
+		}
+	}
+	//finds all the text elements in an interface and translates them
+	public void SetInterfaceLanguage(UserInterface ui, SO_NotificationType type, string customDataCallbackID, string[] customData)
+	{
+		if (customData != null && customDataCallbackID == type.notificationName)
+			ui.GetTranslationKey("notification_title").textBox.text = InsertCustomData(globalRefManager.langManager.GetTranslation(type.notificationName),customData);
+		else
+			ui.GetTranslationKey("notification_title").textBox.text = globalRefManager.langManager.GetTranslation(type.notificationName);
+
+		if (customData != null && customDataCallbackID == type.notificationDescription)
+			ui.GetTranslationKey("notification_info").textBox.text = InsertCustomData(globalRefManager.langManager.GetTranslation(type.notificationDescription),customData);
+		else
+			ui.GetTranslationKey("notification_info").textBox.text = globalRefManager.langManager.GetTranslation(type.notificationDescription);
+	}
+
+	//inserts the data into the translated string
+	public string InsertCustomData(string original, string[] data)
+	{
+		for(int i = 0; i < data.Length; i++)
+		{
+			if (original.Contains("#" + i + "#"))
+			{
+				original = original.Replace("#" + i + "#", data[i]);
+			}
+		}
+		return original;
+	}
 	//toggles the state of the player hovering over a UI element
 	public void SetInterfaceHoverState(bool state)
 	{
@@ -179,14 +213,14 @@ public class InterfaceManager : MonoBehaviour
 	}
 
 	//adds a notification to the end of the stream of notifications to be seen
-	public void EnqueueNotification(string _type, string customDescription)
+	public void EnqueueNotification(string _type, string customDescription, string customCallbackIDForData, string[] customData)
 	{
 		SO_NotificationType type = GetNotificationType(_type);
 		GameObject note = Instantiate(notificationInterfacePrefab);
 		note.SetActive(true);
 		note.transform.SetParent(notificationHolder.transform);
 		UserInterface ui = note.GetComponent<UserInterface>();
-		SetInterfaceLanguage(ui, type);
+		SetInterfaceLanguage(ui, type, customCallbackIDForData, customData);
 		ui.mainInterfaceIcon.sprite = type.notificationIcon;
 		ui.saveNotification = type.shouldBeSaved;
 		ui.interfaceManager = this;

@@ -202,11 +202,15 @@ public class BaseManager : MonoBehaviour
 	{
 		if (delete)
 		{
+			int count = roomsToDelete.Length;
 			globalRefManager.interfaceManager.SetWorldPositionViewerState(false, null);
 			for (int i = 0; i < roomsToDelete.Length; i++)
 			{
 				DeleteRoom(roomsToDelete[i]);
 			}
+
+			globalRefManager.interfaceManager.EnqueueNotification("tiles_deleted", "", "successfully_destroyed_tiles", new string[]{ "" + count});
+
 		}
 		else
 		{

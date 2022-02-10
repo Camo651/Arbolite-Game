@@ -32,15 +32,6 @@ public class UserInterface : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 			}
 	}
 
-	//Sets the texts for the interface in the current language
-	public void SetChildrenKeys()
-	{
-		foreach(TranslationKey key in interfaceKeys)
-		{
-			key.textBox.text = interfaceManager.globalRefManager.langManager.GetTranslation(key.callBackID);
-		}
-	}
-
 	//returns the translation key from its callback
 	public TranslationKey GetTranslationKey(string callbackID)
 	{
@@ -62,7 +53,7 @@ public class UserInterface : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 	//transfer method for sending a notification
 	public void SendNotification(string ID)
 	{
-		interfaceManager.EnqueueNotification(ID, "");
+		interfaceManager.EnqueueNotification(ID, "", "", null);
 	}
 	//transfer method for opening a menu
 	public void SetInterface(string ID)
