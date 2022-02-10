@@ -69,8 +69,13 @@ public class LanguangeManager : MonoBehaviour
 	//returns the text in the current language based on the id of the text box
 	public string GetTranslation(string callbackID)
 	{
+		//guard clause for empty IDs
+		if (callbackID == "" || callbackID == " ")
+		{
+			return "";
+		}
 		int index = currentLanguage.callbackIDs.IndexOf(callbackID.ToLower());
-		if(index >= 0)
+		if(index >= 0 && currentLanguage.texts.Count > index)
 			return currentLanguage.texts[index];
 		return "ERROR: '" + callbackID + "' FOR "+currentLanguage.langID +" NOT FOUND";
 	}

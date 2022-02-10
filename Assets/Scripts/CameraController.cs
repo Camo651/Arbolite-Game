@@ -35,9 +35,10 @@ public class CameraController : MonoBehaviour
 			Vector3 lateralZoomBuffer = Vector3.zero;
 			if(mainCamera.orthographicSize > cameraZoomBounds.x && mainCamera.orthographicSize < cameraZoomBounds.y)
 			{
-				lateralZoomBuffer = new Vector3(Screen.width / 2f - Input.mousePosition.x, Screen.height / 2f - Input.mousePosition.y, 0f);
-				lateralZoomBuffer *= cameraZoomAccelereation / (Screen.width * 1f);
-				trueCameraPosition += lateralZoomBuffer;
+				lateralZoomBuffer = new Vector3((Input.mousePosition.x / Screen.width - .5f) * 2.3f, (Input.mousePosition.y / Screen.height - .5f) * 2f, 0f);
+				lateralZoomBuffer *= -cameraZoomAccelereation / 17f;
+				if(globalRefManager.settingsManager.zoomTowardsMouse)
+					trueCameraPosition += lateralZoomBuffer;
 			}
 
 			//Camera Movements

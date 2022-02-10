@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textBox: {fileID: 0}
-  callBackID: 
+  callBackID: notification_title
 --- !u!1 &8387734145013794343
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,7 +474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textBox: {fileID: 0}
-  callBackID: 
+  callBackID: notification_info
 --- !u!1 &8387734145509432992
 GameObject:
   m_ObjectHideFlags: 0

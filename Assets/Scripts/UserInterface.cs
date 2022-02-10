@@ -41,6 +41,19 @@ public class UserInterface : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 		}
 	}
 
+	//returns the translation key from its callback
+	public TranslationKey GetTranslationKey(string callbackID)
+	{
+		foreach (TranslationKey key in interfaceKeys)
+		{
+			if(key.callBackID.ToLower() == callbackID.ToLower())
+			{
+				return key;
+			}
+		}
+		return null;
+	}
+
 	//transfer method for closing all the currently open interfaces
 	public void CloseAllInterfaces()
 	{
@@ -49,7 +62,7 @@ public class UserInterface : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 	//transfer method for sending a notification
 	public void SendNotification(string ID)
 	{
-		interfaceManager.EnqueueNotification(interfaceManager.GetNotificationType(ID), "");
+		interfaceManager.EnqueueNotification(ID, "");
 	}
 	//transfer method for opening a menu
 	public void SetInterface(string ID)

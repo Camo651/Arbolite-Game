@@ -13,7 +13,7 @@ public class RoomTile : MonoBehaviour
 
 	[HideInInspector] public readonly Vector2Int[] offsets = { Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left };
 	[HideInInspector] public readonly int[] inverseOffsets = { 2, 3, 0, 1 };
-	
+
 	// updates the values for this tile based on its conditions
 	public void UpdateTile(bool updateNeighbors)
 	{
@@ -60,7 +60,7 @@ public class RoomTile : MonoBehaviour
 	{
 		//connection w/ neighbors established earlier
 		for (int i = 0; i < 4; i++)
-		{	
+		{
 			if(neighborRooms[i] != null)
 				neighborRooms[i].UpdateTile(false);
 		}

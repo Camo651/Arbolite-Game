@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GlobalRefManager : MonoBehaviour
 {
 	//a script to give every manager in the game a way to reference any other manager with ease

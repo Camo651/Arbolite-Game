@@ -33,13 +33,35 @@ public class InterfaceManager : MonoBehaviour
 	//should be a mess and take care of all the keyboard input in one place so it doesnt get spread around the other managers
 	private void HandlePlayerInputCycle()
 	{
-		if (Input.GetKeyDown(KeyCode.E))
+		if (Input.anyKey)
 		{
-			SetMajorInterface("Home");
-		}
-		if (Input.GetKeyDown(KeyCode.Escape))
-		{
-			SetMajorInterface("Pause");
+			if (Input.GetKeyDown(globalRefManager.settingsManager.openHomeMenu))
+			{
+				SetMajorInterface("Home");
+				return;
+			}
+			if (activeUserInterface != null && Input.GetKeyDown(globalRefManager.settingsManager.openPauseMenu))
+			{
+				SetMajorInterface("Pause");
+				return;
+			}
+			if (Input.GetKeyDown(globalRefManager.settingsManager.closeAllInterfaces))
+			{
+				CloseAllInterfaces();
+				return;
+			}
+			if (Input.GetKeyDown(globalRefManager.settingsManager.setModePlayer))
+			{
+				globalRefManager.baseManager.SetPlayerState(BaseManager.PlayerState.PlayerMode);
+			}
+			if (Input.GetKeyDown(globalRefManager.settingsManager.setModeEdit))
+			{
+				globalRefManager.baseManager.SetPlayerState(BaseManager.PlayerState.EditMode);
+			}
+			if (Input.GetKeyDown(globalRefManager.settingsManager.setModeBuild))
+			{
+				globalRefManager.baseManager.SetPlayerState(BaseManager.PlayerState.BuildMode);
+			}
 		}
 	}
 
@@ -53,14 +75,13 @@ public class InterfaceManager : MonoBehaviour
 		foreach (UserInterface userInterface in allUserInterfaces)
 		{
 			userInterface.interfaceManager = this;
-			if(userInterface.interfaceType != UserInterface.InterfaceType.HUD && 
-				userInterface.interfaceType != UserInterface.InterfaceType.WorldSpace && 
+			if(userInterface.interfaceType != UserInterface.InterfaceType.HUD &&
+				userInterface.interfaceType != UserInterface.InterfaceType.WorldSpace &&
 				userInterface.interfaceType != UserInterface.InterfaceType.Notification)
 			userInterface.gameObject.SetActive(false);
 		}
 		activeNotificationQueue = new Queue<UserInterface>();
 	}
-	
 	//opens up a fullscreen interface / menu
 	public void SetMajorInterface(string UiName)
 	{
@@ -120,6 +141,12 @@ public class InterfaceManager : MonoBehaviour
 	{
 		ui.SetChildrenKeys();
 	}
+	//finds all the text elements in an interface and translates them
+	public void SetInterfaceLanguage(UserInterface ui, SO_NotificationType type)
+	{
+		ui.GetTranslationKey("notification_title").textBox.text = globalRefManager.langManager.GetTranslation(type.notificationName);
+		ui.GetTranslationKey("notification_info").textBox.text = globalRefManager.langManager.GetTranslation(type.notificationDescription);
+	}
 
 	//toggles the state of the player hovering over a UI element
 	public void SetInterfaceHoverState(bool state)
@@ -152,13 +179,14 @@ public class InterfaceManager : MonoBehaviour
 	}
 
 	//adds a notification to the end of the stream of notifications to be seen
-	public void EnqueueNotification(SO_NotificationType type, string customDescription)
+	public void EnqueueNotification(string _type, string customDescription)
 	{
+		SO_NotificationType type = GetNotificationType(_type);
 		GameObject note = Instantiate(notificationInterfacePrefab);
 		note.SetActive(true);
 		note.transform.SetParent(notificationHolder.transform);
 		UserInterface ui = note.GetComponent<UserInterface>();
-		SetInterfaceLanguage(ui);
+		SetInterfaceLanguage(ui, type);
 		ui.mainInterfaceIcon.sprite = type.notificationIcon;
 		ui.saveNotification = type.shouldBeSaved;
 		ui.interfaceManager = this;

@@ -1714,6 +1714,7 @@ MonoBehaviour:
   allUserInterfaces: []
   notificationTypes:
   - {fileID: 11400000, guid: 3a3dc4409dc33e14dabca841282e37f7, type: 2}
+  - {fileID: 11400000, guid: 2703ad28478dc654686027c28bbeb9dc, type: 2}
 --- !u!114 &752596402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2631,16 +2632,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   globalRefManager: {fileID: 0}
-  rainFX: 0
+  rainFX: 1
   vSync: 0
   windowMode: 0
-  parallaxBackground: 0
-  doDaynightCycle: 0
+  parallaxBackground: 1
+  doDaynightCycle: 1
   doPostProcessing: 0
   antiAliasing: 0
-  musicVolume: 0
-  interfaceVolume: 0
-  ambientVolume: 0
+  musicVolume: 1
+  interfaceVolume: 1
+  ambientVolume: 1
+  zoomTowardsMouse: 1
+  invertScrollDirection: 0
+  playerLeft: 97
+  playerRight: 100
+  playerUp: 119
+  playerDown: 115
+  closeAllInterfaces: 27
+  openPauseMenu: 27
+  openHomeMenu: 101
+  setModePlayer: 49
+  setModeBuild: 50
+  setModeEdit: 51
 --- !u!1 &1002548903
 GameObject:
   m_ObjectHideFlags: 0
@@ -3828,6 +3841,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 692933743}
+        m_TargetAssemblyTypeName: UserInterface, Assembly-CSharp
+        m_MethodName: SendNotification
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: tiles_deleted
           m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1573166890

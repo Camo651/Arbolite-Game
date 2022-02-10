@@ -20,7 +20,7 @@ public class BaseManager : MonoBehaviour
 
 	public enum PlayerState
 	{
-		Player,
+		PlayerMode,
 		BuildMode,
 		EditMode
 	}
@@ -29,12 +29,18 @@ public class BaseManager : MonoBehaviour
 	//prepares and consolidates switching modes
 	public void SetPlayerState(PlayerState state)
 	{
-		if(currentPlayerState == PlayerState.EditMode)
-			globalRefManager.interfaceManager.SetWorldPositionViewerState(false, editModePermSelectedRoomTile);
-		editModePermSelectedRoomTile = null;
-		OnClickOnTile();
+		if (state != currentPlayerState)
+		{
+			globalRefManager.interfaceManager.SetWorldPositionViewerState(false, null);
+			if (editModePermSelectedRoomTile != null)
+				editModePermSelectedRoomTile.roomContainer.SetRoomTint(Color.white);
+			editModePermSelectedRoomTile = null;
+			if (editModeSelectedRoomTile != null)
+				editModeSelectedRoomTile.roomContainer.SetRoomTint(Color.white);
+			editModeSelectedRoomTile = null;
 
-		currentPlayerState = state;
+			currentPlayerState = state;
+		}
 	}
 
 
@@ -160,7 +166,7 @@ public class BaseManager : MonoBehaviour
 					}
 				}
 			}
-			else if (currentPlayerState == PlayerState.Player) //player mode is for the physical character walking around and doing stuff that cant be automated
+			else if (currentPlayerState == PlayerState.PlayerMode) //player mode is for the physical character walking around and doing stuff that cant be automated
 			{
 				if (currentlySelectedRoom.transform.childCount > 0)
 				{

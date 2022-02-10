@@ -21,4 +21,14 @@ public class SettingsManager : MonoBehaviour
 	public float musicVolume;
 	public float interfaceVolume;
 	public float ambientVolume;
+
+	//controls
+	public bool zoomTowardsMouse;
+	public bool invertScrollDirection;
+
+	//keybinds
+	public KeyCode playerLeft, playerRight, playerUp, playerDown;
+	public KeyCode closeAllInterfaces;
+	public KeyCode openPauseMenu, openHomeMenu;
+	public KeyCode setModePlayer, setModeBuild, setModeEdit;
 }
