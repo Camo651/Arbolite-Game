@@ -40,7 +40,7 @@ public class InterfaceManager : MonoBehaviour
 				SetMajorInterface("Home");
 				return;
 			}
-			if (activeUserInterface != null && Input.GetKeyDown(globalRefManager.settingsManager.openPauseMenu))
+			if (activeUserInterface == null && Input.GetKeyDown(globalRefManager.settingsManager.openPauseMenu))
 			{
 				SetMajorInterface("Pause");
 				return;
@@ -133,6 +133,7 @@ public class InterfaceManager : MonoBehaviour
 		SetBackgroundBlur(false);
 		globalRefManager.baseManager.gameIsActivelyFrozen = false;
 		activeUserInterface.gameObject.SetActive(false);
+		activeUserInterface = null;
 		userIsHoveredOnInterfaceElement = false;
 	}
 

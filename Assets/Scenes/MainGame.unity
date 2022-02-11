@@ -2978,20 +2978,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00984c9364ef9ef49a55c73fc5c78ea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  regenPlant: 0
   plantType: 2
-  allChildedFeatures: []
   plantFeatureDefaultPrefab: {fileID: 9127323859209701236, guid: 8df9d95413956634496b64839feea4a3, type: 3}
+  defaultLeaf: {fileID: -2413806693520163455, guid: c265ed9efa21f2f4da1e973c8a0ae50a, type: 3}
+  lineRendererMaterial: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  branchVerticalStretchMin: 1
+  branchVerticalStretchMax: 2
+  branchHorizontalStretchMin: 2
+  branchHorizontalStretchMax: 3
+  branchSeperationAngleMin: -40
+  branchSeperationAngleMax: 40
+  branchNodeDensityMin: 1
+  branchNodeDensityMax: 4
+  minBranchLayerCount: 2
+  maxBranchLayerCount: 5
+  trunkBaseWidth: 0
+  branchWidthModifier: 0.1
+  baseTrunkAmplifier: 2
+  leafGenerationMinLayer: 1
+  leafGenerationMaxLayer: 100
+  leafScaleMin: 0.5
+  leafScaleMax: 1.5
+  leafDensityMin: 12.19
+  leafDensityMax: 20.8
+  trueBranchLayerCount: 0
+  plantAge: 0
+  allChildedFeatures:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   baseAnchorFeature: {fileID: 0}
-  branchVerticalStretch: 2
-  branchHorizontalStretch: 0
-  branchSeperationAngle: 15
-  branchNodeDensity: 3
-  branchLayerCount: 5
-  leafDensity: 0
-  leafDistributionMin: 0
-  leafDistributionMax: 0
-  branchColour: {r: 0, g: 0, b: 0, a: 0}
-  leafColour: {r: 0, g: 0, b: 0, a: 0}
+  branchColour: {r: 0.3962264, g: 0.22535323, b: 0.09531861, a: 1}
+  leafColour: {r: 0.1986917, g: 0.4433962, b: 0.32128078, a: 1}
 --- !u!4 &1270627512
 Transform:
   m_ObjectHideFlags: 0
@@ -3000,7 +3019,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270627510}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
