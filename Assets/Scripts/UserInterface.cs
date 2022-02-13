@@ -70,7 +70,6 @@ public class UserInterface : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 		interfaceManager.DequeueNotification(this);
 	}
 
-
 	public void OnPointerEnter(PointerEventData eventData)
 	{
 		interfaceManager.SetInterfaceHoverState(true);
@@ -87,6 +86,7 @@ public class UserInterface : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 		HUD, // dont blur, persitent overlay when in game view
 		Modal, //blur bkg, smaller interface
 		WorldSpace, // dont blur bkg, not persistent, floats around in world space
-		Notification // dont blur, not persistent, queses in the notification bar
+		Notification, // dont blur, not persistent, queses in the notification bar
+		Subtitle
 	}
 }

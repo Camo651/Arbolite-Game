@@ -65,9 +65,11 @@ public class Plant : MonoBehaviour
 		baseAnchorFeature.featureInterpolationSeed = new Vector4(Random.value, Random.value, Random.value, Random.value);
 		baseAnchorFeature.branchRenderer = baseAnchorFeature.gameObject.AddComponent<LineRenderer>();
 		baseAnchorFeature.branchRenderer.material = lineRendererMaterial;
-		baseAnchorFeature.branchRenderer.SetColors(branchColour, branchColour);
+		baseAnchorFeature.branchRenderer.startColor = branchColour;
+		baseAnchorFeature.branchRenderer.endColor = branchColour;
 		baseAnchorFeature.branchRenderer.numCapVertices = 3;
-		baseAnchorFeature.branchRenderer.SetWidth(.1f, .1f);
+		baseAnchorFeature.branchRenderer.startWidth = .1f;
+		baseAnchorFeature.branchRenderer.endWidth = .1f;
 		baseAnchorFeature.GenerateChildBranches(trueBranchLayerCount, this);
 		baseAnchorFeature.UpdatePlant();
 	}

@@ -34,7 +34,8 @@ public class PlantFeature : MonoBehaviour
 		branchEndPoint.z = -1;
 		branchRenderer.SetPosition(0, parentEndpoint + parentPlant.transform.position);
 		branchRenderer.SetPosition(1, branchEndPoint + parentPlant.transform.position);
-		branchRenderer.SetWidth(parentEndpointWidth, endPointWidth);
+		branchRenderer.startWidth = parentEndpointWidth;
+		branchRenderer.endWidth = endPointWidth;
 
 		for (int i = 0; i < childNonBranchFeatures.Count; i++)
 		{
@@ -78,7 +79,8 @@ public class PlantFeature : MonoBehaviour
 		branchlayer = parent.branchlayer - 1;
 		branchRenderer = gameObject.AddComponent<LineRenderer>();
 		branchRenderer.material = parentPlant.lineRendererMaterial;
-		branchRenderer.SetColors(parentPlant.branchColour, parentPlant.branchColour);
+		branchRenderer.startColor = parentPlant.branchColour;
+		branchRenderer.endColor = parentPlant.branchColour;
 		branchRenderer.numCapVertices = 3;
 
 		//leaf generation

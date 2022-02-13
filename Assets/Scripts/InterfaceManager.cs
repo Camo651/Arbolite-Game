@@ -232,12 +232,8 @@ public class InterfaceManager : MonoBehaviour
 	//removes the oldest notification
 	public void DequeueNotification(UserInterface ui)
 	{
-		activeNotificationQueue.Dequeue();
-		Destroy(ui.gameObject);
-
-		//NOTE notification UI gets destroyed cause useless.. idk what to put here. figure it out when making old notes UI ig
-		//if (notification.saveNotification)
-		//	pastNotificationsStack.Push(notification);
+		UserInterface old = activeNotificationQueue.Dequeue();
+		Destroy(old.gameObject);
 	}
 
 	//sets the state of the background blur

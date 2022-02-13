@@ -1706,7 +1706,7 @@ MonoBehaviour:
   errorModal: {fileID: 1273988623480851607}
   notificationInterfacePrefab: {fileID: 8387734145013794343, guid: 3ea53fa2407ef234f88968ce6d269fcf, type: 3}
   notificationHolder: {fileID: 342836255}
-  notificationPersistUptimeSeconds: 5
+  notificationPersistUptimeSeconds: 4
   userIsHoveredOnInterfaceElement: 0
   worldPosHoverHUD: {fileID: 454457910}
   hoverHUDEnabled: 0
@@ -2568,7 +2568,7 @@ MonoBehaviour:
   - {fileID: 8057671918482371835, guid: aa839b9cda98c234ebe312cfaccebd34, type: 3}
   - {fileID: 1276427737369093462, guid: 5221e0cd2926b5742934c8cec22121be, type: 3}
   - {fileID: 2111620679136429905, guid: f8f1eb900ffcee64289682109d40031a, type: 3}
-  - {fileID: 6828374592014506049, guid: 98af01cb342867b4cb3c3c108f655909, type: 3}
+  - {fileID: 3243583929398776501, guid: c206a105aff657b48a9a0de0c328e07f, type: 3}
 --- !u!114 &998491158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2589,6 +2589,8 @@ MonoBehaviour:
   flowManager: {fileID: 998491159}
   langManager: {fileID: 998491160}
   settingsManager: {fileID: 998491161}
+  audioManager: {fileID: 0}
+  particleManager: {fileID: 0}
 --- !u!114 &998491159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2949,82 +2951,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226852971}
   m_CullTransparentMesh: 1
---- !u!1 &1270627510
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1270627512}
-  - component: {fileID: 1270627511}
-  m_Layer: 0
-  m_Name: DefaultPlant
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1270627511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1270627510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00984c9364ef9ef49a55c73fc5c78ea9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  regenPlant: 0
-  plantType: 2
-  plantFeatureDefaultPrefab: {fileID: 9127323859209701236, guid: 8df9d95413956634496b64839feea4a3, type: 3}
-  defaultLeaf: {fileID: -2413806693520163455, guid: c265ed9efa21f2f4da1e973c8a0ae50a, type: 3}
-  lineRendererMaterial: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
-  branchVerticalStretchMin: 1
-  branchVerticalStretchMax: 2
-  branchHorizontalStretchMin: 2
-  branchHorizontalStretchMax: 3
-  branchSeperationAngleMin: -40
-  branchSeperationAngleMax: 40
-  branchNodeDensityMin: 1
-  branchNodeDensityMax: 4
-  minBranchLayerCount: 2
-  maxBranchLayerCount: 5
-  trunkBaseWidth: 0
-  branchWidthModifier: 0.1
-  baseTrunkAmplifier: 2
-  leafGenerationMinLayer: 1
-  leafGenerationMaxLayer: 100
-  leafScaleMin: 0.5
-  leafScaleMax: 1.5
-  leafDensityMin: 12.19
-  leafDensityMax: 20.8
-  trueBranchLayerCount: 0
-  plantAge: 0
-  allChildedFeatures:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  baseAnchorFeature: {fileID: 0}
-  branchColour: {r: 0.3962264, g: 0.22535323, b: 0.09531861, a: 1}
-  leafColour: {r: 0.1986917, g: 0.4433962, b: 0.32128078, a: 1}
---- !u!4 &1270627512
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1270627510}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 9, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1290456318
 GameObject:
   m_ObjectHideFlags: 0

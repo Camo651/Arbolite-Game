@@ -17,6 +17,7 @@ public class BaseManager : MonoBehaviour
 	private Vector2Int currentSelectionCoords;
 	public bool gameIsActivelyFrozen;
 	public ContainedRoom[] roomsToDelete;
+	Vector2 smoothCursorMovementDamp;
 
 	public enum PlayerState
 	{
@@ -77,7 +78,10 @@ public class BaseManager : MonoBehaviour
 						Vector3 mousePos = globalRefManager.cameraController.mainCamera.ScreenToWorldPoint(Input.mousePosition);
 						if (currentlySelectedRoom.transform.position.x != Mathf.Round(mousePos.x) || currentlySelectedRoom.transform.position.y != Mathf.Round(mousePos.y))
 						{
-							currentlySelectedRoom.transform.position = new Vector3(Mathf.Round(mousePos.x), Mathf.Round(mousePos.y), 0f);
+							float smoothX = Mathf.SmoothDamp(currentlySelectedRoom.transform.position.x, Mathf.Round(mousePos.x), ref smoothCursorMovementDamp.x, .025f);
+							float smoothY = Mathf.SmoothDamp(currentlySelectedRoom.transform.position.y, Mathf.Round(mousePos.y), ref smoothCursorMovementDamp.y, .025f);
+							currentlySelectedRoom.transform.position = new Vector3(smoothX, smoothY, 0f);
+
 							colliding = false;
 							nodeConditionsMet = true;
 							ContainedRoom contRoom = currentlySelectedRoom.transform.GetChild(0).GetComponent<ContainedRoom>();

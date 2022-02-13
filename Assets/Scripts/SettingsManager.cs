@@ -15,7 +15,7 @@ public class SettingsManager : MonoBehaviour
 	public bool doDaynightCycle;
 	public bool doPostProcessing;
 	public bool antiAliasing;
-
+	public bool colourBlindMode;
 
 	//audio
 	public float musicVolume;
@@ -26,9 +26,17 @@ public class SettingsManager : MonoBehaviour
 	public bool zoomTowardsMouse;
 	public bool invertScrollDirection;
 
+	//text
+	public bool showSubtitles;
+	public float fontSizeModifier;
+	public string languageOption;
+
 	//keybinds
 	public KeyCode playerLeft, playerRight, playerUp, playerDown;
 	public KeyCode closeAllInterfaces;
 	public KeyCode openPauseMenu, openHomeMenu;
 	public KeyCode setModePlayer, setModeBuild, setModeEdit;
 }
+
+//Notes
+// rember to call stop all audiosoruces on volume update cause it would look funky
