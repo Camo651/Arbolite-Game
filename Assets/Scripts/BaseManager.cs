@@ -132,7 +132,8 @@ public class BaseManager : MonoBehaviour
 						}
 						if (Input.GetMouseButtonDown(0) && !colliding && nodeConditionsMet) //place a copy of the ghost room at the postion if possible
 						{
-							TryCreateRoomAtPos(new Vector2Int(Mathf.RoundToInt(currentlySelectedRoom.transform.position.x), Mathf.RoundToInt(currentlySelectedRoom.transform.position.y)), globalRefManager.contentManager.GetRoomPrefabByName(selectedRoomName));
+							globalRefManager.audioManager.Play("little_click");
+							ContainedRoom cr = TryCreateRoomAtPos(new Vector2Int(Mathf.RoundToInt(currentlySelectedRoom.transform.position.x), Mathf.RoundToInt(currentlySelectedRoom.transform.position.y)), globalRefManager.contentManager.GetRoomPrefabByName(selectedRoomName));
 							Destroy(currentlySelectedRoom.transform.GetChild(0).gameObject);
 						}
 					}
@@ -296,7 +297,7 @@ public class BaseManager : MonoBehaviour
 	}
 
 	//instantiates and preloads a contained room at a given position. Does not check if that place is a valid spot
-	public void TryCreateRoomAtPos(Vector2Int pos, ContainedRoom roomPrefab) //call with the real world position
+	public ContainedRoom TryCreateRoomAtPos(Vector2Int pos, ContainedRoom roomPrefab) //call with the real world position
 	{
 		ContainedRoom newGen = Instantiate(roomPrefab);
 		baseRooms.Add(newGen);
@@ -323,5 +324,7 @@ public class BaseManager : MonoBehaviour
 		{
 			tile.UpdateTile(true);
 		}
+
+		return newGen;
 	}
 }

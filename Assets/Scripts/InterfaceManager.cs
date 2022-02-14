@@ -62,6 +62,10 @@ public class InterfaceManager : MonoBehaviour
 			{
 				globalRefManager.baseManager.SetPlayerState(BaseManager.PlayerState.BuildMode);
 			}
+			if (Input.GetKeyDown(KeyCode.Alpha5))
+			{
+				globalRefManager.baseManager.selectedRoomName = "Big Room";
+			}
 		}
 	}
 

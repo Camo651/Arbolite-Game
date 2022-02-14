@@ -1808,6 +1808,7 @@ GameObject:
   - component: {fileID: 775592887}
   - component: {fileID: 775592886}
   - component: {fileID: 775592889}
+  - component: {fileID: 775592890}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1899,6 +1900,23 @@ MonoBehaviour:
   cameraZoomSpeed: 22
   cameraAccelSpeed: 4
   cameraZoomBounds: {x: 2, y: 18}
+--- !u!114 &775592890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 775592885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95607a30ae38bb74ab808e05e77a90b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  globalRefManager: {fileID: 998491158}
+  speakerPrefab: {fileID: 2167568567693197287, guid: 3134637e54c2b344bbfa446835440364, type: 3}
+  defaultAudioClip: {fileID: 11400000, guid: c9a97e271fbffc745ace4b60539326de, type: 2}
+  emptySpeakers: []
+  usedSpeakers: []
 --- !u!1 &825406657
 GameObject:
   m_ObjectHideFlags: 0
@@ -2435,6 +2453,7 @@ GameObject:
   - component: {fileID: 998491159}
   - component: {fileID: 998491160}
   - component: {fileID: 998491161}
+  - component: {fileID: 998491162}
   m_Layer: 0
   m_Name: Base
   m_TagString: Base
@@ -2589,8 +2608,8 @@ MonoBehaviour:
   flowManager: {fileID: 998491159}
   langManager: {fileID: 998491160}
   settingsManager: {fileID: 998491161}
-  audioManager: {fileID: 0}
-  particleManager: {fileID: 0}
+  audioManager: {fileID: 775592890}
+  particleManager: {fileID: 998491162}
 --- !u!114 &998491159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2641,11 +2660,15 @@ MonoBehaviour:
   doDaynightCycle: 1
   doPostProcessing: 0
   antiAliasing: 0
+  colourBlindMode: 0
   musicVolume: 1
   interfaceVolume: 1
   ambientVolume: 1
   zoomTowardsMouse: 1
   invertScrollDirection: 0
+  showSubtitles: 0
+  fontSizeModifier: 0
+  languageOption: 
   playerLeft: 97
   playerRight: 100
   playerUp: 119
@@ -2656,6 +2679,19 @@ MonoBehaviour:
   setModePlayer: 49
   setModeBuild: 50
   setModeEdit: 51
+--- !u!114 &998491162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998491153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63c253b2e8659b5499427bf9ced941da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  globalRefManager: {fileID: 998491158}
 --- !u!1 &1002548903
 GameObject:
   m_ObjectHideFlags: 0

@@ -36,7 +36,15 @@ public class SettingsManager : MonoBehaviour
 	public KeyCode closeAllInterfaces;
 	public KeyCode openPauseMenu, openHomeMenu;
 	public KeyCode setModePlayer, setModeBuild, setModeEdit;
-}
 
-//Notes
-// rember to call stop all audiosoruces on volume update cause it would look funky
+	public void UpdateSettings()
+	{
+		musicVolume = 1f;
+		ambientVolume = 1f;
+		interfaceVolume = 1f;
+
+		globalRefManager.langManager.SetLanguage(languageOption);
+	}
+
+
+}

@@ -32,23 +32,18 @@ public class LanguangeManager : MonoBehaviour
 		foreach (TextAsset textAsset in textAssetLanguageOptions)
 		{
 			LanguageOption langOpt = new LanguageOption();
-			langOpt.texts = new List<string>();
-			langOpt.callbackIDs = new List<string>();
+			langOpt.lookup = new Dictionary<string, string>();
 			string text = textAsset.text;
 			string[] parse = text.Split(textFormattingDelimiter);
 			langOpt.langID = CleanString(parse[0].Replace("\n", "").Replace(" ", ""));
 			langOpt.langNativeName = parse[1].Replace("\n", "").Replace(System.Environment.NewLine, "");
-			for (int i = 2; i < parse.Length; i++)
+			for (int i = 2; i < parse.Length-1; i++)
 			{
-				parse[i] = parse[i].Replace("\n", "").Replace(" ", i % 2 == 0 ? "" : " ");
-				if (parse[i] != "")
-				{
-					if (i % 2 == 0)
-						langOpt.callbackIDs.Add(CleanString(parse[i].Replace("\n", "").Replace(" ", "").
-							ToLower()));
-					else
-						langOpt.texts.Add(parse[i]);
-				}
+				string key = parse[i].Replace("\n", "").Replace(" ", "");
+				i++;
+				string val = parse[i].Replace("\n", "");
+
+				langOpt.lookup.Add(CleanString(key.Replace("\n", "").Replace(" ", "")), val);
 			}
 			allLanguageOptions.Add(langOpt);
 		}
@@ -74,9 +69,9 @@ public class LanguangeManager : MonoBehaviour
 		{
 			return "";
 		}
-		int index = currentLanguage.callbackIDs.IndexOf(callbackID.ToLower());
-		if(index >= 0 && currentLanguage.texts.Count > index)
-			return currentLanguage.texts[index];
+
+		if (currentLanguage.lookup.ContainsKey(callbackID))
+			return currentLanguage.lookup[callbackID];
 		return "ERROR: '" + callbackID + "' FOR "+currentLanguage.langID +" NOT FOUND";
 	}
 
@@ -96,5 +91,5 @@ public class LanguangeManager : MonoBehaviour
 public class LanguageOption
 {
 	public string langID, langNativeName;
-	public List<string> callbackIDs, texts;
+	public Dictionary<string, string> lookup;
 }
