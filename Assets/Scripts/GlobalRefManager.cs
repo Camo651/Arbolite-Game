@@ -16,6 +16,7 @@ public class GlobalRefManager : MonoBehaviour
 	public SettingsManager settingsManager;
 	public AudioManager audioManager;
 	public ParticleManager particleManager;
+	public PlantManager plantManager;
 
 	private void Awake()
 	{
@@ -29,5 +30,6 @@ public class GlobalRefManager : MonoBehaviour
 		settingsManager.globalRefManager = this;
 		audioManager.globalRefManager = this;
 		particleManager.globalRefManager = this;
+		plantManager.globalRefManager = this;
 	}
 }
