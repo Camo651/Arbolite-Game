@@ -10,6 +10,7 @@ public class PlantPart : MonoBehaviour
 {
 	public string partName;
 	public PartType partType;
+	public List<Node> nodes;
 
 	public enum PartType
 	{
@@ -21,16 +22,16 @@ public class PlantPart : MonoBehaviour
 		Fruit,
 	}
 
+	private void Awake()
+	{
+		nodes.AddRange(GetComponentsInChildren<Node>());
+	}
+
+
 	private void OnDrawGizmos()
 	{
 		Gizmos.color = Color.red;
-		Gizmos.DrawSphere(transform.position, .05f);
-
-		for(int i=0;i<transform.childCount;i++)
-		{
-			Gizmos.color = Color.cyan;
-			Gizmos.DrawSphere(transform.GetChild(i).position, .05f);
-		}
+		Gizmos.DrawSphere(transform.position, .1f);
 	}
 
 }

@@ -14,7 +14,7 @@ public class AudioManager : MonoBehaviour
 	public Dictionary<string, SO_AudioType> assetClipLookup;
 	public List<string> backgroundMusics;
 
-	private void Awake()
+	private void Start()
 	{
 		SO_AudioType[] allAssetClips = Resources.FindObjectsOfTypeAll<SO_AudioType>();
 		assetClipLookup = new Dictionary<string, SO_AudioType>();
@@ -124,7 +124,8 @@ public class AudioManager : MonoBehaviour
 		musicIsPlaying = true;
 		int songIndex = Random.Range(0, backgroundMusics.Count);
 		lastSongIndex = songIndex;
-		Play(backgroundMusics[songIndex]);
+		if(backgroundMusics.Count > 0)
+			Play(backgroundMusics[songIndex]);
 	}
 
 	/// <summary>

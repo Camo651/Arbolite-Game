@@ -27,12 +27,15 @@ public class BaseManager : MonoBehaviour
 		EditMode
 	}
 
-	private void Awake()
+	private void Start()
 	{
+		Resources.LoadAll<ContainedRoom>("Assets/Prefabs");
 		ContainedRoom[] unsortedRooms = Resources.FindObjectsOfTypeAll<ContainedRoom>();
+		print(unsortedRooms.Length);
 		roomPrefabCatalog = new Dictionary<string, ContainedRoom>();
 		foreach (ContainedRoom item in unsortedRooms)
 		{
+			print(item.name);
 			roomPrefabCatalog.Add(item.ContainedRoomName, item);
 		}
 	}

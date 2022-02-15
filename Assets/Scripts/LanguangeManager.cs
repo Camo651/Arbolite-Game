@@ -13,7 +13,7 @@ public class LanguangeManager : MonoBehaviour
 
 	public static string allowedAsciiChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890-_,.;:<>?/'+=`~!@#$%^&*()[]{}|";
 
-	private void Awake()
+	private void Start()
 	{
 		//default the language to english for now
 		InitializeLanguage();

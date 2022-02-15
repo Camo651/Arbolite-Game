@@ -21,9 +21,9 @@ public class TerrainManager : MonoBehaviour
 	public Color skytint;
 	public GameObject sunmoon;
 
+
 	public void Start()
 	{
-
 		//index all the background parallax layers
 		backgroundSprites = new List<List<SpriteRenderer>>();
 		foreach (GameObject layer in backgroundLayers)

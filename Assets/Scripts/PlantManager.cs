@@ -9,10 +9,11 @@ using UnityEngine;
 public class PlantManager : MonoBehaviour
 {
 	public GlobalRefManager globalRefManager;
+	public GameObject defaultPlantPrefab;
 
 	public Dictionary<PlantPart.PartType, List<PlantPart>> plantPartCatalog;
 
-	private void Awake()
+	private void Start()
 	{
 		PlantPart[] unsorted = Resources.FindObjectsOfTypeAll<PlantPart>();
 		plantPartCatalog = new Dictionary<PlantPart.PartType, List<PlantPart>>();
@@ -24,6 +25,14 @@ public class PlantManager : MonoBehaviour
 			}
 			plantPartCatalog[part.partType].Add(part);
 		}
+		defaultPlantPrefab = (GameObject)Resources.Load("Assets/Prefabs/Default/DefaultProceduralPlant.prefab");
+	}
+
+	public ProceduralPlant GenerateNewPlant()
+	{
+		ProceduralPlant newPlant = Instantiate(defaultPlantPrefab).GetComponent<ProceduralPlant>();
+
+		return newPlant;
 	}
 
 	public PlantPart GetPlantPartPrefab(PlantPart.PartType type)
