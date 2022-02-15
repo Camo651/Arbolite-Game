@@ -8,7 +8,6 @@ public class GlobalRefManager : MonoBehaviour
 	//a script to give every manager in the game a way to reference any other manager with ease
 	public BaseManager baseManager;
 	public TerrainManager terrainManager;
-	public ContentManager contentManager;
 	public InterfaceManager interfaceManager;
 	public CameraController cameraController;
 	public FlowManager flowManager;
@@ -22,7 +21,6 @@ public class GlobalRefManager : MonoBehaviour
 	{
 		baseManager.globalRefManager = this;
 		terrainManager.globalRefManager = this;
-		contentManager.globalRefManager = this;
 		interfaceManager.globalRefManager = this;
 		cameraController.globalRefManager = this;
 		flowManager.globalRefManager = this;

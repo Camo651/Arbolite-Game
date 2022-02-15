@@ -5,11 +5,6 @@ using System.Collections.Generic;
 [CustomEditor(typeof(ContainedRoom))]
 public class RoomBuilder : Editor
 {
-	[MenuItem("GameObject/Create Other/Room Container")]
-	public static void CreateNewRoom()
-	{
-		Instantiate((GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Default/EMPTY ROOM.prefab", typeof(GameObject))).transform.name = "Empty Room";
-	}
 	public override void OnInspectorGUI()
 	{
 		base.OnInspectorGUI();

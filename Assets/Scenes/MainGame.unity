@@ -1915,8 +1915,12 @@ MonoBehaviour:
   globalRefManager: {fileID: 998491158}
   speakerPrefab: {fileID: 2167568567693197287, guid: 3134637e54c2b344bbfa446835440364, type: 3}
   defaultAudioClip: {fileID: 11400000, guid: c9a97e271fbffc745ace4b60539326de, type: 2}
+  musicIsPlaying: 0
+  lastSongIndex: 0
+  secondsBetweenMusic: 0
   emptySpeakers: []
   usedSpeakers: []
+  backgroundMusics: []
 --- !u!1 &825406657
 GameObject:
   m_ObjectHideFlags: 0
@@ -2447,13 +2451,13 @@ GameObject:
   m_Component:
   - component: {fileID: 998491154}
   - component: {fileID: 998491155}
-  - component: {fileID: 998491157}
   - component: {fileID: 998491156}
   - component: {fileID: 998491158}
   - component: {fileID: 998491159}
   - component: {fileID: 998491160}
   - component: {fileID: 998491161}
   - component: {fileID: 998491162}
+  - component: {fileID: 998491157}
   m_Layer: 0
   m_Name: Base
   m_TagString: Base
@@ -2579,15 +2583,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 998491153}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50980f60e60397245b8fb23d58ba2981, type: 3}
+  m_Script: {fileID: 11500000, guid: 810fa588a71ee9742a426564f96a52de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  globalRefManager: {fileID: 0}
-  allPlaceableRooms:
-  - {fileID: 8057671918482371835, guid: aa839b9cda98c234ebe312cfaccebd34, type: 3}
-  - {fileID: 1276427737369093462, guid: 5221e0cd2926b5742934c8cec22121be, type: 3}
-  - {fileID: 2111620679136429905, guid: f8f1eb900ffcee64289682109d40031a, type: 3}
-  - {fileID: 3243583929398776501, guid: c206a105aff657b48a9a0de0c328e07f, type: 3}
+  globalRefManager: {fileID: 998491158}
 --- !u!114 &998491158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2602,7 +2601,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseManager: {fileID: 998491155}
   terrainManager: {fileID: 998491156}
-  contentManager: {fileID: 998491157}
   interfaceManager: {fileID: 752596401}
   cameraController: {fileID: 775592889}
   flowManager: {fileID: 998491159}
@@ -2610,6 +2608,7 @@ MonoBehaviour:
   settingsManager: {fileID: 998491161}
   audioManager: {fileID: 775592890}
   particleManager: {fileID: 998491162}
+  plantManager: {fileID: 998491157}
 --- !u!114 &998491159
 MonoBehaviour:
   m_ObjectHideFlags: 0

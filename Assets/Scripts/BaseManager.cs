@@ -18,6 +18,7 @@ public class BaseManager : MonoBehaviour
 	public bool gameIsActivelyFrozen;
 	public ContainedRoom[] roomsToDelete;
 	Vector2 smoothCursorMovementDamp;
+	public Dictionary<string, ContainedRoom> roomPrefabCatalog;
 
 	public enum PlayerState
 	{
@@ -26,6 +27,15 @@ public class BaseManager : MonoBehaviour
 		EditMode
 	}
 
+	private void Awake()
+	{
+		ContainedRoom[] unsortedRooms = Resources.FindObjectsOfTypeAll<ContainedRoom>();
+		roomPrefabCatalog = new Dictionary<string, ContainedRoom>();
+		foreach (ContainedRoom item in unsortedRooms)
+		{
+			roomPrefabCatalog.Add(item.ContainedRoomName, item);
+		}
+	}
 
 	//prepares and consolidates switching modes
 	public void SetPlayerState(PlayerState state)
@@ -66,7 +76,7 @@ public class BaseManager : MonoBehaviour
 					if (currentlySelectedRoom.transform.childCount == 0)
 					{
 						currentlySelectedRoom.gameObject.SetActive(true);
-						ContainedRoom cr = Instantiate(globalRefManager.contentManager.GetRoomPrefabByName(selectedRoomName));
+						ContainedRoom cr = Instantiate(GetRoomPrefab(selectedRoomName));
 						cr.globalRefManager = globalRefManager;
 						cr.transform.SetParent(currentlySelectedRoom.transform);
 						cr.activeAndEnabled = false;
@@ -133,7 +143,7 @@ public class BaseManager : MonoBehaviour
 						if (Input.GetMouseButtonDown(0) && !colliding && nodeConditionsMet) //place a copy of the ghost room at the postion if possible
 						{
 							globalRefManager.audioManager.Play("little_click");
-							ContainedRoom cr = TryCreateRoomAtPos(new Vector2Int(Mathf.RoundToInt(currentlySelectedRoom.transform.position.x), Mathf.RoundToInt(currentlySelectedRoom.transform.position.y)), globalRefManager.contentManager.GetRoomPrefabByName(selectedRoomName));
+							ContainedRoom cr = TryCreateRoomAtPos(new Vector2Int(Mathf.RoundToInt(currentlySelectedRoom.transform.position.x), Mathf.RoundToInt(currentlySelectedRoom.transform.position.y)), GetRoomPrefab(selectedRoomName));
 							Destroy(currentlySelectedRoom.transform.GetChild(0).gameObject);
 						}
 					}
@@ -326,5 +336,10 @@ public class BaseManager : MonoBehaviour
 		}
 
 		return newGen;
+	}
+
+	public ContainedRoom GetRoomPrefab(string calllbackID)
+	{
+		return roomPrefabCatalog.ContainsKey(calllbackID) ? roomPrefabCatalog[calllbackID] : null;
 	}
 }
