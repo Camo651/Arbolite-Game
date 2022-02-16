@@ -107,8 +107,8 @@ public class InterfaceManager : MonoBehaviour
 		if (enabled)
 		{
 			worldPosHoverHUD.transform.position = hoverHudOffset + globalRefManager.baseManager.editModePermSelectedRoomTile.transform.position;
-			worldPosHoverHUD.interfaceName.text = rt.tileType.tileTypeName;
-			worldPosHoverHUD.interfaceDescription.text = rt.tileType.tileInformation;
+			worldPosHoverHUD.interfaceName.text = globalRefManager.langManager.GetTranslation("name_"+rt.roomContainer.tileNameCallbackID.ToLower());
+			worldPosHoverHUD.interfaceDescription.text = globalRefManager.langManager.GetTranslation("info_" + rt.roomContainer.tileNameCallbackID.ToLower());
 		}
 		else
 		{

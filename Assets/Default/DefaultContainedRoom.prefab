@@ -43,5 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d196d09a5686d44872af4d99c725ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  globalRefManager: {fileID: 0}
   roomDimensions: {x: 1, y: 1}
-  ContainedRoomName: 
+  activeAndEnabled: 0
+  isNaturalTerrainTile: 0
+  tileNameCallbackID: room_default
+  tileInformation: 
+  containedRooms:
+  - {fileID: 0}

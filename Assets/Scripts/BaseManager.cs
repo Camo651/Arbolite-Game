@@ -19,6 +19,7 @@ public class BaseManager : MonoBehaviour
 	public ContainedRoom[] roomsToDelete;
 	Vector2 smoothCursorMovementDamp;
 	public Dictionary<string, ContainedRoom> roomPrefabCatalog;
+	public ContainedRoom defaultRoomTile;
 
 	public enum PlayerState
 	{
@@ -31,12 +32,10 @@ public class BaseManager : MonoBehaviour
 	{
 
 		ContainedRoom[] unsortedRooms = Resources.LoadAll<ContainedRoom>("");
-		print(unsortedRooms.Length);
 		roomPrefabCatalog = new Dictionary<string, ContainedRoom>();
 		foreach (ContainedRoom item in unsortedRooms)
 		{
-			print(item.name);
-			roomPrefabCatalog.Add(item.callbackID, item);
+			roomPrefabCatalog.Add(item.tileNameCallbackID.ToLower(), item);
 		}
 	}
 
@@ -79,7 +78,13 @@ public class BaseManager : MonoBehaviour
 					if (currentlySelectedRoom.transform.childCount == 0)
 					{
 						currentlySelectedRoom.gameObject.SetActive(true);
-						ContainedRoom cr = Instantiate(GetRoomPrefab(selectedRoomName));
+						ContainedRoom prefab = GetRoomPrefab(selectedRoomName);
+						if(prefab == null)
+						{
+							SetPlayerState(PlayerState.PlayerMode);
+							return;
+						}
+						ContainedRoom cr = Instantiate(prefab.gameObject).GetComponent<ContainedRoom>();
 						cr.globalRefManager = globalRefManager;
 						cr.transform.SetParent(currentlySelectedRoom.transform);
 						cr.activeAndEnabled = false;
@@ -102,7 +107,7 @@ public class BaseManager : MonoBehaviour
 							foreach (RoomTile room in contRoom.containedRooms)
 							{
 								room.spriteRenderer.sortingOrder = 10;
-								int[] roomNodeStates = { room.tileType.topNodeState, room.tileType.rightNodeState, room.tileType.bottomNodeState, room.tileType.leftNodeState };
+								int[] roomNodeStates = { room.topNodeState, room.rightNodeState, room.bottomNodeState, room.leftNodeState };
 								for (int i = 0; i < 4; i++)
 								{
 									RoomTile other = GetRoomAtPosition(room.GetTrueTilePosition() + room.offsets[i]);
@@ -112,7 +117,7 @@ public class BaseManager : MonoBehaviour
 									if (other != null)
 									{
 
-										int[] otherNodeStates = { other.tileType.bottomNodeState, other.tileType.leftNodeState, other.tileType.topNodeState, other.tileType.rightNodeState };
+										int[] otherNodeStates = { other.bottomNodeState, other.leftNodeState, other.topNodeState, other.rightNodeState };
 										if (otherNodeStates[i] == 2)
 										{
 											otherHasLockedSideOnRoom = true;
@@ -206,7 +211,7 @@ public class BaseManager : MonoBehaviour
 			string deletion = "";
 			foreach (ContainedRoom c in roomsThatWillBeDestroyed)
 			{
-				deletion += c.containedRooms[0].tileType.tileTypeName + ", ";
+				deletion += globalRefManager.langManager.GetTranslation(c.tileNameCallbackID.ToLower()) + ", ";
 			}
 			deletion = deletion.Substring(0, deletion.Length - 2);
 			globalRefManager.interfaceManager.SetMajorInterface("ConfirmDelete");
@@ -258,7 +263,7 @@ public class BaseManager : MonoBehaviour
 				RoomTile other = GetRoomAtPosition(room.GetTrueTilePosition() + room.offsets[i]);
 				if (other != null)
 				{
-					int[] otherNodeStates = { other.tileType.bottomNodeState, other.tileType.leftNodeState, other.tileType.topNodeState, other.tileType.rightNodeState };
+					int[] otherNodeStates = { other.bottomNodeState, other.leftNodeState, other.topNodeState, other.rightNodeState };
 					if (otherNodeStates[i] == 1)
 					{
 						if (!roomsThatWillBeDestroyed.Contains(other.roomContainer))
@@ -318,7 +323,7 @@ public class BaseManager : MonoBehaviour
 		newGen.transform.position = new Vector3(pos.x, pos.y, 0f);
 		newGen.transform.SetParent(transform);
 		newGen.activeAndEnabled = true;
-		newGen.isNaturalTerrainTile = (newGen.containedRooms[0].tileType == globalRefManager.terrainManager.Dirt.containedRooms[0].tileType) || (newGen.containedRooms[0].tileType == globalRefManager.terrainManager.Bedrock.containedRooms[0].tileType);
+		newGen.isNaturalTerrainTile = roomPrefab.isNaturalTerrainTile;
 		globalUpdateID++;
 		foreach (RoomTile tile in newGen.containedRooms)
 		{
@@ -330,7 +335,7 @@ public class BaseManager : MonoBehaviour
 					roomIndexingVectors[roomIndexingVectors.Count - 1].Add(null);
 			}
 			roomIndexingVectors[tile.GetIndexdTilePosition().y][tile.GetIndexdTilePosition().x] = tile;
-			tile.transform.name = "Room " + tile.GetTrueTilePosition().x + ", " + tile.GetTrueTilePosition().y + " of " + tile.roomContainer.callbackID;
+			tile.transform.name = "Room " + tile.GetTrueTilePosition().x + ", " + tile.GetTrueTilePosition().y + " of " + tile.roomContainer.tileNameCallbackID;
 		}
 		//auto updates the tiles around it, but not the full map
 		foreach (RoomTile tile in newGen.containedRooms)
@@ -341,8 +346,20 @@ public class BaseManager : MonoBehaviour
 		return newGen;
 	}
 
+	/// <summary>
+	/// Get a room by its callback ID. Will throw a modal error if the ID is invalid
+	/// </summary>
+	/// <param name="calllbackID"></param>
+	/// <returns>the room, given that it exists</returns>
 	public ContainedRoom GetRoomPrefab(string calllbackID)
 	{
-		return roomPrefabCatalog.ContainsKey(calllbackID) ? roomPrefabCatalog[calllbackID] : null;
+		calllbackID = calllbackID.ToLower();
+		if (roomPrefabCatalog.ContainsKey(calllbackID))
+			return roomPrefabCatalog[calllbackID];
+		else
+		{
+			globalRefManager.interfaceManager.SetMajorInterface("Error");
+			return null;
+		}
 	}
 }

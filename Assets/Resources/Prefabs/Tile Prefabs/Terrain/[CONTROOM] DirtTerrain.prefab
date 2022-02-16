@@ -44,11 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 568a1e1e4ef87424d8337f3122e1d5a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileType: {fileID: 11400000, guid: fb38a538c511ca74480fcd4853b4d31b, type: 2}
+  topNodeState: 0
+  rightNodeState: 0
+  bottomNodeState: 1
+  leftNodeState: 0
   roomContainer: {fileID: 1276427737369093462}
   neighborRooms: []
   neighborWelds: 00000000
   previousUpdateID: 0
+  spriteRenderer: {fileID: 0}
 --- !u!212 &4763640942786254748
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -144,8 +148,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d196d09a5686d44872af4d99c725ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  globalRefManager: {fileID: 0}
   roomDimensions: {x: 1, y: 1}
-  ContainedRoomName: DirtTerrain
-  baseManager: {fileID: 0}
+  callbackID: 
+  activeAndEnabled: 0
+  isNaturalTerrainTile: 1
+  tileNameCallbackID: tile_dirt
+  tileInformation: dirt?
   containedRooms:
   - {fileID: 8947993335471281117}

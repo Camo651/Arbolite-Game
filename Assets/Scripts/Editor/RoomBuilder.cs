@@ -11,7 +11,7 @@ public class RoomBuilder : Editor
 		ContainedRoom cont = (ContainedRoom)target;
 		if(cont.transform.childCount == 0)
 		{
-			cont.callbackID = EditorGUILayout.TextField("Catalog Callback ID", cont.callbackID);
+			cont.tileNameCallbackID = EditorGUILayout.TextField("Catalog Callback ID", cont.tileNameCallbackID);
 			GUILayout.Space(10);
 			cont.roomDimensions.x = EditorGUILayout.IntSlider("Room Width", cont.roomDimensions.x, 1, 10);
 			cont.roomDimensions.y = EditorGUILayout.IntSlider("Room Height", cont.roomDimensions.y, 1, 10);
@@ -19,15 +19,22 @@ public class RoomBuilder : Editor
 			//makes a new room and preloads it with tiles
 			if (GUILayout.Button("Generate Room"))
 			{
+				//guard clause to prevent data corruption in prefabs
+				if (!((ContainedRoom)target).gameObject.scene.IsValid())
+				{
+					Debug.LogWarning("Cannot edit prefabs outside of the scene view");
+					return;
+				}
+
 				Vector2Int size = cont.roomDimensions;
 				cont.containedRooms = new List<RoomTile>();
 				for (int y = size.y-1; y >= 0; y--)
 				{
 					for (int x = 0; x < size.x; x++)
 					{
-						RoomTile a = new GameObject("Room " + x + ", " + y + " of " + cont.callbackID).AddComponent<RoomTile>();
+						RoomTile a = new GameObject("Room " + x + ", " + y + " of " + cont.tileNameCallbackID).AddComponent<RoomTile>();
 						cont.containedRooms.Add(a);
-						a.tileType = (SO_TileType)AssetDatabase.LoadAssetAtPath("Assets/ScriptableObjects/TileTypes/DefaultTile.asset", typeof(SO_TileType));
+						//a.tileType = (SO_TileType)AssetDatabase.LoadAssetAtPath("Assets/ScriptableObjects/TileTypes/DefaultTile.asset", typeof(SO_TileType));
 						a.spriteRenderer = a.gameObject.AddComponent<SpriteRenderer>();
 						a.spriteRenderer.sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Square.png", typeof(Sprite));
 						a.transform.SetParent(cont.transform);
@@ -41,33 +48,39 @@ public class RoomBuilder : Editor
 		}
 		else
 		{
-			GUILayout.Label("Named: " + cont.callbackID + " | Width: " + cont.roomDimensions.x + " Height: " + cont.roomDimensions.y);
+			GUILayout.Label("Named: " + cont.tileNameCallbackID + " | Width: " + cont.roomDimensions.x + " Height: " + cont.roomDimensions.y);
 			GUILayout.Label("(Reset the Room To Edit)");
 
 
 			if (GUILayout.Button("Reset Room"))
 			{
+				//guard clause to prevent data corruption in prefabs
+				if (!((ContainedRoom)target).gameObject.scene.IsValid())
+				{
+					Debug.LogWarning("Cannot reset prefabs outside of the scene view");
+					return;
+				}
 				ResetRoom(cont);
 			}
 
 			//gives a layout for tile types to make it easier to edit them on the fly
-			for (int y = 0; y < cont.roomDimensions.y; y++)
-			{
-				GUILayout.BeginHorizontal();
-				for (int x = 0; x < cont.roomDimensions.x; x++)
-				{
-					if(cont.containedRooms != null)
-					{
-						int index = x + (y * cont.roomDimensions.x);
-						cont.containedRooms[index].tileType = (SO_TileType)EditorGUILayout.ObjectField(cont.containedRooms[index].tileType, typeof(SO_TileType), false);
-						cont.containedRooms[index].spriteRenderer = cont.containedRooms[index].GetComponent<SpriteRenderer>();						if (cont.containedRooms[index].tileType != null)
-							cont.containedRooms[index].spriteRenderer.sprite = cont.containedRooms[index].tileType.backgroundSprite;
-						else
-							cont.containedRooms[index].spriteRenderer.sprite = null;
-					}
-				}
-				GUILayout.EndHorizontal();
-			}
+			//for (int y = 0; y < cont.roomDimensions.y; y++)
+			//{
+			//	GUILayout.BeginHorizontal();
+			//	for (int x = 0; x < cont.roomDimensions.x; x++)
+			//	{
+			//		if(cont.containedRooms != null)
+			//		{
+			//			int index = x + (y * cont.roomDimensions.x);
+			//			cont.containedRooms[index].tileType = (SO_TileType)EditorGUILayout.ObjectField(cont.containedRooms[index].tileType, typeof(SO_TileType), false);
+			//			cont.containedRooms[index].spriteRenderer = cont.containedRooms[index].GetComponent<SpriteRenderer>();						if (cont.containedRooms[index].tileType != null)
+			//				cont.containedRooms[index].spriteRenderer.sprite = cont.containedRooms[index].tileType.backgroundSprite;
+			//			else
+			//				cont.containedRooms[index].spriteRenderer.sprite = null;
+			//		}
+			//	}
+			//	GUILayout.EndHorizontal();
+			//}
 			GUILayout.FlexibleSpace();
 		}
 
@@ -79,6 +92,6 @@ public class RoomBuilder : Editor
 			DestroyImmediate(cont.transform.GetChild(0).gameObject, false);
 		cont.transform.name = "EMPTY ROOM";
 		cont.roomDimensions = Vector2Int.one;
-		cont.callbackID = "";
+		cont.tileNameCallbackID = "";
 	}
 }

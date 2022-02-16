@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class RoomTile : MonoBehaviour
 {
-	public SO_TileType tileType;
+	private Color[] nodeColourStates = { Color.yellow, Color.green, Color.red, Color.blue };
+	[Header("0-Meh|1-Alw|2-Nev|3-Aes")]
+	[Range(0, 3)] public int topNodeState;
+	[Range(0,3)] public int rightNodeState, bottomNodeState, leftNodeState;
 	public ContainedRoom roomContainer;
 	public RoomTile[] neighborRooms;
 	public bool[] neighborWelds; //up right down left
@@ -19,7 +22,6 @@ public class RoomTile : MonoBehaviour
 	{
 		//set the current room's sprite
 		spriteRenderer = GetComponent<SpriteRenderer>();
-		spriteRenderer.sprite = tileType.backgroundSprite;
 
 		//re-establish connection with the surrounding tiles
 		neighborRooms = new RoomTile[4];
@@ -40,18 +42,17 @@ public class RoomTile : MonoBehaviour
 		//as it stands: natural tiles get smoothed textures
 		if (roomContainer.isNaturalTerrainTile)
 		{
-			SO_TileType newTile;
+			Sprite newTile;
 			switch (neighborRooms[0] != null, neighborRooms[1] != null, neighborRooms[2] != null, neighborRooms[3] != null)
 			{
-				case (false, true, true, false): newTile = roomContainer.globalRefManager.terrainManager.DirtRight; break;
-				case (false, false, true, true): newTile = roomContainer.globalRefManager.terrainManager.DirtLeft; break;
-				case (false, false, true, false): newTile = roomContainer.globalRefManager.terrainManager.DirtSmall; break;
-				default: newTile = roomContainer.globalRefManager.terrainManager.Dirt.containedRooms[0].tileType; break;
+				case (false, true, true, false): newTile = roomContainer.globalRefManager.terrainManager.DirtRightSprite; break;
+				case (false, false, true, true): newTile = roomContainer.globalRefManager.terrainManager.DirtLeftSprite; break;
+				case (false, false, true, false): newTile = roomContainer.globalRefManager.terrainManager.DirtSmallSprite; break;
+				default: newTile = roomContainer.globalRefManager.terrainManager.DirtFullSprite; break;
 			}
 			if (neighborRooms[0] != null)
-				newTile = roomContainer.globalRefManager.terrainManager.Bedrock.containedRooms[0].tileType;
-			tileType = newTile;
-			spriteRenderer.sprite = newTile.backgroundSprite;
+				newTile = roomContainer.globalRefManager.terrainManager.BedrockSprite;
+			spriteRenderer.sprite = newTile;
 		}
 	}
 
@@ -77,6 +78,22 @@ public class RoomTile : MonoBehaviour
 	public Vector2Int GetIndexdTilePosition()
 	{
 		return new Vector2Int(Mathf.RoundToInt(transform.position.x + (roomContainer.globalRefManager.terrainManager.terrainWidth / 2)), Mathf.RoundToInt(transform.position.y + roomContainer.globalRefManager.terrainManager.terrainBottomLayer));
+	}
+
+	public void OnDrawGizmos()
+	{
+		float dist = .7f, rad = .08f;
+		Gizmos.color = neighborWelds[0]?Color.black:nodeColourStates[topNodeState];
+		Gizmos.DrawSphere(Vector3.up*dist, rad);
+
+		Gizmos.color = neighborWelds[1] ? Color.black : nodeColourStates[rightNodeState];
+		Gizmos.DrawSphere(Vector3.right*dist, rad);
+
+		Gizmos.color = neighborWelds[2] ? Color.black : nodeColourStates[bottomNodeState];
+		Gizmos.DrawSphere(Vector3.down*dist, rad);
+
+		Gizmos.color = neighborWelds[3] ? Color.black : nodeColourStates[leftNodeState];
+		Gizmos.DrawSphere(Vector3.left*dist, rad);
 	}
 }
 

@@ -2498,11 +2498,12 @@ MonoBehaviour:
   currentlySelectedRoom: {fileID: 412323067}
   placementColourAllow: {r: 0.51436454, g: 0.6698113, b: 0.5336898, a: 1}
   placementColourDeny: {r: 0.745283, g: 0.24186541, b: 0.24186541, a: 1}
-  selectedRoomName: Hallway
+  selectedRoomName: room_hallway
   editModeSelectedRoomTile: {fileID: 0}
   editModePermSelectedRoomTile: {fileID: 0}
   gameIsActivelyFrozen: 0
   roomsToDelete: []
+  defaultRoomTile: {fileID: 0}
 --- !u!114 &998491156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2518,9 +2519,11 @@ MonoBehaviour:
   globalRefManager: {fileID: 0}
   Dirt: {fileID: 1276427737369093462, guid: 5221e0cd2926b5742934c8cec22121be, type: 3}
   Bedrock: {fileID: 8057671918482371835, guid: aa839b9cda98c234ebe312cfaccebd34, type: 3}
-  DirtSmall: {fileID: 11400000, guid: 68389a29730fe7a4b86f3eb33f0c0de9, type: 2}
-  DirtLeft: {fileID: 11400000, guid: cde373f81e3baef4ca9645fd470bc6ed, type: 2}
-  DirtRight: {fileID: 11400000, guid: 37f8a8c06d04c8344861eda2cac1d314, type: 2}
+  BedrockSprite: {fileID: 21300000, guid: 68996a8a3009a844aa64659b7c3e7358, type: 3}
+  DirtFullSprite: {fileID: 21300000, guid: da9d9c2890eab6d49a1300d7b9c7b9f8, type: 3}
+  DirtSmallSprite: {fileID: 21300000, guid: e8f6b87ab5489ba4fa3251c6786aba61, type: 3}
+  DirtLeftSprite: {fileID: 21300000, guid: 3eb2a18c4e23b9949bc6e582091be361, type: 3}
+  DirtRightSprite: {fileID: 21300000, guid: 90372c4ef9503ca4ab0fc2540f82c431, type: 3}
   terrainWidth: 200
   terrainBottomLayer: 0
   terrainRaiseBuffer: 5
@@ -2679,6 +2682,8 @@ MonoBehaviour:
   setModePlayer: 49
   setModeBuild: 50
   setModeEdit: 51
+  buildModeAllow: {r: 0, g: 0, b: 0, a: 0}
+  buildModeDeny: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &998491162
 MonoBehaviour:
   m_ObjectHideFlags: 0

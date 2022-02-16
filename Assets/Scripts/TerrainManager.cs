@@ -8,7 +8,7 @@ public class TerrainManager : MonoBehaviour
 
 	[HideInInspector] public GlobalRefManager globalRefManager;
 	public ContainedRoom Dirt, Bedrock;
-	public SO_TileType DirtSmall, DirtLeft, DirtRight;
+	public Sprite BedrockSprite, DirtFullSprite, DirtSmallSprite, DirtLeftSprite, DirtRightSprite;
 	public int terrainWidth, terrainBottomLayer, terrainRaiseBuffer, terrainPerlinAmplitude;
 	public float terrainFalloffThresh, terrainFalloffAmp;
 	public float timeOfDay, dayCycleLength, dayCount;

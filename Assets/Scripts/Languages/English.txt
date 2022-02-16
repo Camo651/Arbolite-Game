@@ -1,4 +1,6 @@
 en_us                          "English"
+
+< USER INTERFACE DEFINITIONS >
 no_translation_found           "does not exist for language"
 error_modal_title              "Oops!"
 error_modal_info               "An error occured somewhere! If this keeps happening please submit a bug report so the developers can fix it."
@@ -8,3 +10,13 @@ delete_modal_title             "Confirm Destruction?"
 confirm_button                 "Confirm"
 cancel_button                  "Cancel"
 successfully_destroyed_tiles   "Successfully Destroyed #0# Tiles"
+
+< TILE NAMES AND INFO >
+name_tile_bedrock              "Bedrock"
+info_tile_bedrock              "No, not minecraft"
+name_tile_dirt                 "Grass"
+info_tile_dirt                 "Ugly ass grass"
+
+< ROOM NAMES AND INFO >
+name_room_hallway              "Basic Hallway"
+info_room_hallway              "This is the info box for the hallway"

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Text.RegularExpressions;
 using System.Collections.Generic;
 
 public class LanguangeManager : MonoBehaviour
@@ -34,16 +35,30 @@ public class LanguangeManager : MonoBehaviour
 			LanguageOption langOpt = new LanguageOption();
 			langOpt.lookup = new Dictionary<string, string>();
 			string text = textAsset.text;
+			text = Regex.Replace(text, "(<.*>)", "");
 			string[] parse = text.Split(textFormattingDelimiter);
 			langOpt.langID = CleanString(parse[0].Replace("\n", "").Replace(" ", ""));
 			langOpt.langNativeName = parse[1].Replace("\n", "").Replace(System.Environment.NewLine, "");
 			for (int i = 2; i < parse.Length-1; i++)
 			{
-				string key = parse[i].Replace("\n", "").Replace(" ", "");
+				string key = CleanString(parse[i].Replace("\n", "").Replace(" ", ""));
 				i++;
 				string val = parse[i].Replace("\n", "");
 
-				langOpt.lookup.Add(CleanString(key.Replace("\n", "").Replace(" ", "")), val);
+				//check to see if this line is a comment
+				if (!key.StartsWith("<"))
+				{
+					//choose to add new key or mod old
+					if (!langOpt.lookup.ContainsKey(key))
+					{
+						langOpt.lookup.Add(key, val);
+					}
+					else
+					{
+						langOpt.lookup[key] = val;
+					}
+				}
+
 			}
 			allLanguageOptions.Add(langOpt);
 		}
@@ -72,7 +87,7 @@ public class LanguangeManager : MonoBehaviour
 
 		if (currentLanguage.lookup.ContainsKey(callbackID))
 			return currentLanguage.lookup[callbackID];
-		return "ERROR: '" + callbackID + "' FOR "+currentLanguage.langID +" NOT FOUND";
+		return callbackID + "' not found for " + currentLanguage.langID;
 	}
 
 

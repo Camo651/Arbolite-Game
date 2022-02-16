@@ -6,9 +6,9 @@ public class ContainedRoom : MonoBehaviour
 {
 	public GlobalRefManager globalRefManager;
 	[HideInInspector]public Vector2Int roomDimensions;
-	[HideInInspector]public string callbackID;
 	public bool activeAndEnabled;
 	public bool isNaturalTerrainTile;
+	public string tileNameCallbackID;
 	public List<RoomTile> containedRooms;
 
 

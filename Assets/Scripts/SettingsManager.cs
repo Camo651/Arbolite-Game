@@ -37,6 +37,10 @@ public class SettingsManager : MonoBehaviour
 	public KeyCode openPauseMenu, openHomeMenu;
 	public KeyCode setModePlayer, setModeBuild, setModeEdit;
 
+	//colours
+	public Color buildModeAllow;
+	public Color buildModeDeny;
+
 	public void UpdateSettings()
 	{
 		musicVolume = 1f;
