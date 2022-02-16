@@ -2,21 +2,21 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="210mm"
    height="297mm"
    viewBox="0 0 210 297"
    version="1.1"
    id="svg8"
-   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
-   sodipodi:docname="ModelSheet.svg"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:dc="http://purl.org/dc/elements/1.1/">
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="ModelSheet.svg">
   <defs
      id="defs2">
     <linearGradient
@@ -140,16 +140,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.17792442"
-     inkscape:cx="32156.912"
-     inkscape:cy="8028.6898"
+     inkscape:zoom="0.35584884"
+     inkscape:cx="32794.176"
+     inkscape:cy="-6224.2125"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1001"
-     inkscape:window-x="-9"
-     inkscape:window-y="-9"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="892"
      inkscape:window-maximized="1"
      showborder="false"
      inkscape:pagecheckerboard="0"
@@ -951,7 +951,7 @@
        transform="matrix(0.7860946,0,0,1.0971639,1873.6354,-99.409196)" />
     <path
        sodipodi:type="star"
-       style="opacity:1;fill:#6bb3b3;fill-opacity:1;stroke:none;stroke-width:15.30609322;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:15.30609322;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
        id="path1256-6-32"
        sodipodi:sides="3"
        sodipodi:cx="8482.4697"
@@ -964,9 +964,11 @@
        inkscape:rounded="0"
        inkscape:randomized="0"
        d="m 8517.729,1031.3643 -35.2593,0 -35.2593,0 17.6297,-30.5355 17.6296,-30.53542 17.6297,30.53542 z"
-       inkscape:transform-center-x="1.9329243e-05"
-       inkscape:transform-center-y="-11.167518"
-       transform="matrix(0.7860946,0,0,1.0971639,1783.6658,-162.94714)" />
+       inkscape:transform-center-x="-0.00021984565"
+       inkscape:transform-center-y="-25.137491"
+       transform="matrix(2.1387787,0,0,2.4696541,-9389.3074,-660.45403)"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
     <path
        sodipodi:type="star"
        style="opacity:1;fill:#6bb3b3;fill-opacity:1;stroke:none;stroke-width:15.30609322;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
@@ -1326,18 +1328,31 @@
          id="tspan1008">1</tspan></text>
     <g
        id="g1581"
-       style="stroke-width:25;stroke-miterlimit:4;stroke-dasharray:none;stroke:#0d0d0d;stroke-opacity:1"
+       style="stroke:#0d0d0d;stroke-width:25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        inkscape:export-filename="C:\Users\camoc\Desktop\Code\Repos\BuildingGameProject\Assets\g1581.png"
        inkscape:export-xdpi="96"
-       inkscape:export-ydpi="96">
+       inkscape:export-ydpi="96"
+       transform="translate(330.12613,-121.19495)">
       <path
-         style="fill:none;stroke:#0d0d0d;stroke-width:25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+         style="fill:none;stroke:#0d0d0d;stroke-width:25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          d="m 8068.5827,2156.2591 v -182.2386 l 139.2298,-80.3844"
-         id="path1494" />
+         id="path1494"
+         inkscape:connector-curvature="0" />
       <path
-         style="fill:none;stroke:#0d0d0d;stroke-width:25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+         style="fill:none;stroke:#0d0d0d;stroke-width:25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          d="m 8068.5827,1974.0205 -78.7906,-45.4897"
-         id="path1496" />
+         id="path1496"
+         inkscape:connector-curvature="0" />
     </g>
+    <rect
+       style="fill:#2e4b3c;fill-opacity:1;stroke:none;stroke-width:27.43830109;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect816-8-89-4"
+       width="264.58337"
+       height="264.58337"
+       x="16393.184"
+       y="2049.0078"
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\UnityProjects\BuildingGameProject\Assets\Images\Tiles\Terrain\GHrassTexturepng.png"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985" />
   </g>
 </svg>

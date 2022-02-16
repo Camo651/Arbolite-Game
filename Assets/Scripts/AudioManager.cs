@@ -16,7 +16,7 @@ public class AudioManager : MonoBehaviour
 
 	private void Start()
 	{
-		SO_AudioType[] allAssetClips = Resources.FindObjectsOfTypeAll<SO_AudioType>();
+		SO_AudioType[] allAssetClips = Resources.LoadAll<SO_AudioType>("");
 		assetClipLookup = new Dictionary<string, SO_AudioType>();
 		backgroundMusics = new List<string>();
 		foreach (SO_AudioType item in allAssetClips)

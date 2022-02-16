@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
@@ -16,7 +14,7 @@ public class CustomEditorStuff : Editor
 	[MenuItem("GameObject/Create Other/Room Container")]
 	public static void CreateNewRoom()
 	{
-		GameObject a = Instantiate((GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Default/EMPTY ROOM.prefab", typeof(GameObject)));
+		GameObject a = Instantiate((GameObject)AssetDatabase.LoadAssetAtPath("Assets/Default/DefaultContainedRoom.prefab", typeof(GameObject)));
 		a.transform.name = "Empty Room";
 		Selection.activeGameObject = a;
 	}

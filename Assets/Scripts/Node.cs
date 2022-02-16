@@ -13,7 +13,8 @@ public class Node : MonoBehaviour
 
 	private void OnDrawGizmos()
 	{
-		Gizmos.color = Color.cyan;
+		Gizmos.color = nodeToColour[(int)nodeType] - new Color(0, 0, 0, .5f);
 		Gizmos.DrawSphere(transform.position, .05f);
 	}
+	private Color[] nodeToColour = { Color.black, Color.cyan, Color.yellow };
 }

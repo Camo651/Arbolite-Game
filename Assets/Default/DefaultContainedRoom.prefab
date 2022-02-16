@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 843852744348494014}
   - component: {fileID: 843852744348494015}
   m_Layer: 0
-  m_Name: EMPTY ROOM
+  m_Name: DefaultContainedRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

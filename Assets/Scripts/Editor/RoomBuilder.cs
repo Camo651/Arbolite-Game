@@ -11,7 +11,7 @@ public class RoomBuilder : Editor
 		ContainedRoom cont = (ContainedRoom)target;
 		if(cont.transform.childCount == 0)
 		{
-			cont.ContainedRoomName = EditorGUILayout.TextField("Room Name", cont.ContainedRoomName);
+			cont.callbackID = EditorGUILayout.TextField("Catalog Callback ID", cont.callbackID);
 			GUILayout.Space(10);
 			cont.roomDimensions.x = EditorGUILayout.IntSlider("Room Width", cont.roomDimensions.x, 1, 10);
 			cont.roomDimensions.y = EditorGUILayout.IntSlider("Room Height", cont.roomDimensions.y, 1, 10);
@@ -19,15 +19,13 @@ public class RoomBuilder : Editor
 			//makes a new room and preloads it with tiles
 			if (GUILayout.Button("Generate Room"))
 			{
-				cont.transform.name = "[CONTROOM] " + cont.ContainedRoomName;
-
 				Vector2Int size = cont.roomDimensions;
 				cont.containedRooms = new List<RoomTile>();
 				for (int y = size.y-1; y >= 0; y--)
 				{
 					for (int x = 0; x < size.x; x++)
 					{
-						RoomTile a = new GameObject("Room " + x + ", " + y + " of " + cont.ContainedRoomName).AddComponent<RoomTile>();
+						RoomTile a = new GameObject("Room " + x + ", " + y + " of " + cont.callbackID).AddComponent<RoomTile>();
 						cont.containedRooms.Add(a);
 						a.tileType = (SO_TileType)AssetDatabase.LoadAssetAtPath("Assets/ScriptableObjects/TileTypes/DefaultTile.asset", typeof(SO_TileType));
 						a.spriteRenderer = a.gameObject.AddComponent<SpriteRenderer>();
@@ -43,7 +41,7 @@ public class RoomBuilder : Editor
 		}
 		else
 		{
-			GUILayout.Label("Named: " + cont.ContainedRoomName + " | Width: " + cont.roomDimensions.x + " Height: " + cont.roomDimensions.y);
+			GUILayout.Label("Named: " + cont.callbackID + " | Width: " + cont.roomDimensions.x + " Height: " + cont.roomDimensions.y);
 			GUILayout.Label("(Reset the Room To Edit)");
 
 
@@ -81,6 +79,6 @@ public class RoomBuilder : Editor
 			DestroyImmediate(cont.transform.GetChild(0).gameObject, false);
 		cont.transform.name = "EMPTY ROOM";
 		cont.roomDimensions = Vector2Int.one;
-		cont.ContainedRoomName = "";
+		cont.callbackID = "";
 	}
 }

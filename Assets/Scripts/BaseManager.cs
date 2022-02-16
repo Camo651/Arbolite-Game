@@ -29,14 +29,14 @@ public class BaseManager : MonoBehaviour
 
 	private void Start()
 	{
-		Resources.LoadAll<ContainedRoom>("Assets/Prefabs");
-		ContainedRoom[] unsortedRooms = Resources.FindObjectsOfTypeAll<ContainedRoom>();
+
+		ContainedRoom[] unsortedRooms = Resources.LoadAll<ContainedRoom>("");
 		print(unsortedRooms.Length);
 		roomPrefabCatalog = new Dictionary<string, ContainedRoom>();
 		foreach (ContainedRoom item in unsortedRooms)
 		{
 			print(item.name);
-			roomPrefabCatalog.Add(item.ContainedRoomName, item);
+			roomPrefabCatalog.Add(item.callbackID, item);
 		}
 	}
 
@@ -330,7 +330,7 @@ public class BaseManager : MonoBehaviour
 					roomIndexingVectors[roomIndexingVectors.Count - 1].Add(null);
 			}
 			roomIndexingVectors[tile.GetIndexdTilePosition().y][tile.GetIndexdTilePosition().x] = tile;
-			tile.transform.name = "Room " + tile.GetTrueTilePosition().x + ", " + tile.GetTrueTilePosition().y + " of " + tile.roomContainer.ContainedRoomName;
+			tile.transform.name = "Room " + tile.GetTrueTilePosition().x + ", " + tile.GetTrueTilePosition().y + " of " + tile.roomContainer.callbackID;
 		}
 		//auto updates the tiles around it, but not the full map
 		foreach (RoomTile tile in newGen.containedRooms)

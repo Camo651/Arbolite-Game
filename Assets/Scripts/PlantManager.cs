@@ -31,6 +31,9 @@ public class PlantManager : MonoBehaviour
 	public ProceduralPlant GenerateNewPlant()
 	{
 		ProceduralPlant newPlant = Instantiate(defaultPlantPrefab).GetComponent<ProceduralPlant>();
+		//nodes.AddRange(GetComponentsInChildren<Node>());
+
+
 
 		return newPlant;
 	}

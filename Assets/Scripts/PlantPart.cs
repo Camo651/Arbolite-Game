@@ -22,16 +22,11 @@ public class PlantPart : MonoBehaviour
 		Fruit,
 	}
 
-	private void Awake()
-	{
-		nodes.AddRange(GetComponentsInChildren<Node>());
-	}
-
-
 	private void OnDrawGizmos()
 	{
-		Gizmos.color = Color.red;
+		Gizmos.color = Color.red - new Color(0, 0, 0, .5f);
 		Gizmos.DrawSphere(transform.position, .1f);
+		Gizmos.DrawSphere(transform.position, .02f);
 	}
 
 }
