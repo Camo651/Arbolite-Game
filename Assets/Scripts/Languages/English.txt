@@ -20,3 +20,9 @@ info_tile_dirt                 "Ugly ass grass"
 < ROOM NAMES AND INFO >
 name_room_hallway              "Basic Hallway"
 info_room_hallway              "This is the info box for the hallway"
+
+< ITEM NAMES >
+wood                           "Wood"
+fruit                          "Fruit"
+fungus                         "Fungus"
+berry                          "Berries"

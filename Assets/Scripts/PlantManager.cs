@@ -34,11 +34,10 @@ public class PlantManager : MonoBehaviour
 		//nodes.AddRange(GetComponentsInChildren<Node>());
 
 
-
 		return newPlant;
 	}
 
-	public PlantPart GetPlantPartPrefab(PlantPart.PartType type)
+	public PlantPart GetRandomPlantPartPrefab(PlantPart.PartType type)
 	{
 		if (plantPartCatalog.ContainsKey(type))
 		{

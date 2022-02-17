@@ -9,6 +9,8 @@ public class ProceduralPlant : MonoBehaviour
 	public string plantFullName;
 	public SO_BiomeType plantBiome;
 	public SO_ResourceType[] plantResourceComposition;
+	public Vector2[] resourceCompositionDistribution;
+	public PlantPart.LeafType[] leafTypes;
 
 
 	public enum PlantType

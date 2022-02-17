@@ -10,6 +10,7 @@ public class PlantPart : MonoBehaviour
 {
 	public string partName;
 	public PartType partType;
+	[HideInInspector]public LeafType leafType;
 	public List<Node> nodes;
 
 	public enum PartType
@@ -17,9 +18,14 @@ public class PlantPart : MonoBehaviour
 		Unused,
 		Base,
 		Branches,
-		Leaves,
+		Leaf,
+		Produce,
+	}
+	public enum LeafType
+	{
+		None,
 		MushroomCap,
-		Fruit,
+		Triangle,
 	}
 
 	private void OnDrawGizmos()

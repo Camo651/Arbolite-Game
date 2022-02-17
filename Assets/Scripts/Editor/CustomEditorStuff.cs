@@ -6,7 +6,7 @@ public class CustomEditorStuff : Editor
 	[MenuItem("GameObject/Create Other/Plant Part")]
 	public static void CreateNewPlant()
 	{
-		GameObject a = Instantiate((GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Default/DefaultPlantPart.prefab", typeof(GameObject)));
+		GameObject a = Instantiate((GameObject)AssetDatabase.LoadAssetAtPath("Assets/Default/DefaultPlantPart.prefab", typeof(GameObject)));
 		a.transform.name = "DefaultPlantPart";
 		Selection.activeGameObject = a;
 	}
