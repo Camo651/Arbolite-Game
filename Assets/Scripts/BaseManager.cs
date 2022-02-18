@@ -341,6 +341,7 @@ public class BaseManager : MonoBehaviour
 		foreach (RoomTile tile in newGen.containedRooms)
 		{
 			tile.UpdateTile(true);
+			tile.StartGeneration();
 		}
 
 		return newGen;

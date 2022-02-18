@@ -12,12 +12,10 @@ public class ProceduralPlant : MonoBehaviour
 
 	//Genetics
 	public PlantType plantType;
-	public PlantPart.PartType basePartType;
+	public PlantPart.BaseType basePartType;
 	public SO_BiomeType plantBiome;
-	public SO_ResourceType[] plantResourceComposition;
-	public Vector2[] resourceCompositionDistribution;
-
-	public object[][] resourceComposition;
+	public List<SO_ResourceType> plantResourceComposition;
+	public List<int> resourceCompositionDistribution;
 	public PlantPart.LeafType[] leafTypes;
 
 

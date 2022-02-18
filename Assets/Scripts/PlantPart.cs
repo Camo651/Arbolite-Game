@@ -27,6 +27,14 @@ public class PlantPart : MonoBehaviour
 		MushroomCap,
 		Triangle,
 	}
+	public enum BaseType
+	{
+		None,
+		TinyStem,
+		Bush,
+		SmallTree,
+		ComplexTree,
+	}
 
 	private void OnDrawGizmos()
 	{

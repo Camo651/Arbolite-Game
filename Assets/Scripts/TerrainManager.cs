@@ -20,10 +20,23 @@ public class TerrainManager : MonoBehaviour
 	public Color[] parallaxLayerBaseColours;
 	public Color skytint;
 	public GameObject sunmoon;
+	public SO_BiomeType currentActiveBiome;
+	public SO_BiomeType defaultBiomeType;
+	public Dictionary<string, SO_BiomeType> allBiomes;
 
 
 	public void Start()
 	{
+		allBiomes = new Dictionary<string, SO_BiomeType>();
+		SO_BiomeType[] biomes = Resources.FindObjectsOfTypeAll<SO_BiomeType>();
+		foreach(SO_BiomeType item in biomes)
+		{
+			if (allBiomes.ContainsKey(item.biomeNameCallbackID))
+				allBiomes[item.biomeNameCallbackID] = item;
+			else
+				allBiomes.Add(item.biomeNameCallbackID, item);
+		}
+
 		//index all the background parallax layers
 		backgroundSprites = new List<List<SpriteRenderer>>();
 		foreach (GameObject layer in backgroundLayers)
@@ -123,5 +136,10 @@ public class TerrainManager : MonoBehaviour
 	private void Update()
 	{
 		PeripheralWorldHandle();
+	}
+
+	public SO_BiomeType GetBiomeType(string callbackID)
+	{
+		return allBiomes.ContainsKey(callbackID) ? allBiomes[callbackID] : defaultBiomeType;
 	}
 }

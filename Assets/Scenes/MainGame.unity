@@ -2577,6 +2577,8 @@ MonoBehaviour:
   - {r: 0.26815593, g: 0.4339623, b: 0.37500888, a: 1}
   skytint: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   sunmoon: {fileID: 1380286487}
+  currentActiveBiome: {fileID: 0}
+  defaultBiomeType: {fileID: 11400000, guid: 1948226f4047a9947b13590ef81d7b5a, type: 2}
 --- !u!114 &998491157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2591,6 +2593,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalRefManager: {fileID: 998491158}
   defaultPlantPrefab: {fileID: 8690457898226394015, guid: 7204def410a5da343a68391fb9ddc70a, type: 3}
+  defaultTreePreset: {fileID: 11400000, guid: 5f30fae4cd066a548ae885cf00bc1f6c, type: 2}
 --- !u!114 &998491158
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -20,12 +20,13 @@ public class RoomTile : MonoBehaviour
 	private readonly Color[] nodeColourStates = { Color.yellow, Color.green, Color.red, Color.blue };
 
 
-	private void Start()
+	public void StartGeneration()
 	{
 		childNodes = new List<Node>(GetComponentsInChildren<Node>());
-		if(childNodes.Count > 0 & Random.value<.5f)
+		if(childNodes.Count > 0 && Random.value<.5f)
 		{
-			//ProceduralPlant plant = roomContainer.globalRefManager.plantManager.GenerateNewPlant();
+			SO_TreePreset preset = roomContainer.globalRefManager.plantManager.GetTreePreset("Default");
+			ProceduralPlant plant = roomContainer.globalRefManager.plantManager.GenerateNewPlant(this, preset._plantType, preset._baseType, preset._biome, preset._resourcesTypes, preset._resourcesDistributions, preset._leaves);
 		}
 	}
 
