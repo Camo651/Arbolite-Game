@@ -36,6 +36,7 @@ public class RoomBuilder : Editor
 						cont.containedRooms.Add(a);
 						//a.tileType = (SO_TileType)AssetDatabase.LoadAssetAtPath("Assets/ScriptableObjects/TileTypes/DefaultTile.asset", typeof(SO_TileType));
 						a.spriteRenderer = a.gameObject.AddComponent<SpriteRenderer>();
+						a.spriteRenderer.sortingOrder = 5;
 						a.spriteRenderer.sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Square.png", typeof(Sprite));
 						a.transform.SetParent(cont.transform);
 						a.transform.position = new Vector2(x, y);

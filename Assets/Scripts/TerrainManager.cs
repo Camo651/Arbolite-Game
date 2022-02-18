@@ -37,7 +37,6 @@ public class TerrainManager : MonoBehaviour
 		globalRefManager.cameraController.cameraBounds.x = terrainWidth / -2f;
 		globalRefManager.cameraController.cameraBounds.y = terrainWidth / 2f;
 		GenerateTerrain();
-
 	}
 
 	//generate the initial tilemap with terrain tiles

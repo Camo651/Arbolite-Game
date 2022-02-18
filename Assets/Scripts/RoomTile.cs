@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RoomTile : MonoBehaviour
 {
-	private Color[] nodeColourStates = { Color.yellow, Color.green, Color.red, Color.blue };
 	[Header("0-Meh|1-Alw|2-Nev|3-Aes")]
 	[Range(0, 3)] public int topNodeState;
 	[Range(0,3)] public int rightNodeState, bottomNodeState, leftNodeState;
@@ -13,9 +12,23 @@ public class RoomTile : MonoBehaviour
 	public bool[] neighborWelds; //up right down left
 	public long previousUpdateID;
 	public SpriteRenderer spriteRenderer;
+	public List<Node> childNodes;
+
 
 	[HideInInspector] public readonly Vector2Int[] offsets = { Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left };
 	[HideInInspector] public readonly int[] inverseOffsets = { 2, 3, 0, 1 };
+	private readonly Color[] nodeColourStates = { Color.yellow, Color.green, Color.red, Color.blue };
+
+
+	private void Start()
+	{
+		childNodes = new List<Node>(GetComponentsInChildren<Node>());
+		if(childNodes.Count > 0 & Random.value<.5f)
+		{
+			//ProceduralPlant plant = roomContainer.globalRefManager.plantManager.GenerateNewPlant();
+		}
+	}
+
 
 	// updates the values for this tile based on its conditions
 	public void UpdateTile(bool updateNeighbors)

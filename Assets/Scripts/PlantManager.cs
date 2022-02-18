@@ -28,15 +28,36 @@ public class PlantManager : MonoBehaviour
 		defaultPlantPrefab = (GameObject)Resources.Load("Assets/Prefabs/Default/DefaultProceduralPlant.prefab");
 	}
 
-	public ProceduralPlant GenerateNewPlant()
+	/// <summary>
+	/// Handles the generation of an actual plant
+	/// </summary>
+	/// <returns>The newley generated plant</returns>
+	public ProceduralPlant GenerateNewPlant(ProceduralPlant.PlantType _plantType, PlantPart.PartType _baseType, SO_BiomeType _biome, object[][] _resources, PlantPart.LeafType[] _leaves)
 	{
-		ProceduralPlant newPlant = Instantiate(defaultPlantPrefab).GetComponent<ProceduralPlant>();
-		//nodes.AddRange(GetComponentsInChildren<Node>());
+		//make plant
+		//set all the genes
+		//generate the parts
+		//finish the parts based on genes
 
+		ProceduralPlant newPlant = Instantiate(defaultPlantPrefab).GetComponent<ProceduralPlant>();
+
+		newPlant.plantType = _plantType;
+		newPlant.basePartType = _baseType;
+		newPlant.plantBiome = _biome;
+		newPlant.resourceComposition = _resources;
+		newPlant.leafTypes = _leaves;
+
+		newPlant.plantParts = new List<PlantPart>();
+		Instantiate(GetRandomPlantPartPrefab(newPlant.basePartType).gameObject).GetComponent<PlantPart>();
 
 		return newPlant;
 	}
 
+	/// <summary>
+	/// Get a random plant part based on its type
+	/// </summary>
+	/// <param name="type"></param>
+	/// <returns>A plant part</returns>
 	public PlantPart GetRandomPlantPartPrefab(PlantPart.PartType type)
 	{
 		if (plantPartCatalog.ContainsKey(type))

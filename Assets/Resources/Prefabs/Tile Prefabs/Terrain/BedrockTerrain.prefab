@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 5911394051206180723}
   - component: {fileID: 8057671918482371835}
   m_Layer: 0
-  m_Name: '[CONTROOM] BedrockTerrain'
+  m_Name: BedrockTerrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

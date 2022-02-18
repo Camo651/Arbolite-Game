@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3021014511580192770
+--- !u!1 &1061592175472466446
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,83 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5397642914315071714}
-  - component: {fileID: 4278880974044732749}
-  - component: {fileID: 5098231323461371450}
+  - component: {fileID: 1061592175472466445}
+  - component: {fileID: 1061592175472466444}
   m_Layer: 0
-  m_Name: Room 0, 0 of Hallway
+  m_Name: DefaultNode(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5397642914315071714
+--- !u!4 &1061592175472466445
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3021014511580192770}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 1061592175472466446}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.453, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8801855632741766531}
+  m_Father: {fileID: 1061592175916882648}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4278880974044732749
+--- !u!114 &1061592175472466444
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3021014511580192770}
+  m_GameObject: {fileID: 1061592175472466446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03fb5b2cd043ec04283eab153f76c7f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeType: 3
+  needsToBeFulfilled: 0
+--- !u!1 &1061592175916882651
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1061592175916882648}
+  - component: {fileID: 1061592175916882650}
+  - component: {fileID: 1061592175916882649}
+  m_Layer: 0
+  m_Name: Room 0, 0 of DirtTerrain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1061592175916882648
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061592175916882651}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1061592175472466445}
+  m_Father: {fileID: 1061592176857397137}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1061592175916882650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061592175916882651}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 568a1e1e4ef87424d8337f3122e1d5a1, type: 3}
@@ -48,18 +94,18 @@ MonoBehaviour:
   rightNodeState: 0
   bottomNodeState: 1
   leftNodeState: 0
-  roomContainer: {fileID: 2111620679136429905}
+  roomContainer: {fileID: 1061592176857397138}
   neighborRooms: []
   neighborWelds: 00000000
   previousUpdateID: 0
-  spriteRenderer: {fileID: 5098231323461371450}
---- !u!212 &5098231323461371450
+  spriteRenderer: {fileID: 0}
+--- !u!212 &1061592175916882649
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3021014511580192770}
+  m_GameObject: {fileID: 1061592175916882651}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -104,7 +150,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &5779135731362213101
+--- !u!1 &1061592176857397139
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,37 +158,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8801855632741766531}
-  - component: {fileID: 2111620679136429905}
+  - component: {fileID: 1061592176857397137}
+  - component: {fileID: 1061592176857397138}
   m_Layer: 0
-  m_Name: TestHallway
+  m_Name: DirtTerrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8801855632741766531
+--- !u!4 &1061592176857397137
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5779135731362213101}
+  m_GameObject: {fileID: 1061592176857397139}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5397642914315071714}
+  - {fileID: 1061592175916882648}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2111620679136429905
+--- !u!114 &1061592176857397138
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5779135731362213101}
+  m_GameObject: {fileID: 1061592176857397139}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34d196d09a5686d44872af4d99c725ec, type: 3}
@@ -151,7 +197,7 @@ MonoBehaviour:
   globalRefManager: {fileID: 0}
   roomDimensions: {x: 1, y: 1}
   activeAndEnabled: 0
-  isNaturalTerrainTile: 0
-  tileNameCallbackID: Room_Hallway
+  isNaturalTerrainTile: 1
+  tileNameCallbackID: tile_dirt
   containedRooms:
-  - {fileID: 4278880974044732749}
+  - {fileID: 1061592175916882650}

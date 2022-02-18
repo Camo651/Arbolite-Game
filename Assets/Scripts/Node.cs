@@ -7,6 +7,7 @@ public class Node : MonoBehaviour
 		None,
 		BranchNode,
 		FeatureNode,
+		PlantSpot,
 	}
 	public NodeType nodeType;
 	public bool needsToBeFulfilled;
@@ -16,5 +17,5 @@ public class Node : MonoBehaviour
 		Gizmos.color = nodeToColour[(int)nodeType] - new Color(0, 0, 0, .5f);
 		Gizmos.DrawSphere(transform.position, .05f);
 	}
-	private Color[] nodeToColour = { Color.black, Color.cyan, Color.yellow };
+	private Color[] nodeToColour = { Color.black, Color.cyan, Color.yellow, Color.green, Color.red};
 }
