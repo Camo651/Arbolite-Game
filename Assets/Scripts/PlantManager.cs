@@ -16,7 +16,7 @@ public class PlantManager : MonoBehaviour
 
 	private void Awake()
 	{
-		PlantPart[] unsorted = Resources.FindObjectsOfTypeAll<PlantPart>();
+		PlantPart[] unsorted = Resources.LoadAll<PlantPart>("");
 		plantPartCatalog = new Dictionary<PlantPart.PartType, List<PlantPart>>();
 		foreach (PlantPart part in unsorted)
 		{
