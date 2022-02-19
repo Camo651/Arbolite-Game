@@ -18,15 +18,24 @@ public class CameraController : MonoBehaviour
 		if (!globalRefManager.baseManager.gameIsActivelyFrozen)
 		{
 			//Camera Zooming
-			if (Input.mouseScrollDelta.y != 0)
-				cameraZoomAccelereation = -Input.mouseScrollDelta.y;
+
+
+			if (globalRefManager.settingsManager.smoothCameraMovement)
+			{
+				if (Input.mouseScrollDelta.y != 0)
+					cameraZoomAccelereation = Input.mouseScrollDelta.y * (globalRefManager.settingsManager.invertScrollDirection ? 1f : -1f);
+				else
+				{
+					//stops the camera from deccelerating when it reaches a low enough speed
+					if (Mathf.Abs(cameraZoomAccelereation) > 0.1f)
+						cameraZoomAccelereation -= (cameraAccelSpeed * Time.deltaTime * Mathf.Sign(cameraZoomAccelereation));
+					else
+						cameraZoomAccelereation = 0f;
+				}
+			}
 			else
 			{
-				//stops the camera from deccelerating when it reaches a low enough speed
-				if (Mathf.Abs(cameraZoomAccelereation) > 0.1f)
-					cameraZoomAccelereation -= (cameraAccelSpeed * Time.deltaTime * Mathf.Sign(cameraZoomAccelereation));
-				else
-					cameraZoomAccelereation = 0f;
+				cameraZoomAccelereation = Input.mouseScrollDelta.y * (globalRefManager.settingsManager.invertScrollDirection ? 1f : -1f) * 20f;
 			}
 			mainCamera.orthographicSize = Mathf.Clamp(mainCamera.orthographicSize + (cameraZoomAccelereation * cameraZoomSpeed * Time.deltaTime), cameraZoomBounds.x, cameraZoomBounds.y);
 

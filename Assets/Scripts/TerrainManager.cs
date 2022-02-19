@@ -14,7 +14,7 @@ public class TerrainManager : MonoBehaviour
 	public float timeOfDay, dayCycleLength, dayCount;
 	public float timeOfDayNormalized;
 	public List<GameObject> backgroundLayers;
-	public float[] backgroundParallaxScales;
+	public Vector2[] backgroundParallaxScales;
 	private List<List<SpriteRenderer>> backgroundSprites;
 	public Gradient dayNightCycleTints;
 	public Color[] parallaxLayerBaseColours;
@@ -114,14 +114,14 @@ public class TerrainManager : MonoBehaviour
 		for (int layer = 0; layer < backgroundSprites.Count; layer++)
 		{
 			if(globalRefManager.settingsManager.parallaxBackground)
-				backgroundLayers[layer].transform.localPosition = new Vector3(globalRefManager.cameraController.mainCamera.transform.position.x / backgroundParallaxScales[layer],
-				(globalRefManager.cameraController.mainCamera.transform.position.y - globalRefManager.cameraController.cameraBounds.z - globalRefManager.cameraController.mainCamera.orthographicSize) / (backgroundParallaxScales[layer] * 1.25f), 0f);
+				backgroundLayers[layer].transform.localPosition = new Vector3(globalRefManager.cameraController.mainCamera.transform.position.x / backgroundParallaxScales[layer].x,
+				(globalRefManager.cameraController.mainCamera.transform.position.y - globalRefManager.cameraController.cameraBounds.z - globalRefManager.cameraController.mainCamera.orthographicSize) / (backgroundParallaxScales[layer].y * 1.25f), 0f);
 
 			//update the bkg colour layers based on the time of day
 			if(globalRefManager.settingsManager.doDaynightCycle)
 				for (int i = 0; i < backgroundSprites[layer].Count; i++)
 				{
-					backgroundSprites[layer][i].color = Color.Lerp(bkgCol, parallaxLayerBaseColours[layer], .2f);
+					backgroundSprites[layer][i].color = Color.Lerp(bkgCol, parallaxLayerBaseColours[layer], .4f);
 				}
 		}
 
@@ -129,7 +129,7 @@ public class TerrainManager : MonoBehaviour
 		if (globalRefManager.settingsManager.doDaynightCycle)
 		{
 			sunmoon.transform.localEulerAngles = Vector3.forward * -360 * timeOfDayNormalized;
-			sunmoon.transform.position = (Vector3.right * globalRefManager.cameraController.mainCamera.transform.position.y / 11f) + (Vector3.up * globalRefManager.cameraController.mainCamera.transform.position.y / 10f); ;
+			sunmoon.transform.position = globalRefManager.cameraController.mainCamera.transform.position;
 		}
 	}
 

@@ -25,6 +25,7 @@ public class SettingsManager : MonoBehaviour
 	//controls
 	public bool zoomTowardsMouse;
 	public bool invertScrollDirection;
+	public bool smoothCameraMovement;
 
 	//text
 	public bool showSubtitles;
