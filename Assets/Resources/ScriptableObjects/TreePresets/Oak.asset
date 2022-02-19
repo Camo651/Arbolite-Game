@@ -15,9 +15,8 @@ MonoBehaviour:
   callbackID: tree_oak
   plantScarcity: 0.452
   _plantType: 0
-  _baseType: 3
   _biome: {fileID: 11400000, guid: 1948226f4047a9947b13590ef81d7b5a, type: 2}
+  _partTypes: 04000000eb030000
   _resourcesTypes:
   - {fileID: 11400000, guid: b7da2fdee8392a8418d1115d1a6ef0b3, type: 2}
   _resourcesDistributions: 02000000
-  _leaves: 02000000

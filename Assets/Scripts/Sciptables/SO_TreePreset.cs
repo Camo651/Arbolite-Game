@@ -11,10 +11,16 @@ public class SO_TreePreset: ScriptableObject
 	public string callbackID;
 	[Range(0, 1), Tooltip("Higher = more common")] public float plantScarcity;
 	public ProceduralPlant.PlantType _plantType;
-	public PlantPart.BaseType _baseType;
 	public SO_BiomeType _biome;
+	public List<PlantPart.PartType> _partTypes;
 	[HideInInspector] public List<SO_ResourceType> _resourcesTypes = new List<SO_ResourceType>();
 	[HideInInspector] public List<int> _resourcesDistributions = new List<int>();
-	public PlantPart.LeafType[] _leaves;
 
+	public ProceduralPlant.ResourceDistr GetResourceDistr()
+	{
+		ProceduralPlant.ResourceDistr a = new ProceduralPlant.ResourceDistr();
+		a.plantResourceComposition = _resourcesTypes;
+		a.resourceCompositionDistribution = _resourcesDistributions;
+		return a;
+	}
 }

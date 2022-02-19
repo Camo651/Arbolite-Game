@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partName: 
-  partType: 3
+  partType: 1003
   nodes: []
 --- !u!1 &2143970985193642317
 GameObject:

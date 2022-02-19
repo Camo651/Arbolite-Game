@@ -10,6 +10,8 @@ public class TreePresetEditor : Editor
 	{
 		base.OnInspectorGUI();
 		SO_TreePreset a = (SO_TreePreset)target;
+		GUILayout.Space(15);
+		GUILayout.Label("Resource Distribution");
 		if(GUILayout.Button("Add New Resource"))
 		{
 			a._resourcesTypes.Add(null);
@@ -18,7 +20,6 @@ public class TreePresetEditor : Editor
 		if(GUILayout.Button("Remove Resource"))
 		{
 			if(a._resourcesTypes.Count == 0) { return; }
-			
 			a._resourcesTypes.RemoveAt(a._resourcesTypes.Count - 1);
 			a._resourcesDistributions.RemoveAt(a._resourcesDistributions.Count - 1);
 		}

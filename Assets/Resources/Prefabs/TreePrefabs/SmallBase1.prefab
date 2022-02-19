@@ -265,5 +265,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partName: 
-  partType: 1
+  partType: 4
   nodes: []

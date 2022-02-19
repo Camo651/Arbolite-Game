@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.ComponentModel;
 
 
 /// <summary>
@@ -10,30 +11,28 @@ public class PlantPart : MonoBehaviour
 {
 	public string partName;
 	public PartType partType;
-	[HideInInspector]public LeafType leafType;
 	public List<Node> nodes;
 
 	public enum PartType
 	{
-		Unused,
-		Base,
-		Branches,
-		Leaf,
-		Produce,
+		//Base Types
+		___BASE_TYPES___ = 0,
+		Base_None,
+		Base_TinyStem,
+		Base_Bush,
+		Base_SmallTree,
+		Base_ComplexTree,
+
+		//Leaf Types
+		___LEAF_TYPES___ = 1000,
+		Leaves_None,
+		Leaves_MushroomCap,
+		Leaves_Triangle,
 	}
-	public enum LeafType
+	public enum PartTypeRangeIndexer
 	{
-		None,
-		MushroomCap,
-		Triangle,
-	}
-	public enum BaseType
-	{
-		None,
-		TinyStem,
-		Bush,
-		SmallTree,
-		ComplexTree,
+		Bases = 0,
+		Leaves = 1000,
 	}
 
 	private void OnDrawGizmos()

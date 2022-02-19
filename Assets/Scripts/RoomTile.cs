@@ -26,7 +26,8 @@ public class RoomTile : MonoBehaviour
 		if(childNodes.Count > 0 && Random.value<.5f)
 		{
 			SO_TreePreset preset = roomContainer.globalRefManager.plantManager.GetTreePreset("Default");
-			ProceduralPlant plant = roomContainer.globalRefManager.plantManager.GenerateNewPlant(this, preset._plantType, preset._baseType, preset._biome, preset._resourcesTypes, preset._resourcesDistributions, preset._leaves);
+			ProceduralPlant plant = roomContainer.globalRefManager.plantManager.GenerateNewPlant(childNodes[0],this, preset._plantType, preset._partTypes, preset._biome, preset.GetResourceDistr());
+			//set the plants pos to be linked to the nodes here
 		}
 	}
 

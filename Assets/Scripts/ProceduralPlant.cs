@@ -8,15 +8,14 @@ public class ProceduralPlant : MonoBehaviour
 {
 	//generated data
 	public string plantFullName;
-	public List<PlantPart> plantParts;
+	public List<PlantPart> physicalPlantParts;
 
 	//Genetics
 	public PlantType plantType;
-	public PlantPart.BaseType basePartType;
+	public List<PlantPart.PartType> plantPartTypes;
 	public SO_BiomeType plantBiome;
-	public List<SO_ResourceType> plantResourceComposition;
-	public List<int> resourceCompositionDistribution;
-	public PlantPart.LeafType[] leafTypes;
+	public ResourceDistr resourceDistribution;
+
 
 
 	public enum PlantType
@@ -29,5 +28,10 @@ public class ProceduralPlant : MonoBehaviour
 		Mushroom, //like a toadstool
 		SingleFlower, //like a dandelion
 		Flowerbush, //like a rosebush
+	}
+	public struct ResourceDistr
+	{
+		public List<SO_ResourceType> plantResourceComposition;
+		public List<int> resourceCompositionDistribution;
 	}
 }

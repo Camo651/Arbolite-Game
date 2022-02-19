@@ -12,7 +12,6 @@ public class PlantManager : MonoBehaviour
 	public GameObject defaultPlantPrefab;
 	public SO_TreePreset defaultTreePreset;
 	public Dictionary<string, SO_TreePreset> treePresets;
-
 	public Dictionary<PlantPart.PartType, List<PlantPart>> plantPartCatalog;
 
 	private void Awake()
@@ -43,7 +42,7 @@ public class PlantManager : MonoBehaviour
 	/// Handles the generation of an actual plant
 	/// </summary>
 	/// <returns>The newley generated plant</returns>
-	public ProceduralPlant GenerateNewPlant(RoomTile _parent, ProceduralPlant.PlantType _plantType, PlantPart.BaseType _baseType, SO_BiomeType _biome, List<SO_ResourceType> _resourceTypes, List<int> _resourceCounts, PlantPart.LeafType[] _leaves)
+	public ProceduralPlant GenerateNewPlant(Node _growthNode, RoomTile _parent, ProceduralPlant.PlantType _plantType, List<PlantPart.PartType> _plantParts, SO_BiomeType _biome, ProceduralPlant.ResourceDistr _distr)
 	{
 		//make plant
 		//set all the genes
@@ -53,18 +52,57 @@ public class PlantManager : MonoBehaviour
 		ProceduralPlant newPlant = Instantiate(defaultPlantPrefab).GetComponent<ProceduralPlant>();
 
 		newPlant.plantType = _plantType;
-		newPlant.basePartType = _baseType;
+		newPlant.plantPartTypes = _plantParts;
 		newPlant.plantBiome = _biome;
-		newPlant.plantResourceComposition = _resourceTypes;
-		newPlant.resourceCompositionDistribution = _resourceCounts;
-		newPlant.leafTypes = _leaves;
-		newPlant.plantParts = new List<PlantPart>();
-
+		newPlant.resourceDistribution = _distr;
+		newPlant.physicalPlantParts = new List<PlantPart>();
 		newPlant.transform.SetParent(_parent.transform);
 
-		//do the generation stuff herer
+		PlantPart.PartType _base = GetPartTypesFromRange(_plantParts, PlantPart.PartTypeRangeIndexer.Bases)[0];
+		List<PlantPart.PartType> _leaves = GetPartTypesFromRange(_plantParts, PlantPart.PartTypeRangeIndexer.Leaves);
+
+		PlantPart a;
+		//Base
+		a = Instantiate(GetRandomPlantPartPrefab(_base)).GetComponent<PlantPart>();
+		newPlant.physicalPlantParts.Add(a);
+		a.transform.SetParent(newPlant.transform);
+		a.transform.position = _growthNode.transform.position;
+		a.nodes.AddRange(a.transform.GetComponentsInChildren<Node>());
+
+
+		//Leaves
+		foreach (Node node in a.nodes)
+		{
+			if (node.nodeType == Node.NodeType.BranchNode && node.needsToBeFulfilled)
+			{
+				PlantPart.PartType item = _leaves[Random.Range(0, _leaves.Count)];
+				a = Instantiate(GetRandomPlantPartPrefab(item)).GetComponent<PlantPart>();
+				newPlant.physicalPlantParts.Add(a);
+				a.transform.SetParent(node.transform);
+				a.transform.position = node.transform.position;
+			}
+		}
 
 		return newPlant;
+	}
+
+	/// <summary>
+	/// Gets the part from the array based on its indexer in the enum
+	/// </summary>
+	/// <param name="parts"></param>
+	/// <param name="indexer"></param>
+	/// <returns>A list idk</returns>
+	public List<PlantPart.PartType> GetPartTypesFromRange(List<PlantPart.PartType> parts, PlantPart.PartTypeRangeIndexer indexer)
+	{
+		List<PlantPart.PartType> a = new List<PlantPart.PartType>();
+		foreach(PlantPart.PartType item in parts)
+		{
+			if((int)item >= (int)indexer && (int)item < ((int)item+1000))
+			{
+				a.Add(item);
+			}
+		}
+		return a;
 	}
 
 	/// <summary>
@@ -72,16 +110,15 @@ public class PlantManager : MonoBehaviour
 	/// </summary>
 	/// <param name="type"></param>
 	/// <returns>A plant part</returns>
-	public PlantPart GetRandomPlantPartPrefab(PlantPart.PartType type)
+	public GameObject GetRandomPlantPartPrefab(PlantPart.PartType type)
 	{
 		if (plantPartCatalog.ContainsKey(type))
 		{
-			return plantPartCatalog[type][Random.Range(0, plantPartCatalog[type].Count)];
+			return plantPartCatalog[type][Random.Range(0, plantPartCatalog[type].Count)].gameObject;
 		}
 		return null;
 	}
 
-	
 	public SO_TreePreset GetTreePreset(string callbackID)
 	{
 		return treePresets.ContainsKey(callbackID) ? treePresets[callbackID] : defaultTreePreset;
