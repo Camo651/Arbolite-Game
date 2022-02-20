@@ -16,6 +16,7 @@ public class SettingsManager : MonoBehaviour
 	public bool doPostProcessing;
 	public bool antiAliasing;
 	public bool colourBlindMode;
+	public int clouds;
 
 	//audio
 	public float musicVolume;

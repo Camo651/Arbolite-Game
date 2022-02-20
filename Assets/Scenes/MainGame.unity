@@ -437,6 +437,81 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &208685512
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 208685513}
+  - component: {fileID: 208685515}
+  - component: {fileID: 208685514}
+  m_Layer: 5
+  m_Name: TimeTintOverlay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &208685513
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208685512}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 752596405}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &208685514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208685512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.14901961}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &208685515
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208685512}
+  m_CullTransparentMesh: 1
 --- !u!1 &219897279
 GameObject:
   m_ObjectHideFlags: 0
@@ -1410,6 +1485,7 @@ GameObject:
   m_Component:
   - component: {fileID: 533554441}
   - component: {fileID: 533554440}
+  - component: {fileID: 533554442}
   m_Layer: 0
   m_Name: Sun
   m_TagString: Untagged
@@ -1476,13 +1552,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 533554439}
   m_LocalRotation: {x: -0, y: -0, z: -0.6087653, w: -0.79335046}
-  m_LocalPosition: {x: -43.22657, y: 11.794312, z: 0}
+  m_LocalPosition: {x: -24.54992, y: 6.9880385, z: 0}
   m_LocalScale: {x: 2.9708018, y: 2.9708018, z: 2.9708018}
   m_Children:
   - {fileID: 397148161}
   m_Father: {fileID: 1380286488}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -284.999}
+--- !u!122 &533554442
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533554439}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4290770431
+  m_Size: 20.3
 --- !u!1 &692933741
 GameObject:
   m_ObjectHideFlags: 0
@@ -1787,6 +1875,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 208685513}
   - {fileID: 1226852972}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -1920,7 +2009,7 @@ MonoBehaviour:
   secondsBetweenMusic: 0
   emptySpeakers: []
   usedSpeakers: []
-  backgroundMusics: []
+  backgroundMusicSource: {fileID: 0}
 --- !u!1 &825406657
 GameObject:
   m_ObjectHideFlags: 0
@@ -1946,7 +2035,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 825406657}
   m_LocalRotation: {x: -0, y: -0, z: -0.6087653, w: -0.79335046}
-  m_LocalPosition: {x: 43.706882, y: -11.498916, z: 0}
+  m_LocalPosition: {x: 24.132868, y: -6.055969, z: 0}
   m_LocalScale: {x: 2.1754692, y: 2.1754692, z: 2.1754692}
   m_Children:
   - {fileID: 1852518176}
@@ -2622,9 +2711,9 @@ MonoBehaviour:
   - {fileID: 1174155692}
   - {fileID: 1774068044}
   backgroundParallaxScales:
-  - {x: 1.25, y: 1.1}
-  - {x: 2, y: 1.3}
-  - {x: 3.5, y: 1.4}
+  - {x: 1.05, y: 1.05}
+  - {x: 1.4, y: 1.3}
+  - {x: 2, y: 1.4}
   - {x: 6, y: 5}
   dayNightCycleTints:
     serializedVersion: 2
@@ -2659,11 +2748,35 @@ MonoBehaviour:
   - {r: 0.57965463, g: 0.735849, b: 0.71241987, a: 1}
   - {r: 0.40837488, g: 0.6509434, b: 0.5983869, a: 1}
   - {r: 0.26815593, g: 0.4339623, b: 0.37500888, a: 1}
-  - {r: 0.08370417, g: 0.103773594, b: 0.09969266, a: 1}
+  - {r: 0.11307404, g: 0.19633834, b: 0.1981132, a: 1}
   skytint: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+  tintOverlay: {fileID: 208685514}
   sunmoon: {fileID: 1380286487}
   currentActiveBiome: {fileID: 0}
   defaultBiomeType: {fileID: 0}
+  cloudSprites:
+  - {fileID: 21300000, guid: c564ea6fb20246747a4b93ab2635b241, type: 3}
+  - {fileID: 21300000, guid: df6b0581bf09d6e48b702aa31725bb04, type: 3}
+  - {fileID: 21300000, guid: 15dbcc7a79e622544b53a8b4737ffe5a, type: 3}
+  - {fileID: 21300000, guid: b9342e05b5d8c3548b2bd8347042b9b2, type: 3}
+  - {fileID: 21300000, guid: c536b0549ae0be74b88430886481a6e5, type: 3}
+  - {fileID: 21300000, guid: 6bb2ed8ee6e730740b28f15421f7e3ee, type: 3}
+  - {fileID: 21300000, guid: 79de6874ad543a144acae2202c72f855, type: 3}
+  - {fileID: 21300000, guid: e126bc176ae3b844a83d596ba07bf55a, type: 3}
+  - {fileID: 21300000, guid: b1b2fc133c0a4104b8c28144d9087819, type: 3}
+  - {fileID: 21300000, guid: 30a2a3e14575e444089666c3e06b28b9, type: 3}
+  - {fileID: 21300000, guid: dbcadbc91c00b654d95d245a3f2b2492, type: 3}
+  - {fileID: 21300000, guid: 7e0b83010e653e04c8836930b8dda32a, type: 3}
+  - {fileID: 21300000, guid: 967294044c4fa41408882e9928da1c1f, type: 3}
+  - {fileID: 21300000, guid: 5db6168eae3bddf41a0185c60648e470, type: 3}
+  cloudPrefab: {fileID: 6906595224453848818, guid: 340c514f8b17f5b45881a1f4f6a7967f, type: 3}
+  cloudCount: 200
+  cloudHeightMin: 0
+  cloudHeightMax: 50
+  rightBound: 0
+  leftBound: 0
+  cloudiness: 1
+  windspeed: 1
 --- !u!114 &998491157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2752,6 +2865,7 @@ MonoBehaviour:
   doPostProcessing: 0
   antiAliasing: 0
   colourBlindMode: 0
+  clouds: 0
   musicVolume: 0.05
   interfaceVolume: 1
   ambientVolume: 1
@@ -3119,7 +3233,7 @@ RectTransform:
   - {fileID: 1273988623480851608}
   - {fileID: 692933742}
   m_Father: {fileID: 752596405}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

@@ -47,6 +47,7 @@ MonoBehaviour:
   partName: 
   partType: 1003
   nodes: []
+  rotatability: {x: 0, y: 360}
 --- !u!1 &2143970985193642317
 GameObject:
   m_ObjectHideFlags: 0

@@ -68,7 +68,7 @@ public class PlantManager : MonoBehaviour
 		a.transform.SetParent(newPlant.transform);
 		a.transform.position = _growthNode.transform.position;
 		a.nodes.AddRange(a.transform.GetComponentsInChildren<Node>());
-
+		a.transform.Rotate(Vector3.forward, Random.Range(a.rotatability.x, a.rotatability.y));
 
 		//Leaves
 		foreach (Node node in a.nodes)
@@ -81,6 +81,8 @@ public class PlantManager : MonoBehaviour
 				a.transform.SetParent(node.transform);
 				a.transform.position = node.transform.position;
 			}
+
+			a.transform.Rotate(Vector3.forward, Random.Range(a.rotatability.x, a.rotatability.y));
 		}
 
 		return newPlant;

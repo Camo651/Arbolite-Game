@@ -12,6 +12,7 @@ public class PlantPart : MonoBehaviour
 	public string partName;
 	public PartType partType;
 	public List<Node> nodes;
+	public Vector2 rotatability;
 
 	public enum PartType
 	{

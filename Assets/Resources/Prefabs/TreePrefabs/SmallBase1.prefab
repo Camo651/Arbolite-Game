@@ -267,3 +267,4 @@ MonoBehaviour:
   partName: 
   partType: 4
   nodes: []
+  rotatability: {x: -15, y: 15}

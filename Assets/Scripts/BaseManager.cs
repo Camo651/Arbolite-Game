@@ -150,7 +150,7 @@ public class BaseManager : MonoBehaviour
 						}
 						if (Input.GetMouseButtonDown(0) && !colliding && nodeConditionsMet) //place a copy of the ghost room at the postion if possible
 						{
-							globalRefManager.audioManager.Play("little_click");
+							globalRefManager.audioManager.Play(AudioManager.AudioClipType.Ambient,"little_click");
 							ContainedRoom cr = TryCreateRoomAtPos(new Vector2Int(Mathf.RoundToInt(currentlySelectedRoom.transform.position.x), Mathf.RoundToInt(currentlySelectedRoom.transform.position.y)), GetRoomPrefab(selectedRoomName));
 							Destroy(currentlySelectedRoom.transform.GetChild(0).gameObject);
 						}

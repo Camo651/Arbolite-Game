@@ -11,19 +11,20 @@ public class AudioManager : MonoBehaviour
 	public int lastSongIndex;
 	public float secondsBetweenMusic;
 	public List<AudioSource> emptySpeakers, usedSpeakers;
-	public Dictionary<string, SO_AudioType> assetClipLookup;
-	public List<string> backgroundMusics;
+	public AudioSource backgroundMusicSource;
+	public Dictionary<AudioClipType, Dictionary<string, SO_AudioType>> assetClipLookup;
 
 	private void Start()
 	{
 		SO_AudioType[] allAssetClips = Resources.LoadAll<SO_AudioType>("");
-		assetClipLookup = new Dictionary<string, SO_AudioType>();
-		backgroundMusics = new List<string>();
+		assetClipLookup = new Dictionary<AudioClipType, Dictionary<string, SO_AudioType>>();
 		foreach (SO_AudioType item in allAssetClips)
 		{
-			assetClipLookup.Add(item.clipCallbackID, item);
-			if (item.clipType == AudioClipType.Music)
-				backgroundMusics.Add(item.clipCallbackID);
+			if (!assetClipLookup.ContainsKey(item.clipType))
+			{
+				assetClipLookup.Add(item.clipType, new Dictionary<string, SO_AudioType>());
+			}
+			assetClipLookup[item.clipType].Add(item.clipCallbackID, item);
 		}
 
 		PlayMusic();
@@ -32,9 +33,9 @@ public class AudioManager : MonoBehaviour
 	/// play an audio clip given its name
 	/// </summary>
 	/// <param name="callbackID"></param>
-	public void Play(string callbackID)
+	public void Play(AudioClipType type, string callbackID)
 	{
-		Play(GetClip(callbackID));
+		Play(GetClip(type, callbackID));
 	}
 
 	/// <summary>
@@ -47,20 +48,23 @@ public class AudioManager : MonoBehaviour
 		{ //guard clause to prevent using unused clips
 			return;
 		}
-
 		if (emptySpeakers.Count == 0)
 		{
 			emptySpeakers.Add(Instantiate(speakerPrefab, transform).GetComponent<AudioSource>());
 		}
 		int clipIndex = Random.Range(0, clip.audioClips.Length);
-		emptySpeakers[0].clip = clip.audioClips[clipIndex];
+		AudioSource s = emptySpeakers[0];
+		s.clip = clip.audioClips[clipIndex];
 		switch (clip.clipType)
 		{
-			case AudioClipType.Music: emptySpeakers[0].volume = clip.volumeModifier * globalRefManager.settingsManager.musicVolume; break;
-			case AudioClipType.Ambient: emptySpeakers[0].volume = clip.volumeModifier * globalRefManager.settingsManager.ambientVolume; break;
-			case AudioClipType.Interface: emptySpeakers[0].volume = clip.volumeModifier * globalRefManager.settingsManager.interfaceVolume; break;
+			case AudioClipType.BackgroundMusic: s.volume = clip.volumeModifier * globalRefManager.settingsManager.musicVolume; break;
+			case AudioClipType.Ambient: s.volume = clip.volumeModifier * globalRefManager.settingsManager.ambientVolume; break;
+			case AudioClipType.Interface: s.volume = clip.volumeModifier * globalRefManager.settingsManager.interfaceVolume; break;
 		}
-		StartCoroutine(ClipTimer(clip.audioClips[clipIndex].length, emptySpeakers[0], clip));
+		s.Play();
+		usedSpeakers.Add(s);
+		emptySpeakers.Remove(s);
+		StartCoroutine(ClipTimer(clip.audioClips[clipIndex].length, s, clip));
 	}
 
 	/// <summary>
@@ -71,21 +75,19 @@ public class AudioManager : MonoBehaviour
 	/// <returns></returns>
 	private IEnumerator ClipTimer(float time, AudioSource speaker, SO_AudioType type)
 	{
-		usedSpeakers.Add(speaker);
-		emptySpeakers.Remove(speaker);
-		speaker.Play();
 		yield return new WaitForSeconds(time);
 		speaker.Stop();
-		usedSpeakers.Remove(speaker);
-		emptySpeakers.Add(speaker);
-		speaker.volume = 0f;
-		speaker.clip = null;
-
-		if (type.clipType == AudioClipType.Music)
+		if (type.clipType == AudioClipType.BackgroundMusic)
 		{
 			musicIsPlaying = false;
 			yield return new WaitForSeconds(secondsBetweenMusic);
 			PlayMusic();
+		}
+		else
+		{
+			usedSpeakers.Remove(speaker);
+			emptySpeakers.Add(speaker);
+			speaker.clip = null;
 		}
 	}
 
@@ -94,10 +96,10 @@ public class AudioManager : MonoBehaviour
 	/// </summary>
 	/// <param name="callbackID">The callback ID for the clip</param>
 	/// <returns>The clip if it exists</returns>
-	public SO_AudioType GetClip(string callbackID)
+	public SO_AudioType GetClip(AudioClipType type, string callbackID)
 	{
-		if (assetClipLookup.ContainsKey(callbackID))
-			return assetClipLookup[callbackID];
+		if (assetClipLookup.ContainsKey(type) && assetClipLookup[type].ContainsKey(callbackID))
+			return assetClipLookup[type][callbackID];
 		return defaultAudioClip;
 	}
 
@@ -122,10 +124,30 @@ public class AudioManager : MonoBehaviour
 	public void PlayMusic()
 	{
 		musicIsPlaying = true;
-		int songIndex = Random.Range(0, backgroundMusics.Count);
-		lastSongIndex = songIndex;
-		if(backgroundMusics.Count > 0)
-			Play(backgroundMusics[songIndex]);
+		List<SO_AudioType> backgroundMusic = new List<SO_AudioType>(assetClipLookup[AudioClipType.BackgroundMusic].Values);
+		int songIndex = Random.Range(0, backgroundMusic.Count);
+		if (backgroundMusic.Count > 0)
+		{
+			if(backgroundMusicSource == null)
+			{
+				backgroundMusicSource = Instantiate(speakerPrefab, transform).GetComponent<AudioSource>();
+				backgroundMusicSource.gameObject.AddComponent<AudioLowPassFilter>().cutoffFrequency = 22000;
+			}
+			backgroundMusicSource.clip = backgroundMusic[songIndex].audioClips[Random.Range(0, backgroundMusic[songIndex].audioClips.Length)];
+			backgroundMusicSource.volume = backgroundMusic[songIndex].volumeModifier  * globalRefManager.settingsManager.musicVolume;
+			backgroundMusicSource.Play();
+			StartCoroutine(ClipTimer(backgroundMusicSource.clip.length, backgroundMusicSource, backgroundMusic[songIndex]));
+		}
+	}
+
+	/// <summary>
+	/// Toggles the low-pass filter on the back ground music clip
+	/// </summary>
+	/// <param name="state"></param>
+	public void SetBackgroundMusicLowPass(bool state)
+	{
+		if (backgroundMusicSource)
+			backgroundMusicSource.GetComponent<AudioLowPassFilter>().cutoffFrequency = state ? 700 : 22000;
 	}
 
 	/// <summary>
@@ -134,7 +156,7 @@ public class AudioManager : MonoBehaviour
 	public enum AudioClipType
 	{
 		Unused,
-		Music,
+		BackgroundMusic,
 		Interface,
 		Ambient
 	}

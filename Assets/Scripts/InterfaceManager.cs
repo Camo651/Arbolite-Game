@@ -243,6 +243,7 @@ public class InterfaceManager : MonoBehaviour
 	//sets the state of the background blur
 	public void SetBackgroundBlur(bool state)
 	{
+		globalRefManager.audioManager.SetBackgroundMusicLowPass(state);
 		backgroundBlur.enabled = state;
 	}
 }

@@ -19,11 +19,19 @@ public class TerrainManager : MonoBehaviour
 	public Gradient dayNightCycleTints;
 	public Color[] parallaxLayerBaseColours;
 	public Color skytint;
+	public UnityEngine.UI.Image tintOverlay;
 	public GameObject sunmoon;
 	public SO_BiomeType currentActiveBiome;
 	public SO_BiomeType defaultBiomeType;
 	public Dictionary<string, SO_BiomeType> allBiomes;
-
+	public List<Sprite> cloudSprites;
+	public GameObject cloudPrefab;
+	public List<CloudObj> clouds;
+	public int cloudCount;
+	public float cloudHeightMin, cloudHeightMax;
+	public float rightBound, leftBound;
+	public float cloudiness;
+	public float windspeed;
 
 	public void Start()
 	{
@@ -47,11 +55,26 @@ public class TerrainManager : MonoBehaviour
 				backgroundSprites[backgroundSprites.Count - 1].Add(layer.transform.GetChild(i).GetComponent<SpriteRenderer>());
 			}
 		}
-		globalRefManager.cameraController.cameraBounds.x = terrainWidth / -2f;
+		leftBound = globalRefManager.cameraController.cameraBounds.x = terrainWidth / -2f;
+		rightBound = -leftBound;
 		globalRefManager.cameraController.cameraBounds.y = terrainWidth / 2f;
 		GenerateTerrain();
-	}
 
+
+		//generate clouds
+		clouds = new List<CloudObj>();
+		for (int i = 0; i < cloudCount; i++)
+		{
+			CloudObj c = new CloudObj();
+			c.rend = Instantiate(cloudPrefab).GetComponent<SpriteRenderer>();
+			c.layer = Random.value > .5f ? 0 : Random.value > .5 ? 1 : 2;
+			c.rend.transform.SetParent(backgroundLayers[c.layer].transform);
+			c.rend.sortingOrder = backgroundLayers[c.layer].transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder + 1;
+			RandomizeCloud(c);
+			c.rend.transform.position = new Vector3(leftBound + ((Mathf.Abs(leftBound) + Mathf.Abs(rightBound)) * (i / (float)cloudCount)), c.rend.transform.position.y, 0f);
+			clouds.Add(c);
+		}
+	}
 	//generate the initial tilemap with terrain tiles
 	public void GenerateTerrain()
 	{
@@ -108,6 +131,9 @@ public class TerrainManager : MonoBehaviour
 		if (globalRefManager.settingsManager.doDaynightCycle)
 		{
 			globalRefManager.cameraController.mainCamera.backgroundColor = bkgCol + skytint;
+			bkgCol.a = .3f;
+			tintOverlay.color = bkgCol;
+			bkgCol.a = 1;
 		}
 
 		//update the position of the background layers based on the position of the camera to make the parallax effect
@@ -129,8 +155,35 @@ public class TerrainManager : MonoBehaviour
 		if (globalRefManager.settingsManager.doDaynightCycle)
 		{
 			sunmoon.transform.localEulerAngles = Vector3.forward * -360 * timeOfDayNormalized;
-			sunmoon.transform.position = globalRefManager.cameraController.mainCamera.transform.position;
+			sunmoon.transform.position = new Vector3(globalRefManager.cameraController.mainCamera.transform.position.x, globalRefManager.cameraController.mainCamera.transform.position.y-20, 0);
 		}
+
+		//move the clouds
+		for(int i = 0; i< clouds.Count; i++)
+		{
+			CloudObj c = clouds[i];
+			if(c.rend.transform.position.x > rightBound)
+			{
+				RandomizeCloud(c);
+			}
+			else
+			{
+				c.rend.transform.Translate(Vector3.right * c.speed * Time.deltaTime * windspeed);
+			}
+		}
+	}
+
+	public void RandomizeCloud(CloudObj c)
+	{
+		c.speed = (c.layer == 2 ? Random.Range(20, 70) : c.layer == 1 ? Random.Range(40, 90) : Random.Range(60, 110)) / 100f;
+		c.active = Random.value < cloudiness;
+		c.rend.sprite = cloudSprites[Random.Range(0, cloudSprites.Count)];
+		c.rend.color = new Color(c.layer==0?.85f:c.layer==1?.9f:.95f, c.layer == 0 ? .85f : c.layer == 1 ? .9f : .95f, c.layer == 0 ? .95f : c.layer == 1 ? .98f : 1f, c.active ? .5f : 0f);
+		float x = leftBound;
+		float y = Random.Range(cloudHeightMin, cloudHeightMax);
+		float s = (c.layer == 2 ? Random.Range(80, 130) : c.layer == 1 ? Random.Range(60, 110) : Random.Range(45, 80)) / 100f;
+		c.rend.transform.localScale = Vector3.one * s;
+		c.rend.transform.position = new Vector3(x, y, 0);
 	}
 
 	private void Update()
@@ -142,4 +195,13 @@ public class TerrainManager : MonoBehaviour
 	{
 		return allBiomes.ContainsKey(callbackID) ? allBiomes[callbackID] : defaultBiomeType;
 	}
+
+
+}
+public class CloudObj
+{
+	public SpriteRenderer rend;
+	public float speed;
+	public bool active;
+	public int layer;
 }
