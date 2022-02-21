@@ -15,6 +15,7 @@ public class ProceduralPlant : MonoBehaviour
 	public List<PlantPart.PartType> plantPartTypes;
 	public SO_BiomeType plantBiome;
 	public ResourceDistr resourceDistribution;
+	public Dictionary<PlantPart.PartType, Color> colourLookup;
 
 
 

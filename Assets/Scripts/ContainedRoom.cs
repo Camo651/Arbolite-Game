@@ -9,6 +9,7 @@ public class ContainedRoom : MonoBehaviour
 	public bool activeAndEnabled;
 	public bool isNaturalTerrainTile;
 	public string tileNameCallbackID;
+	public string tileNameInfoID;
 	public List<RoomTile> containedRooms;
 
 

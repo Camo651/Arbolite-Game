@@ -26,7 +26,12 @@ public class RoomTile : MonoBehaviour
 		if(childNodes.Count > 0 && Random.value<.5f)
 		{
 			SO_TreePreset preset = roomContainer.globalRefManager.plantManager.GetTreePreset("Default");
-			ProceduralPlant plant = roomContainer.globalRefManager.plantManager.GenerateNewPlant(childNodes[0],this, preset._plantType, preset._partTypes, preset._biome, preset.GetResourceDistr());
+			Dictionary<PlantPart.PartType, Color> colours = new Dictionary<PlantPart.PartType, Color>();
+			for(int i = 0; i < preset._partTypes.Count; i++)
+			{
+				colours.Add(preset._partTypes[i], preset._biome.biomeColourPalette[(int)preset._partColours[i].x].Evaluate(preset._partColours[i].y));
+			}
+			ProceduralPlant plant = roomContainer.globalRefManager.plantManager.GenerateNewPlant(childNodes[0],this, preset._plantType, preset._partTypes, preset._biome, preset.GetResourceDistr(), colours);
 			//set the plants pos to be linked to the nodes here
 		}
 	}
@@ -50,25 +55,87 @@ public class RoomTile : MonoBehaviour
 			}
 		}
 
-		//send the update pulse to the neighbors if permits
-		if (updateNeighbors)
-			UpdateNeighboringTiles();
+
 
 		//as it stands: natural tiles get smoothed textures
 		if (roomContainer.isNaturalTerrainTile)
 		{
-			Sprite newTile;
-			switch (neighborRooms[0] != null, neighborRooms[1] != null, neighborRooms[2] != null, neighborRooms[3] != null)
+			if(neighborRooms[0] != null)
 			{
-				case (false, true, true, false): newTile = roomContainer.globalRefManager.terrainManager.DirtRightSprite; break;
-				case (false, false, true, true): newTile = roomContainer.globalRefManager.terrainManager.DirtLeftSprite; break;
-				case (false, false, true, false): newTile = roomContainer.globalRefManager.terrainManager.DirtSmallSprite; break;
-				default: newTile = roomContainer.globalRefManager.terrainManager.DirtFullSprite; break;
+				switch (neighborRooms[0] != null ? neighborRooms[0].roomContainer.tileNameInfoID:"",
+						neighborRooms[1] != null ? neighborRooms[1].roomContainer.tileNameInfoID:"",
+						neighborRooms[2] != null ? neighborRooms[2].roomContainer.tileNameInfoID:"",
+						neighborRooms[3] != null ? neighborRooms[3].roomContainer.tileNameInfoID:"")
+				{
+					case ("tile_grass", "tile_grass", "tile_bedrock", "tile_grass"):
+						//small
+						if (roomContainer.tileNameCallbackID != "tile_bedrock_small")
+						{
+							roomContainer.globalRefManager.baseManager.ChangeRoom(roomContainer, roomContainer.globalRefManager.baseManager.GetRoomPrefab("tile_bedrock_small"));
+						}
+						break;
+					case ("tile_grass", "tile_grass", "tile_bedrock", "tile_bedrock"):
+						//right
+						if (roomContainer.tileNameCallbackID != "tile_bedrock_right")
+						{
+							roomContainer.globalRefManager.baseManager.ChangeRoom(roomContainer, roomContainer.globalRefManager.baseManager.GetRoomPrefab("tile_bedrock_right"));
+						}
+						break;
+					case ("tile_grass", "tile_bedrock", "tile_bedrock", "tile_grass"):
+						//left
+						if (roomContainer.tileNameCallbackID != "tile_bedrock_left")
+						{
+							roomContainer.globalRefManager.baseManager.ChangeRoom(roomContainer, roomContainer.globalRefManager.baseManager.GetRoomPrefab("tile_bedrock_left"));
+						}
+						break;
+					default:
+						//full
+						if (roomContainer.tileNameCallbackID != "tile_bedrock_full")
+						{
+							roomContainer.globalRefManager.baseManager.ChangeRoom(roomContainer, roomContainer.globalRefManager.baseManager.GetRoomPrefab("tile_bedrock_full"));
+						}
+						break;
+				}
 			}
-			if (neighborRooms[0] != null)
-				newTile = roomContainer.globalRefManager.terrainManager.BedrockSprite;
-			spriteRenderer.sprite = newTile;
+			else
+			{
+				switch (neighborRooms[0] != null, neighborRooms[1] != null, neighborRooms[2] != null, neighborRooms[3] != null)
+				{
+					case (false, true, true, true):
+						//full grass
+						if (roomContainer.tileNameCallbackID != "tile_grass_full")
+						{
+							roomContainer.globalRefManager.baseManager.ChangeRoom(roomContainer, roomContainer.globalRefManager.baseManager.GetRoomPrefab("tile_grass_full"));
+						}
+						break;
+					case (false, false, true, true):
+						//left grass
+						if (roomContainer.tileNameCallbackID != "tile_grass_left")
+						{
+							roomContainer.globalRefManager.baseManager.ChangeRoom(roomContainer, roomContainer.globalRefManager.baseManager.GetRoomPrefab("tile_grass_left"));
+						}
+						break;
+					case (false, true, true, false):
+						//right grass
+						if (roomContainer.tileNameCallbackID != "tile_grass_right")
+						{
+							roomContainer.globalRefManager.baseManager.ChangeRoom(roomContainer, roomContainer.globalRefManager.baseManager.GetRoomPrefab("tile_grass_right"));
+						}
+						break;
+					case (false, false, true, false):
+						//right grass
+						if (roomContainer.tileNameCallbackID != "tile_grass_small")
+						{
+							roomContainer.globalRefManager.baseManager.ChangeRoom(roomContainer, roomContainer.globalRefManager.baseManager.GetRoomPrefab("tile_grass_small"));
+						}
+						break;
+				}
+			}
 		}
+
+		//send the update pulse to the neighbors if permits
+		//if (updateNeighbors)
+			//UpdateNeighboringTiles();
 	}
 
 	//updates the 4 cardinal tiles around it (if they exist) and updates their values. Does not recursively flood the updates
@@ -77,7 +144,7 @@ public class RoomTile : MonoBehaviour
 		//connection w/ neighbors established earlier
 		for (int i = 0; i < 4; i++)
 		{
-			if(neighborRooms[i] != null)
+			if(neighborRooms[i] != null && neighborRooms[i] != this)
 				neighborRooms[i].UpdateTile(false);
 		}
 	}

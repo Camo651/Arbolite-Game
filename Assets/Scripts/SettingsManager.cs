@@ -34,7 +34,7 @@ public class SettingsManager : MonoBehaviour
 	public string languageOption;
 
 	//keybinds
-	public KeyCode playerLeft, playerRight, playerUp, playerDown;
+	public KeyCode playerLeft, playerRight, playerUp, playerDown, playerJump;
 	public KeyCode closeAllInterfaces;
 	public KeyCode openPauseMenu, openHomeMenu;
 	public KeyCode setModePlayer, setModeBuild, setModeEdit;

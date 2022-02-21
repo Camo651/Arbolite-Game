@@ -52,6 +52,8 @@ public class BaseManager : MonoBehaviour
 				editModeSelectedRoomTile.roomContainer.SetRoomTint(Color.white);
 			editModeSelectedRoomTile = null;
 
+			globalRefManager.playerManager.SetPhysicalPlayerState(state == PlayerState.PlayerMode);
+
 			currentPlayerState = state;
 		}
 	}
@@ -151,7 +153,7 @@ public class BaseManager : MonoBehaviour
 						if (Input.GetMouseButtonDown(0) && !colliding && nodeConditionsMet) //place a copy of the ghost room at the postion if possible
 						{
 							globalRefManager.audioManager.Play(AudioManager.AudioClipType.Ambient,"little_click");
-							ContainedRoom cr = TryCreateRoomAtPos(new Vector2Int(Mathf.RoundToInt(currentlySelectedRoom.transform.position.x), Mathf.RoundToInt(currentlySelectedRoom.transform.position.y)), GetRoomPrefab(selectedRoomName));
+							ContainedRoom cr = TryCreateRoomAtPos(new Vector2Int(Mathf.RoundToInt(currentlySelectedRoom.transform.position.x), Mathf.RoundToInt(currentlySelectedRoom.transform.position.y)), GetRoomPrefab(selectedRoomName),true);
 							Destroy(currentlySelectedRoom.transform.GetChild(0).gameObject);
 						}
 					}
@@ -211,7 +213,7 @@ public class BaseManager : MonoBehaviour
 			string deletion = "";
 			foreach (ContainedRoom c in roomsThatWillBeDestroyed)
 			{
-				deletion += globalRefManager.langManager.GetTranslation(c.tileNameCallbackID.ToLower()) + ", ";
+				deletion += globalRefManager.langManager.GetTranslation(c.tileNameInfoID.ToLower()) + ", ";
 			}
 			deletion = deletion.Substring(0, deletion.Length - 2);
 			globalRefManager.interfaceManager.SetMajorInterface("ConfirmDelete");
@@ -238,6 +240,19 @@ public class BaseManager : MonoBehaviour
 		else
 		{
 			roomsToDelete = null;
+		}
+	}
+
+	//swaps the room at a position
+	public void ChangeRoom(ContainedRoom oldRoom, ContainedRoom newRoomPrefab)
+	{
+		Vector2Int pos = oldRoom.containedRooms[0].GetTrueTilePosition();
+		Destroy(oldRoom.gameObject);
+		ContainedRoom room = TryCreateRoomAtPos(pos, newRoomPrefab, false);
+		foreach (RoomTile rt in room.containedRooms)
+		{
+			roomIndexingVectors[rt.GetIndexdTilePosition().y][rt.GetIndexdTilePosition().x] = rt;
+			rt.UpdateTile(true);
 		}
 	}
 
@@ -315,7 +330,7 @@ public class BaseManager : MonoBehaviour
 	}
 
 	//instantiates and preloads a contained room at a given position. Does not check if that place is a valid spot
-	public ContainedRoom TryCreateRoomAtPos(Vector2Int pos, ContainedRoom roomPrefab) //call with the real world position
+	public ContainedRoom TryCreateRoomAtPos(Vector2Int pos, ContainedRoom roomPrefab, bool updateNeighbors) //call with the real world position
 	{
 		ContainedRoom newGen = Instantiate(roomPrefab);
 		baseRooms.Add(newGen);
@@ -340,7 +355,7 @@ public class BaseManager : MonoBehaviour
 		//auto updates the tiles around it, but not the full map
 		foreach (RoomTile tile in newGen.containedRooms)
 		{
-			tile.UpdateTile(true);
+			tile.UpdateTile(updateNeighbors);
 			tile.StartGeneration();
 		}
 

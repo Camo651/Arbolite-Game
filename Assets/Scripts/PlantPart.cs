@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.ComponentModel;
-
 
 /// <summary>
 /// a prefab container for holding individual parts of plants (braches, leaves, flowers etc)
@@ -13,6 +11,8 @@ public class PlantPart : MonoBehaviour
 	public PartType partType;
 	public List<Node> nodes;
 	public Vector2 rotatability;
+	public bool flipable;
+	public RelativePartDepth partDepth;
 
 	public enum PartType
 	{
@@ -34,6 +34,12 @@ public class PlantPart : MonoBehaviour
 	{
 		Bases = 0,
 		Leaves = 1000,
+	}
+	public enum RelativePartDepth : int
+	{
+		Back = -1,
+		Middle = 0,
+		Front = 1,
 	}
 
 	private void OnDrawGizmos()

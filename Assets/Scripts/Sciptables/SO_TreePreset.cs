@@ -13,6 +13,7 @@ public class SO_TreePreset: ScriptableObject
 	public ProceduralPlant.PlantType _plantType;
 	public SO_BiomeType _biome;
 	public List<PlantPart.PartType> _partTypes;
+	[Tooltip("Palette Index, Gradial Evaluation")]public List<Vector2> _partColours;
 	[HideInInspector] public List<SO_ResourceType> _resourcesTypes = new List<SO_ResourceType>();
 	[HideInInspector] public List<int> _resourcesDistributions = new List<int>();
 

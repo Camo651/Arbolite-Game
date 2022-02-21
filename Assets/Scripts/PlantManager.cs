@@ -42,7 +42,7 @@ public class PlantManager : MonoBehaviour
 	/// Handles the generation of an actual plant
 	/// </summary>
 	/// <returns>The newley generated plant</returns>
-	public ProceduralPlant GenerateNewPlant(Node _growthNode, RoomTile _parent, ProceduralPlant.PlantType _plantType, List<PlantPart.PartType> _plantParts, SO_BiomeType _biome, ProceduralPlant.ResourceDistr _distr)
+	public ProceduralPlant GenerateNewPlant(Node _growthNode, RoomTile _parent, ProceduralPlant.PlantType _plantType, List<PlantPart.PartType> _plantParts, SO_BiomeType _biome, ProceduralPlant.ResourceDistr _distr, Dictionary<PlantPart.PartType, Color> _colours)
 	{
 		//make plant
 		//set all the genes
@@ -56,6 +56,7 @@ public class PlantManager : MonoBehaviour
 		newPlant.plantBiome = _biome;
 		newPlant.resourceDistribution = _distr;
 		newPlant.physicalPlantParts = new List<PlantPart>();
+		newPlant.colourLookup = new Dictionary<PlantPart.PartType, Color>(_colours);
 		newPlant.transform.SetParent(_parent.transform);
 
 		PlantPart.PartType _base = GetPartTypesFromRange(_plantParts, PlantPart.PartTypeRangeIndexer.Bases)[0];
@@ -69,7 +70,9 @@ public class PlantManager : MonoBehaviour
 		a.transform.position = _growthNode.transform.position;
 		a.nodes.AddRange(a.transform.GetComponentsInChildren<Node>());
 		a.transform.Rotate(Vector3.forward, Random.Range(a.rotatability.x, a.rotatability.y));
-
+		a.transform.GetChild(0).GetComponent<SpriteRenderer>().color = GetColourLookup(_colours, _base);
+		int sortOrder = Random.value > .5 ? -5 : 5;
+		a.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = sortOrder;
 		//Leaves
 		foreach (Node node in a.nodes)
 		{
@@ -80,12 +83,19 @@ public class PlantManager : MonoBehaviour
 				newPlant.physicalPlantParts.Add(a);
 				a.transform.SetParent(node.transform);
 				a.transform.position = node.transform.position;
+				a.transform.GetChild(0).GetComponent<SpriteRenderer>().color = GetColourLookup(_colours, item);
+				a.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = sortOrder + 1;
 			}
 
 			a.transform.Rotate(Vector3.forward, Random.Range(a.rotatability.x, a.rotatability.y));
 		}
-
 		return newPlant;
+	}
+
+	public Color GetColourLookup(Dictionary<PlantPart.PartType, Color> l, PlantPart.PartType t)
+	{
+		float o = Random.Range(-1, 2) / 40f;
+		return l.ContainsKey(t) ? (l[t] + new Color(o,o,o,0f)) : Color.white;
 	}
 
 	/// <summary>

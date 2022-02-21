@@ -10,6 +10,7 @@ public class TreePresetEditor : Editor
 	{
 		base.OnInspectorGUI();
 		SO_TreePreset a = (SO_TreePreset)target;
+
 		GUILayout.Space(15);
 		GUILayout.Label("Resource Distribution");
 		if(GUILayout.Button("Add New Resource"))

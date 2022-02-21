@@ -7,8 +7,6 @@ public class TerrainManager : MonoBehaviour
 	//generates the initial map and handles all 'world' stuff
 
 	[HideInInspector] public GlobalRefManager globalRefManager;
-	public ContainedRoom Dirt, Bedrock;
-	public Sprite BedrockSprite, DirtFullSprite, DirtSmallSprite, DirtLeftSprite, DirtRightSprite;
 	public int terrainWidth, terrainBottomLayer, terrainRaiseBuffer, terrainPerlinAmplitude;
 	public float terrainFalloffThresh, terrainFalloffAmp;
 	public float timeOfDay, dayCycleLength, dayCount;
@@ -30,13 +28,13 @@ public class TerrainManager : MonoBehaviour
 	public int cloudCount;
 	public float cloudHeightMin, cloudHeightMax;
 	public float rightBound, leftBound;
-	public float cloudiness;
+	[Range(0,1)]public float cloudiness;
 	public float windspeed;
 
 	public void Start()
 	{
 		allBiomes = new Dictionary<string, SO_BiomeType>();
-		SO_BiomeType[] biomes = Resources.FindObjectsOfTypeAll<SO_BiomeType>();
+		SO_BiomeType[] biomes = Resources.LoadAll<SO_BiomeType>("");
 		foreach(SO_BiomeType item in biomes)
 		{
 			if (allBiomes.ContainsKey(item.biomeNameCallbackID))
@@ -94,21 +92,21 @@ public class TerrainManager : MonoBehaviour
 			//generate stone under the dirt if there is space to do so
 			if (pos.y >= terrainBottomLayer)
 			{
-				globalRefManager.baseManager.TryCreateRoomAtPos(pos, Dirt);
+				globalRefManager.baseManager.TryCreateRoomAtPos(pos, globalRefManager.baseManager.GetRoomPrefab("tile_grass_full"),false);
 				while (pos.y > terrainBottomLayer)
 				{
 					pos.y--;
-					globalRefManager.baseManager.TryCreateRoomAtPos(pos, Bedrock);
+					globalRefManager.baseManager.TryCreateRoomAtPos(pos, globalRefManager.baseManager.GetRoomPrefab("tile_bedrock_full"),false);
 				}
 			}
 		}
 
 		//update the tiles to update the textured based on the surrounding blocks
-		foreach(ContainedRoom tile in globalRefManager.baseManager.baseRooms)
+		for(int i=0;i< globalRefManager.baseManager.baseRooms.Count;i++)
 		{
-			if (tile.isNaturalTerrainTile)
+			if (globalRefManager.baseManager.baseRooms[i].isNaturalTerrainTile)
 			{
-				tile.containedRooms[0].UpdateTile(true);
+				globalRefManager.baseManager.baseRooms[i].containedRooms[0].UpdateTile(true);
 			}
 		}
 	}
