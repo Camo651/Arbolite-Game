@@ -195,6 +195,15 @@ public class TerrainManager : MonoBehaviour
 		return allBiomes.ContainsKey(callbackID) ? allBiomes[callbackID] : defaultBiomeType;
 	}
 
+	/// <summary>
+	/// Sets the speed of the wind and handles its properties
+	/// </summary>
+	/// <param name="wind">The speed of the wind (range 0f - 1f)</param>
+	public void SetWindSpeed(float wind)
+	{
+		windspeed = wind;
+		globalRefManager.audioManager.windSource.volume = wind;
+	}
 
 }
 public class CloudObj

@@ -22,6 +22,7 @@ public class SettingsManager : MonoBehaviour
 	public float musicVolume;
 	public float interfaceVolume;
 	public float ambientVolume;
+	public bool fadeAudioInUI;
 
 	//controls
 	public bool zoomTowardsMouse;

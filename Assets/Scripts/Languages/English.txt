@@ -21,9 +21,9 @@ interface_not_found_error_message "That page can't be found."
 
 < TILE NAMES AND INFO >
 name_tile_bedrock              "Bedrock"
-info_tile_bedrock              "No, not minecraft"
+info_tile_bedrock              "Not gonna find any plants here"
 name_tile_grass                "Grass"
-info_tile_grass                "Ugly ass grass"
+info_tile_grass                "It covers the ground"
 
 < ROOM NAMES AND INFO >
 name_room_hallway              "Basic Hallway"

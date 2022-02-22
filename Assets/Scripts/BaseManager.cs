@@ -227,15 +227,7 @@ public class BaseManager : MonoBehaviour
 	{
 		if (delete)
 		{
-			int count = roomsToDelete.Length;
-			globalRefManager.interfaceManager.SetWorldPositionViewerState(false, null);
-			for (int i = 0; i < roomsToDelete.Length; i++)
-			{
-				DeleteRoom(roomsToDelete[i]);
-			}
-
-			globalRefManager.interfaceManager.EnqueueNotification("tiles_deleted", "", "successfully_destroyed_tiles", new string[]{ "" + count});
-
+			StartCoroutine(FadeOutDestroyedTiles());
 		}
 		else
 		{
@@ -247,6 +239,20 @@ public class BaseManager : MonoBehaviour
 			roomsToDelete = null;
 			System.GC.Collect();
 		}
+	}
+	IEnumerator FadeOutDestroyedTiles()
+	{
+		int count = roomsToDelete.Length;
+		globalRefManager.interfaceManager.SetWorldPositionViewerState(false, null);
+		for (int i = 0; i < roomsToDelete.Length; i++)
+		{
+			DeleteRoom(roomsToDelete[i]);
+			globalRefManager.audioManager.Play(AudioManager.AudioClipType.Ambient, "destroy");
+			yield return new WaitForSeconds(.04f);
+		}
+
+		globalRefManager.interfaceManager.EnqueueNotification("tiles_deleted", "", "successfully_destroyed_tiles", new string[] { "" + count });
+
 	}
 
 	//swaps the room at a position
@@ -319,6 +325,10 @@ public class BaseManager : MonoBehaviour
 	//to be called when the player clicks on a tile in edit mode
 	public void OnClickOnTile()
 	{
+		if(editModePermSelectedRoomTile == editModeSelectedRoomTile)
+		{
+			return;
+		}
 		if (editModePermSelectedRoomTile != null)
 			editModePermSelectedRoomTile.roomContainer.SetRoomTint(Color.white);
 		editModePermSelectedRoomTile = editModeSelectedRoomTile;
@@ -326,6 +336,7 @@ public class BaseManager : MonoBehaviour
 		{
 			editModePermSelectedRoomTile.roomContainer.SetRoomTint(Color.cyan);
 			globalRefManager.interfaceManager.SetWorldPositionViewerState(true, editModePermSelectedRoomTile);
+			globalRefManager.audioManager.Play(AudioManager.AudioClipType.Ambient, "dirt_select");
 		}
 		else
 			globalRefManager.interfaceManager.CloseWorldPositionViewer();

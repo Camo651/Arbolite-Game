@@ -16,4 +16,4 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f61121528a5116644856eeeb5e511249, type: 3}
   volumeModifier: 1.5
   clipCallbackID: song
-  clipType: 1
+  clipType: 0

@@ -11,7 +11,7 @@ public class AudioManager : MonoBehaviour
 	public int lastSongIndex;
 	public float secondsBetweenMusic;
 	public List<AudioSource> emptySpeakers, usedSpeakers;
-	public AudioSource backgroundMusicSource;
+	public AudioSource backgroundMusicSource, windSource;
 	public Dictionary<AudioClipType, Dictionary<string, SO_AudioType>> assetClipLookup;
 
 	private void Start()
@@ -55,6 +55,7 @@ public class AudioManager : MonoBehaviour
 		int clipIndex = Random.Range(0, clip.audioClips.Length);
 		AudioSource s = emptySpeakers[0];
 		s.clip = clip.audioClips[clipIndex];
+		s.pitch += (Random.value > .5f ? -1 : 1) * (Random.Range(-clip.pitchVariance * 100f, clip.pitchVariance * 100f) / 100f);
 		switch (clip.clipType)
 		{
 			case AudioClipType.BackgroundMusic: s.volume = clip.volumeModifier * globalRefManager.settingsManager.musicVolume; break;
@@ -132,6 +133,8 @@ public class AudioManager : MonoBehaviour
 			{
 				backgroundMusicSource = Instantiate(speakerPrefab, transform).GetComponent<AudioSource>();
 				backgroundMusicSource.gameObject.AddComponent<AudioLowPassFilter>().cutoffFrequency = 7000;
+				backgroundMusicSource.gameObject.AddComponent<AudioReverbFilter>().reverbPreset = AudioReverbPreset.User;
+				backgroundMusicSource.GetComponent<AudioReverbFilter>().enabled = false;
 			}
 			backgroundMusicSource.clip = backgroundMusic[songIndex].audioClips[Random.Range(0, backgroundMusic[songIndex].audioClips.Length)];
 			backgroundMusicSource.volume = backgroundMusic[songIndex].volumeModifier  * globalRefManager.settingsManager.musicVolume;
@@ -146,7 +149,7 @@ public class AudioManager : MonoBehaviour
 	/// <param name="state"></param>
 	public void SetBackgroundMusicLowPass(bool state)
 	{
-		if (backgroundMusicSource)
+		if (backgroundMusicSource && globalRefManager.settingsManager.fadeAudioInUI)
 			StartCoroutine(FadeLowPass(state));
 	}
 
@@ -160,6 +163,7 @@ public class AudioManager : MonoBehaviour
 		float current = backgroundMusicSource.GetComponent<AudioLowPassFilter>().cutoffFrequency;
 		float target = state ? 700 : 7000;
 		float time = 100;
+		backgroundMusicSource.GetComponent<AudioReverbFilter>().enabled = state;
 		for (float i = time/20f; i < time; i++)
 		{
 			yield return null;

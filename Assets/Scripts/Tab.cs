@@ -11,15 +11,6 @@ public class Tab : MonoBehaviour
 
 	public void SetTabState(bool state)
 	{
-		if (state)
-		{
-			transform.Translate(Vector2.up);
-		}
-		else
-		{
-			transform.Translate(Vector2.down);
-		}
-
 		gameObject.SetActive(state);
 	}
 }

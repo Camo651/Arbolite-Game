@@ -15,5 +15,6 @@ MonoBehaviour:
   audioClips:
   - {fileID: 8300000, guid: 72cb7cd1f7dcccf49aa8219d61d4bddb, type: 3}
   volumeModifier: 1
+  pitchVariance: 0.213
   clipCallbackID: little_click
   clipType: 3
