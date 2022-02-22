@@ -51,8 +51,10 @@ MonoBehaviour:
   roomContainer: {fileID: 2111620679136429905}
   neighborRooms: []
   neighborWelds: 00000000
-  previousUpdateID: 0
+  lastUpdateOrigin: 
   spriteRenderer: {fileID: 5098231323461371450}
+  childNodes: []
+  canBeUpdated: 0
 --- !u!212 &5098231323461371450
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -153,5 +155,6 @@ MonoBehaviour:
   activeAndEnabled: 0
   isNaturalTerrainTile: 0
   tileNameCallbackID: Room_Hallway
+  tileNameInfoID: room_hallway
   containedRooms:
   - {fileID: 4278880974044732749}

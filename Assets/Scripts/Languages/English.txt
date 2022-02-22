@@ -2,20 +2,28 @@ en_us                          "English"
 
 < USER INTERFACE DEFINITIONS >
 no_translation_found           "does not exist for language"
-error_modal_title              "Oops!"
-error_modal_info               "An error occured somewhere! If this keeps happening please submit a bug report so the developers can fix it."
 ok_button                      "Ok"
 delete_modal_info              "You are about to destroy"
 delete_modal_title             "Confirm Destruction?"
 confirm_button                 "Confirm"
 cancel_button                  "Cancel"
 successfully_destroyed_tiles   "Successfully Destroyed #0# Tiles"
+info_button                    "Info"
+inspector_info_title           ""
+inspector_info_info            ""
+inspector_info_delete          "Destroy"
+
+< ERROR MESSAGES >
+error_modal_title              "Oops! There was an error"
+error_modal_info               "An error occured somewhere! If this keeps happening please submit a bug report so the developers can fix it."
+overflow_error_message         "There was an overflow of data. Maybe trying to do too much at once?"
+interface_not_found_error_message "That page can't be found."
 
 < TILE NAMES AND INFO >
 name_tile_bedrock              "Bedrock"
 info_tile_bedrock              "No, not minecraft"
-name_tile_dirt                 "Grass"
-info_tile_dirt                 "Ugly ass grass"
+name_tile_grass                "Grass"
+info_tile_grass                "Ugly ass grass"
 
 < ROOM NAMES AND INFO >
 name_room_hallway              "Basic Hallway"

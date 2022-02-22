@@ -131,7 +131,7 @@ public class AudioManager : MonoBehaviour
 			if(backgroundMusicSource == null)
 			{
 				backgroundMusicSource = Instantiate(speakerPrefab, transform).GetComponent<AudioSource>();
-				backgroundMusicSource.gameObject.AddComponent<AudioLowPassFilter>().cutoffFrequency = 22000;
+				backgroundMusicSource.gameObject.AddComponent<AudioLowPassFilter>().cutoffFrequency = 7000;
 			}
 			backgroundMusicSource.clip = backgroundMusic[songIndex].audioClips[Random.Range(0, backgroundMusic[songIndex].audioClips.Length)];
 			backgroundMusicSource.volume = backgroundMusic[songIndex].volumeModifier  * globalRefManager.settingsManager.musicVolume;
@@ -147,7 +147,25 @@ public class AudioManager : MonoBehaviour
 	public void SetBackgroundMusicLowPass(bool state)
 	{
 		if (backgroundMusicSource)
-			backgroundMusicSource.GetComponent<AudioLowPassFilter>().cutoffFrequency = state ? 700 : 22000;
+			StartCoroutine(FadeLowPass(state));
+	}
+
+	/// <summary>
+	/// Fades the low pass filter in and out
+	/// </summary>
+	/// <param name="state">The targeted state of the low pass filter</param>
+	/// <returns>Nothing</returns>
+	IEnumerator FadeLowPass(bool state)
+	{
+		float current = backgroundMusicSource.GetComponent<AudioLowPassFilter>().cutoffFrequency;
+		float target = state ? 700 : 7000;
+		float time = 100;
+		for (float i = time/20f; i < time; i++)
+		{
+			yield return null;
+			backgroundMusicSource.GetComponent<AudioLowPassFilter>().cutoffFrequency = Mathf.Lerp(current, target, Mathf.Clamp01(i / time));
+		}
+		backgroundMusicSource.GetComponent<AudioLowPassFilter>().cutoffFrequency = target;
 	}
 
 	/// <summary>

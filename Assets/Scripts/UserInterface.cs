@@ -11,12 +11,13 @@ public class UserInterface : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 	[HideInInspector]public InterfaceManager interfaceManager;
 	public Image interfaceBackground;
 	public InterfaceType interfaceType;
-	[HideInInspector] public bool interfaceLocked; //to be set on init
 	public string interfaceCallbackID;
 	public TextMeshProUGUI interfaceName;
 	public TextMeshProUGUI interfaceDescription;
 	public Image mainInterfaceIcon;
 	public bool saveNotification;
+	public Tab[] tabs;
+	public int selectedTabIndex;
 
 	public List<TranslationKey> interfaceKeys;
 
@@ -30,6 +31,32 @@ public class UserInterface : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 			{
 				interfaceKeys.Add((TranslationKey)component);
 			}
+
+		tabs = transform.GetComponentsInChildren<Tab>();
+
+		if(tabs.Length > 0)
+		{
+			SetInterfaceTab(0);
+		}
+	}
+
+	public void SetInterfaceTab(int index)
+	{
+		if(index == -1)
+		{
+			interfaceManager.CloseAllInterfaces();
+			return;
+		}
+		if(index >= 0 && index < tabs.Length)
+		{
+			tabs[selectedTabIndex].SetTabState(false);
+			selectedTabIndex = index;
+			tabs[selectedTabIndex].SetTabState(true);
+		}
+		else
+		{
+			interfaceManager.ThrowErrorMessage("interface_not_found_error_message");
+		}
 	}
 
 	//returns the translation key from its callback

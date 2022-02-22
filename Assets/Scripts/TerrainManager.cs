@@ -106,7 +106,8 @@ public class TerrainManager : MonoBehaviour
 		{
 			if (globalRefManager.baseManager.baseRooms[i].isNaturalTerrainTile)
 			{
-				globalRefManager.baseManager.baseRooms[i].containedRooms[0].UpdateTile(true);
+				globalRefManager.baseManager.baseRooms[i].containedRooms[0].canBeUpdated = true;
+				globalRefManager.baseManager.baseRooms[i].containedRooms[0].UpdateTile(false, globalRefManager.baseManager.baseRooms[i].GetHashCode()+"TerrainGen");
 			}
 		}
 	}

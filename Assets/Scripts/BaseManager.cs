@@ -213,7 +213,7 @@ public class BaseManager : MonoBehaviour
 			string deletion = "";
 			foreach (ContainedRoom c in roomsThatWillBeDestroyed)
 			{
-				deletion += globalRefManager.langManager.GetTranslation(c.tileNameInfoID.ToLower()) + ", ";
+				deletion += globalRefManager.langManager.GetTranslation("name_"+c.tileNameInfoID.ToLower()) + ", ";
 			}
 			deletion = deletion.Substring(0, deletion.Length - 2);
 			globalRefManager.interfaceManager.SetMajorInterface("ConfirmDelete");
@@ -239,20 +239,36 @@ public class BaseManager : MonoBehaviour
 		}
 		else
 		{
+			for (int i = 0; i < roomsToDelete.Length; i++)
+			{
+				foreach (RoomTile tr in roomsToDelete[i].containedRooms)
+					tr.canBeUpdated = true;
+			}
 			roomsToDelete = null;
+			System.GC.Collect();
 		}
 	}
 
 	//swaps the room at a position
-	public void ChangeRoom(ContainedRoom oldRoom, ContainedRoom newRoomPrefab)
+	public void ChangeRoom(Vector2Int pos, ContainedRoom newRoomPrefab)
 	{
-		Vector2Int pos = oldRoom.containedRooms[0].GetTrueTilePosition();
+		RoomTile _oldRoom = GetRoomAtPosition(pos);
+		if(_oldRoom == null)
+		{
+			return;
+		}
+		ContainedRoom oldRoom = _oldRoom.roomContainer;
+		foreach (RoomTile rt in oldRoom.containedRooms)
+		{
+			roomIndexingVectors[rt.GetIndexdTilePosition().y][rt.GetIndexdTilePosition().x] = null;
+		}
+
 		Destroy(oldRoom.gameObject);
 		ContainedRoom room = TryCreateRoomAtPos(pos, newRoomPrefab, false);
 		foreach (RoomTile rt in room.containedRooms)
 		{
 			roomIndexingVectors[rt.GetIndexdTilePosition().y][rt.GetIndexdTilePosition().x] = rt;
-			rt.UpdateTile(true);
+			rt.UpdateTile(false, room.GetHashCode()+"Change");
 		}
 	}
 
@@ -261,8 +277,12 @@ public class BaseManager : MonoBehaviour
 	{
 		foreach(RoomTile rt in room.containedRooms)
 		{
+			rt.spriteRenderer.color = Color.black;
 			roomIndexingVectors[rt.GetIndexdTilePosition().y][rt.GetIndexdTilePosition().x] = null;
-			rt.UpdateTile(true);
+		}
+		foreach(RoomTile rt in room.containedRooms)
+		{
+			rt.UpdateNeighboringTiles(0,room.GetHashCode()+"Delete");
 		}
 
 		Destroy(room.gameObject);
@@ -284,10 +304,11 @@ public class BaseManager : MonoBehaviour
 						if (!roomsThatWillBeDestroyed.Contains(other.roomContainer))
 						{
 							roomsThatWillBeDestroyed.Add(other.roomContainer);
-;							if (iteration < 100000)
+							other.canBeUpdated = false;
+							if (iteration < 100000)
 								RoomsThatWillBeDestroyedOnCall(other.roomContainer, roomsThatWillBeDestroyed, iteration++);
 							else
-								globalRefManager.interfaceManager.SetMajorInterface("Error");
+								globalRefManager.interfaceManager.ThrowErrorMessage("overflow_error_message");
 						}
 					}
 				}
@@ -351,11 +372,12 @@ public class BaseManager : MonoBehaviour
 			}
 			roomIndexingVectors[tile.GetIndexdTilePosition().y][tile.GetIndexdTilePosition().x] = tile;
 			tile.transform.name = "Room " + tile.GetTrueTilePosition().x + ", " + tile.GetTrueTilePosition().y + " of " + tile.roomContainer.tileNameCallbackID;
+			tile.canBeUpdated = true;
 		}
 		//auto updates the tiles around it, but not the full map
 		foreach (RoomTile tile in newGen.containedRooms)
 		{
-			tile.UpdateTile(updateNeighbors);
+			tile.UpdateTile(updateNeighbors, newGen.GetHashCode()+"Create");
 			tile.StartGeneration();
 		}
 

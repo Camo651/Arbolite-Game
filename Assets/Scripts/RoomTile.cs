@@ -10,9 +10,10 @@ public class RoomTile : MonoBehaviour
 	public ContainedRoom roomContainer;
 	public RoomTile[] neighborRooms;
 	public bool[] neighborWelds; //up right down left
-	public long previousUpdateID;
+	public string lastUpdateOrigin;
 	public SpriteRenderer spriteRenderer;
 	public List<Node> childNodes;
+	public bool canBeUpdated;
 
 
 	[HideInInspector] public readonly Vector2Int[] offsets = { Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left };
@@ -38,8 +39,11 @@ public class RoomTile : MonoBehaviour
 
 
 	// updates the values for this tile based on its conditions
-	public void UpdateTile(bool updateNeighbors)
+	public void UpdateTile(bool updateNeighbors, string updateOrigin)
 	{
+		//guard clause to prevent unwanted updates
+		if (!canBeUpdated)
+			return;
 		//set the current room's sprite
 		spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -55,11 +59,10 @@ public class RoomTile : MonoBehaviour
 			}
 		}
 
-
-
 		//as it stands: natural tiles get smoothed textures
-		if (roomContainer.isNaturalTerrainTile)
+		if (roomContainer.isNaturalTerrainTile && updateOrigin != lastUpdateOrigin)
 		{
+			lastUpdateOrigin = updateOrigin;
 			if(neighborRooms[0] != null)
 			{
 				switch (neighborRooms[0] != null ? neighborRooms[0].roomContainer.tileNameInfoID:"",
@@ -69,32 +72,16 @@ public class RoomTile : MonoBehaviour
 				{
 					case ("tile_grass", "tile_grass", "tile_bedrock", "tile_grass"):
 						//small
-						if (roomContainer.tileNameCallbackID != "tile_bedrock_small")
-						{
-							roomContainer.globalRefManager.baseManager.ChangeRoom(roomContainer, roomContainer.globalRefManager.baseManager.GetRoomPrefab("tile_bedrock_small"));
-						}
-						break;
+						ChangeRoomTo("tile_bedrock_small");break;
 					case ("tile_grass", "tile_grass", "tile_bedrock", "tile_bedrock"):
 						//right
-						if (roomContainer.tileNameCallbackID != "tile_bedrock_right")
-						{
-							roomContainer.globalRefManager.baseManager.ChangeRoom(roomContainer, roomContainer.globalRefManager.baseManager.GetRoomPrefab("tile_bedrock_right"));
-						}
-						break;
+						ChangeRoomTo("tile_bedrock_right");break;
 					case ("tile_grass", "tile_bedrock", "tile_bedrock", "tile_grass"):
 						//left
-						if (roomContainer.tileNameCallbackID != "tile_bedrock_left")
-						{
-							roomContainer.globalRefManager.baseManager.ChangeRoom(roomContainer, roomContainer.globalRefManager.baseManager.GetRoomPrefab("tile_bedrock_left"));
-						}
-						break;
+						ChangeRoomTo("tile_bedrock_left");break;
 					default:
 						//full
-						if (roomContainer.tileNameCallbackID != "tile_bedrock_full")
-						{
-							roomContainer.globalRefManager.baseManager.ChangeRoom(roomContainer, roomContainer.globalRefManager.baseManager.GetRoomPrefab("tile_bedrock_full"));
-						}
-						break;
+						ChangeRoomTo("tile_bedrock_full");break;
 				}
 			}
 			else
@@ -103,49 +90,48 @@ public class RoomTile : MonoBehaviour
 				{
 					case (false, true, true, true):
 						//full grass
-						if (roomContainer.tileNameCallbackID != "tile_grass_full")
-						{
-							roomContainer.globalRefManager.baseManager.ChangeRoom(roomContainer, roomContainer.globalRefManager.baseManager.GetRoomPrefab("tile_grass_full"));
-						}
-						break;
+						ChangeRoomTo("tile_grass_full");break;
 					case (false, false, true, true):
 						//left grass
-						if (roomContainer.tileNameCallbackID != "tile_grass_left")
-						{
-							roomContainer.globalRefManager.baseManager.ChangeRoom(roomContainer, roomContainer.globalRefManager.baseManager.GetRoomPrefab("tile_grass_left"));
-						}
-						break;
+						ChangeRoomTo("tile_grass_left");break;
 					case (false, true, true, false):
 						//right grass
-						if (roomContainer.tileNameCallbackID != "tile_grass_right")
-						{
-							roomContainer.globalRefManager.baseManager.ChangeRoom(roomContainer, roomContainer.globalRefManager.baseManager.GetRoomPrefab("tile_grass_right"));
-						}
-						break;
+						ChangeRoomTo("tile_grass_right");break;
 					case (false, false, true, false):
 						//right grass
-						if (roomContainer.tileNameCallbackID != "tile_grass_small")
-						{
-							roomContainer.globalRefManager.baseManager.ChangeRoom(roomContainer, roomContainer.globalRefManager.baseManager.GetRoomPrefab("tile_grass_small"));
-						}
-						break;
+						ChangeRoomTo("tile_grass_small");break;
 				}
 			}
 		}
 
+
 		//send the update pulse to the neighbors if permits
-		//if (updateNeighbors)
-			//UpdateNeighboringTiles();
+		if (updateNeighbors)
+			UpdateNeighboringTiles(0, updateOrigin);
+	}
+
+	private void ChangeRoomTo(string s)
+	{
+		if(roomContainer.tileNameCallbackID != s)
+			roomContainer.globalRefManager.baseManager.ChangeRoom(GetTrueTilePosition(), roomContainer.globalRefManager.baseManager.GetRoomPrefab(s));
 	}
 
 	//updates the 4 cardinal tiles around it (if they exist) and updates their values. Does not recursively flood the updates
-	public void UpdateNeighboringTiles()
+	public void UpdateNeighboringTiles(int iter, string ID)
 	{
 		//connection w/ neighbors established earlier
 		for (int i = 0; i < 4; i++)
 		{
 			if(neighborRooms[i] != null && neighborRooms[i] != this)
-				neighborRooms[i].UpdateTile(false);
+				neighborRooms[i].UpdateTile(false, ID);
+		}
+		if (iter <= 0)
+		{
+			for (int i = 0; i < 4; i++)
+			{
+				if (neighborRooms[i] != null && neighborRooms[i] != this)
+					neighborRooms[i].UpdateNeighboringTiles(iter + 1, ID);
+			}
 		}
 	}
 

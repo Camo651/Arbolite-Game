@@ -15,8 +15,8 @@ public class InterfaceManager : MonoBehaviour
 	public UserInterface worldPosHoverHUD;
 	public bool hoverHUDEnabled;
 	public Vector3 hoverHudOffset;
-	public List<UserInterface> allUserInterfaces;
-	public List<SO_NotificationType> notificationTypes;
+	public Dictionary<string, UserInterface> allUserInterfaces;
+	public Dictionary<string, SO_NotificationType> notificationTypes;
 	[HideInInspector] public Queue<UserInterface> activeNotificationQueue;
 	//[HideInInspector] public Stack<UserInterface> pastNotificationsStack;
 
@@ -74,15 +74,26 @@ public class InterfaceManager : MonoBehaviour
 	{
 		SetBackgroundBlur(false);
 		globalRefManager.baseManager.gameIsActivelyFrozen = false;
-		allUserInterfaces = new List<UserInterface>();
-		allUserInterfaces.AddRange((UserInterface[])Resources.FindObjectsOfTypeAll(typeof(UserInterface)));
-		foreach (UserInterface userInterface in allUserInterfaces)
+		allUserInterfaces = new Dictionary<string, UserInterface>();
+		UserInterface[] _unsortedInterfaces = (UserInterface[])FindObjectsOfTypeAll(typeof(UserInterface));
+		foreach (UserInterface userInterface in _unsortedInterfaces)
 		{
-			userInterface.interfaceManager = this;
-			if(userInterface.interfaceType != UserInterface.InterfaceType.HUD &&
-				userInterface.interfaceType != UserInterface.InterfaceType.WorldSpace &&
-				userInterface.interfaceType != UserInterface.InterfaceType.Notification)
-			userInterface.gameObject.SetActive(false);
+			if (!allUserInterfaces.ContainsKey(userInterface.interfaceCallbackID.ToLower()))
+			{
+				allUserInterfaces.Add(userInterface.interfaceCallbackID.ToLower(), userInterface);
+				userInterface.interfaceManager = this;
+				if(userInterface.interfaceType != UserInterface.InterfaceType.HUD)
+				userInterface.gameObject.SetActive(false);
+			}
+		}
+		notificationTypes = new Dictionary<string, SO_NotificationType>();
+		SO_NotificationType[] _unsortedNotes = (SO_NotificationType[])Resources.LoadAll<SO_NotificationType>("");
+		foreach (SO_NotificationType note in _unsortedNotes)
+		{
+			if (!notificationTypes.ContainsKey(note.callbackID.ToLower()))
+			{
+				notificationTypes.Add(note.callbackID.ToLower(), note);
+			}
 		}
 		activeNotificationQueue = new Queue<UserInterface>();
 	}
@@ -90,6 +101,11 @@ public class InterfaceManager : MonoBehaviour
 	public void SetMajorInterface(string UiName)
 	{
 		UserInterface UI = GetUserInterface(UiName);
+		if(UI == errorModal)
+		{
+			ThrowErrorMessage("interface_not_found_error_message");
+			return;
+		}
 		if(activeUserInterface!=null)
 			activeUserInterface.gameObject.SetActive(false);
 		activeUserInterface = UI;
@@ -97,6 +113,17 @@ public class InterfaceManager : MonoBehaviour
 		SetInterfaceLanguage(UI);
 		SetBackgroundBlur(UI.interfaceType == UserInterface.InterfaceType.FullScreen || UI.interfaceType == UserInterface.InterfaceType.Modal);
 		globalRefManager.baseManager.gameIsActivelyFrozen = UI.interfaceType == UserInterface.InterfaceType.FullScreen || UI.interfaceType == UserInterface.InterfaceType.Modal;
+	}
+
+	public void ThrowErrorMessage(string errorMessageCallbackID)
+	{
+		CloseAllInterfaces();
+		SetBackgroundBlur(true);
+		globalRefManager.baseManager.gameIsActivelyFrozen = true;
+		activeUserInterface = errorModal;
+		activeUserInterface.gameObject.SetActive(true);
+		SetInterfaceLanguage(errorModal);
+		errorModal.interfaceDescription.text = globalRefManager.langManager.GetTranslation(errorMessageCallbackID != "" ? errorMessageCallbackID : "error_modal_info");
 	}
 
 	//set worldposition viewer state
@@ -131,12 +158,21 @@ public class InterfaceManager : MonoBehaviour
 		globalRefManager.baseManager.TryDestroyCurrentlySelectedTile();
 	}
 
+	//opens an info UI about the tile
+	public void OpenSelectedTileInfoModal()
+	{
+		SetMajorInterface("Inspector");
+		activeUserInterface.interfaceName.text = globalRefManager.langManager.GetTranslation("name_" + globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.tileNameInfoID.ToLower());
+		activeUserInterface.interfaceDescription.text = globalRefManager.langManager.GetTranslation("info_" + globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.tileNameInfoID.ToLower());
+	}
+
 	//close the currently open interface
 	public void CloseAllInterfaces()
 	{
 		SetBackgroundBlur(false);
 		globalRefManager.baseManager.gameIsActivelyFrozen = false;
-		activeUserInterface.gameObject.SetActive(false);
+		if(activeUserInterface)
+			activeUserInterface.gameObject.SetActive(false);
 		activeUserInterface = null;
 		userIsHoveredOnInterfaceElement = false;
 	}
@@ -196,25 +232,18 @@ public class InterfaceManager : MonoBehaviour
 	//returns the interface with the given ID, or defaults to the error modal
 	public UserInterface GetUserInterface(string callbackID)
 	{
-		foreach (UserInterface userInterface in allUserInterfaces)
+		if (allUserInterfaces.ContainsKey(callbackID.ToLower()))
+			return allUserInterfaces[callbackID.ToLower()];
+		else
 		{
-			if (userInterface.interfaceCallbackID.ToLower() == callbackID.ToLower())
-			{
-				return userInterface;
-			}
+			return errorModal;
 		}
-		return errorModal; //defaults to the error modal
 	}
 
 	//returns a notification type if it exits
 	public SO_NotificationType GetNotificationType(string ID)
 	{
-		foreach (SO_NotificationType type in notificationTypes)
-		{
-			if (type.callbackID.ToLower() == ID.ToLower())
-				return type;
-		}
-		return notificationTypes[0]; //defaults to the not found notification, does not show error modal and interrupt tho
+		return notificationTypes.ContainsKey(ID.ToLower()) ? notificationTypes[ID.ToLower()] : notificationTypes["error"];
 	}
 
 	//adds a notification to the end of the stream of notifications to be seen
