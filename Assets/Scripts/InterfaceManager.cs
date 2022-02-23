@@ -140,6 +140,7 @@ public class InterfaceManager : MonoBehaviour
 		else
 		{
 			userIsHoveredOnInterfaceElement = false;
+			globalRefManager.baseManager.clickedSelect.ClearSelection();
 		}
 	}
 

@@ -10,10 +10,10 @@ public class BaseManager : MonoBehaviour
 	public long globalUpdateID;
 	public PlayerState currentPlayerState;
 	public GameObject currentlySelectedRoom;
-	public Color placementColourAllow, placementColourDeny;
 	public string selectedRoomName;
 	private bool colliding, nodeConditionsMet;
 	public RoomTile editModeSelectedRoomTile, editModePermSelectedRoomTile;
+	public SelectionBox hoverSelect, clickedSelect;
 	private Vector2Int currentSelectionCoords;
 	public bool gameIsActivelyFrozen;
 	public ContainedRoom[] roomsToDelete;
@@ -46,10 +46,10 @@ public class BaseManager : MonoBehaviour
 		{
 			globalRefManager.interfaceManager.SetWorldPositionViewerState(false, null);
 			if (editModePermSelectedRoomTile != null)
-				editModePermSelectedRoomTile.roomContainer.SetRoomTint(Color.white);
+				clickedSelect.ClearSelection();
 			editModePermSelectedRoomTile = null;
 			if (editModeSelectedRoomTile != null)
-				editModeSelectedRoomTile.roomContainer.SetRoomTint(Color.white);
+				hoverSelect.ClearSelection();
 			editModeSelectedRoomTile = null;
 
 			globalRefManager.playerManager.SetPhysicalPlayerState(state == PlayerState.PlayerMode);
@@ -129,11 +129,11 @@ public class BaseManager : MonoBehaviour
 									if (hasRoomOnLockedSide || !connectorNodeMet || otherHasLockedSideOnRoom)
 									{
 										nodeConditionsMet = false;
-										room.spriteRenderer.color = placementColourDeny;
+										room.spriteRenderer.color = globalRefManager.settingsManager.buildModeDeny;
 									}
 									else
 									{
-										room.spriteRenderer.color = placementColourAllow;
+										room.spriteRenderer.color = globalRefManager.settingsManager.buildModeAllow;
 									}
 								}
 								if (nodeConditionsMet)
@@ -141,11 +141,11 @@ public class BaseManager : MonoBehaviour
 									if (GetRoomAtPosition(room.GetTrueTilePosition()) != null)
 									{
 										colliding = true;
-										room.spriteRenderer.color = placementColourDeny;
+										room.spriteRenderer.color = globalRefManager.settingsManager.buildModeDeny;
 									}
 									else
 									{
-										room.spriteRenderer.color = placementColourAllow;
+										room.spriteRenderer.color = globalRefManager.settingsManager.buildModeAllow;
 									}
 								}
 							}
@@ -182,10 +182,10 @@ public class BaseManager : MonoBehaviour
 						if (roomAtSelectionCoords != editModeSelectedRoomTile)
 						{
 							if (editModeSelectedRoomTile != null && ((editModePermSelectedRoomTile == null) || (editModePermSelectedRoomTile && editModeSelectedRoomTile && editModePermSelectedRoomTile.roomContainer != editModeSelectedRoomTile.roomContainer)))
-								editModeSelectedRoomTile.roomContainer.SetRoomTint(Color.white);
+								hoverSelect.ClearSelection();
 							editModeSelectedRoomTile = roomAtSelectionCoords;
 							if (editModeSelectedRoomTile != null && ((editModePermSelectedRoomTile == null) || (editModePermSelectedRoomTile && editModeSelectedRoomTile && editModePermSelectedRoomTile.roomContainer != editModeSelectedRoomTile.roomContainer)))
-								editModeSelectedRoomTile.roomContainer.SetRoomTint(Color.gray);
+								hoverSelect.SetSelection(editModeSelectedRoomTile.roomContainer);
 						}
 
 					}
@@ -228,6 +228,7 @@ public class BaseManager : MonoBehaviour
 		if (delete)
 		{
 			StartCoroutine(FadeOutDestroyedTiles());
+			clickedSelect.ClearSelection();
 		}
 		else
 		{
@@ -283,7 +284,6 @@ public class BaseManager : MonoBehaviour
 	{
 		foreach(RoomTile rt in room.containedRooms)
 		{
-			rt.spriteRenderer.color = Color.black;
 			roomIndexingVectors[rt.GetIndexdTilePosition().y][rt.GetIndexdTilePosition().x] = null;
 		}
 		foreach(RoomTile rt in room.containedRooms)
@@ -330,11 +330,11 @@ public class BaseManager : MonoBehaviour
 			return;
 		}
 		if (editModePermSelectedRoomTile != null)
-			editModePermSelectedRoomTile.roomContainer.SetRoomTint(Color.white);
+			clickedSelect.ClearSelection();
 		editModePermSelectedRoomTile = editModeSelectedRoomTile;
 		if (editModePermSelectedRoomTile != null)
 		{
-			editModePermSelectedRoomTile.roomContainer.SetRoomTint(Color.cyan);
+			clickedSelect.SetSelection(editModePermSelectedRoomTile.roomContainer);
 			globalRefManager.interfaceManager.SetWorldPositionViewerState(true, editModePermSelectedRoomTile);
 			globalRefManager.audioManager.Play(AudioManager.AudioClipType.Ambient, "dirt_select");
 		}

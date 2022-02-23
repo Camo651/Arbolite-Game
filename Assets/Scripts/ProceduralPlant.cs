@@ -9,6 +9,7 @@ public class ProceduralPlant : MonoBehaviour
 	//generated data
 	public string plantFullName;
 	public List<PlantPart> physicalPlantParts;
+	public PlantManager plantManager;
 
 	//Genetics
 	public PlantType plantType;
@@ -16,8 +17,7 @@ public class ProceduralPlant : MonoBehaviour
 	public SO_BiomeType plantBiome;
 	public ResourceDistr resourceDistribution;
 	public Dictionary<PlantPart.PartType, Color> colourLookup;
-
-
+	public SpriteRenderer overlay;
 
 	public enum PlantType
 	{
@@ -34,5 +34,10 @@ public class ProceduralPlant : MonoBehaviour
 	{
 		public List<SO_ResourceType> plantResourceComposition;
 		public List<int> resourceCompositionDistribution;
+	}
+
+	public void OnMouseDown()
+	{
+		print(transform.name);
 	}
 }

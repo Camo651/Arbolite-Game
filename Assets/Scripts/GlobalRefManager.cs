@@ -17,7 +17,6 @@ public class GlobalRefManager : MonoBehaviour
 	public ParticleManager particleManager;
 	public PlantManager plantManager;
 	public PlayerManager playerManager;
-
 	private void Awake()
 	{
 		baseManager.globalRefManager = this;

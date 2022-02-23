@@ -50,6 +50,7 @@ public class PlantManager : MonoBehaviour
 		//finish the parts based on genes
 
 		ProceduralPlant newPlant = Instantiate(defaultPlantPrefab).GetComponent<ProceduralPlant>();
+		newPlant.plantManager = this;
 
 		newPlant.plantType = _plantType;
 		newPlant.plantPartTypes = _plantParts;
