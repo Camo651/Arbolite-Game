@@ -162,7 +162,8 @@ public class TerrainManager : MonoBehaviour
 		if (globalRefManager.settingsManager.doDaynightCycle)
 		{
 			sunmoon.transform.localEulerAngles = Vector3.forward * -360 * timeOfDayNormalized;
-			sunmoon.transform.position = new Vector3(globalRefManager.cameraController.mainCamera.transform.position.x, globalRefManager.cameraController.mainCamera.transform.position.y-20, 0);
+			if(globalRefManager.settingsManager.parallaxBackground)
+				sunmoon.transform.position = new Vector3(globalRefManager.cameraController.mainCamera.transform.position.x, globalRefManager.cameraController.mainCamera.transform.position.y-20, 0);
 		}
 
 		//move the clouds
