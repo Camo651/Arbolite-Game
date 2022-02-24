@@ -14,7 +14,7 @@ public class TerrainManager : MonoBehaviour
 	public List<GameObject> backgroundLayers;
 	public Vector2[] backgroundParallaxScales;
 	private List<List<SpriteRenderer>> backgroundSprites;
-	public Gradient dayNightCycleTints;
+	public Gradient cameraAltitudeGradient, skyDayCycleGradient, terrainDayCycleGradient, sunsetGradient;
 	public Color[] parallaxLayerBaseColours;
 	public Color skytint;
 	public UnityEngine.UI.Image tintOverlay;
@@ -30,6 +30,7 @@ public class TerrainManager : MonoBehaviour
 	public float rightBound, leftBound;
 	[Range(0,1)]public float cloudiness;
 	public float windspeed;
+	public Gradient cloudDistribution;
 
 	public void Start()
 	{
@@ -124,15 +125,22 @@ public class TerrainManager : MonoBehaviour
 		}
 		timeOfDayNormalized = timeOfDay / dayCycleLength;
 
-		Color bkgCol = dayNightCycleTints.Evaluate(timeOfDayNormalized);
-		bkgCol.a = 1f;
+		Color skyCol = skyDayCycleGradient.Evaluate(timeOfDayNormalized);
+		Color terCol = terrainDayCycleGradient.Evaluate(timeOfDayNormalized);
+		float cameraAlt = Mathf.Clamp01(globalRefManager.cameraController.transform.position.y / globalRefManager.cameraController.cameraBounds.w);
+		terCol.a = 1f;
+
 		//set the background colour based on the time of day
+		globalRefManager.cameraController.mainCamera.backgroundColor = skytint * cameraAltitudeGradient.Evaluate(cameraAlt);
 		if (globalRefManager.settingsManager.doDaynightCycle)
 		{
-			globalRefManager.cameraController.mainCamera.backgroundColor = bkgCol + skytint;
-			bkgCol.a = .3f;
-			tintOverlay.color = bkgCol;
-			bkgCol.a = 1;
+			terCol.a = .3f;
+			tintOverlay.color = terCol;
+			terCol.a = 1f;
+
+			Color sky = skyCol;
+			sky.a = 1;
+			globalRefManager.cameraController.mainCamera.backgroundColor = Color.Lerp(sunsetGradient.Evaluate(timeOfDayNormalized),Color.Lerp(skytint * cameraAltitudeGradient.Evaluate(cameraAlt), sky, .8f),skyCol.a);
 		}
 
 		//update the position of the background layers based on the position of the camera to make the parallax effect
@@ -146,7 +154,7 @@ public class TerrainManager : MonoBehaviour
 			if(globalRefManager.settingsManager.doDaynightCycle)
 				for (int i = 0; i < backgroundSprites[layer].Count; i++)
 				{
-					backgroundSprites[layer][i].color = Color.Lerp(bkgCol, parallaxLayerBaseColours[layer], .4f);
+					backgroundSprites[layer][i].color = Color.Lerp(terCol, parallaxLayerBaseColours[layer], .4f);
 				}
 		}
 
@@ -175,11 +183,11 @@ public class TerrainManager : MonoBehaviour
 	public void RandomizeCloud(CloudObj c)
 	{
 		c.speed = (c.layer == 2 ? Random.Range(20, 70) : c.layer == 1 ? Random.Range(40, 90) : Random.Range(60, 110)) / 100f;
-		c.active = Random.value < cloudiness;
+		c.active = Random.value < cloudiness && globalRefManager.settingsManager.showClouds;
 		c.rend.sprite = cloudSprites[Random.Range(0, cloudSprites.Count)];
 		c.rend.color = new Color(c.layer==0?.85f:c.layer==1?.9f:.95f, c.layer == 0 ? .85f : c.layer == 1 ? .9f : .95f, c.layer == 0 ? .95f : c.layer == 1 ? .98f : 1f, c.active ? .5f : 0f);
 		float x = leftBound;
-		float y = Random.Range(cloudHeightMin, cloudHeightMax);
+		float y = Mathf.Lerp(cloudHeightMin, cloudHeightMax, cloudDistribution.Evaluate(Random.value).r);
 		float s = (c.layer == 2 ? Random.Range(80, 130) : c.layer == 1 ? Random.Range(60, 110) : Random.Range(45, 80)) / 100f;
 		c.rend.transform.localScale = Vector3.one * s;
 		c.rend.transform.position = new Vector3(x, y, 0);
@@ -203,6 +211,18 @@ public class TerrainManager : MonoBehaviour
 	{
 		windspeed = wind;
 		globalRefManager.audioManager.windSource.volume = wind;
+	}
+
+	/// <summary>
+	/// % chance of weather
+	/// </summary>
+	public enum WeatherType
+	{
+		Clear = 70,
+		Cloudy = 12,
+		Raining = 8,
+		Storming = 6,
+		Snowing = 4
 	}
 
 }

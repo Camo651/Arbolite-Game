@@ -62,6 +62,7 @@ public class LanguangeManager : MonoBehaviour
 			}
 			allLanguageOptions.Add(langOpt);
 		}
+		globalRefManager.settingsManager.languageOptionSlider.maxValue = allLanguageOptions.Count-1;
 	}
 
 	//sets the current language to the langID and (eventually) sets all the text in the game to that language

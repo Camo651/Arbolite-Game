@@ -33,32 +33,32 @@ public class InterfaceManager : MonoBehaviour
 	//should be a mess and take care of all the keyboard input in one place so it doesnt get spread around the other managers
 	private void HandlePlayerInputCycle()
 	{
-		if (Input.anyKey)
+		if (Input.anyKey && !globalRefManager.settingsManager.keyBindIsBeingSet)
 		{
-			if (Input.GetKeyDown(globalRefManager.settingsManager.openHomeMenu))
+			if (Input.GetKeyDown(globalRefManager.settingsManager.GetKeyCode("home_menu")))
 			{
 				SetMajorInterface("Home");
 				return;
 			}
-			if (activeUserInterface == null && Input.GetKeyDown(globalRefManager.settingsManager.openPauseMenu))
+			if (activeUserInterface == null && Input.GetKeyDown(globalRefManager.settingsManager.GetKeyCode("pause_menu")))
 			{
 				SetMajorInterface("Pause_Menu");
 				return;
 			}
-			if (Input.GetKeyDown(globalRefManager.settingsManager.closeAllInterfaces))
+			if (Input.GetKeyDown(globalRefManager.settingsManager.GetKeyCode("close_UI")))
 			{
 				CloseAllInterfaces();
 				return;
 			}
-			if (Input.GetKeyDown(globalRefManager.settingsManager.setModePlayer))
+			if (Input.GetKeyDown(globalRefManager.settingsManager.GetKeyCode("")))
 			{
 				globalRefManager.baseManager.SetPlayerState(BaseManager.PlayerState.PlayerMode);
 			}
-			if (Input.GetKeyDown(globalRefManager.settingsManager.setModeEdit))
+			if (Input.GetKeyDown(globalRefManager.settingsManager.GetKeyCode("mode_edit")))
 			{
 				globalRefManager.baseManager.SetPlayerState(BaseManager.PlayerState.EditMode);
 			}
-			if (Input.GetKeyDown(globalRefManager.settingsManager.setModeBuild))
+			if (Input.GetKeyDown(globalRefManager.settingsManager.GetKeyCode("mode_build")))
 			{
 				globalRefManager.baseManager.SetPlayerState(BaseManager.PlayerState.BuildMode);
 			}

@@ -27,12 +27,12 @@ public class PlayerManager : MonoBehaviour
 	{
 		if (physicalPlayerIsActive && !globalRefManager.baseManager.gameIsActivelyFrozen)
 		{
-			inputMovement.x = Mathf.SmoothDamp(inputMovement.x, Input.GetKey(globalRefManager.settingsManager.playerRight) ? 1f : Input.GetKey(globalRefManager.settingsManager.playerLeft) ? -1f : 0f, ref lateralMovementSmoother, .0001f);
+			inputMovement.x = Mathf.SmoothDamp(inputMovement.x, Input.GetKey(globalRefManager.settingsManager.GetKeyCode("player_right")) ? 1f : Input.GetKey(globalRefManager.settingsManager.GetKeyCode("player_left")) ? -1f : 0f, ref lateralMovementSmoother, .0001f);
 		}
-		if (Input.GetKeyDown(globalRefManager.settingsManager.playerUp) || Input.GetKeyDown(globalRefManager.settingsManager.playerJump))
-		{
-			inputMovement.y = 1f;
-		}
+		//if (Input.GetKeyDown(globalRefManager.settingsManager.playerUp) || Input.GetKeyDown(globalRefManager.settingsManager.playerJump))
+		//{
+		//	inputMovement.y = 1f;
+		//}
 	}
 
 	public Vector2Int GetPlayerTilePos()
