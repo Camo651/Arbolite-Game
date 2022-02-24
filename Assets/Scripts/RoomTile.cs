@@ -162,6 +162,9 @@ public class RoomTile : MonoBehaviour
 
 		Gizmos.color = neighborWelds[3] ? Color.black : nodeColourStates[leftNodeState];
 		Gizmos.DrawSphere(Vector3.left*dist, rad);
+
+		Gizmos.color = Color.red;
+		Gizmos.DrawWireCube(Vector2.zero, Vector2.one);
 	}
 }
 

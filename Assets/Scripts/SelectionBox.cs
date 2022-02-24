@@ -9,8 +9,6 @@ public class SelectionBox : MonoBehaviour
 	public GameObject selectionNodePrefab;
 	public float nodesPerSide;
 	public Color boxColour;
-	
-
 	public void SetSelection(ContainedRoom cont)
 	{
 		ClearSelection();
@@ -24,7 +22,6 @@ public class SelectionBox : MonoBehaviour
 			float normal = i / nodesPerSide;
 			SetNode(new Vector2(Mathf.Lerp(bottomLeft.x, topRight.x, normal), topRight.y));
 			SetNode(new Vector2(Mathf.Lerp(bottomLeft.x, topRight.x, normal), bottomLeft.y));
-			
 			if(i > 0 && i < nodesPerSide)
 			{
 				SetNode(new Vector2(bottomLeft.x, Mathf.Lerp(bottomLeft.y, topRight.y, normal)));

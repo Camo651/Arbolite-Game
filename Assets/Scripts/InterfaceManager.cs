@@ -42,7 +42,7 @@ public class InterfaceManager : MonoBehaviour
 			}
 			if (activeUserInterface == null && Input.GetKeyDown(globalRefManager.settingsManager.openPauseMenu))
 			{
-				SetMajorInterface("Pause");
+				SetMajorInterface("Pause_Menu");
 				return;
 			}
 			if (Input.GetKeyDown(globalRefManager.settingsManager.closeAllInterfaces))
@@ -113,8 +113,22 @@ public class InterfaceManager : MonoBehaviour
 		SetInterfaceLanguage(UI);
 		SetBackgroundBlur(UI.interfaceType == UserInterface.InterfaceType.FullScreen || UI.interfaceType == UserInterface.InterfaceType.Modal);
 		globalRefManager.baseManager.gameIsActivelyFrozen = UI.interfaceType == UserInterface.InterfaceType.FullScreen || UI.interfaceType == UserInterface.InterfaceType.Modal;
+		GetUserInterface("Home_Button").gameObject.SetActive(false);
 	}
 
+	/// <summary>
+	/// Opens a link in a browser
+	/// </summary>
+	/// <param name="url"></param>
+	public void OpenLink(string url)
+	{
+		Application.OpenURL(url);
+	}
+
+	/// <summary>
+	/// Closes all other UI and opens the error modal with the message
+	/// </summary>
+	/// <param name="errorMessageCallbackID"></param>
 	public void ThrowErrorMessage(string errorMessageCallbackID)
 	{
 		CloseAllInterfaces();
@@ -124,6 +138,7 @@ public class InterfaceManager : MonoBehaviour
 		activeUserInterface.gameObject.SetActive(true);
 		SetInterfaceLanguage(errorModal);
 		errorModal.interfaceDescription.text = globalRefManager.langManager.GetTranslation(errorMessageCallbackID != "" ? errorMessageCallbackID : "error_modal_info");
+		GetUserInterface("Home_Button").gameObject.SetActive(false);
 	}
 
 	//set worldposition viewer state
@@ -176,6 +191,7 @@ public class InterfaceManager : MonoBehaviour
 			activeUserInterface.gameObject.SetActive(false);
 		activeUserInterface = null;
 		userIsHoveredOnInterfaceElement = false;
+		GetUserInterface("Home_Button").gameObject.SetActive(true);
 	}
 
 	//finds all the text elements in an interface and translates them
