@@ -39,7 +39,10 @@ public class BaseManager : MonoBehaviour
 		}
 	}
 
-	//prepares and consolidates switching modes
+	/// <summary>
+	/// Set the state of the player
+	/// </summary>
+	/// <param name="state">The state to be set to</param>
 	public void SetPlayerState(PlayerState state)
 	{
 		if (state != currentPlayerState)
@@ -201,7 +204,9 @@ public class BaseManager : MonoBehaviour
 		}
 	}
 
-	//Initiates the UI modal for confirming if the tiles should be deleted
+	/// <summary>
+	/// Initiates the UI modal for confirming if the tiles should be deleted
+	/// </summary>
 	public void TryDestroyCurrentlySelectedTile()
 	{
 		if (editModePermSelectedRoomTile)
@@ -222,7 +227,10 @@ public class BaseManager : MonoBehaviour
 		}
 	}
 
-	//either acutally goes through the list and deletes the tiles, or cancels the action
+	/// <summary>
+	/// either acutally goes through the list and deletes the tiles, or cancels the action
+	/// </summary>
+	/// <param name="delete">Should the tiles in the list be deleted</param>
 	public void ActuallyDeleteRooms(bool delete)
 	{
 		if (delete)
@@ -241,6 +249,11 @@ public class BaseManager : MonoBehaviour
 			System.GC.Collect();
 		}
 	}
+
+	/// <summary>
+	/// Slows the destruction sequence of the tiles to make it more applealing
+	/// </summary>
+	/// <returns>Nothing</returns>
 	IEnumerator FadeOutDestroyedTiles()
 	{
 		int count = roomsToDelete.Length;
@@ -256,7 +269,11 @@ public class BaseManager : MonoBehaviour
 
 	}
 
-	//swaps the room at a position
+	/// <summary>
+	/// Hotswaps the room at a position
+	/// </summary>
+	/// <param name="pos">The worldspace coordinates of the tile</param>
+	/// <param name="newRoomPrefab">The prefab object of the tile to replace it. Should be the same size as the tile at pos</param>
 	public void ChangeRoom(Vector2Int pos, ContainedRoom newRoomPrefab)
 	{
 		RoomTile _oldRoom = GetRoomAtPosition(pos);
@@ -279,7 +296,10 @@ public class BaseManager : MonoBehaviour
 		}
 	}
 
-	//standardizes the removal of rooms to ensure all reqs met
+	/// <summary>
+	/// Standard immidiate room deletion
+	/// </summary>
+	/// <param name="room">The controom to be removed</param>
 	public void DeleteRoom(ContainedRoom room)
 	{
 		foreach(RoomTile rt in room.containedRooms)
@@ -294,7 +314,12 @@ public class BaseManager : MonoBehaviour
 		Destroy(room.gameObject);
 	}
 
-	//recursively calls itself to get all the tiles that would be deleted given the initaial location
+	/// <summary>
+	/// recursively calls itself to get all the tiles that would be deleted given the initaial location
+	/// </summary>
+	/// <param name="prev">The previous room in the recursion chain</param>
+	/// <param name="roomsThatWillBeDestroyed">The list of all the rooms that will be removed</param>
+	/// <param name="iteration">The iteration of the recursion. Will throw an error after 1 million iterations</param>
 	public void RoomsThatWillBeDestroyedOnCall(ContainedRoom prev, List<ContainedRoom> roomsThatWillBeDestroyed, int iteration)
 	{
 		foreach (RoomTile room in prev.containedRooms)
@@ -322,7 +347,9 @@ public class BaseManager : MonoBehaviour
 		}
 	}
 
-	//to be called when the player clicks on a tile in edit mode
+	/// <summary>
+	/// Handles the player clicking on a tile in the worldspace
+	/// </summary>
 	public void OnClickOnTile()
 	{
 		if(editModePermSelectedRoomTile == editModeSelectedRoomTile)
@@ -342,7 +369,11 @@ public class BaseManager : MonoBehaviour
 			globalRefManager.interfaceManager.CloseWorldPositionViewer();
 	}
 
-	//returns the room at the world coordinate space position
+	/// <summary>
+	/// Get the room at a position
+	/// </summary>
+	/// <param name="pos">The worldspace integer coordinates of the room tile</param>
+	/// <returns>The room tile if it exists at that location</returns>
 	public RoomTile GetRoomAtPosition(Vector2Int pos)//always call with the real world position
 	{
 
@@ -361,8 +392,14 @@ public class BaseManager : MonoBehaviour
 		}
 	}
 
-	//instantiates and preloads a contained room at a given position. Does not check if that place is a valid spot
-	public ContainedRoom TryCreateRoomAtPos(Vector2Int pos, ContainedRoom roomPrefab, bool updateNeighbors) //call with the real world position
+	/// <summary>
+	/// instantiates and preloads a contained room at a given position. Does not check if that place is a valid spot
+	/// </summary>
+	/// <param name="pos">The worldspace position of the place to instantiate at</param>
+	/// <param name="roomPrefab">The prefab to instatniate</param>
+	/// <param name="updateNeighbors">Should the neighboring tiles be updated upon instatniation</param>
+	/// <returns>The newly name contained room</returns>
+	public ContainedRoom TryCreateRoomAtPos(Vector2Int pos, ContainedRoom roomPrefab, bool updateNeighbors)
 	{
 		ContainedRoom newGen = Instantiate(roomPrefab);
 		baseRooms.Add(newGen);

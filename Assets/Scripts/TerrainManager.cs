@@ -75,7 +75,10 @@ public class TerrainManager : MonoBehaviour
 			clouds.Add(c);
 		}
 	}
-	//generate the initial tilemap with terrain tiles
+
+	/// <summary>
+	/// Generates the initial terrain tile map on the mounatin top
+	/// </summary>
 	public void GenerateTerrain()
 	{
 		globalRefManager.baseManager.roomIndexingVectors = new List<List<RoomTile>>();
@@ -114,7 +117,9 @@ public class TerrainManager : MonoBehaviour
 		}
 	}
 
-	//handles the flow of time and ambiance
+	/// <summary>
+	/// Called by Update, handles all the ambient world functions
+	/// </summary>
 	private void PeripheralWorldHandle()
 	{
 		//increment time based on the update cycle
@@ -184,6 +189,10 @@ public class TerrainManager : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Randomizes the properties of the cloud in respect to the current world conditions
+	/// </summary>
+	/// <param name="c">The cloud to be modified</param>
 	public void RandomizeCloud(CloudObj c)
 	{
 		c.speed = (c.layer == 2 ? Random.Range(20, 70) : c.layer == 1 ? Random.Range(40, 90) : Random.Range(60, 110)) / 100f;
@@ -203,6 +212,11 @@ public class TerrainManager : MonoBehaviour
 			PeripheralWorldHandle();
 	}
 
+	/// <summary>
+	/// Get a biome from its ID
+	/// </summary>
+	/// <param name="callbackID">The callbackID of the biome</param>
+	/// <returns>The biome, if it exists</returns>
 	public SO_BiomeType GetBiomeType(string callbackID)
 	{
 		return allBiomes.ContainsKey(callbackID) ? allBiomes[callbackID] : defaultBiomeType;
@@ -231,6 +245,9 @@ public class TerrainManager : MonoBehaviour
 	}
 
 }
+/// <summary>
+/// Holds the data for a cloud object to make it easier to modify it on the fly
+/// </summary>
 public class CloudObj
 {
 	public SpriteRenderer rend;

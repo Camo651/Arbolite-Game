@@ -40,6 +40,10 @@ public class UserInterface : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 		}
 	}
 
+	/// <summary>
+	/// Sets the tab of this interface
+	/// </summary>
+	/// <param name="index">An index that exists in the array. -1 to close it</param>
 	public void SetInterfaceTab(int index)
 	{
 		if(index == -1)
@@ -59,7 +63,11 @@ public class UserInterface : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 		}
 	}
 
-	//returns the translation key from its callback
+	/// <summary>
+	/// Get the translation key in this UI's childen texts
+	/// </summary>
+	/// <param name="callbackID">The callback ID of the UGUI</param>
+	/// <returns>The key object, given it exists</returns>
 	public TranslationKey GetTranslationKey(string callbackID)
 	{
 		foreach (TranslationKey key in interfaceKeys)

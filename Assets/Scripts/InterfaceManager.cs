@@ -30,7 +30,9 @@ public class InterfaceManager : MonoBehaviour
 
 	}
 
-	//should be a mess and take care of all the keyboard input in one place so it doesnt get spread around the other managers
+	/// <summary>
+	/// Consolidates the player's input into one method to keep everything clean
+	/// </summary>
 	private void HandlePlayerInputCycle()
 	{
 		if (Input.anyKey && !globalRefManager.settingsManager.keyBindIsBeingSet)
@@ -75,8 +77,9 @@ public class InterfaceManager : MonoBehaviour
 			}
 		}
 	}
-
-	// sets all the default or player pref values for what all the interfaces should look like on startup of the main game
+	/// <summary>
+	/// sets all the default or player pref values for what all the interfaces should look like on startup of the main game
+	/// </summary>
 	private void InitializeUserInterface()
 	{
 		SetBackgroundBlur(false);
@@ -104,7 +107,11 @@ public class InterfaceManager : MonoBehaviour
 		}
 		activeNotificationQueue = new Queue<UserInterface>();
 	}
-	//opens up a fullscreen interface / menu
+
+	/// <summary>
+	/// Opens up a fullscreen or modal UI
+	/// </summary>
+	/// <param name="UiName">The callback ID of the UI element in the scene</param>
 	public void SetMajorInterface(string UiName)
 	{
 		UserInterface UI = GetUserInterface(UiName);
@@ -235,7 +242,12 @@ public class InterfaceManager : MonoBehaviour
 			ui.GetTranslationKey("notification_info").textBox.text = globalRefManager.langManager.GetTranslation("info_" + type.notificationDescription);
 	}
 
-	//inserts the data into the translated string
+	/// <summary>
+	/// Inserts the custom data into the string based on its tags
+	/// </summary>
+	/// <param name="original">The string with the tags</param>
+	/// <param name="data">A list of enumerated data that can be interted</param>
+	/// <returns>The string with the data inserted into it</returns>
 	public string InsertCustomData(string original, string[] data)
 	{
 		for(int i = 0; i < data.Length; i++)
@@ -247,13 +259,20 @@ public class InterfaceManager : MonoBehaviour
 		}
 		return original;
 	}
-	//toggles the state of the player hovering over a UI element
+	/// <summary>
+	/// Toggles the state of the hover on UI elements
+	/// </summary>
+	/// <param name="state"></param>
 	public void SetInterfaceHoverState(bool state)
 	{
 		userIsHoveredOnInterfaceElement = state;
 	}
 
-	//returns the interface with the given ID, or defaults to the error modal
+	/// <summary>
+	/// Gets the UI based on its ID
+	/// </summary>
+	/// <param name="callbackID">The callback ID</param>
+	/// <returns>The UserInterface, given it existst</returns>
 	public UserInterface GetUserInterface(string callbackID)
 	{
 		if (allUserInterfaces.ContainsKey(callbackID.ToLower()))
@@ -264,7 +283,11 @@ public class InterfaceManager : MonoBehaviour
 		}
 	}
 
-	//returns a notification type if it exits
+	/// <summary>
+	/// Get the notification type from its ID
+	/// </summary>
+	/// <param name="ID">The callback ID</param>
+	/// <returns>The notification type, given it exists</returns>
 	public SO_NotificationType GetNotificationType(string ID)
 	{
 		return notificationTypes.ContainsKey(ID.ToLower()) ? notificationTypes[ID.ToLower()] : notificationTypes["error"];
@@ -291,14 +314,20 @@ public class InterfaceManager : MonoBehaviour
 		StartCoroutine(ui.DelayToClose(notificationPersistUptimeSeconds));
 	}
 
-	//removes the oldest notification
+	/// <summary>
+	/// Removes the last notification from the notification queue
+	/// </summary>
+	/// <param name="ui">idk why this is here</param>
 	public void DequeueNotification(UserInterface ui)
 	{
 		UserInterface old = activeNotificationQueue.Dequeue();
 		Destroy(old.gameObject);
 	}
 
-	//sets the state of the background blur
+	/// <summary>
+	/// Sets the status of the background blur. Also handles the low pass filtering
+	/// </summary>
+	/// <param name="state">The state to be set to</param>
 	public void SetBackgroundBlur(bool state)
 	{
 		globalRefManager.audioManager.SetBackgroundMusicLowPass(state);
