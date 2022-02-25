@@ -80,7 +80,7 @@ public class UserInterface : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 	//transfer method for sending a notification
 	public void SendNotification(string ID)
 	{
-		interfaceManager.EnqueueNotification(ID, "", "", null);
+		interfaceManager.EnqueueNotification(ID, "", null);
 	}
 	//transfer method for opening a menu
 	public void SetInterface(string ID)

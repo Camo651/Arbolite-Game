@@ -252,7 +252,7 @@ public class BaseManager : MonoBehaviour
 			yield return new WaitForSeconds(.04f);
 		}
 
-		globalRefManager.interfaceManager.EnqueueNotification("tiles_deleted", "", "successfully_destroyed_tiles", new string[] { "" + count });
+		globalRefManager.interfaceManager.EnqueueNotification("tiles_deleted", "successfully_destroyed_tiles", new string[] { "" + count });
 
 	}
 

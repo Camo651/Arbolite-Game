@@ -47,6 +47,8 @@ public class SettingsManager : MonoBehaviour
 	public Toggle _invertScrollDirection;
 	public bool smoothCameraMovement;
 	public Toggle _smoothCameraMovement;
+	public bool developerMode;
+	public Toggle _developerMode;
 
 	//text
 	public bool showSubtitles;
@@ -146,6 +148,12 @@ public class SettingsManager : MonoBehaviour
 		globalRefManager.audioManager.PlayMusic();
 
 		globalRefManager.langManager.SetLanguage(languageOption);
+
+		if (developerMode != _developerMode.isOn)
+		{
+			developerMode = _developerMode.isOn;
+			globalRefManager.interfaceManager.EnqueueNotification("toggle_dev_mode", "toggle_dev_mode", new string[] { developerMode ? "Enabled" : "Disabled" });
+		}
 	}
 
 	public void SetSettingsDisplays()
@@ -168,6 +176,7 @@ public class SettingsManager : MonoBehaviour
 		_zoomTowardsMouse.isOn = zoomTowardsMouse;
 		_invertScrollDirection.isOn = invertScrollDirection;
 		_smoothCameraMovement.isOn = smoothCameraMovement;
+		_developerMode.isOn = developerMode;
 
 		_showSubtitles.isOn = showSubtitles;
 		_fontSizeModifier.value = fontSizeModifier;
@@ -203,6 +212,7 @@ public class SettingsManager : MonoBehaviour
 		zoomTowardsMouse = true;
 		invertScrollDirection = false;
 		smoothCameraMovement = true;
+		developerMode = false;
 
 		showSubtitles = false;
 		fontSizeModifier = 1f;

@@ -66,6 +66,13 @@ public class InterfaceManager : MonoBehaviour
 			{
 				globalRefManager.baseManager.selectedRoomName = "Big Room";
 			}
+			if(globalRefManager.settingsManager.developerMode && Input.GetKeyDown(KeyCode.Return))
+			{
+				if (activeUserInterface == null)
+					SetMajorInterface("DevConsole");
+				else
+					CloseAllInterfaces();
+			}
 		}
 	}
 
@@ -263,8 +270,13 @@ public class InterfaceManager : MonoBehaviour
 		return notificationTypes.ContainsKey(ID.ToLower()) ? notificationTypes[ID.ToLower()] : notificationTypes["error"];
 	}
 
-	//adds a notification to the end of the stream of notifications to be seen
-	public void EnqueueNotification(string _type, string customDescription, string customCallbackIDForData, string[] customData)
+	/// <summary>
+	/// Adds a custom notification to the rendered notifications queues
+	/// </summary>
+	/// <param name="_type"> The callback id for the type of notification</param>
+	/// <param name="customCallbackIDForData"> The callbackID for the text for a custom descriptor </param>
+	/// <param name="customData"> A list of data that can be inserted into the custom data hashes in the key list</param>
+	public void EnqueueNotification(string _type, string customCallbackIDForData, string[] customData)
 	{
 		SO_NotificationType type = GetNotificationType(_type);
 		GameObject note = Instantiate(notificationInterfacePrefab);
