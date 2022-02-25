@@ -133,6 +133,7 @@ public class SettingsManager : MonoBehaviour
 
 		QualitySettings.vSyncCount = vSync ? 2 : 0;
 		Screen.fullScreenMode = fullscreenMode ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed;
+		QualitySettings.antiAliasing = antiAliasing ? 0 : 3;
 		for (int i = 0; i < globalRefManager.terrainManager.clouds.Count; i++)
 		{
 			CloudObj c = globalRefManager.terrainManager.clouds[i];

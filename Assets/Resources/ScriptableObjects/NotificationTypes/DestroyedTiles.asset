@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   callbackID: tiles_deleted
   notificationName: successfully_destroyed_tiles
-  notificationDescription: 
+  notificationDescription: successfully_destroyed_tiles
   shouldBeSaved: 0
-  notificationIcon: {fileID: -2413806693520163455, guid: c265ed9efa21f2f4da1e973c8a0ae50a, type: 3}
+  notificationIcon: {fileID: 21300000, guid: d3b911edd3d08644aa719441f981d181, type: 3}

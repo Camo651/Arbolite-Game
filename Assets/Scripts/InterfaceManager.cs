@@ -218,14 +218,14 @@ public class InterfaceManager : MonoBehaviour
 	public void SetInterfaceLanguage(UserInterface ui, SO_NotificationType type, string customDataCallbackID, string[] customData)
 	{
 		if (customData != null && customDataCallbackID == type.notificationName)
-			ui.GetTranslationKey("notification_title").textBox.text = InsertCustomData(globalRefManager.langManager.GetTranslation(type.notificationName),customData);
+			ui.GetTranslationKey("notification_title").textBox.text = InsertCustomData(globalRefManager.langManager.GetTranslation("name_" + type.notificationName), customData);
 		else
-			ui.GetTranslationKey("notification_title").textBox.text = globalRefManager.langManager.GetTranslation(type.notificationName);
+			ui.GetTranslationKey("notification_title").textBox.text = globalRefManager.langManager.GetTranslation("name_" + type.notificationName);
 
 		if (customData != null && customDataCallbackID == type.notificationDescription)
-			ui.GetTranslationKey("notification_info").textBox.text = InsertCustomData(globalRefManager.langManager.GetTranslation(type.notificationDescription),customData);
+			ui.GetTranslationKey("notification_info").textBox.text = InsertCustomData(globalRefManager.langManager.GetTranslation("info_" + type.notificationDescription),customData);
 		else
-			ui.GetTranslationKey("notification_info").textBox.text = globalRefManager.langManager.GetTranslation(type.notificationDescription);
+			ui.GetTranslationKey("notification_info").textBox.text = globalRefManager.langManager.GetTranslation("info_" + type.notificationDescription);
 	}
 
 	//inserts the data into the translated string

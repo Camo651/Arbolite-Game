@@ -16,7 +16,6 @@ confirm_button                 "Confirm"
 cancel_button                  "Cancel"
 save_button                    "Save"
 reset_button                   "Reset"
-successfully_destroyed_tiles   "Successfully Destroyed #0# Tiles"
 info_button                    "Info"
 inspector_info_title           ""
 inspector_info_info            ""
@@ -52,6 +51,10 @@ setting_keyBindLeft            "Move Left"
 setting_keyBindCloseUI         "Close UI"
 setting_keyBindPause           "Pause Game"
 setting_keyBindOpenInv         "Open Inventory"
+
+< NOTIFICATIONS >
+name_successfully_destroyed_tiles   "Destroyed!"
+info_successfully_destroyed_tiles   "Successfully Destroyed #0# Tiles"
 
 < ERROR MESSAGES >
 error_modal_title              "Oops! There was an error"

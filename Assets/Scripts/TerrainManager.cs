@@ -14,7 +14,7 @@ public class TerrainManager : MonoBehaviour
 	public List<GameObject> backgroundLayers;
 	public Vector2[] backgroundParallaxScales;
 	private List<List<SpriteRenderer>> backgroundSprites;
-	public Gradient cameraAltitudeGradient, skyDayCycleGradient, terrainDayCycleGradient, sunsetGradient;
+	public Gradient cameraAltitudeGradient, skyDayCycleGradient, terrainDayCycleGradient, sunsetGradient, sunAuraGradient;
 	public Color[] parallaxLayerBaseColours;
 	public Color skytint;
 	public UnityEngine.UI.Image tintOverlay;
@@ -31,6 +31,7 @@ public class TerrainManager : MonoBehaviour
 	[Range(0,1)]public float cloudiness;
 	public float windspeed;
 	public Gradient cloudDistribution;
+	public SpriteRenderer sunAuraRenderer, sunHaloRenderer;
 
 	public void Start()
 	{
@@ -140,7 +141,9 @@ public class TerrainManager : MonoBehaviour
 
 			Color sky = skyCol;
 			sky.a = 1;
-			globalRefManager.cameraController.mainCamera.backgroundColor = Color.Lerp(sunsetGradient.Evaluate(timeOfDayNormalized),Color.Lerp(skytint * cameraAltitudeGradient.Evaluate(cameraAlt), sky, .8f),skyCol.a);
+			globalRefManager.cameraController.mainCamera.backgroundColor = Color.Lerp(sunsetGradient.Evaluate(timeOfDayNormalized), (skytint * sky), skyCol.a) * cameraAltitudeGradient.Evaluate(cameraAlt);
+			sunAuraRenderer.color = sunAuraGradient.Evaluate(timeOfDayNormalized);
+			sunHaloRenderer.color = new Color(1, 1, 1, Mathf.Clamp01(sunAuraGradient.Evaluate(timeOfDayNormalized).a-.25f));
 		}
 
 		//update the position of the background layers based on the position of the camera to make the parallax effect
@@ -196,7 +199,8 @@ public class TerrainManager : MonoBehaviour
 
 	private void Update()
 	{
-		PeripheralWorldHandle();
+		if(!globalRefManager.baseManager.gameIsActivelyFrozen)
+			PeripheralWorldHandle();
 	}
 
 	public SO_BiomeType GetBiomeType(string callbackID)

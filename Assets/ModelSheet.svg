@@ -2,21 +2,21 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="210mm"
    height="297mm"
    viewBox="0 0 210 297"
    version="1.1"
    id="svg8"
-   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
-   sodipodi:docname="ModelSheet.svg"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:dc="http://purl.org/dc/elements/1.1/">
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="ModelSheet.svg">
   <defs
      id="defs2">
     <linearGradient
@@ -166,6 +166,84 @@
        y2="1279.2154"
        gradientUnits="userSpaceOnUse"
        gradientTransform="scale(3.7795276)" />
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter2120"
+       x="-0.0085135135"
+       width="1.017027"
+       y="-0.0085135135"
+       height="1.017027">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.3084871"
+         id="feGaussianBlur2122" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter2374"
+       x="-0.036"
+       width="1.072"
+       y="-0.036"
+       height="1.072">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="5.5330312"
+         id="feGaussianBlur2376" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter3084"
+       x="-0.2028"
+       width="1.4056"
+       y="-0.2028"
+       height="1.4056">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="31.169409"
+         id="feGaussianBlur3086" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter3132"
+       x="-0.0204"
+       width="1.0408"
+       y="-0.0204"
+       height="1.0408">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.1353843"
+         id="feGaussianBlur3134" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter3180"
+       x="-0.0492"
+       width="1.0984"
+       y="-0.0492"
+       height="1.0984">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="7.5618092"
+         id="feGaussianBlur3182" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter3504"
+       x="-0.0936"
+       width="1.1872"
+       y="-0.0936"
+       height="1.1872">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="14.385881"
+         id="feGaussianBlur3506" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -174,16 +252,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.32"
-     inkscape:cx="30129.688"
-     inkscape:cy="8910.9375"
+     inkscape:zoom="0.11313709"
+     inkscape:cx="10276.147"
+     inkscape:cy="-7192.3565"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1001"
-     inkscape:window-x="-9"
-     inkscape:window-y="-9"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="892"
      inkscape:window-maximized="1"
      showborder="false"
      inkscape:pagecheckerboard="0"
@@ -3518,5 +3596,61 @@
        inkscape:export-filename="C:\Users\camoc\Desktop\Code\UnityProjects\BuildingGameProject\Assets\Images\Textures\HorizontalGradient.png"
        inkscape:export-xdpi="95.999985"
        inkscape:export-ydpi="95.999985" />
+    <circle
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#ffcd48;stroke-width:37.616;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.43434343;paint-order:markers stroke fill;filter:url(#filter3084)"
+       id="path1192"
+       cx="3426.354"
+       cy="2317.7551"
+       r="184.43437"
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\UnityProjects\BuildingGameProject\Assets\Images\Textures\SunHalo.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <circle
+       r="184.43437"
+       cy="2317.7551"
+       cx="3426.354"
+       id="circle1194"
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#ff2812;stroke-width:24.916;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.05050503;paint-order:markers stroke fill;filter:url(#filter2120)"
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\UnityProjects\BuildingGameProject\Assets\Images\Textures\SunHalo.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <circle
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#ff5105;stroke-width:2.216;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.84848487;paint-order:markers stroke fill;filter:url(#filter2374)"
+       id="circle2124"
+       cx="3426.354"
+       cy="2317.7551"
+       r="184.43437"
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\UnityProjects\BuildingGameProject\Assets\Images\Textures\SunHalo.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <circle
+       r="184.43437"
+       cy="2317.7551"
+       cx="3426.354"
+       id="circle2378"
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#c69c00;stroke-width:6.41599988;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.61616164;paint-order:markers stroke fill;filter:url(#filter3504)"
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\UnityProjects\BuildingGameProject\Assets\Images\Textures\SunHalo.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <circle
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#90e7ff;stroke-width:3.81599998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.43939394;paint-order:markers stroke fill;filter:url(#filter3132)"
+       id="circle2388"
+       cx="3426.354"
+       cy="2317.7551"
+       r="184.43437"
+       transform="matrix(1.0501408,0,0,1.0501408,-171.79992,-116.21395)"
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\UnityProjects\BuildingGameProject\Assets\Images\Textures\SunHalo.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <circle
+       transform="matrix(0.95688913,0,0,0.95688913,147.71331,99.920584)"
+       r="184.43437"
+       cy="2317.7551"
+       cx="3426.354"
+       id="circle2674"
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#e490ff;stroke-width:3.81599998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.43939394;paint-order:markers stroke fill;filter:url(#filter3180)"
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\UnityProjects\BuildingGameProject\Assets\Images\Textures\SunHalo.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
   </g>
 </svg>
