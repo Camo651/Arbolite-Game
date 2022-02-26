@@ -12,14 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 357c6f5db30716846ae74c7b748f9f0f, type: 3}
   m_Name: Oak
   m_EditorClassIdentifier: 
-  callbackID: tree_oak
-  plantScarcity: 0.452
-  _plantType: 0
-  _biome: {fileID: 11400000, guid: 1948226f4047a9947b13590ef81d7b5a, type: 2}
-  _partTypes: 04000000eb030000
-  _partColours:
-  - {x: 0, y: 0.5}
-  - {x: 1, y: 0.8}
-  _resourcesTypes:
-  - {fileID: 11400000, guid: b7da2fdee8392a8418d1115d1a6ef0b3, type: 2}
-  _resourcesDistributions: 02000000
+  callbackID: oak
+  plantProperties:
+  - {fileID: 11400000, guid: eaf3d39af1d5d754aa94d4c3c7bc5ea0, type: 2}
+  - {fileID: 11400000, guid: 4a04ed65576c34943bc05708ab5caf4e, type: 2}
+  - {fileID: 11400000, guid: c23c2c79b1db3d24ebbc427573a9c3ba, type: 2}
