@@ -14,6 +14,7 @@ public class RoomTile : MonoBehaviour
 	public SpriteRenderer spriteRenderer;
 	public List<Node> childNodes;
 	public bool canBeUpdated;
+	public List<SO_Property> properties;
 
 
 	[HideInInspector] public readonly Vector2Int[] offsets = { Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left };
@@ -26,13 +27,13 @@ public class RoomTile : MonoBehaviour
 		childNodes = new List<Node>(GetComponentsInChildren<Node>());
 		if(childNodes.Count > 0 && Random.value<.5f)
 		{
-			SO_TreePreset preset = roomContainer.globalRefManager.plantManager.GetTreePreset("Default");
-			Dictionary<PlantPart.PartType, Color> colours = new Dictionary<PlantPart.PartType, Color>();
-			for(int i = 0; i < preset._partTypes.Count; i++)
-			{
-				colours.Add(preset._partTypes[i], preset._biome.biomeColourPalette[(int)preset._partColours[i].x].Evaluate(preset._partColours[i].y));
-			}
-			ProceduralPlant plant = roomContainer.globalRefManager.plantManager.GenerateNewPlant(childNodes[0],this, preset._plantType, preset._partTypes, preset._biome, preset.GetResourceDistr(), colours);
+			//SO_TreePreset preset = roomContainer.globalRefManager.plantManager.GetTreePreset("Default");
+			//Dictionary<PlantPart.PartType, Color> colours = new Dictionary<PlantPart.PartType, Color>();
+			//for(int i = 0; i < preset._partTypes.Count; i++)
+			//{
+			//	colours.Add(preset._partTypes[i], preset._biome.biomeColourPalette[(int)preset._partColours[i].x].Evaluate(preset._partColours[i].y));
+			//}
+			//ProceduralPlant plant = roomContainer.globalRefManager.plantManager.GenerateNewPlant(childNodes[0],this, preset._plantType, preset._partTypes, preset._biome, preset.GetResourceDistr(), colours);
 			//set the plants pos to be linked to the nodes here
 		}
 	}

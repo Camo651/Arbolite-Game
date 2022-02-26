@@ -18,7 +18,7 @@ public class UserInterface : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 	public bool saveNotification;
 	public Tab[] tabs;
 	public int selectedTabIndex;
-
+	public bool isHovered;
 	public List<TranslationKey> interfaceKeys;
 
 	private void Awake()
@@ -102,18 +102,29 @@ public class UserInterface : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 		yield return new WaitForSeconds(seconds);
 		while (interfaceManager.globalRefManager.baseManager.gameIsActivelyFrozen)
 			yield return null;
+		if (isHovered)
+			interfaceManager.SetInterfaceHoverState(false);
 		interfaceManager.DequeueNotification(this);
 	}
 
 	public void OnPointerEnter(PointerEventData eventData)
 	{
 		interfaceManager.SetInterfaceHoverState(true);
+		isHovered = true;
 	}
 
 	public void OnPointerExit(PointerEventData eventData)
 	{
 		interfaceManager.SetInterfaceHoverState(false);
+		isHovered = false;
 	}
+
+	public void OnButtonPress()
+	{
+		interfaceManager.SetInterfaceHoverState(false);
+		interfaceManager.DequeueNotification(this);
+	}
+
 
 	public enum InterfaceType
 	{

@@ -82,3 +82,18 @@ wood                           "Wood"
 fruit                          "Fruit"
 fungus                         "Fungus"
 berry                          "Berries"
+
+< PROPERTY TYPES >
+proptype_none                  "None"
+proptype_species               "Species"
+proptype_resource              "Resource"
+proptype_biome                 "Biome"
+proptype_style                 "Style"
+
+< PROPERTY INFO >
+name_prop_biome_mountains      "Mountains"
+info_prop_biome_mountains      "The main world where you can live"
+name_prop_resource_dirt        "Dirt"
+info_prop_resource_dirt        "Plants can grow on it!"
+name_prop_resource_stone       "Stone"
+info_prop_resource_stone       "Idk"

@@ -107,9 +107,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   neighborWelds: 00000000
-  previousUpdateID: 0
+  lastUpdateOrigin: 
   spriteRenderer: {fileID: 3330763883449955023}
   childNodes: []
+  canBeUpdated: 0
+  properties:
+  - {fileID: 11400000, guid: eaf3d39af1d5d754aa94d4c3c7bc5ea0, type: 2}
+  - {fileID: 11400000, guid: 92dbf1ccd4697d745a68c05cdf430384, type: 2}
 --- !u!212 &3330763883449955023
 SpriteRenderer:
   m_ObjectHideFlags: 0

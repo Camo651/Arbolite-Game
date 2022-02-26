@@ -17,7 +17,7 @@ public class InterfaceManager : MonoBehaviour
 	public Vector3 hoverHudOffset;
 	public Dictionary<string, UserInterface> allUserInterfaces;
 	public Dictionary<string, SO_NotificationType> notificationTypes;
-	[HideInInspector] public Queue<UserInterface> activeNotificationQueue;
+	[HideInInspector] public List<UserInterface> activeNotificationQueue;
 	//[HideInInspector] public Stack<UserInterface> pastNotificationsStack;
 
 	private void Start()
@@ -105,7 +105,7 @@ public class InterfaceManager : MonoBehaviour
 				notificationTypes.Add(note.callbackID.ToLower(), note);
 			}
 		}
-		activeNotificationQueue = new Queue<UserInterface>();
+		activeNotificationQueue = new List<UserInterface>();
 	}
 
 	/// <summary>
@@ -128,6 +128,10 @@ public class InterfaceManager : MonoBehaviour
 		SetBackgroundBlur(UI.interfaceType == UserInterface.InterfaceType.FullScreen || UI.interfaceType == UserInterface.InterfaceType.Modal);
 		globalRefManager.baseManager.gameIsActivelyFrozen = UI.interfaceType == UserInterface.InterfaceType.FullScreen || UI.interfaceType == UserInterface.InterfaceType.Modal;
 		GetUserInterface("Home_Button").gameObject.SetActive(false);
+		if(activeUserInterface.interfaceCallbackID == "Pause_Menu")
+			globalRefManager.audioManager.Play(AudioManager.AudioClipType.Interface, "toggle_pause");
+		else
+			globalRefManager.audioManager.Play(AudioManager.AudioClipType.Interface, "toggle_ui");
 	}
 
 	/// <summary>
@@ -192,6 +196,7 @@ public class InterfaceManager : MonoBehaviour
 	public void OpenSelectedTileInfoModal()
 	{
 		SetMajorInterface("Inspector");
+		globalRefManager.propertyManager.GetPropertyDisplayer("Inspector").DisplayProperties(globalRefManager.baseManager.editModePermSelectedRoomTile);
 		activeUserInterface.interfaceName.text = globalRefManager.langManager.GetTranslation("name_" + globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.tileNameInfoID.ToLower());
 		activeUserInterface.interfaceDescription.text = globalRefManager.langManager.GetTranslation("info_" + globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.tileNameInfoID.ToLower());
 	}
@@ -266,6 +271,7 @@ public class InterfaceManager : MonoBehaviour
 	public void SetInterfaceHoverState(bool state)
 	{
 		userIsHoveredOnInterfaceElement = state;
+		globalRefManager.baseManager.hoverSelect.ClearSelection();
 	}
 
 	/// <summary>
@@ -310,18 +316,19 @@ public class InterfaceManager : MonoBehaviour
 		ui.mainInterfaceIcon.sprite = type.notificationIcon;
 		ui.saveNotification = type.shouldBeSaved;
 		ui.interfaceManager = this;
-		activeNotificationQueue.Enqueue(ui);
+		activeNotificationQueue.Add(ui);
 		StartCoroutine(ui.DelayToClose(notificationPersistUptimeSeconds));
 	}
 
 	/// <summary>
 	/// Removes the last notification from the notification queue
 	/// </summary>
-	/// <param name="ui">idk why this is here</param>
+	/// <param name="ui">The UI to be removed</param>
 	public void DequeueNotification(UserInterface ui)
 	{
-		UserInterface old = activeNotificationQueue.Dequeue();
-		Destroy(old.gameObject);
+		activeNotificationQueue.Remove(ui);
+		if(ui)
+			Destroy(ui.gameObject);
 	}
 
 	/// <summary>

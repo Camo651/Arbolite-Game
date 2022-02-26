@@ -18,6 +18,7 @@ public class GlobalRefManager : MonoBehaviour
 	public PlantManager plantManager;
 	public PlayerManager playerManager;
 	public DeveloperManager developerManager;
+	public PropertyManager propertyManager;
 	private void Awake()
 	{
 		baseManager.globalRefManager = this;
@@ -32,5 +33,6 @@ public class GlobalRefManager : MonoBehaviour
 		plantManager.globalRefManager = this;
 		playerManager.globalRefManager = this;
 		developerManager.globalRefManager = this;
+		propertyManager.globalRefManager = this;
 	}
 }
