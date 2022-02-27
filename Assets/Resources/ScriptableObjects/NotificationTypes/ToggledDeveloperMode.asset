@@ -16,4 +16,4 @@ MonoBehaviour:
   notificationName: toggle_dev_mode
   notificationDescription: toggle_dev_mode
   shouldBeSaved: 0
-  notificationIcon: {fileID: 21300000, guid: 4c4c9b2fdbacb03479e8079978d3ba32, type: 3}
+  notificationIcon: {fileID: 21300000, guid: e5be902176dce514ba5954d140c3c7b0, type: 3}

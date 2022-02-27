@@ -198,9 +198,49 @@ public class InterfaceManager : MonoBehaviour
 	public void OpenSelectedTileInfoModal()
 	{
 		SetMajorInterface("Inspector");
-		globalRefManager.propertyManager.GetPropertyDisplayer("Inspector").DisplayProperties(globalRefManager.baseManager.editModePermSelectedRoomTile);
-		activeUserInterface.interfaceName.text = globalRefManager.langManager.GetTranslation("name_" + globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.tileNameInfoID.ToLower());
-		activeUserInterface.interfaceDescription.text = globalRefManager.langManager.GetTranslation("info_" + globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.tileNameInfoID.ToLower());
+		activeUserInterface.SetInterfaceTab(0);
+		activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabTitle.text = globalRefManager.langManager.GetTranslation("name_" + globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.tileNameInfoID.ToLower());
+		activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabDescrition.text = globalRefManager.langManager.GetTranslation("info_" + globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.tileNameInfoID.ToLower());
+		globalRefManager.propertyManager.GetPropertyDisplayer("TileInspector").DisplayProperties(globalRefManager.baseManager.editModePermSelectedRoomTile);
+
+		if (globalRefManager.baseManager.editModePermSelectedRoomTile.canHavePlant)
+		{
+			globalRefManager.propertyManager.GetPropertyDisplayer("PlantInspector").tabSelectorButton.SetActive(true);
+			globalRefManager.propertyManager.GetPropertyDisplayer("PlantInspector").DisplayProperties(globalRefManager.baseManager.editModePermSelectedRoomTile.thisRoomsPlant!=null? globalRefManager.baseManager.editModePermSelectedRoomTile.thisRoomsPlant.plantProperties:null);
+		}
+		else
+		{
+			globalRefManager.propertyManager.GetPropertyDisplayer("PlantInspector").tabSelectorButton.SetActive(false);
+		}
+
+		if (globalRefManager.baseManager.editModePermSelectedRoomTile.canHaveMech)
+		{
+			globalRefManager.propertyManager.GetPropertyDisplayer("MechInspector").tabSelectorButton.SetActive(true);
+			globalRefManager.propertyManager.GetPropertyDisplayer("MechInspector").DisplayProperties(globalRefManager.baseManager.editModePermSelectedRoomTile);
+		}
+		else
+		{
+			globalRefManager.propertyManager.GetPropertyDisplayer("MechInspector").tabSelectorButton.SetActive(false);
+		}
+
+	}
+
+	public void SetValuesForInspector(int index)
+	{
+		switch (index)
+		{
+			case 0:
+				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabTitle.text = globalRefManager.langManager.GetTranslation("name_" + globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.tileNameInfoID.ToLower());
+				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabDescrition.text = globalRefManager.langManager.GetTranslation("info_" + globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.tileNameInfoID.ToLower());
+				break;
+			case 1:
+				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabTitle.text = globalRefManager.baseManager.editModePermSelectedRoomTile.thisRoomsPlant != null ? globalRefManager.baseManager.editModePermSelectedRoomTile.thisRoomsPlant.GetPlantFullName() : globalRefManager.langManager.GetTranslation("no_plant_in_tile");
+				break;
+			case 2:
+				//activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabTitle.text = globalRefManager.langManager.GetTranslation("name_" + globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.tileNameInfoID.ToLower());
+				//activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabDescrition.text = globalRefManager.langManager.GetTranslation("info_" + globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.tileNameInfoID.ToLower());
+				break;
+		}
 	}
 
 	//close the currently open interface

@@ -79,4 +79,5 @@ public class PropertyManager : MonoBehaviour
 	{
 		return propertyDisplays.ContainsKey(callbackID.ToLower()) ? propertyDisplays[callbackID.ToLower()] : null;
 	}
+
 }

@@ -13,7 +13,7 @@ public class PropertyDisplayer : MonoBehaviour
 	public TextMeshProUGUI highlightTitle, highlightSubtitle, highlightTextarea;
 	public GameObject highlightBox;
 	public Image highlightIcon;
-
+	public GameObject tabSelectorButton;
 	public void DisplayProperties(RoomTile rt)
 	{
 		DisplayProperties(rt.properties);
@@ -22,10 +22,13 @@ public class PropertyDisplayer : MonoBehaviour
 	{
 		ClearProperties();
 		highlightBox.SetActive(false);
-		foreach (SO_Property property in properties)
+		if (properties != null)
 		{
-			Tag t = Instantiate(propertyManager.propertyTagPrefab, gridLayoutTransform.transform).GetComponent<Tag>();
-			t.SetValues(this, property);
+			foreach (SO_Property property in properties)
+			{
+				Tag t = Instantiate(propertyManager.propertyTagPrefab, gridLayoutTransform.transform).GetComponent<Tag>();
+				t.SetValues(this, property);
+			}
 		}
 	}
 	public void ClearProperties()

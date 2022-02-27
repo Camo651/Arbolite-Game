@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partName: 
-  partType: 1003
+  propertyDependancy: {fileID: 11400000, guid: 4a04ed65576c34943bc05708ab5caf4e, type: 2}
   nodes: []
   rotatability: {x: 0, y: 360}
   flipable: 1

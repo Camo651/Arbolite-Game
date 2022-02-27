@@ -1689,8 +1689,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1988,7 +1988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3988,7 +3988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4931,8 +4931,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6618,7 +6618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   propertyManager: {fileID: 998491163}
-  propertyDisplayCallbackID: Inspector
+  propertyDisplayCallbackID: TileInspector
   gridLayoutTransform: {fileID: 520571963}
   highlightedPropertyTag: {fileID: 0}
   highlightTitle: {fileID: 6100061268003013772}
@@ -6626,6 +6626,7 @@ MonoBehaviour:
   highlightTextarea: {fileID: 513568494}
   highlightBox: {fileID: 7773832424132991906}
   highlightIcon: {fileID: 9091308163582721914}
+  tabSelectorButton: {fileID: 1347299959}
 --- !u!1 &523903759
 GameObject:
   m_ObjectHideFlags: 0
@@ -8312,7 +8313,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -12552,7 +12553,7 @@ RectTransform:
   - {fileID: 2026102491}
   - {fileID: 1089013654}
   m_Father: {fileID: 1997674412951240471}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -12574,6 +12575,9 @@ MonoBehaviour:
   tabMenuBkg: {fileID: 1214916626}
   tabMenuText: {fileID: 421952033}
   tabIndex: 2
+  tabTitle: {fileID: 1473189578}
+  tabSubtitle: {fileID: 0}
+  tabDescrition: {fileID: 0}
 --- !u!114 &886064878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14391,7 +14395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   globalRefManager: {fileID: 998491158}
-  defaultPlantPrefab: {fileID: 8690457898226394015, guid: 7204def410a5da343a68391fb9ddc70a, type: 3}
+  defaultPlantPrefab: {fileID: 7192300849300816628, guid: 379f4b355c2726a479aafe8015155fb3, type: 3}
   defaultTreePreset: {fileID: 11400000, guid: 5f30fae4cd066a548ae885cf00bc1f6c, type: 2}
 --- !u!114 &998491158
 MonoBehaviour:
@@ -14443,7 +14447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b149d467121738a4e85aff92cc4e681b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  globalRefManager: {fileID: 0}
+  globalRefManager: {fileID: 998491158}
   textAssetLanguageOptions:
   - {fileID: 4900000, guid: acbe8101fc2dd34489de0f188518463a, type: 3}
   allTranslationKeys: []
@@ -14545,12 +14549,14 @@ MonoBehaviour:
   - {r: 0.38679248, g: 0.13318796, b: 0.2178959, a: 1}
   - {r: 0.15673247, g: 0.11650052, b: 0.3207547, a: 1}
   - {r: 0.6037736, g: 0.48288226, b: 0.13955145, a: 1}
+  - {r: 0.14117645, g: 0.38005722, b: 0.6039216, a: 1}
   propertyIcons:
   - {fileID: 21300000, guid: e5be902176dce514ba5954d140c3c7b0, type: 3}
   - {fileID: 21300000, guid: 48b1615aac58b41438a2acd246bce695, type: 3}
   - {fileID: 21300000, guid: ebfc51fc74ec52f44b7454129803bc4d, type: 3}
   - {fileID: 21300000, guid: e7100630f0bc328429b681e735c1a160, type: 3}
   - {fileID: 21300000, guid: 28cf26ad89c53b2448bcbd5573a3460b, type: 3}
+  - {fileID: 21300000, guid: cea12f9d0510832408d2f3c164eb8f84, type: 3}
   defaultProperty: {fileID: 0}
 --- !u!114 &998491164
 MonoBehaviour:
@@ -15247,7 +15253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   propertyManager: {fileID: 998491163}
-  propertyDisplayCallbackID: Inspector
+  propertyDisplayCallbackID: MechInspector
   gridLayoutTransform: {fileID: 1089013653}
   highlightedPropertyTag: {fileID: 0}
   highlightTitle: {fileID: 6100061268003013772}
@@ -15255,6 +15261,7 @@ MonoBehaviour:
   highlightTextarea: {fileID: 513568494}
   highlightBox: {fileID: 7773832424132991906}
   highlightIcon: {fileID: 9091308163582721914}
+  tabSelectorButton: {fileID: 1214916623}
 --- !u!114 &1089013656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16200,8 +16207,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -16946,6 +16953,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 752596401}
+        m_TargetAssemblyTypeName: InterfaceManager, Assembly-CSharp
+        m_MethodName: SetValuesForInspector
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1214916626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16959,7 +16978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -17506,7 +17525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -17885,6 +17904,9 @@ MonoBehaviour:
   tabMenuBkg: {fileID: 1884748441}
   tabMenuText: {fileID: 152279621}
   tabIndex: 1
+  tabTitle: {fileID: 402810062}
+  tabSubtitle: {fileID: 0}
+  tabDescrition: {fileID: 0}
 --- !u!114 &1319968141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18112,6 +18134,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 752596401}
+        m_TargetAssemblyTypeName: InterfaceManager, Assembly-CSharp
+        m_MethodName: SetValuesForInspector
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1347299962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18125,7 +18159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -20629,7 +20663,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -21106,7 +21140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   propertyManager: {fileID: 998491163}
-  propertyDisplayCallbackID: Inspector
+  propertyDisplayCallbackID: PlantInspector
   gridLayoutTransform: {fileID: 1614657892}
   highlightedPropertyTag: {fileID: 0}
   highlightTitle: {fileID: 6100061268003013772}
@@ -21114,6 +21148,7 @@ MonoBehaviour:
   highlightTextarea: {fileID: 513568494}
   highlightBox: {fileID: 7773832424132991906}
   highlightIcon: {fileID: 9091308163582721914}
+  tabSelectorButton: {fileID: 1884748438}
 --- !u!114 &1614657895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23630,6 +23665,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 752596401}
+        m_TargetAssemblyTypeName: InterfaceManager, Assembly-CSharp
+        m_MethodName: SetValuesForInspector
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1884748441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23643,7 +23690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -23783,7 +23830,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 752596401}
         m_TargetAssemblyTypeName: InterfaceManager, Assembly-CSharp
-        m_MethodName: DeleteCurrentltySelecedTile
+        m_MethodName: CloseAllInterfaces
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -25066,7 +25113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -25422,7 +25469,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 752596401}
         m_TargetAssemblyTypeName: InterfaceManager, Assembly-CSharp
-        m_MethodName: DeleteCurrentltySelecedTile
+        m_MethodName: CloseAllInterfaces
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -27063,7 +27110,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 752596401}
         m_TargetAssemblyTypeName: InterfaceManager, Assembly-CSharp
-        m_MethodName: DeleteCurrentltySelecedTile
+        m_MethodName: CloseAllInterfaces
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -27413,8 +27460,8 @@ RectTransform:
   - {fileID: 1309761732}
   - {fileID: 3999109000149005005}
   - {fileID: 1319968139}
-  - {fileID: 7773832424132991907}
   - {fileID: 886064876}
+  - {fileID: 7773832424132991907}
   m_Father: {fileID: 1226852972}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -27913,6 +27960,9 @@ MonoBehaviour:
   tabMenuBkg: {fileID: 1347299962}
   tabMenuText: {fileID: 1148891007}
   tabIndex: 0
+  tabTitle: {fileID: 2665247293312360504}
+  tabSubtitle: {fileID: 0}
+  tabDescrition: {fileID: 7890000939699270829}
 --- !u!224 &3232457855408210555
 RectTransform:
   m_ObjectHideFlags: 0
@@ -28672,6 +28722,9 @@ MonoBehaviour:
   tabMenuBkg: {fileID: 1300679838}
   tabMenuText: {fileID: 638917033}
   tabIndex: 0
+  tabTitle: {fileID: 0}
+  tabSubtitle: {fileID: 0}
+  tabDescrition: {fileID: 0}
 --- !u!114 &6956674757228547977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28919,7 +28972,7 @@ RectTransform:
   - {fileID: 513568492}
   - {fileID: 1787538784}
   m_Father: {fileID: 1997674412951240471}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

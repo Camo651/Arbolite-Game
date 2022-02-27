@@ -16,4 +16,4 @@ MonoBehaviour:
   notificationName: Error
   notificationDescription: Notification Requested Not Found
   shouldBeSaved: 0
-  notificationIcon: {fileID: 21300000, guid: 6ee9dc9616458b945a3111a50e5eb67a, type: 3}
+  notificationIcon: {fileID: 21300000, guid: e5be902176dce514ba5954d140c3c7b0, type: 3}

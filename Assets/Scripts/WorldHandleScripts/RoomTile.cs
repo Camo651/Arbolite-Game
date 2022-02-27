@@ -15,7 +15,8 @@ public class RoomTile : MonoBehaviour
 	public List<Node> childNodes;
 	public bool canBeUpdated;
 	public List<SO_Property> properties;
-
+	public bool canHavePlant, canHaveMech;
+	public PlantObject thisRoomsPlant;
 
 	[HideInInspector] public readonly Vector2Int[] offsets = { Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left };
 	[HideInInspector] public readonly int[] inverseOffsets = { 2, 3, 0, 1 };
@@ -25,9 +26,12 @@ public class RoomTile : MonoBehaviour
 	public void StartGeneration()
 	{
 		childNodes = new List<Node>(GetComponentsInChildren<Node>());
-		if(childNodes.Count > 0 && Random.value<.5f)
+		if(childNodes.Count > 0 && Random.value<.5f && canHavePlant)
 		{
-
+			PlantObject p = roomContainer.globalRefManager.plantManager.GeneratePlant(roomContainer.globalRefManager.plantManager.defaultTreePreset.plantProperties, this);
+			p.transform.SetParent(childNodes[0].transform);
+			p.transform.localPosition = Vector3.zero;
+			thisRoomsPlant = p;
 		}
 	}
 

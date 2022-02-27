@@ -8,33 +8,11 @@ using UnityEngine;
 public class PlantPart : MonoBehaviour
 {
 	public string partName;
-	public PartType partType;
+	public SO_Property propertyDependancy;
 	public List<Node> nodes;
 	public Vector2 rotatability;
 	public bool flipable;
 	public RelativePartDepth partDepth;
-
-	public enum PartType
-	{
-		//Base Types
-		___BASE_TYPES___ = 0,
-		Base_None,
-		Base_TinyStem,
-		Base_Bush,
-		Base_SmallTree,
-		Base_ComplexTree,
-
-		//Leaf Types
-		___LEAF_TYPES___ = 1000,
-		Leaves_None,
-		Leaves_MushroomCap,
-		Leaves_Triangle,
-	}
-	public enum PartTypeRangeIndexer
-	{
-		Bases = 0,
-		Leaves = 1000,
-	}
 	public enum RelativePartDepth : int
 	{
 		Back = -1,

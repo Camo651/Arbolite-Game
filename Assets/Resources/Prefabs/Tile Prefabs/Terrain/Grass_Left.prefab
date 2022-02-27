@@ -160,6 +160,9 @@ MonoBehaviour:
   properties:
   - {fileID: 11400000, guid: eaf3d39af1d5d754aa94d4c3c7bc5ea0, type: 2}
   - {fileID: 11400000, guid: 16ee41d4bd5cd444f883582e8316b35f, type: 2}
+  canHavePlant: 1
+  canHaveMech: 0
+  thisRoomsPlant: {fileID: 0}
 --- !u!212 &3886306301367742618
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -56,6 +56,9 @@ setting_keyBindLeft            "Move Left"
 setting_keyBindCloseUI         "Close UI"
 setting_keyBindPause           "Pause Game"
 setting_keyBindOpenInv         "Open Inventory"
+no_plant_in_tile               "Nothing Here"
+
+
 
 < NOTIFICATIONS >
 name_successfully_destroyed_tiles   "Destroyed!"
@@ -63,11 +66,15 @@ info_successfully_destroyed_tiles   "Successfully Destroyed #0# Tiles"
 name_toggle_dev_mode                "Developer Mode #0#"
 info_toggle_dev_mode                "Press enter to open the console"
 
+
+
 < ERROR MESSAGES >
 error_modal_title              "Oops! There was an error"
 error_modal_info               "An error occured somewhere! If this keeps happening please submit a bug report so the developers can fix it."
 overflow_error_message         "There was an overflow of data. Maybe trying to do too much at once?"
 interface_not_found_error_message "That page can't be found."
+
+
 
 < TILE NAMES AND INFO >
 name_tile_bedrock              "Bedrock"
@@ -75,9 +82,13 @@ info_tile_bedrock              "Not gonna find any plants here"
 name_tile_grass                "Grass"
 info_tile_grass                "It covers the ground"
 
+
+
 < ROOM NAMES AND INFO >
 name_room_hallway              "Basic Hallway"
 info_room_hallway              "This is the info box for the hallway"
+
+
 
 < PROPERTY TYPES >
 proptype_none                  "None"
@@ -86,6 +97,8 @@ proptype_resource              "Resource"
 proptype_biome                 "Biome"
 proptype_style                 "Style"
 proptype_rarity                "Rarity"
+
+
 
 < PROPERTY INFO >
 name_prop_rarity_common        "Common"
@@ -98,8 +111,20 @@ name_prop_rarity_legendary     "Legendary"
 info_prop_rarity_legendary     "Insanely hard to get"
 name_prop_rarity_unobtainable  "Unobtainable"
 info_prop_rarity_unobtainable  "One of a kind"
+
 name_prop_biome_mountains      "Mountains"
 info_prop_biome_mountains      "The main world where you can live"
+
+name_prop_species_oak          "Oak"
+info_prop_species_oak          ""
+
+name_prop_style_sapling        "Sapling"
+info_prop_style_sapling        ""
+name_prop_style_bush           "Bush"
+info_prop_style_bush           ""
+name_prop_style_tree           "Tree"
+info_prop_style_tree           ""
+
 name_prop_resource_dirt        "Dirt"
 info_prop_resource_dirt        "Plants can grow on it!"
 name_prop_resource_stone       "Stone"

@@ -14,7 +14,7 @@ public class LanguangeManager : MonoBehaviour
 
 	public static string allowedAsciiChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890-_,.;:<>?/'+=`~!@#$%^&*()[]{}|";
 
-	private void Start()
+	private void Awake()
 	{
 		//default the language to english for now
 		InitializeLanguage();
@@ -85,7 +85,6 @@ public class LanguangeManager : MonoBehaviour
 		{
 			return "";
 		}
-
 		if (currentLanguage.lookup.ContainsKey(callbackID))
 			return currentLanguage.lookup[callbackID];
 		return callbackID + "' not found for " + currentLanguage.langID;
