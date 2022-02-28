@@ -12,6 +12,10 @@ public class Tab : MonoBehaviour
 	[Space(10)]
 	public TextMeshProUGUI tabTitle, tabSubtitle, tabDescrition;
 
+	/// <summary>
+	/// Enables and disabled the current tab, handles tab menu button pressing as well
+	/// </summary>
+	/// <param name="state">The state to be set to</param>
 	public void SetTabState(bool state)
 	{
 		gameObject.SetActive(state);

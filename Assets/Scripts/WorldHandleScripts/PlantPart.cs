@@ -17,15 +17,22 @@ public class PlantPart : MonoBehaviour
 	public PlantObject parentPlant;
 	public enum RelativePartDepth : int
 	{
+		Back2 = -2,
 		Back = -1,
 		Middle = 0,
 		Front = 1,
+		Front2 = 2,
 	}
 
-	public void SetPartValues()
+	/// <summary>
+	/// Sets the rotation and scale of the part
+	/// </summary>
+	public void SetPartValues(Color partColour)
 	{
 		transform.Rotate(Vector3.forward * Random.Range(rotatability.x, rotatability.y));
 		transform.GetChild(0).localScale = new Vector3(flipable ? Random.value > .5f ? -1 : 1 : 1, 1, 1);
+		transform.GetChild(0).GetComponent<SpriteRenderer>().color = partColour;
+		transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = (int)partDepth;
 	}
 
 	private void OnDrawGizmos()

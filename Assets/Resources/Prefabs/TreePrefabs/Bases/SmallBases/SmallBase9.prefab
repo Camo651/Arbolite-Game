@@ -93,8 +93,9 @@ MonoBehaviour:
   propertyDependancy: {fileID: 11400000, guid: a339d874909262f4d9cdfd638ecee609, type: 2}
   nodes: []
   rotatability: {x: -20, y: 20}
-  flipable: 1
+  flipable: 0
   partDepth: 0
+  parentPlant: {fileID: 0}
 --- !u!1 &8490077898329257289
 GameObject:
   m_ObjectHideFlags: 0

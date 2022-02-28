@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 2856077954092519772}
   - component: {fileID: 2856077954092519775}
   m_Layer: 0
-  m_Name: TriangleLeaf0
+  m_Name: TriangleLeaf0 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partName: 
-  propertyDependancy: {fileID: 11400000, guid: 4a04ed65576c34943bc05708ab5caf4e, type: 2}
+  propertyDependancy: {fileID: 11400000, guid: f251ecd06eb143d4f9bb0e3b091fdc9d, type: 2}
   nodes: []
   rotatability: {x: 0, y: 360}
   flipable: 1

@@ -14,10 +14,20 @@ public class PropertyDisplayer : MonoBehaviour
 	public GameObject highlightBox;
 	public Image highlightIcon;
 	public GameObject tabSelectorButton;
+
+	/// <summary>
+	/// Displays the properties of rt
+	/// </summary>
+	/// <param name="rt">The RoomTile to display</param>
 	public void DisplayProperties(RoomTile rt)
 	{
 		DisplayProperties(rt.properties);
 	}
+
+	/// <summary>
+	/// Displays a list of properties
+	/// </summary>
+	/// <param name="properties">The list of properties to display</param>
 	public void DisplayProperties(List<SO_Property> properties)
 	{
 		ClearProperties();
@@ -31,6 +41,10 @@ public class PropertyDisplayer : MonoBehaviour
 			}
 		}
 	}
+
+	/// <summary>
+	/// Clear all the currently displayed properties from this displayer
+	/// </summary>
 	public void ClearProperties()
 	{
 		for (int i = 0; i < gridLayoutTransform.transform.childCount; i++)
@@ -38,6 +52,11 @@ public class PropertyDisplayer : MonoBehaviour
 			Destroy(gridLayoutTransform.transform.GetChild(i).gameObject);
 		}
 	}
+
+	/// <summary>
+	/// Set the highlight viewer GUI to show info
+	/// </summary>
+	/// <param name="a">The tag to be highlighted</param>
 	public void SetHighlightedPropertyTag(Tag a)
 	{
 		if(highlightedPropertyTag == a)
@@ -59,6 +78,10 @@ public class PropertyDisplayer : MonoBehaviour
 			propertyManager.globalRefManager.audioManager.Play(AudioManager.AudioClipType.Interface, "property_hover");
 		}
 	}
+
+	/// <summary>
+	/// Closes the highlight viewer
+	/// </summary>
 	public void CloseHighlightPropertyDisplay()
 	{
 		highlightBox.SetActive(false);

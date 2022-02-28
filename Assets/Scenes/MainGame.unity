@@ -14397,6 +14397,7 @@ MonoBehaviour:
   globalRefManager: {fileID: 998491158}
   defaultPlantPrefab: {fileID: 7192300849300816628, guid: 379f4b355c2726a479aafe8015155fb3, type: 3}
   defaultTreePreset: {fileID: 11400000, guid: 5f30fae4cd066a548ae885cf00bc1f6c, type: 2}
+  plantDistributionMultiplier: 50
 --- !u!114 &998491158
 MonoBehaviour:
   m_ObjectHideFlags: 0

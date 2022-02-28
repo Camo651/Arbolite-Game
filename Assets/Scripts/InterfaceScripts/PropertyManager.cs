@@ -52,29 +52,62 @@ public class PropertyManager : MonoBehaviour
 		Rarity,
 	}
 
+	/// <summary>
+	/// Get the biome from the key
+	/// </summary>
+	/// <param name="callbackID">The string callback ID for the biome</param>
+	/// <returns>The biome property, given it exists</returns>
 	public SO_Property GetBiome(string callbackID)
 	{
-		return propertyTagLookup.ContainsKey("prop_biome_" + callbackID) ? propertyTagLookup["prop_biome_" + callbackID] : null;
+		return GetProperty(PropertyType.Biome, callbackID);
 	}
 
+	/// <summary>
+	/// Get the colour of a property. (Colour values set in inspector)
+	/// </summary>
+	/// <param name="a">The property type</param>
+	/// <returns>The colour set for type 'a'</returns>
 	public Color GetColour(PropertyType a)
 	{
 		return propertyColours[(int)a];
 	}
+
+	/// <summary>
+	/// Get the icon of a property type. (Sprites set in the inspector)
+	/// </summary>
+	/// <param name="a">The property type</param>
+	/// <returns>The icon sprite for type 'a'</returns>
 	public Sprite GetIcon(PropertyType a)
 	{
 		return propertyIcons[(int)a];
 	}
 
+	/// <summary>
+	/// Get a property scriptable from the lookup
+	/// </summary>
+	/// <param name="type">The type of property</param>
+	/// <param name="indexID">The callback ID if the property</param>
+	/// <returns>The property scriptable, given it exists</returns>
 	public SO_Property GetProperty(PropertyType type, string indexID)
 	{
 		return GetProperty("prop_" + type + "_" + indexID);
 	}
+
+	/// <summary>
+	/// Get a property scriptable from the lookup
+	/// </summary>
+	/// <param name="callbackID">The full callback ID of the property</param>
+	/// <returns>The property scriptable, given it exists</returns>
 	public SO_Property GetProperty(string callbackID)
 	{
 		return propertyTagLookup.ContainsKey(callbackID.ToLower()) ? propertyTagLookup[callbackID.ToLower()] : null;
 	}
 
+	/// <summary>
+	/// Get the proprty displayer from the lookup
+	/// </summary>
+	/// <param name="callbackID">The callback ID of the displayer</param>
+	/// <returns>The property displayer, given it exists</returns>
 	public PropertyDisplayer GetPropertyDisplayer(string callbackID)
 	{
 		return propertyDisplays.ContainsKey(callbackID.ToLower()) ? propertyDisplays[callbackID.ToLower()] : null;

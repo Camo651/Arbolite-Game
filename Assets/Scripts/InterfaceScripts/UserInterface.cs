@@ -94,23 +94,37 @@ public class UserInterface : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 		return null;
 	}
 
-	//transfer method for closing all the currently open interfaces
+	/// <summary>
+	/// transfer method for closing all the currently open interfaces
+	/// </summary>
 	public void CloseAllInterfaces()
 	{
 		interfaceManager.CloseAllInterfaces();
 	}
-	//transfer method for sending a notification
+
+	/// <summary>
+	/// transfer method for sending a notification to the interface manager
+	/// </summary>
+	/// <param name="ID"></param>
 	public void SendNotification(string ID)
 	{
 		interfaceManager.EnqueueNotification(ID, "", null);
 	}
-	//transfer method for opening a menu
+
+	/// <summary>
+	/// Transfer method for setting the current major interface
+	/// </summary>
+	/// <param name="ID"></param>
 	public void SetInterface(string ID)
 	{
 		interfaceManager.SetMajorInterface(ID);
 	}
 
-	//wait the designated time, then close the notification if the game is not currently frozen for whatever reason
+	/// <summary>
+	/// wait the designated time, then close the notification if the game is not currently frozen for whatever reason
+	/// </summary>
+	/// <param name="seconds">The delay, in seconds</param>
+	/// <returns>Nothing</returns>
 	public IEnumerator DelayToClose(int seconds)
 	{
 		yield return new WaitForSeconds(seconds);
@@ -121,12 +135,20 @@ public class UserInterface : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 		interfaceManager.DequeueNotification(this);
 	}
 
+	/// <summary>
+	/// Called when the pointer enters the GUI
+	/// </summary>
+	/// <param name="eventData"></param>
 	public void OnPointerEnter(PointerEventData eventData)
 	{
 		interfaceManager.SetInterfaceHoverState(true);
 		isHovered = true;
 	}
 
+	/// <summary>
+	/// Called when the pointer exits the GUI
+	/// </summary>
+	/// <param name="eventData"></param>
 	public void OnPointerExit(PointerEventData eventData)
 	{
 		interfaceManager.SetInterfaceHoverState(false);

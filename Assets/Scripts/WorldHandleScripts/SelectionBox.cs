@@ -9,11 +9,22 @@ public class SelectionBox : MonoBehaviour
 	public GameObject selectionNodePrefab;
 	public float nodesPerSide;
 	public Color boxColour;
+
+	/// <summary>
+	/// Sets the selection box around a room
+	/// </summary>
+	/// <param name="cont">The room to select. Not nullable</param>
 	public void SetSelection(ContainedRoom cont)
 	{
 		ClearSelection();
 		GenerateBordure(new Vector2(cont.transform.position.x-.5f, cont.transform.position.y - .5f), new Vector2(cont.transform.position.x-.5f, cont.transform.position.y-.5f) + cont.roomDimensions);
 	}
+
+	/// <summary>
+	/// Generates the dotted line around the room
+	/// </summary>
+	/// <param name="bottomLeft">The bottom left most corner of the room tiles</param>
+	/// <param name="topRight">The top right most corner of the room tiles</param>
 	public void GenerateBordure(Vector2 bottomLeft, Vector2 topRight)
 	{
 		//set top and bottom lines, then left and right w/o corners
@@ -29,6 +40,11 @@ public class SelectionBox : MonoBehaviour
 			}
 		}
 	}
+
+	/// <summary>
+	/// Sets a node at a position. Makes a new node if there is not enough spares
+	/// </summary>
+	/// <param name="pos">The position to be set to</param>
 	public void SetNode(Vector2 pos)
 	{
 		if (inactiveNodes.Count == 0)
@@ -42,6 +58,10 @@ public class SelectionBox : MonoBehaviour
 		node.SetActive(true);
 		activeNodes.Enqueue(node);
 	}
+
+	/// <summary>
+	/// Removes the current selection box
+	/// </summary>
 	public void ClearSelection()
 	{
 		while(activeNodes.Count > 0)

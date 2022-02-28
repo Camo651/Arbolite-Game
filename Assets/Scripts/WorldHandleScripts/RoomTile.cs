@@ -22,13 +22,15 @@ public class RoomTile : MonoBehaviour
 	[HideInInspector] public readonly int[] inverseOffsets = { 2, 3, 0, 1 };
 	private readonly Color[] nodeColourStates = { Color.yellow, Color.green, Color.red, Color.blue };
 
-
+	/// <summary>
+	/// Generates the naturally generated elements of the tile
+	/// </summary>
 	public void StartGeneration()
 	{
 		childNodes = new List<Node>(GetComponentsInChildren<Node>());
 		if(childNodes.Count > 0 && Random.value<.5f && canHavePlant)
 		{
-			PlantObject p = roomContainer.globalRefManager.plantManager.GeneratePlant(roomContainer.globalRefManager.plantManager.defaultTreePreset.plantProperties, this);
+			PlantObject p = roomContainer.globalRefManager.plantManager.GeneratePlant(roomContainer.globalRefManager.plantManager.GetRandomTreePresetWeighted(null).plantProperties, this);
 			p.transform.SetParent(childNodes[0].transform);
 			p.transform.localPosition = Vector3.zero;
 			thisRoomsPlant = p;
@@ -113,13 +115,21 @@ public class RoomTile : MonoBehaviour
 			UpdateNeighboringTiles(0, updateOrigin);
 	}
 
+	/// <summary>
+	/// Changes a room to be of type s
+	/// </summary>
+	/// <param name="s">The callback id of the room to be set to</param>
 	private void ChangeRoomTo(string s)
 	{
 		if(roomContainer.tileNameCallbackID != s)
 			roomContainer.globalRefManager.baseManager.ChangeRoom(GetTrueTilePosition(), roomContainer.globalRefManager.baseManager.GetRoomPrefab(s));
 	}
 
-	//updates the 4 cardinal tiles around it (if they exist) and updates their values. Does not recursively flood the updates
+	/// <summary>
+	/// updates the 4 cardinal tiles around it (if they exist) and updates their values. Does not recursively flood the updates
+	/// </summary>
+	/// <param name="iter">The iteration of the pulse</param>
+	/// <param name="ID">The ID of the origin of the pulse</param>
 	public void UpdateNeighboringTiles(int iter, string ID)
 	{
 		//connection w/ neighbors established earlier
@@ -139,13 +149,19 @@ public class RoomTile : MonoBehaviour
 	}
 
 
-	//returns the tile's position in real world space
+	/// <summary>
+	/// Get the tile's position in real world space
+	/// </summary>
+	/// <returns>The tiles worldspace position</returns>
 	public Vector2Int GetTrueTilePosition()
 	{
 		return new Vector2Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
 	}
 
-	//returns the tile's position in matrix indexed space
+	/// <summary>
+	/// Get the tiles position in the storage matrix
+	/// </summary>
+	/// <returns>The tiles position in matrix space</returns>
 	public Vector2Int GetIndexdTilePosition()
 	{
 		return new Vector2Int(Mathf.RoundToInt(transform.position.x + (roomContainer.globalRefManager.terrainManager.terrainWidth / 2)), Mathf.RoundToInt(transform.position.y + roomContainer.globalRefManager.terrainManager.terrainBottomLayer));
