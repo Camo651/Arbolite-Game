@@ -32,6 +32,7 @@ public class RoomTile : MonoBehaviour
 			p.transform.SetParent(childNodes[0].transform);
 			p.transform.localPosition = Vector3.zero;
 			thisRoomsPlant = p;
+			p.roomTile = this;
 		}
 	}
 

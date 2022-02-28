@@ -132,3 +132,4 @@ MonoBehaviour:
   rotatability: {x: 0, y: 360}
   flipable: 1
   partDepth: 0
+  parentPlant: {fileID: 0}

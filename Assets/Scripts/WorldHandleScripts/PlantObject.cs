@@ -27,6 +27,9 @@ public class PlantObject : MonoBehaviour
 		rarityType = GetPropertyFromType(PropertyManager.PropertyType.Rarity);
 
 		PlantPart basePart = Instantiate(roomTile.roomContainer.globalRefManager.plantManager.GetRandomPlantPartPrefab(styleType), transform).GetComponent<PlantPart>();
+		basePart.parentPlant = this;
+		basePart.SetPartValues();
+
 		List<Node> baseNodes = new List<Node>(basePart.transform.GetComponentsInChildren<Node>());
 		List<PlantPart> leafParts = new List<PlantPart>();
 		foreach (Node node in baseNodes)
@@ -34,6 +37,8 @@ public class PlantObject : MonoBehaviour
 			if (node.needsToBeFulfilled)
 			{
 				PlantPart leaf = Instantiate(roomTile.roomContainer.globalRefManager.plantManager.GetRandomPlantPartPrefab(speciesType), node.transform).GetComponent<PlantPart>();
+				leaf.parentPlant = this;
+				leaf.SetPartValues();
 			}
 		}
 
@@ -59,14 +64,5 @@ public class PlantObject : MonoBehaviour
 			}
 		}
 		return null;
-	}
-
-	public void OnPointerEnter(PointerEventData eventData)
-	{
-
-	}
-	public void OnPointerExit(PointerEventData eventData)
-	{
-
 	}
 }
