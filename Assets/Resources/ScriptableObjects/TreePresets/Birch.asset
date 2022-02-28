@@ -16,5 +16,5 @@ MonoBehaviour:
   plantProperties:
   - {fileID: 11400000, guid: eaf3d39af1d5d754aa94d4c3c7bc5ea0, type: 2}
   - {fileID: 11400000, guid: a339d874909262f4d9cdfd638ecee609, type: 2}
-  - {fileID: 11400000, guid: e7f72abb04362bc4eafb56bcd1247fba, type: 2}
+  - {fileID: 11400000, guid: f251ecd06eb143d4f9bb0e3b091fdc9d, type: 2}
   - {fileID: 11400000, guid: 02085276d7b9e2148b145ffd292ac8f4, type: 2}

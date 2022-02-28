@@ -26,7 +26,6 @@ public class PlantObject : MonoBehaviour
 
 		PlantPart basePart = Instantiate(roomTile.roomContainer.globalRefManager.plantManager.GetRandomPlantPartPrefab(styleType), transform).GetComponent<PlantPart>();
 		basePart.parentPlant = this;
-		print(speciesType);
 		basePart.SetPartValues(speciesType.SPECIES_BaseColour);
 
 		List<Node> baseNodes = new List<Node>(basePart.transform.GetComponentsInChildren<Node>());
