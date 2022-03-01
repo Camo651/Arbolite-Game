@@ -18,14 +18,14 @@ public class PlantManager : MonoBehaviour
 	{
 		PlantPart[] unsorted = Resources.LoadAll<PlantPart>("");
 		plantPartCatalog = new Dictionary<SO_Property, List<PlantPart>>();
-		foreach (PlantPart part in unsorted)
-		{
-			if (!plantPartCatalog.ContainsKey(part.propertyDependancy))
-			{
-				plantPartCatalog.Add(part.propertyDependancy, new List<PlantPart>());
-			}
-			plantPartCatalog[part.propertyDependancy].Add(part);
-		}
+		//foreach (PlantPart part in unsorted)
+		//{
+		//	if (!plantPartCatalog.ContainsKey(part.propertyDependancy))
+		//	{
+		//		plantPartCatalog.Add(part.propertyDependancy, new List<PlantPart>());
+		//	}
+		//	plantPartCatalog[part.propertyDependancy].Add(part);
+		//}
 
 		treePresets = new Dictionary<string, SO_TreePreset>();
 		SO_TreePreset[] unsortedPresets = Resources.FindObjectsOfTypeAll<SO_TreePreset>();

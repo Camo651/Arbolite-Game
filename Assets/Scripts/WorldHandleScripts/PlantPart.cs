@@ -9,7 +9,6 @@ using UnityEngine.EventSystems;
 public class PlantPart : MonoBehaviour
 {
 	public string partName;
-	public SO_Property propertyDependancy;
 	public List<Node> nodes;
 	public Vector2 rotatability;
 	public bool flipable;

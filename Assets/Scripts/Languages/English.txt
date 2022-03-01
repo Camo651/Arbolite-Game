@@ -117,6 +117,12 @@ info_prop_biome_mountains      "The main world where you can live"
 
 name_prop_species_oak          "Oak"
 info_prop_species_oak          ""
+name_prop_species_birch        "Birch"
+info_prop_species_birch        ""
+name_prop_species_cherry       "Cherry"
+info_prop_species_cherry       ""
+name_prop_species_elm          "Elm"
+info_prop_species_elm          ""
 
 name_prop_style_sapling        "Sapling"
 info_prop_style_sapling        ""

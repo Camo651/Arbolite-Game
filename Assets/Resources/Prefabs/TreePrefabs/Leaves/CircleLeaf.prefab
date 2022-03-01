@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 124e65e2b3c28fc4eb3ca2fbf9710d09, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ead483a694325d44c9863324075be099, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 2856077954092519772}
   - component: {fileID: 2856077954092519775}
   m_Layer: 0
-  m_Name: TriangleLeaf0 1
+  m_Name: CircleLeaf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,10 +126,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5152fa99edf1474d8e87f1a000c04d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partName: 
-  propertyDependancy: {fileID: 11400000, guid: f251ecd06eb143d4f9bb0e3b091fdc9d, type: 2}
+  partName: circle_leaves
+  propertyDependancy: {fileID: 11400000, guid: 4a04ed65576c34943bc05708ab5caf4e, type: 2}
   nodes: []
-  rotatability: {x: 0, y: 360}
-  flipable: 1
+  rotatability: {x: 0, y: 0}
+  flipable: 0
   partDepth: 1
   parentPlant: {fileID: 0}

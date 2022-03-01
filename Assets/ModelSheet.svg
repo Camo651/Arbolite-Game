@@ -2,21 +2,21 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="210mm"
    height="297mm"
    viewBox="0 0 210 297"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
-   sodipodi:docname="ModelSheet.svg">
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="ModelSheet.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs2">
     <linearGradient
@@ -182,10 +182,10 @@
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
        id="filter2120"
-       x="-0.0085135135"
-       width="1.017027"
-       y="-0.0085135135"
-       height="1.017027">
+       x="-0.042287045"
+       width="1.0845741"
+       y="-0.042287045"
+       height="1.0845741">
       <feGaussianBlur
          inkscape:collect="always"
          stdDeviation="1.3084871"
@@ -195,10 +195,10 @@
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
        id="filter2374"
-       x="-0.036"
-       width="1.072"
-       y="-0.036"
-       height="1.072">
+       x="-0.039003777"
+       width="1.0780076"
+       y="-0.039003777"
+       height="1.0780076">
       <feGaussianBlur
          inkscape:collect="always"
          stdDeviation="5.5330312"
@@ -208,10 +208,10 @@
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
        id="filter3084"
-       x="-0.2028"
-       width="1.4056"
-       y="-0.2028"
-       height="1.4056">
+       x="-0.25378833"
+       width="1.5075767"
+       y="-0.25378833"
+       height="1.5075767">
       <feGaussianBlur
          inkscape:collect="always"
          stdDeviation="31.169409"
@@ -221,10 +221,10 @@
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
        id="filter3132"
-       x="-0.0204"
-       width="1.0408"
-       y="-0.0204"
-       height="1.0408">
+       x="-0.025572572"
+       width="1.0511451"
+       y="-0.025572572"
+       height="1.0511451">
       <feGaussianBlur
          inkscape:collect="always"
          stdDeviation="3.1353843"
@@ -234,10 +234,10 @@
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
        id="filter3180"
-       x="-0.0492"
-       width="1.0984"
-       y="-0.0492"
-       height="1.0984">
+       x="-0.05437257"
+       width="1.1087451"
+       y="-0.05437257"
+       height="1.1087451">
       <feGaussianBlur
          inkscape:collect="always"
          stdDeviation="7.5618092"
@@ -247,10 +247,10 @@
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
        id="filter3504"
-       x="-0.0936"
-       width="1.1872"
-       y="-0.0936"
-       height="1.1872">
+       x="-0.10229686"
+       width="1.2045937"
+       y="-0.10229686"
+       height="1.2045937">
       <feGaussianBlur
          inkscape:collect="always"
          stdDeviation="14.385881"
@@ -278,9 +278,9 @@
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
        id="filter5247"
-       x="-0.0528"
+       x="-0.052800001"
        width="1.1056"
-       y="-0.0528"
+       y="-0.052800001"
        height="1.1056">
       <feGaussianBlur
          inkscape:collect="always"
@@ -291,9 +291,9 @@
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
        id="filter5267"
-       x="-0.0408"
+       x="-0.040800002"
        width="1.0816"
-       y="-0.0408"
+       y="-0.040800002"
        height="1.0816">
       <feGaussianBlur
          inkscape:collect="always"
@@ -304,7 +304,7 @@
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
        id="filter5375"
-       x="-0.014057751"
+       x="-0.01405775"
        width="1.0281155"
        y="-0.037169084"
        height="1.0743382">
@@ -316,7 +316,11 @@
     <filter
        style="color-interpolation-filters:sRGB;"
        inkscape:label="Drop Shadow"
-       id="filter5452">
+       id="filter5452"
+       x="-0.017476792"
+       y="-0.073110057"
+       width="1.0495176"
+       height="1.2071452">
       <feFlood
          flood-opacity="0.498039"
          flood-color="rgb(0,0,0)"
@@ -349,7 +353,7 @@
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
        id="filter5375-8"
-       x="-0.014057751"
+       x="-0.01405775"
        width="1.0281155"
        y="-0.037169084"
        height="1.0743382">
@@ -362,10 +366,10 @@
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
        id="filter5672"
-       x="-0.046625403"
-       width="1.0932508"
-       y="-0.036268584"
-       height="1.0725372">
+       x="-0.094401441"
+       width="1.1888029"
+       y="-0.14159851"
+       height="1.283197">
       <feGaussianBlur
          inkscape:collect="always"
          stdDeviation="1.0671925"
@@ -375,10 +379,10 @@
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
        id="filter5773"
-       x="-0.15633223"
-       width="1.3126645"
-       y="-0.12160643"
-       height="1.2432129">
+       x="-0.31652247"
+       width="1.6330449"
+       y="-0.47477145"
+       height="1.9495429">
       <feGaussianBlur
          inkscape:collect="always"
          stdDeviation="3.5782337"
@@ -392,16 +396,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.32000001"
-     inkscape:cx="-2053.6051"
-     inkscape:cy="-17574.498"
+     inkscape:zoom="0.24989776"
+     inkscape:cx="33395.657"
+     inkscape:cy="6076.485"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1017"
-     inkscape:window-x="-8"
-     inkscape:window-y="892"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
      inkscape:window-maximized="1"
      showborder="false"
      inkscape:pagecheckerboard="0"
@@ -940,7 +944,7 @@
        transform="matrix(2.1387787,0,0,2.4696541,-9725.7895,-969.59682)"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96"
-       inkscape:export-filename="C:\Users\camoc\Desktop\Code\UnityProjects\BuildingGameProject\Assets\Resources\Prefabs\TreePrefabs\Leaves\TriangleLeaves\Leaf_Triangle_0.png" />
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\Repos\BuildingGameProject\Assets\Images\PlantParts\Leaves\TriangleLeaves.png" />
     <image
        y="3130.7305"
        x="2860.0879"
@@ -3292,17 +3296,17 @@
        id="text17010" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58329964px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458299"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="-978.80457"
        y="5184.6055"
        id="text24214"><tspan
          sodipodi:role="line"
          id="tspan24212"
-         style="stroke-width:0.26458299"
+         style="stroke-width:0.264583"
          x="-978.80457"
          y="5184.6055">- Played on PC with keyboard </tspan><tspan
          sodipodi:role="line"
-         style="stroke-width:0.26458299"
+         style="stroke-width:0.264583"
          x="-978.80457"
          y="5197.8345"
          id="tspan24216">and mouse</tspan><tspan
@@ -3311,22 +3315,22 @@
          y="5211.0635"
          id="tspan24218" /><tspan
          sodipodi:role="line"
-         style="stroke-width:0.26458299"
+         style="stroke-width:0.264583"
          x="-978.80457"
          y="5224.293"
          id="tspan24220">-Must get to know the items in the</tspan><tspan
          sodipodi:role="line"
-         style="stroke-width:0.26458299"
+         style="stroke-width:0.264583"
          x="-978.80457"
          y="5237.522"
          id="tspan24222">game and its mechanics to be truly</tspan><tspan
          sodipodi:role="line"
-         style="stroke-width:0.26458299"
+         style="stroke-width:0.264583"
          x="-978.80457"
          y="5250.751"
          id="tspan24224"> good at the game, but can learn w/o</tspan><tspan
          sodipodi:role="line"
-         style="stroke-width:0.26458299"
+         style="stroke-width:0.264583"
          x="-978.80457"
          y="5263.98"
          id="tspan24730">knowing much</tspan></text>
@@ -3480,17 +3484,17 @@
          id="tspan57437" /></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58329964px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458299"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="-763.51465"
        y="4788.1426"
        id="text60741"><tspan
          sodipodi:role="line"
-         style="stroke-width:0.26458299"
+         style="stroke-width:0.264583"
          x="-763.51465"
          y="4788.1426"
          id="tspan60941">-The main island where the player lives is ever changing, constantly</tspan><tspan
          sodipodi:role="line"
-         style="stroke-width:0.26458299"
+         style="stroke-width:0.264583"
          x="-763.51465"
          y="4801.3716"
          id="tspan60945">having new rooms added to it by the player</tspan><tspan
@@ -3898,31 +3902,31 @@
        id="text5791"
        y="3190.0811"
        x="3302.6831"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:81.9078064px;line-height:1;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Bold';letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;fill:#fa7746;fill-opacity:0.43939394;stroke:none;stroke-width:1.78338897;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter5452)"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:81.9078px;line-height:1;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Bold';letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;fill:#fa7746;fill-opacity:0.439394;stroke:none;stroke-width:1.78339;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter5452)"
        xml:space="preserve"><tspan
          id="tspan5789"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0.80000001;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Bold';text-align:start;letter-spacing:4.75927448px;writing-mode:lr-tb;text-anchor:start;fill:#fa7746;fill-opacity:0.43939394;stroke:none;stroke-width:1.78338897;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0.8;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Bold';text-align:start;letter-spacing:4.75927px;writing-mode:lr-tb;text-anchor:start;fill:#fa7746;fill-opacity:0.439394;stroke:none;stroke-width:1.78339;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          y="3190.0811"
          x="3302.6831"
          sodipodi:role="line"><tspan
    id="tspan5785"
-   style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Light';fill:#fa7746;fill-opacity:0.43939394;stroke:none;stroke-width:1.78338897">DEVLOG</tspan> <tspan
+   style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Light';fill:#fa7746;fill-opacity:0.439394;stroke:none;stroke-width:1.78339">DEVLOG</tspan> <tspan
    id="tspan5787"
-   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:135.91030884px;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Bold';writing-mode:lr-tb;fill:#fa7746;fill-opacity:0.43939394;stroke:none;stroke-width:1.78338897">3</tspan></tspan></text>
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:135.91px;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Bold';writing-mode:lr-tb;fill:#fa7746;fill-opacity:0.439394;stroke:none;stroke-width:1.78339">3</tspan></tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:81.9078064px;line-height:1;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Bold';letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.78338897;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter5452);"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:81.9078px;line-height:1;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Bold';letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.78339;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter5452)"
        x="3302.1541"
        y="3178.9709"
        id="text1006-5"><tspan
          sodipodi:role="line"
          x="3302.1541"
          y="3178.9709"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0.80000001;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Bold';text-align:start;letter-spacing:4.75927448px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.78338897;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0.8;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Bold';text-align:start;letter-spacing:4.75927px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.78339;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="tspan1008-6"><tspan
-   style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Light';fill:#ffffff;fill-opacity:1;stroke-width:1.78338897;stroke:none;"
+   style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Light';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.78339"
    id="tspan1023-4">DEVLOG</tspan> <tspan
-   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:135.91030884px;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Bold';writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.78338897;"
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:135.91px;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Bold';writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.78339"
    id="tspan1021-9">3</tspan></tspan></text>
     <g
        id="g5534"
@@ -3974,5 +3978,16 @@
        id="path5496"
        d="m 3516.6549,3261.2383 -76.9148,72.0827 -36.3441,-42.6363 -61.4398,72.0763 -44.3712,-52.0529 -34.0412,39.9342 -19.6007,-22.9941 -53.6416,62.9282 v 68.2228 48.5404 h 650.6987 v -48.5404 0 -68.2228 l -53.6416,-62.9282 -19.601,22.9941 -34.0409,-39.9342 -44.3712,52.0529 -61.44,-72.0763 -35.4856,41.6292 z"
        style="opacity:1;fill:#8edbd6;fill-opacity:1;stroke:none;stroke-width:0.08081894;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill;filter:url(#filter5375-8)" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:67.394;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers;stop-color:#000000"
+       id="path15419"
+       cx="8782.6436"
+       cy="1549.328"
+       r="173.05702" />
+    <path
+       id="path17353"
+       style="fill:#000000;stroke:none;stroke-width:0.999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+       d="M 35076.912 4382.6738 C 34973.863 5500.7684 34653.632 5155.1173 34632.742 5851.8555 C 34632.742 5851.8555 34644.198 6045.4819 34678.205 6110.6504 C 34830.565 6402.6238 35076.912 6384.3066 35076.912 6384.3066 C 35076.912 6384.3066 35323.259 6402.6238 35475.619 6110.6504 C 35509.626 6045.4819 35521.084 5851.8555 35521.084 5851.8555 C 35500.194 5155.1173 35179.962 5500.7684 35076.912 4382.6738 z "
+       transform="scale(0.26458333)" />
   </g>
 </svg>
