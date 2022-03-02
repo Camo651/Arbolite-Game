@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2856077953153913358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.521491, y: 0.521491, z: 0.521491}
   m_Children: []
   m_Father: {fileID: 2856077954092519772}
   m_RootOrder: 0
@@ -127,7 +127,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partName: circle_leaves
-  propertyDependancy: {fileID: 11400000, guid: 4a04ed65576c34943bc05708ab5caf4e, type: 2}
   nodes: []
   rotatability: {x: 0, y: 0}
   flipable: 0

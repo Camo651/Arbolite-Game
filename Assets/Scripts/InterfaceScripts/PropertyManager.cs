@@ -50,6 +50,7 @@ public class PropertyManager : MonoBehaviour
 		Biome,
 		Style,
 		Rarity,
+		Age,
 	}
 
 	/// <summary>

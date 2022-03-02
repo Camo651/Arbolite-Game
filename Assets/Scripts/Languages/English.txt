@@ -97,6 +97,7 @@ proptype_resource              "Resource"
 proptype_biome                 "Biome"
 proptype_style                 "Style"
 proptype_rarity                "Rarity"
+proptype_age                   "Age"
 
 
 

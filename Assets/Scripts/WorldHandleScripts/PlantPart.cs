@@ -29,7 +29,7 @@ public class PlantPart : MonoBehaviour
 	public void SetPartValues(Color partColour)
 	{
 		transform.Rotate(Vector3.forward * Random.Range(rotatability.x, rotatability.y));
-		transform.GetChild(0).localScale = new Vector3(flipable ? Random.value > .5f ? -1 : 1 : 1, 1, 1);
+		transform.GetChild(0).localScale = new Vector3(flipable ? Random.value > .5f ? -transform.GetChild(0).localScale.x : transform.GetChild(0).localScale.x : transform.GetChild(0).localScale.x, transform.GetChild(0).localScale.y, transform.GetChild(0).localScale.z);
 		transform.GetChild(0).GetComponent<SpriteRenderer>().color = partColour;
 		transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = (int)partDepth;
 	}

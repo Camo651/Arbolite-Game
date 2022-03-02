@@ -24,7 +24,7 @@ public class PlantObject : MonoBehaviour
 		styleType = roomTile.roomContainer.globalRefManager.plantManager.GetPropertyFromType(plantProperties, PropertyManager.PropertyType.Style);
 		rarityType = roomTile.roomContainer.globalRefManager.plantManager.GetPropertyFromType(plantProperties, PropertyManager.PropertyType.Rarity);
 
-		PlantPart basePart = Instantiate(roomTile.roomContainer.globalRefManager.plantManager.GetRandomPlantPartPrefab(styleType), transform).GetComponent<PlantPart>();
+		PlantPart basePart = Instantiate(styleType.GENERAL_PlantParts[Random.Range(0,styleType.GENERAL_PlantParts.Count)], transform).GetComponent<PlantPart>();
 		basePart.parentPlant = this;
 		basePart.SetPartValues(speciesType.SPECIES_BaseColour);
 
@@ -34,7 +34,7 @@ public class PlantObject : MonoBehaviour
 		{
 			if (node.needsToBeFulfilled)
 			{
-				PlantPart leaf = Instantiate(roomTile.roomContainer.globalRefManager.plantManager.GetRandomPlantPartPrefab(speciesType), node.transform).GetComponent<PlantPart>();
+				PlantPart leaf = Instantiate(speciesType.GENERAL_PlantParts[Random.Range(0, speciesType.GENERAL_PlantParts.Count)], node.transform).GetComponent<PlantPart>();
 				leaf.parentPlant = this;
 				leaf.SetPartValues(speciesType.SPECIES_LeafColour);
 			}

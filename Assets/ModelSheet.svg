@@ -2,21 +2,21 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="210mm"
    height="297mm"
    viewBox="0 0 210 297"
    version="1.1"
    id="svg8"
-   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
-   sodipodi:docname="ModelSheet.svg"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:dc="http://purl.org/dc/elements/1.1/">
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="ModelSheet.svg">
   <defs
      id="defs2">
     <linearGradient
@@ -397,15 +397,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.24989776"
-     inkscape:cx="33395.657"
-     inkscape:cy="6076.485"
+     inkscape:cx="36723.486"
+     inkscape:cy="-5294.8869"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1001"
-     inkscape:window-x="-9"
-     inkscape:window-y="-9"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="892"
      inkscape:window-maximized="1"
      showborder="false"
      inkscape:pagecheckerboard="0"
@@ -3989,5 +3989,14 @@
        style="fill:#000000;stroke:none;stroke-width:0.999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
        d="M 35076.912 4382.6738 C 34973.863 5500.7684 34653.632 5155.1173 34632.742 5851.8555 C 34632.742 5851.8555 34644.198 6045.4819 34678.205 6110.6504 C 34830.565 6402.6238 35076.912 6384.3066 35076.912 6384.3066 C 35076.912 6384.3066 35323.259 6402.6238 35475.619 6110.6504 C 35509.626 6045.4819 35521.084 5851.8555 35521.084 5851.8555 C 35500.194 5155.1173 35179.962 5500.7684 35076.912 4382.6738 z "
        transform="scale(0.26458333)" />
+    <path
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\UnityProjects\BuildingGameProject\Assets\Images\PlantParts\Bases\SmallBases\Base_Small_1.png"
+       inkscape:connector-curvature="0"
+       id="path1267"
+       d="M 9970.9968,1662.2664 V 1494.4592"
+       style="fill:none;stroke:#000000;stroke-width:30.87208939;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:nodetypes="cc" />
   </g>
 </svg>
