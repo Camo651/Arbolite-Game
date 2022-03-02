@@ -171,19 +171,19 @@ public class RoomTile : MonoBehaviour
 	{
 		float dist = .7f, rad = .08f;
 		Gizmos.color = neighborWelds[0]?Color.black:nodeColourStates[topNodeState];
-		Gizmos.DrawSphere(Vector3.up*dist, rad);
+		Gizmos.DrawSphere(Vector3.up*dist + transform.position, rad);
 
 		Gizmos.color = neighborWelds[1] ? Color.black : nodeColourStates[rightNodeState];
-		Gizmos.DrawSphere(Vector3.right*dist, rad);
+		Gizmos.DrawSphere(Vector3.right* dist + transform.position, rad);
 
 		Gizmos.color = neighborWelds[2] ? Color.black : nodeColourStates[bottomNodeState];
-		Gizmos.DrawSphere(Vector3.down*dist, rad);
+		Gizmos.DrawSphere(Vector3.down* dist + transform.position, rad);
 
 		Gizmos.color = neighborWelds[3] ? Color.black : nodeColourStates[leftNodeState];
-		Gizmos.DrawSphere(Vector3.left*dist, rad);
+		Gizmos.DrawSphere(Vector3.left* dist + transform.position, rad);
 
 		Gizmos.color = Color.red;
-		Gizmos.DrawWireCube(Vector2.zero, Vector2.one);
+		Gizmos.DrawWireCube(transform.position, Vector2.one);
 	}
 }
 

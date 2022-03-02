@@ -22,30 +22,21 @@ public class PropertyEditor : Editor
 			case PropertyManager.PropertyType.Species:
 				p.SPECIES_BaseColour = EditorGUILayout.ColorField("Base Colour", p.SPECIES_BaseColour + new Color(0, 0, 0, 1f));
 				p.SPECIES_LeafColour = EditorGUILayout.ColorField("Leaf Colour", p.SPECIES_LeafColour + new Color(0, 0, 0, 1f));
-				EditorGUILayout.Space(5);
-				EditorGUILayout.BeginHorizontal();
-				if (GUILayout.Button("Add Leaf Type"))
-					p.GENERAL_PlantParts.Add(null);
-				if (GUILayout.Button("Remove Leaf Type") && p.GENERAL_PlantParts.Count > 0)
-					p.GENERAL_PlantParts.RemoveAt(p.GENERAL_PlantParts.Count-1);
-				EditorGUILayout.EndHorizontal();
-				for (int i = 0; i < p.GENERAL_PlantParts.Count; i++)
-					p.GENERAL_PlantParts[i] = (GameObject)EditorGUILayout.ObjectField("Leaf Part "+(i+1),p.GENERAL_PlantParts[i],typeof(GameObject),false);
+				p.SPECIES_GrowthStageChance = EditorGUILayout.Slider("Chance to grow each random tick", p.SPECIES_GrowthStageChance, 0f, 1f);
 				break;
 
 			case PropertyManager.PropertyType.Rarity:
 				p.RARITY_Weight = EditorGUILayout.Slider("Rarity Weight", p.RARITY_Weight,0f,1f);
 				break;
 			case PropertyManager.PropertyType.Style:
-				EditorGUILayout.Space(5);
-				EditorGUILayout.BeginHorizontal();
-				if (GUILayout.Button("Add Base Type"))
-					p.GENERAL_PlantParts.Add(null);
-				if (GUILayout.Button("Remove Base Type") && p.GENERAL_PlantParts.Count > 0)
-					p.GENERAL_PlantParts.RemoveAt(p.GENERAL_PlantParts.Count - 1);
-				EditorGUILayout.EndHorizontal();
-				for (int i = 0; i < p.GENERAL_PlantParts.Count; i++)
-					p.GENERAL_PlantParts[i] = (GameObject)EditorGUILayout.ObjectField("Base Part "+(i+1), p.GENERAL_PlantParts[i], typeof(GameObject),false);
+				p.STYLE_GrowthStageModifier = EditorGUILayout.Slider("Growth speed modifier", p.STYLE_GrowthStageModifier, 0f, 1f);
+				break;
+			case PropertyManager.PropertyType.Age:
+				p.AGE_Value = EditorGUILayout.IntField("Age stage",p.AGE_Value);
+				p.AGE_GrowthStageModifier = EditorGUILayout.Slider("Growth speed modifier", p.AGE_GrowthStageModifier, 0f, 1f);
+				p.AGE_GrowthScale = EditorGUILayout.Slider("Growth scale at stage", p.AGE_GrowthScale, 0f, 1f);
+				p.AGE_ColorTint = EditorGUILayout.Slider("Growth stage colour tint", p.AGE_ColorTint, -1f, 1f);
+				p.AGE_HasLeaves = EditorGUILayout.Toggle("Stage has leaves?", p.AGE_HasLeaves);
 				break;
 		}
 		GUILayout.EndVertical();

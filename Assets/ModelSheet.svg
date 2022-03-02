@@ -2,21 +2,21 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="210mm"
    height="297mm"
    viewBox="0 0 210 297"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
-   sodipodi:docname="ModelSheet.svg">
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="ModelSheet.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs2">
     <linearGradient
@@ -67,16 +67,6 @@
          offset="1"
          id="stop855" />
     </linearGradient>
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient857"
-       id="linearGradient859"
-       x1="724.29694"
-       y1="429.29172"
-       x2="988.88031"
-       y2="429.29172"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(2,0,0,1,-2056.4436,431.50291)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient857"
@@ -396,23 +386,23 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.24989776"
-     inkscape:cx="36723.486"
-     inkscape:cy="-5294.8869"
+     inkscape:zoom="0.31498855"
+     inkscape:cx="11719.474"
+     inkscape:cy="-8986.041"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1017"
-     inkscape:window-x="-8"
-     inkscape:window-y="892"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
      inkscape:window-maximized="1"
      showborder="false"
      inkscape:pagecheckerboard="0"
      inkscape:snap-global="true"
      inkscape:snap-midpoints="true"
      inkscape:snap-center="true"
-     inkscape:object-paths="true"
+     inkscape:object-paths="false"
      inkscape:snap-object-midpoints="true" />
   <metadata
      id="metadata5">
@@ -598,17 +588,6 @@
        inkscape:export-filename="C:\Users\camoc\Desktop\Code\UnityProjects\BuildingGameProject\Assets\Images\Tiles\Terrain\BedrockTexture.png"
        inkscape:export-xdpi="95.999985"
        inkscape:export-ydpi="95.999985" />
-    <rect
-       style="opacity:1;fill:url(#linearGradient859);fill-opacity:1;stroke:none;stroke-width:38.80357361;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
-       id="rect816-8-8-6-8"
-       width="529.16675"
-       height="264.58337"
-       x="-607.84967"
-       y="728.50299"
-       inkscape:export-filename="C:\Users\camoc\Desktop\Code\UnityProjects\BuildingGameProject\Assets\Images\Tiles\Terrain\BedrockGradientTexture.png"
-       inkscape:export-xdpi="95.999985"
-       inkscape:export-ydpi="95.999985"
-       transform="rotate(-90)" />
     <rect
        style="opacity:1;fill:url(#linearGradient884);fill-opacity:1;stroke:none;stroke-width:38.80357361;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
        id="rect816-8-8-6-8-1"
@@ -3998,5 +3977,225 @@
        d="M 9970.9968,1662.2664 V 1494.4592"
        style="fill:none;stroke:#000000;stroke-width:30.87208939;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        sodipodi:nodetypes="cc" />
+    <path
+       id="path2060"
+       style="fill:#b6a498;fill-opacity:1;stroke:none;stroke-width:0.324047px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 3216.4245,-2516.2381 -198.4342,70.36 -99.2171,281.4387 v 281.4387 l -99.2171,562.8778 h 793.7364 l -99.2171,-562.8778 v -281.4387 l -99.2171,-281.4387 z m -396.8756,1196.1188 v 264.5834 h 793.7504 v -264.5834 z"
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\Repos\BuildingGameProject\Assets\Images\Tiles\Power\WindmillBase.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       id="rect9364"
+       style="fill:#5a4a40;fill-opacity:1;stroke:none;stroke-width:77.164;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       d="M 12156.564 -4908.5156 C 11989.701 -4908.5156 11855.367 -4774.1816 11855.367 -4607.3184 L 11855.367 -4448.9727 L 11855.365 -4448.9727 L 11855.365 -3989.4277 L 12156.564 -3989.4277 L 12457.76 -3989.4277 L 12457.76 -4290.4727 C 12457.76 -4290.5236 12457.762 -4290.5741 12457.762 -4290.625 L 12457.762 -4607.3184 C 12457.762 -4774.1816 12323.428 -4908.5156 12156.564 -4908.5156 z "
+       transform="scale(0.26458333)"
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\Repos\BuildingGameProject\Assets\Images\Tiles\Power\WindmillBase.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#5a4a40;fill-opacity:1;stroke:none;stroke-width:4.50753;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers;stop-color:#000000"
+       id="rect10899"
+       width="596.93988"
+       height="18.581051"
+       x="2918.7732"
+       y="-1892.2913"
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\Repos\BuildingGameProject\Assets\Images\Tiles\Power\WindmillBase.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#5a4a40;fill-opacity:1;stroke:none;stroke-width:4.50134;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers;stop-color:#000000"
+       id="rect10899-0"
+       width="595.30212"
+       height="18.581051"
+       x="2918.7732"
+       y="-2173.73"
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\Repos\BuildingGameProject\Assets\Images\Tiles\Power\WindmillBase.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#5a4a40;fill-opacity:1;stroke:none;stroke-width:5.19775;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers;stop-color:#000000"
+       id="rect10899-3"
+       width="793.75037"
+       height="18.581051"
+       x="2819.5488"
+       y="-1329.4098"
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\Repos\BuildingGameProject\Assets\Images\Tiles\Power\WindmillBase.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <g
+       id="g8904"
+       transform="translate(2033.6636,-126.62373)"
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\Repos\BuildingGameProject\Assets\Images\Tiles\Power\WindmillBlades.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <g
+         id="g8472"
+         transform="matrix(0.64715552,0,0,0.64715552,475.91814,-931.84078)"
+         inkscape:transform-center-x="-511.59231"
+         inkscape:transform-center-y="8.3183056">
+        <path
+           id="rect6603"
+           style="fill:#f6f3f1;stroke-width:37.7953;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers;stop-color:#000000"
+           d="m 16995.98,-7843.5645 -498.623,498.625 h 223.383 v 437.8282 h 4021.049 l 936.451,-936.4532 z"
+           transform="scale(0.26458333)" />
+        <rect
+           style="fill:#a9593f;fill-opacity:1;stroke:none;stroke-width:4.07222;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers;stop-color:#000000"
+           id="rect6603-3"
+           width="1217.9514"
+           height="41.792442"
+           x="4496.853"
+           y="-2075.2761" />
+        <rect
+           style="fill:#a9593f;fill-opacity:1;stroke:none;stroke-width:1.06679;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers;stop-color:#000000"
+           id="rect6603-3-4"
+           width="83.584946"
+           height="41.792442"
+           x="4340.4443"
+           y="-1985.1414" />
+        <rect
+           style="fill:#a9593f;fill-opacity:1;stroke:none;stroke-width:1.40401;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers;stop-color:#000000"
+           id="rect8121"
+           width="144.78098"
+           height="41.792442"
+           x="-4647.1973"
+           y="-1754.106"
+           transform="rotate(135)" />
+      </g>
+      <g
+         id="g8861"
+         transform="matrix(0,-0.64715552,0.64715552,0,4495.9144,545.81135)"
+         inkscape:transform-center-x="-8.3182936"
+         inkscape:transform-center-y="-511.59232">
+        <path
+           id="path8853"
+           style="fill:#f6f3f1;stroke-width:37.7953;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers;stop-color:#000000"
+           d="m 16995.98,-7843.5645 -498.623,498.625 h 223.383 v 437.8282 h 4021.049 l 936.451,-936.4532 z"
+           transform="scale(0.26458333)" />
+        <rect
+           style="fill:#a9593f;fill-opacity:1;stroke:none;stroke-width:4.07222;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers;stop-color:#000000"
+           id="rect8855"
+           width="1217.9514"
+           height="41.792442"
+           x="4496.853"
+           y="-2075.2761" />
+        <rect
+           style="fill:#a9593f;fill-opacity:1;stroke:none;stroke-width:1.06679;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers;stop-color:#000000"
+           id="rect8857"
+           width="83.584946"
+           height="41.792442"
+           x="4340.4443"
+           y="-1985.1414" />
+        <rect
+           style="fill:#a9593f;fill-opacity:1;stroke:none;stroke-width:1.40401;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers;stop-color:#000000"
+           id="rect8859"
+           width="144.78098"
+           height="41.792442"
+           x="-4647.1973"
+           y="-1754.106"
+           transform="rotate(135)" />
+      </g>
+      <g
+         id="g8871"
+         transform="matrix(-0.64715552,0,0,-0.64715552,5973.5666,-3474.1849)"
+         inkscape:transform-center-x="511.59226"
+         inkscape:transform-center-y="-8.3182737">
+        <path
+           id="path8863"
+           style="fill:#f6f3f1;stroke-width:37.7953;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers;stop-color:#000000"
+           d="m 16995.98,-7843.5645 -498.623,498.625 h 223.383 v 437.8282 h 4021.049 l 936.451,-936.4532 z"
+           transform="scale(0.26458333)" />
+        <rect
+           style="fill:#a9593f;fill-opacity:1;stroke:none;stroke-width:4.07222;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers;stop-color:#000000"
+           id="rect8865"
+           width="1217.9514"
+           height="41.792442"
+           x="4496.853"
+           y="-2075.2761" />
+        <rect
+           style="fill:#a9593f;fill-opacity:1;stroke:none;stroke-width:1.06679;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers;stop-color:#000000"
+           id="rect8867"
+           width="83.584946"
+           height="41.792442"
+           x="4340.4443"
+           y="-1985.1414" />
+        <rect
+           style="fill:#a9593f;fill-opacity:1;stroke:none;stroke-width:1.40401;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers;stop-color:#000000"
+           id="rect8869"
+           width="144.78098"
+           height="41.792442"
+           x="-4647.1973"
+           y="-1754.106"
+           transform="rotate(135)" />
+      </g>
+      <g
+         id="g8881"
+         transform="matrix(0,0.64715552,-0.64715552,0,1953.5703,-4951.8372)"
+         inkscape:transform-center-x="8.3182925"
+         inkscape:transform-center-y="511.59218">
+        <path
+           id="path8873"
+           style="fill:#f6f3f1;stroke-width:37.7953;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers;stop-color:#000000"
+           d="m 16995.98,-7843.5645 -498.623,498.625 h 223.383 v 437.8282 h 4021.049 l 936.451,-936.4532 z"
+           transform="scale(0.26458333)" />
+        <rect
+           style="fill:#a9593f;fill-opacity:1;stroke:none;stroke-width:4.07222;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers;stop-color:#000000"
+           id="rect8875"
+           width="1217.9514"
+           height="41.792442"
+           x="4496.853"
+           y="-2075.2761" />
+        <rect
+           style="fill:#a9593f;fill-opacity:1;stroke:none;stroke-width:1.06679;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers;stop-color:#000000"
+           id="rect8877"
+           width="83.584946"
+           height="41.792442"
+           x="4340.4443"
+           y="-1985.1414" />
+        <rect
+           style="fill:#a9593f;fill-opacity:1;stroke:none;stroke-width:1.40401;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers;stop-color:#000000"
+           id="rect8879"
+           width="144.78098"
+           height="41.792442"
+           x="-4647.1973"
+           y="-1754.106"
+           transform="rotate(135)" />
+      </g>
+      <circle
+         style="fill:#6a574b;fill-opacity:1;stroke:none;stroke-width:7.93264;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers;stop-color:#000000"
+         id="path8496"
+         cx="3224.7422"
+         cy="-2203.0129"
+         r="73.69117" />
+    </g>
+    <rect
+       style="fill:#2e4b3c;fill-opacity:1;stroke:none;stroke-width:27.4383;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect11507"
+       width="264.58337"
+       height="264.58337"
+       x="1679.8253"
+       y="-1043.2146"
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\UnityProjects\BuildingGameProject\Assets\Images\Tiles\Terrain\GHrassTexturepng.png"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985" />
+    <rect
+       style="fill:#3a5e4a;fill-opacity:0.51626015;stroke:none;stroke-width:27.4383;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect11507-8"
+       width="264.58337"
+       height="264.58337"
+       x="3084.1396"
+       y="-2643.04"
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\Repos\BuildingGameProject\Assets\Images\Tiles\Power\WindmillBase15.png"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985" />
+    <rect
+       style="fill:#446e58;fill-opacity:0;stroke:none;stroke-width:27.4383;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect11507-8-2"
+       width="264.58337"
+       height="264.58337"
+       x="3348.7231"
+       y="-2643.04"
+       inkscape:export-filename="C:\Users\camoc\Desktop\Code\Repos\BuildingGameProject\Assets\Images\Tiles\Power\WindmillBase35.png"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985" />
   </g>
 </svg>

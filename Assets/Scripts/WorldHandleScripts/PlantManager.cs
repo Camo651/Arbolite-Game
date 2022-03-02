@@ -13,6 +13,7 @@ public class PlantManager : MonoBehaviour
 	public SO_TreePreset defaultTreePreset;
 	public Dictionary<string, SO_TreePreset> treePresets;
 	public Dictionary<SO_Property, List<PlantPart>> plantPartCatalog;
+	public List<PlantObject> allPlantObjects;
 	public int plantDistributionMultiplier;
 	private void Awake()
 	{
@@ -39,15 +40,36 @@ public class PlantManager : MonoBehaviour
 	}
 
 
-	public PlantObject GeneratePlant(List<SO_Property> properties, RoomTile anchor)
+	/// <summary>
+	/// Method to generate a plant. All plants should generate from here
+	/// </summary>
+	/// <param name="_props">A list of properties that should be passed to the plant object</param>
+	/// <param name="anchor">The RoomTile that the plant should generate on</param>
+	/// <returns>The newly generated plant object</returns>
+	public PlantObject GeneratePlant(List<SO_Property> _props, RoomTile anchor)
 	{
+		List<SO_Property> properties = new List<SO_Property>();
+		properties.AddRange(_props);
+		SO_Property _age = globalRefManager.propertyManager.GetProperty(PropertyManager.PropertyType.Age, "age0");
+		properties.Add(_age);
 		PlantObject newPlant = Instantiate(defaultPlantPrefab.gameObject, anchor.transform).GetComponent<PlantObject>();
 		newPlant.roomTile = anchor;
 		newPlant.plantProperties = properties;
 		newPlant.GeneratePlant();
+		allPlantObjects.Add(newPlant);
 		return newPlant;
 	}
 
+	/// <summary>
+	/// Safely destroys a plant object
+	/// </summary>
+	/// <param name="plant">The plant to be destroyed</param>
+	public void DestroyPlant(PlantObject plant)
+	{
+		plant.roomTile.thisRoomsPlant = null;
+		allPlantObjects.Remove(plant);
+		Destroy(plant.gameObject);
+	}
 
 	/// <summary>
 	/// Get a random plant part based on its type
@@ -114,5 +136,28 @@ public class PlantManager : MonoBehaviour
 			}
 		}
 		return null;
+	}
+
+	/// <summary>
+	/// Tries to age each plant on a random cycle
+	/// </summary>
+	public void PlantAgingRandomTick()
+	{
+		for (int i = 0; i < allPlantObjects.Count; i++)
+		{
+			if (allPlantObjects[i])
+			{
+				allPlantObjects[i].TryGrowPlant();
+			}
+		}
+	}
+
+
+	private void FixedUpdate()
+	{
+		if (Random.value < .1 && !globalRefManager.baseManager.gameIsActivelyFrozen)
+		{
+			PlantAgingRandomTick();
+		}
 	}
 }

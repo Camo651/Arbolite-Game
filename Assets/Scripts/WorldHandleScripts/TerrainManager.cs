@@ -102,6 +102,17 @@ public class TerrainManager : MonoBehaviour
 				globalRefManager.baseManager.baseRooms[i].containedRooms[0].UpdateTile(false, globalRefManager.baseManager.baseRooms[i].GetHashCode()+"TerrainGen");
 			}
 		}
+
+		foreach (ContainedRoom cr in globalRefManager.baseManager.baseRooms)
+		{
+			foreach (RoomTile tile in cr.containedRooms)
+			{
+				if (tile.canHavePlant && Random.value < .2f)
+				{
+					tile.StartGeneration();
+				}
+			}
+		}
 	}
 
 	/// <summary>

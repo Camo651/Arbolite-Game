@@ -114,4 +114,9 @@ public class PropertyManager : MonoBehaviour
 		return propertyDisplays.ContainsKey(callbackID.ToLower()) ? propertyDisplays[callbackID.ToLower()] : null;
 	}
 
+	public SO_Property GetAge(int i)
+	{
+		return GetProperty(PropertyType.Age, "age" + i);
+	}
+
 }

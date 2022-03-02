@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   callbackID: birch
   propertyType: 1
-  SPECIES_BaseColour: {r: 0.9245283, g: 0.86297053, b: 0.8059096, a: 2866}
-  SPECIES_LeafColour: {r: 0.54275125, g: 0.6415094, b: 0.31107154, a: 2866}
+  SPECIES_BaseColour: {r: 0.9245283, g: 0.86297053, b: 0.8059096, a: 3223}
+  SPECIES_LeafColour: {r: 0.54275125, g: 0.6415094, b: 0.31107154, a: 3223}
   GENERAL_PlantParts:
-  - {fileID: 0}
+  - {fileID: 2856077954092519774, guid: e4f369cfed8966a4d8084f128a923679, type: 3}
   RARITY_Weight: 0
+  AGE_Value: 0
+  GENERAL_Properties: []

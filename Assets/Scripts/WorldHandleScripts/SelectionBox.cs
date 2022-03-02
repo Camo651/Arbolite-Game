@@ -27,13 +27,18 @@ public class SelectionBox : MonoBehaviour
 	/// <param name="topRight">The top right most corner of the room tiles</param>
 	public void GenerateBordure(Vector2 bottomLeft, Vector2 topRight)
 	{
-		//set top and bottom lines, then left and right w/o corners
-		for (int i = 0; i < nodesPerSide+1; i++)
+
+		for (int x = 0; x < nodesPerSide * Mathf.Abs(topRight.x-bottomLeft.x) + 1; x++)
 		{
-			float normal = i / nodesPerSide;
+			float normal = x / (nodesPerSide * Mathf.Abs(topRight.x - bottomLeft.x));
 			SetNode(new Vector2(Mathf.Lerp(bottomLeft.x, topRight.x, normal), topRight.y));
 			SetNode(new Vector2(Mathf.Lerp(bottomLeft.x, topRight.x, normal), bottomLeft.y));
-			if(i > 0 && i < nodesPerSide)
+		}
+
+		for (int x = 0; x < nodesPerSide * Mathf.Abs(topRight.y - bottomLeft.y); x++)
+		{
+			float normal = x / (nodesPerSide * Mathf.Abs(topRight.y - bottomLeft.y));
+			if (x > 0 && x < (nodesPerSide * Mathf.Abs(topRight.y - bottomLeft.y)))
 			{
 				SetNode(new Vector2(bottomLeft.x, Mathf.Lerp(bottomLeft.y, topRight.y, normal)));
 				SetNode(new Vector2(topRight.x, Mathf.Lerp(bottomLeft.y, topRight.y, normal)));
