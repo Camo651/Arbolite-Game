@@ -14,8 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   callbackID: cherry
   propertyType: 1
-  SPECIES_BaseColour: {r: 0.41509432, g: 0.32505402, b: 0.30701315, a: 1571}
-  SPECIES_LeafColour: {r: 0.6509434, g: 0.30336416, b: 0.3214635, a: 1248}
+  SPECIES_BaseColour: {r: 0.41509432, g: 0.32505402, b: 0.30701315, a: 1752}
+  SPECIES_LeafColour: {r: 0.6509434, g: 0.30336416, b: 0.3214635, a: 1429}
+  SPECIES_GrowthStageChance: 1
+  STYLE_GrowthStageModifier: 0
+  AGE_GrowthStageModifier: 0
+  AGE_GrowthScale: 0
+  AGE_HasLeaves: 0
+  AGE_ColorTint: 0
   GENERAL_PlantParts:
   - {fileID: 2856077954092519774, guid: 7e19bfc1621a0a844b89687526fad042, type: 3}
   RARITY_Weight: 0

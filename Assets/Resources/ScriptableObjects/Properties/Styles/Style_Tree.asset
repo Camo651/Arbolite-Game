@@ -14,3 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   callbackID: tree
   propertyType: 4
+  SPECIES_BaseColour: {r: 0, g: 0, b: 0, a: 0}
+  SPECIES_LeafColour: {r: 0, g: 0, b: 0, a: 0}
+  SPECIES_GrowthStageChance: 0
+  STYLE_GrowthStageModifier: 0.153
+  AGE_GrowthStageModifier: 0
+  AGE_GrowthScale: 0
+  AGE_HasLeaves: 0
+  AGE_ColorTint: 0
+  GENERAL_PlantParts: []
+  RARITY_Weight: 0
+  AGE_Value: 0
+  GENERAL_Properties: []

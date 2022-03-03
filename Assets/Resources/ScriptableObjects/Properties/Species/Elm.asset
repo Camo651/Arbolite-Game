@@ -14,8 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   callbackID: elm
   propertyType: 1
-  SPECIES_BaseColour: {r: 0.6037736, g: 0.39462805, b: 0.23011747, a: 1490}
-  SPECIES_LeafColour: {r: 0.5533297, g: 0.8490566, b: 0.5158419, a: 1781}
+  SPECIES_BaseColour: {r: 0.6037736, g: 0.39462805, b: 0.23011747, a: 1923}
+  SPECIES_LeafColour: {r: 0.5533297, g: 0.8490566, b: 0.5158419, a: 2214}
+  SPECIES_GrowthStageChance: 1
+  STYLE_GrowthStageModifier: 0
+  AGE_GrowthStageModifier: 0
+  AGE_GrowthScale: 0
+  AGE_HasLeaves: 0
+  AGE_ColorTint: 0
   GENERAL_PlantParts:
   - {fileID: 2856077954092519774, guid: c202672a76722814e9678049e48206bd, type: 3}
   RARITY_Weight: 0

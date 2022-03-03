@@ -19,6 +19,9 @@ MonoBehaviour:
   SPECIES_GrowthStageChance: 0
   STYLE_GrowthStageModifier: 0
   AGE_GrowthStageModifier: 0
+  AGE_GrowthScale: 0.865
+  AGE_HasLeaves: 0
+  AGE_ColorTint: -0.633
   GENERAL_PlantParts: []
   RARITY_Weight: 0
   AGE_Value: 8

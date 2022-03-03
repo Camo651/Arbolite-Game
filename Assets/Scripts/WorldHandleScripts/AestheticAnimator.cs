@@ -21,9 +21,9 @@ public class AestheticAnimator : MonoBehaviour
 	public AestAnimType animType;
 	public GameObject animatedComponent;
 	[Space(10)]
-	public float spinningSpeed;
-	public float slidingSpeed, slidingDistance;
-	public bool slideXAxis, spinAffectedByWind;
+	[HideInInspector] public float spinningSpeed;
+	[HideInInspector] public float slidingSpeed, slidingDistance;
+	[HideInInspector] public bool slideXAxis, spinAffectedByWind;
 	private float slidingDirection = 1;
 
 	private void Awake()
@@ -52,26 +52,28 @@ public class AestheticAnimator : MonoBehaviour
 	}
 }
 
-//[CustomEditor(typeof(AestheticAnimator))]
-//public class AestAnimEditor : Editor
-//{
-//	public override void OnInspectorGUI()
-//	{
-//		base.OnInspectorGUI();
-//		AestheticAnimator a = (AestheticAnimator)target;
-//		switch (a.animType)
-//		{
-//			case AestheticAnimator.AestAnimType.None:
-//				break;
-//			case AestheticAnimator.AestAnimType.Spinning:
-//				a.spinningSpeed = EditorGUILayout.FloatField("Spinning Speed", a.spinningSpeed);
-//				a.spinAffectedByWind = EditorGUILayout.Toggle("Spin by wind", a.spinAffectedByWind);
-//				break;
-//			case AestheticAnimator.AestAnimType.Sliding:
-//				a.slidingSpeed = EditorGUILayout.FloatField("Sliding Speed", a.slidingSpeed);
-//				a.slidingDistance = EditorGUILayout.FloatField("Sliding Distance", a.slidingDistance);
-//				a.slideXAxis = EditorGUILayout.Toggle("Sliding on the " + (a.slideXAxis ? "X" : "Y") + " axis", a.slideXAxis);
-//				break;
-//		}
-//	}
-//}
+[CustomEditor(typeof(AestheticAnimator))]
+public class AestAnimEditor : Editor
+{
+	public override void OnInspectorGUI()
+	{
+		EditorUtility.SetDirty(target);
+		PrefabUtility.RecordPrefabInstancePropertyModifications(target);
+		base.OnInspectorGUI();
+		AestheticAnimator a = (AestheticAnimator)target;
+		switch (a.animType)
+		{
+			case AestheticAnimator.AestAnimType.None:
+				break;
+			case AestheticAnimator.AestAnimType.Spinning:
+				a.spinningSpeed = EditorGUILayout.FloatField("Spinning Speed", a.spinningSpeed);
+				a.spinAffectedByWind = EditorGUILayout.Toggle("Spin by wind", a.spinAffectedByWind);
+				break;
+			case AestheticAnimator.AestAnimType.Sliding:
+				a.slidingSpeed = EditorGUILayout.FloatField("Sliding Speed", a.slidingSpeed);
+				a.slidingDistance = EditorGUILayout.FloatField("Sliding Distance", a.slidingDistance);
+				a.slideXAxis = EditorGUILayout.Toggle("Sliding on the " + (a.slideXAxis ? "X" : "Y") + " axis", a.slideXAxis);
+				break;
+		}
+	}
+}

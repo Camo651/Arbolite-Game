@@ -149,13 +149,17 @@ public class PlantManager : MonoBehaviour
 			{
 				allPlantObjects[i].TryGrowPlant();
 			}
+			else
+			{
+				allPlantObjects.RemoveAt(i);
+			}
 		}
 	}
 
 
 	private void FixedUpdate()
 	{
-		if (Random.value < .1 && !globalRefManager.baseManager.gameIsActivelyFrozen)
+		if (Random.value < .005 && !globalRefManager.baseManager.gameIsActivelyFrozen)
 		{
 			PlantAgingRandomTick();
 		}

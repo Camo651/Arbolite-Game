@@ -16,6 +16,12 @@ MonoBehaviour:
   propertyType: 6
   SPECIES_BaseColour: {r: 0, g: 0, b: 0, a: 0}
   SPECIES_LeafColour: {r: 0, g: 0, b: 0, a: 0}
+  SPECIES_GrowthStageChance: 0
+  STYLE_GrowthStageModifier: 0
+  AGE_GrowthStageModifier: 0.018
+  AGE_GrowthScale: 1
+  AGE_HasLeaves: 1
+  AGE_ColorTint: 0
   GENERAL_PlantParts: []
   RARITY_Weight: 0
   AGE_Value: 5

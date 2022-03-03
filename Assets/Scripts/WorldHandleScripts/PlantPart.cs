@@ -33,7 +33,7 @@ public class PlantPart : MonoBehaviour
 		{
 			Srenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
 		}
-		transform.Rotate(Vector3.forward * Random.Range(rotatability.x, rotatability.y));
+		transform.localEulerAngles = Vector3.forward * Random.Range(rotatability.x, rotatability.y);
 		transform.GetChild(0).localScale = new Vector3(flipable ? Random.value > .5f ? -transform.GetChild(0).localScale.x : transform.GetChild(0).localScale.x : transform.GetChild(0).localScale.x, transform.GetChild(0).localScale.y, transform.GetChild(0).localScale.z);
 		Srenderer.color = partColour;
 		Srenderer.sortingOrder = (int)partDepth;

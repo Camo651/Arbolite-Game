@@ -8,6 +8,8 @@ public class PropertyEditor : Editor
 {
 	public override void OnInspectorGUI()
 	{
+		EditorUtility.SetDirty(target);
+		PrefabUtility.RecordPrefabInstancePropertyModifications(target);
 		base.OnInspectorGUI();
 		SO_Property p = (SO_Property)target;
 		GUILayout.BeginVertical();

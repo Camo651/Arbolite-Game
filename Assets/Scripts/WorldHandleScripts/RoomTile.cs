@@ -28,7 +28,7 @@ public class RoomTile : MonoBehaviour
 	public void StartGeneration()
 	{
 		childNodes = new List<Node>(GetComponentsInChildren<Node>());
-		if(childNodes.Count > 0 && Random.value<.5f && canHavePlant)
+		if(childNodes.Count > 0 && Random.value<1 && canHavePlant)
 		{
 			PlantObject p = roomContainer.globalRefManager.plantManager.GeneratePlant(roomContainer.globalRefManager.plantManager.GetRandomTreePresetWeighted(null).plantProperties, this);
 			p.transform.SetParent(childNodes[0].transform);

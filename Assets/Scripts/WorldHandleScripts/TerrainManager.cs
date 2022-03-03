@@ -113,6 +113,10 @@ public class TerrainManager : MonoBehaviour
 				}
 			}
 		}
+		for (int i = 0; i < 100; i++)
+		{
+			globalRefManager.plantManager.PlantAgingRandomTick();
+		}
 	}
 
 	/// <summary>
