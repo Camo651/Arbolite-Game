@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   topNodeState: 0
-  rightNodeState: 0
+  rightNodeState: 2
   bottomNodeState: 0
   leftNodeState: 0
   roomContainer: {fileID: 445907715289716658}
@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 568a1e1e4ef87424d8337f3122e1d5a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topNodeState: 0
+  topNodeState: 2
   rightNodeState: 0
   bottomNodeState: 0
   leftNodeState: 0
@@ -357,7 +357,7 @@ MonoBehaviour:
   topNodeState: 0
   rightNodeState: 0
   bottomNodeState: 0
-  leftNodeState: 0
+  leftNodeState: 2
   roomContainer: {fileID: 445907715289716658}
   neighborRooms:
   - {fileID: 0}
@@ -468,10 +468,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 568a1e1e4ef87424d8337f3122e1d5a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topNodeState: 0
+  topNodeState: 2
   rightNodeState: 0
   bottomNodeState: 0
-  leftNodeState: 0
+  leftNodeState: 2
   roomContainer: {fileID: 445907715289716658}
   neighborRooms:
   - {fileID: 0}
@@ -585,7 +585,7 @@ MonoBehaviour:
   topNodeState: 0
   rightNodeState: 0
   bottomNodeState: 0
-  leftNodeState: 0
+  leftNodeState: 2
   roomContainer: {fileID: 445907715289716658}
   neighborRooms:
   - {fileID: 0}
@@ -696,8 +696,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 568a1e1e4ef87424d8337f3122e1d5a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topNodeState: 0
-  rightNodeState: 0
+  topNodeState: 2
+  rightNodeState: 2
   bottomNodeState: 0
   leftNodeState: 0
   roomContainer: {fileID: 445907715289716658}
@@ -926,7 +926,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topNodeState: 0
   rightNodeState: 0
-  bottomNodeState: 0
+  bottomNodeState: 1
   leftNodeState: 0
   roomContainer: {fileID: 445907715289716658}
   neighborRooms:
@@ -1040,7 +1040,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topNodeState: 0
   rightNodeState: 0
-  bottomNodeState: 0
+  bottomNodeState: 1
   leftNodeState: 0
   roomContainer: {fileID: 445907715289716658}
   neighborRooms:
@@ -1153,7 +1153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   topNodeState: 0
-  rightNodeState: 0
+  rightNodeState: 2
   bottomNodeState: 0
   leftNodeState: 0
   roomContainer: {fileID: 445907715289716658}
@@ -1496,7 +1496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topNodeState: 0
   rightNodeState: 0
-  bottomNodeState: 0
+  bottomNodeState: 1
   leftNodeState: 0
   roomContainer: {fileID: 445907715289716658}
   neighborRooms:
@@ -1698,7 +1698,7 @@ MonoBehaviour:
   topNodeState: 0
   rightNodeState: 0
   bottomNodeState: 0
-  leftNodeState: 0
+  leftNodeState: 2
   roomContainer: {fileID: 445907715289716658}
   neighborRooms:
   - {fileID: 0}
@@ -1810,7 +1810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   topNodeState: 0
-  rightNodeState: 0
+  rightNodeState: 2
   bottomNodeState: 0
   leftNodeState: 0
   roomContainer: {fileID: 445907715289716658}
@@ -2040,7 +2040,7 @@ MonoBehaviour:
   topNodeState: 0
   rightNodeState: 0
   bottomNodeState: 0
-  leftNodeState: 0
+  leftNodeState: 2
   roomContainer: {fileID: 445907715289716658}
   neighborRooms:
   - {fileID: 0}
@@ -2152,7 +2152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   topNodeState: 0
-  rightNodeState: 0
+  rightNodeState: 2
   bottomNodeState: 0
   leftNodeState: 0
   roomContainer: {fileID: 445907715289716658}
@@ -2230,7 +2230,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6920834259510230633}
-  - component: {fileID: 3775764145272131347}
+  - component: {fileID: 8545683629395194346}
   m_Layer: 0
   m_Name: Rotor
   m_TagString: Untagged
@@ -2253,7 +2253,7 @@ Transform:
   m_Father: {fileID: 445907715289716659}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3775764145272131347
+--- !u!114 &8545683629395194346
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2262,7 +2262,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8420482026531553362}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2259d4e0f3d2144ebd7264b18ec0130, type: 3}
+  m_Script: {fileID: 11500000, guid: 8811f723d13c323429b76a9351d50e42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spinningSpeed: 1
+  globalRefManager: {fileID: 0}
+  animType: 1
+  animatedComponent: {fileID: 274604713113918368}
+  spinningSpeed: -0.75
+  slidingSpeed: 0
+  slidingDistance: 0
+  slideXAxis: 0
+  spinAffectedByWind: 1

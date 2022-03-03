@@ -14,7 +14,7 @@ public class PlantPart : MonoBehaviour
 	public bool flipable;
 	public RelativePartDepth partDepth;
 	public PlantObject parentPlant;
-	public SpriteRenderer renderer;
+	public SpriteRenderer Srenderer;
 	public enum RelativePartDepth : int
 	{
 		Back2 = -2,
@@ -29,14 +29,14 @@ public class PlantPart : MonoBehaviour
 	/// </summary>
 	public void SetPartValues(Color partColour)
 	{
-		if(renderer == null)
+		if(Srenderer == null)
 		{
-			renderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+			Srenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
 		}
 		transform.Rotate(Vector3.forward * Random.Range(rotatability.x, rotatability.y));
 		transform.GetChild(0).localScale = new Vector3(flipable ? Random.value > .5f ? -transform.GetChild(0).localScale.x : transform.GetChild(0).localScale.x : transform.GetChild(0).localScale.x, transform.GetChild(0).localScale.y, transform.GetChild(0).localScale.z);
-		renderer.color = partColour;
-		renderer.sortingOrder = (int)partDepth;
+		Srenderer.color = partColour;
+		Srenderer.sortingOrder = (int)partDepth;
 	}
 
 	private void OnDrawGizmos()
