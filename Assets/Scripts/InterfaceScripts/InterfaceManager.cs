@@ -194,7 +194,10 @@ public class InterfaceManager : MonoBehaviour
 		globalRefManager.baseManager.TryDestroyCurrentlySelectedTile();
 	}
 
-	//opens an info UI about the tile
+	/// <summary>
+	/// Opens the advanced inspector modal and defaults to the info tab (0).
+	/// Also chooses which tabs are availble to press based on the rooms properties
+	/// </summary>
 	public void OpenSelectedTileInfoModal()
 	{
 		SetMajorInterface("Inspector");
@@ -213,7 +216,7 @@ public class InterfaceManager : MonoBehaviour
 			globalRefManager.propertyManager.GetPropertyDisplayer("PlantInspector").tabSelectorButton.SetActive(false);
 		}
 
-		if (globalRefManager.baseManager.editModePermSelectedRoomTile.canHaveMech)
+		if (globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.rotorRoom)
 		{
 			globalRefManager.propertyManager.GetPropertyDisplayer("MechInspector").tabSelectorButton.SetActive(true);
 			globalRefManager.propertyManager.GetPropertyDisplayer("MechInspector").DisplayProperties(globalRefManager.baseManager.editModePermSelectedRoomTile);
@@ -225,6 +228,10 @@ public class InterfaceManager : MonoBehaviour
 
 	}
 
+	/// <summary>
+	/// Sets the data to be displayed in the inspector modal menu. Used from the button class in scene
+	/// </summary>
+	/// <param name="index">The menu index</param>
 	public void SetValuesForInspector(int index)
 	{
 		switch (index)
@@ -237,8 +244,12 @@ public class InterfaceManager : MonoBehaviour
 				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabTitle.text = globalRefManager.baseManager.editModePermSelectedRoomTile.thisRoomsPlant != null ? globalRefManager.baseManager.editModePermSelectedRoomTile.thisRoomsPlant.GetPlantFullName() : globalRefManager.langManager.GetTranslation("no_plant_in_tile");
 				break;
 			case 2:
-				//activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabTitle.text = globalRefManager.langManager.GetTranslation("name_" + globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.tileNameInfoID.ToLower());
-				//activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabDescrition.text = globalRefManager.langManager.GetTranslation("info_" + globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.tileNameInfoID.ToLower());
+				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabTitle.text = globalRefManager.langManager.GetTranslation("name_" + globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.tileNameInfoID.ToLower());
+				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabDescrition.text = globalRefManager.langManager.GetTranslation("info_" + globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.tileNameInfoID.ToLower());
+				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabSubtitle.text = "";
+					//prod + all prod props
+					//energy + cons/prod + energy
+					//state + state prop
 				break;
 		}
 	}

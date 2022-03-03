@@ -57,6 +57,11 @@ setting_keyBindCloseUI         "Close UI"
 setting_keyBindPause           "Pause Game"
 setting_keyBindOpenInv         "Open Inventory"
 no_plant_in_tile               "Nothing Here"
+mechinfo_producing             "Producing"
+mechinfo_energy_use            "Energy Usage"
+mechinfo_energy_produce        "Energy Production"
+mechinfo_energy_carry          "Energy Carrying"
+mechinfo_state                 "State"
 
 
 

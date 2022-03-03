@@ -17,6 +17,7 @@ public class RoomTile : MonoBehaviour
 	public List<SO_Property> properties;
 	public bool canHavePlant, canHaveMech;
 	public PlantObject thisRoomsPlant;
+	public Rotor thisRoomsRotor;
 
 	[HideInInspector] public readonly Vector2Int[] offsets = { Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left };
 	[HideInInspector] public readonly int[] inverseOffsets = { 2, 3, 0, 1 };
@@ -35,6 +36,17 @@ public class RoomTile : MonoBehaviour
 			p.transform.localPosition = Vector3.zero;
 			thisRoomsPlant = p;
 			p.roomTile = this;
+		}
+	}
+
+
+	public void Init()
+	{
+		thisRoomsRotor = GetComponent<Rotor>();
+		if (thisRoomsRotor)
+		{
+			roomContainer.rotorRoom = this;
+			thisRoomsRotor.UpdateSystemEnergy();
 		}
 	}
 

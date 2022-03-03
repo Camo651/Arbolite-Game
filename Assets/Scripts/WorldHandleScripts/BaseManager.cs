@@ -426,6 +426,7 @@ public class BaseManager : MonoBehaviour
 		foreach (RoomTile tile in newGen.containedRooms)
 		{
 			tile.UpdateTile(updateNeighbors, newGen.GetHashCode()+"Create");
+			tile.Init();
 		}
 
 		return newGen;

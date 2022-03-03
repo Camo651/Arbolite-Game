@@ -11,6 +11,7 @@ public class ContainedRoom : MonoBehaviour
 	public string tileNameCallbackID;
 	public string tileNameInfoID;
 	public List<RoomTile> containedRooms;
+	public RoomTile rotorRoom;
 
 
 	public void SetRoomTint(Color tint)
