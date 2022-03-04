@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 357c6f5db30716846ae74c7b748f9f0f, type: 3}
+  m_Name: TREESET_Cherry
+  m_EditorClassIdentifier: 
+  callbackID: cherry
+  plantProperties:
+  - {fileID: 11400000, guid: 8d1012f2d4a9a0e44bee45af249408e7, type: 2}
+  - {fileID: 11400000, guid: 341ca5dec28bb3e4b98bdf786c7dcaef, type: 2}
+  - {fileID: 11400000, guid: eaf3d39af1d5d754aa94d4c3c7bc5ea0, type: 2}
+  - {fileID: 11400000, guid: e7df8e4c5834a6646b3630447ffcad24, type: 2}

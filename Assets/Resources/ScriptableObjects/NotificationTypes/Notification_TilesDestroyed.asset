@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8917966dd0f02b4caaadb9ee59f185c, type: 3}
+  m_Name: Notification_TilesDestroyed
+  m_EditorClassIdentifier: 
+  callbackID: tiles_deleted
+  notificationName: successfully_destroyed_tiles
+  notificationDescription: successfully_destroyed_tiles
+  shouldBeSaved: 0
+  notificationIcon: {fileID: 21300000, guid: 5be6ccd7e01cfe34793ffafbbeb76d11, type: 3}

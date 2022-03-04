@@ -215,11 +215,10 @@ public class InterfaceManager : MonoBehaviour
 		{
 			globalRefManager.propertyManager.GetPropertyDisplayer("PlantInspector").tabSelectorButton.SetActive(false);
 		}
-
 		if (globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.rotorRoom)
 		{
 			globalRefManager.propertyManager.GetPropertyDisplayer("MechInspector").tabSelectorButton.SetActive(true);
-			globalRefManager.propertyManager.GetPropertyDisplayer("MechInspector").DisplayProperties(globalRefManager.baseManager.editModePermSelectedRoomTile);
+			globalRefManager.propertyManager.GetPropertyDisplayer("MechInspector").DisplayProperties(globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.rotorRoom.thisRoomsRotor != null ? globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.rotorRoom.thisRoomsRotor.rotorProperties : null);
 		}
 		else
 		{
@@ -234,21 +233,29 @@ public class InterfaceManager : MonoBehaviour
 	/// <param name="index">The menu index</param>
 	public void SetValuesForInspector(int index)
 	{
+		ContainedRoom sel = globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer;
 		switch (index)
 		{
 			case 0:
-				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabTitle.text = globalRefManager.langManager.GetTranslation("name_" + globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.tileNameInfoID.ToLower());
-				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabDescrition.text = globalRefManager.langManager.GetTranslation("info_" + globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.tileNameInfoID.ToLower());
+				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabTitle.text = globalRefManager.langManager.GetTranslation("name_" + sel.tileNameInfoID.ToLower());
+				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabDescrition.text = globalRefManager.langManager.GetTranslation("info_" + sel.tileNameInfoID.ToLower());
 				break;
 			case 1:
 				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabTitle.text = globalRefManager.baseManager.editModePermSelectedRoomTile.thisRoomsPlant != null ? globalRefManager.baseManager.editModePermSelectedRoomTile.thisRoomsPlant.GetPlantFullName() : globalRefManager.langManager.GetTranslation("no_plant_in_tile");
 				break;
 			case 2:
-				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabTitle.text = globalRefManager.langManager.GetTranslation("name_" + globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.tileNameInfoID.ToLower());
-				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabDescrition.text = globalRefManager.langManager.GetTranslation("info_" + globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.tileNameInfoID.ToLower());
-				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabSubtitle.text = "";
-					//prod + all prod props
-					//energy + cons/prod + energy
+				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabTitle.text = globalRefManager.langManager.GetTranslation("name_" + sel.tileNameInfoID.ToLower());
+				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabDescrition.text = globalRefManager.langManager.GetTranslation("info_" + sel.tileNameInfoID.ToLower());
+				string sub = "";
+				sub += " - " + globalRefManager.langManager.GetTranslation("mechinfo_producing") + " : " + sel.rotorRoom.thisRoomsRotor.GetRotorProductionItems();
+				sub += "\n - " + globalRefManager.langManager.GetTranslation("mechinfo_energy_" + (sel.rotorRoom.thisRoomsRotor.rotorType == Rotor.RotorType.Machine ?
+																							"use" :
+																							sel.rotorRoom.thisRoomsRotor.rotorType == Rotor.RotorType.Generator ?
+																							"produce" :
+																							"carry")) + " : " +
+																							(sel.rotorRoom.thisRoomsRotor.rotorType == Rotor.RotorType.Driveshaft ? sel.rotorRoom.thisRoomsRotor.totalSystemEnergy : Mathf.Abs(sel.rotorRoom.thisRoomsRotor.energyDelta));
+				sub += "\n - " + globalRefManager.langManager.GetTranslation("mechinfo_state") + " : " + globalRefManager.langManager.GetTranslation("name_prop_machinestate_" + ("" + sel.rotorRoom.thisRoomsRotor.GetRotorState().callbackID.ToLower()));
+				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabSubtitle.text = sub;
 					//state + state prop
 				break;
 		}

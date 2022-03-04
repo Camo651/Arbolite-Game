@@ -46,6 +46,10 @@ public class RoomTile : MonoBehaviour
 		if (thisRoomsRotor)
 		{
 			roomContainer.rotorRoom = this;
+			if(thisRoomsRotor.GetRotorState() == null)
+			{
+				thisRoomsRotor.rotorProperties.Add(roomContainer.globalRefManager.propertyManager.GetProperty(PropertyManager.PropertyType.MachineState, "working"));
+			}
 			thisRoomsRotor.UpdateSystemEnergy();
 		}
 	}

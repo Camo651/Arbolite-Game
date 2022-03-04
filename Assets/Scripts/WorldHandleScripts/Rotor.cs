@@ -5,6 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(RoomTile))]
 public class Rotor : MonoBehaviour
 {
+	/// <summary>
+	/// The types of shafts
+	/// </summary>
 	public enum RotorType
 	{
 		Driveshaft,
@@ -17,7 +20,11 @@ public class Rotor : MonoBehaviour
 	public float totalSystemEnergy;
 	public List<Rotor> allRotorsInSystem;
 	public RoomTile roomTile;
+	public List<SO_Property> rotorProperties;
 
+	/// <summary>
+	/// Updates all the energy values in the current system
+	/// </summary>
 	public void UpdateSystemEnergy()
 	{
 		if (!roomTile)
@@ -41,6 +48,11 @@ public class Rotor : MonoBehaviour
 		}
 
 	}
+
+	/// <summary>
+	/// Recursively pulses the energy to flood the whole system
+	/// </summary>
+	/// <param name="origin">The origin of the pulse</param>
 	public void UpdateSystemEnergyPulse(Rotor origin)
 	{
 		if (!roomTile)
@@ -53,5 +65,28 @@ public class Rotor : MonoBehaviour
 				rt.thisRoomsRotor.UpdateSystemEnergyPulse(origin);
 			}
 		}
+	}
+
+
+	public string GetRotorProductionItems()
+	{
+		string a = "";
+		foreach (SO_Property property in rotorProperties)
+		{
+			if (property.propertyType == PropertyManager.PropertyType.Resource)
+				a += roomTile.roomContainer.globalRefManager.langManager.GetTranslation("name_prop_resource_" + (property.callbackID.ToLower())) + ", ";
+		}
+
+		return a.Contains(",") ? a.Remove(a.LastIndexOf(',')) : a;
+	}
+
+	public SO_Property GetRotorState()
+	{
+		foreach (SO_Property property in rotorProperties)
+		{
+			if (property.propertyType == PropertyManager.PropertyType.MachineState)
+				return property;
+		}
+		return null;
 	}
 }

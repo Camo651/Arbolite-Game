@@ -103,6 +103,7 @@ proptype_biome                 "Biome"
 proptype_style                 "Style"
 proptype_rarity                "Rarity"
 proptype_age                   "Age"
+proptype_machinestate                   "Machine State"
 
 
 
@@ -160,3 +161,10 @@ name_prop_age_age7             "Dead"
 info_prop_age_age7             ""
 name_prop_age_age8             "Decayed"
 info_prop_age_age8             ""
+
+name_prop_machinestate_broken  "Broken"
+info_prop_machinestate_broken  "Broken"
+name_prop_machinestate_working "Working"
+info_prop_machinestate_working "Working"
+name_prop_machinestate_off     "Off"
+info_prop_machinestate_off     "Off"

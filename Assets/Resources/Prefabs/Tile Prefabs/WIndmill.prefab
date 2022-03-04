@@ -1020,6 +1020,7 @@ MonoBehaviour:
   totalSystemEnergy: 0
   allRotorsInSystem: []
   roomTile: {fileID: 0}
+  rotorProperties: []
 --- !u!1 &445907714717211491
 GameObject:
   m_ObjectHideFlags: 0
@@ -1682,6 +1683,7 @@ MonoBehaviour:
   - {fileID: 445907714717211500}
   - {fileID: 445907715113074237}
   - {fileID: 445907714443082439}
+  rotorRoom: {fileID: 0}
 --- !u!1 &445907715294443889
 GameObject:
   m_ObjectHideFlags: 0

@@ -5200,7 +5200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   propertyManager: {fileID: 998491163}
-  propertyDisplayCallbackID: TileInspector
+  propertyDisplayCallbackID: MechInspector
   gridLayoutTransform: {fileID: 451454676}
   highlightedPropertyTag: {fileID: 0}
   highlightTitle: {fileID: 6100061268003013772}
@@ -5208,7 +5208,7 @@ MonoBehaviour:
   highlightTextarea: {fileID: 513568494}
   highlightBox: {fileID: 7773832424132991906}
   highlightIcon: {fileID: 9091308163582721914}
-  tabSelectorButton: {fileID: 1347299959}
+  tabSelectorButton: {fileID: 1214916623}
 --- !u!114 &451454679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14263,7 +14263,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.05
+  m_fontSize: 26.15
   m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -15013,6 +15013,7 @@ MonoBehaviour:
   - {r: 0.4245283, g: 0.09772161, b: 0.10472461, a: 1}
   - {r: 0.6603774, g: 0.5078399, b: 0.13332146, a: 1}
   - {r: 0.33492345, g: 0.4528302, b: 0.44673157, a: 1}
+  - {r: 0.16242434, g: 0.27558216, b: 0.4716981, a: 1}
   propertyIcons:
   - {fileID: 21300000, guid: e5be902176dce514ba5954d140c3c7b0, type: 3}
   - {fileID: 21300000, guid: 48b1615aac58b41438a2acd246bce695, type: 3}
@@ -15021,6 +15022,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 28cf26ad89c53b2448bcbd5573a3460b, type: 3}
   - {fileID: 21300000, guid: cea12f9d0510832408d2f3c164eb8f84, type: 3}
   - {fileID: 21300000, guid: 038f86bdb6db4ab4d829c12b724aed85, type: 3}
+  - {fileID: 21300000, guid: 10fed00d72dd6c443a7159ccf52f78a1, type: 3}
   defaultProperty: {fileID: 0}
 --- !u!114 &998491164
 MonoBehaviour:
@@ -22025,7 +22027,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textBox: {fileID: 0}
-  callBackID: inspector_info_delete
+  callBackID: close_button
 --- !u!114 &1673855466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26678,7 +26680,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2105572650
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26696,7 +26698,7 @@ RectTransform:
   - {fileID: 1258284559}
   - {fileID: 451454677}
   m_Father: {fileID: 1997674412951240471}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -26715,8 +26717,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9831de6dfbb940d459efb9abda971ab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tabMenuBkg: {fileID: 1347299962}
-  tabMenuText: {fileID: 1148891007}
+  tabMenuBkg: {fileID: 1214916626}
+  tabMenuText: {fileID: 421952033}
   tabIndex: 2
   tabTitle: {fileID: 972595264}
   tabSubtitle: {fileID: 626362553}
@@ -27751,7 +27753,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textBox: {fileID: 0}
-  callBackID: inspector_info_delete
+  callBackID: close_button
 --- !u!114 &1648108000704272719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27901,8 +27903,8 @@ RectTransform:
   - {fileID: 1309761732}
   - {fileID: 3999109000149005005}
   - {fileID: 1319968139}
-  - {fileID: 7773832424132991907}
   - {fileID: 2105572650}
+  - {fileID: 7773832424132991907}
   m_Father: {fileID: 1226852972}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -27934,7 +27936,7 @@ MonoBehaviour:
   tabs:
   - {fileID: 3152372783491268194}
   - {fileID: 1319968140}
-  - {fileID: 0}
+  - {fileID: 2105572651}
   selectedTabIndex: 0
   isHovered: 0
   interfaceKeys: []
@@ -29413,7 +29415,7 @@ RectTransform:
   - {fileID: 513568492}
   - {fileID: 1787538784}
   m_Father: {fileID: 1997674412951240471}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

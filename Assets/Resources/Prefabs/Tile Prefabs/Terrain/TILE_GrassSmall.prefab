@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4823248099978669103
+--- !u!1 &8119382968153948148
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4823248099978669101}
-  - component: {fileID: 4823248099978669102}
+  - component: {fileID: 8119382968153948146}
+  - component: {fileID: 8119382968153948147}
   m_Layer: 0
-  m_Name: TestRotor
+  m_Name: TILE_GrassSmall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4823248099978669101
+--- !u!4 &8119382968153948146
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4823248099978669103}
+  m_GameObject: {fileID: 8119382968153948148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4823248100967895127}
+  - {fileID: 8119382968842467633}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4823248099978669102
+--- !u!114 &8119382968153948147
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4823248099978669103}
+  m_GameObject: {fileID: 8119382968153948148}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34d196d09a5686d44872af4d99c725ec, type: 3}
@@ -47,13 +47,12 @@ MonoBehaviour:
   globalRefManager: {fileID: 0}
   roomDimensions: {x: 1, y: 1}
   activeAndEnabled: 0
-  isNaturalTerrainTile: 0
-  tileNameCallbackID: test_rotor
-  tileNameInfoID: test_rotor
+  isNaturalTerrainTile: 1
+  tileNameCallbackID: tile_grass_small
+  tileNameInfoID: tile_grass
   containedRooms:
-  - {fileID: 4823248100967895130}
-  rotorRoom: {fileID: 0}
---- !u!1 &4823248100967895131
+  - {fileID: 8119382968842467635}
+--- !u!1 &8119382968748643371
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -61,38 +60,83 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4823248100967895127}
-  - component: {fileID: 4823248100967895130}
-  - component: {fileID: 4823248100967895129}
-  - component: {fileID: 4823248100967895128}
+  - component: {fileID: 8119382968748643370}
+  - component: {fileID: 8119382968748643369}
   m_Layer: 0
-  m_Name: Room 0, 0 of test_rotor
+  m_Name: DefaultNode(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4823248100967895127
+--- !u!4 &8119382968748643370
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4823248100967895131}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 8119382968748643371}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.095, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4823248099978669101}
+  m_Father: {fileID: 8119382968842467633}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4823248100967895130
+--- !u!114 &8119382968748643369
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4823248100967895131}
+  m_GameObject: {fileID: 8119382968748643371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03fb5b2cd043ec04283eab153f76c7f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeType: 3
+  needsToBeFulfilled: 0
+--- !u!1 &8119382968842467636
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8119382968842467633}
+  - component: {fileID: 8119382968842467635}
+  - component: {fileID: 8119382968842467634}
+  m_Layer: 0
+  m_Name: Room 0, 0 of room_default
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8119382968842467633
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8119382968842467636}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8119382968748643370}
+  m_Father: {fileID: 8119382968153948146}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8119382968842467635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8119382968842467636}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 568a1e1e4ef87424d8337f3122e1d5a1, type: 3}
@@ -100,9 +144,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topNodeState: 0
   rightNodeState: 0
-  bottomNodeState: 0
+  bottomNodeState: 1
   leftNodeState: 0
-  roomContainer: {fileID: 4823248099978669102}
+  roomContainer: {fileID: 8119382968153948147}
   neighborRooms:
   - {fileID: 0}
   - {fileID: 0}
@@ -110,21 +154,22 @@ MonoBehaviour:
   - {fileID: 0}
   neighborWelds: 00000000
   lastUpdateOrigin: 
-  spriteRenderer: {fileID: 4823248100967895129}
+  spriteRenderer: {fileID: 8119382968842467634}
   childNodes: []
   canBeUpdated: 0
-  properties: []
-  canHavePlant: 0
+  properties:
+  - {fileID: 11400000, guid: eaf3d39af1d5d754aa94d4c3c7bc5ea0, type: 2}
+  - {fileID: 11400000, guid: 16ee41d4bd5cd444f883582e8316b35f, type: 2}
+  canHavePlant: 1
   canHaveMech: 0
   thisRoomsPlant: {fileID: 0}
-  thisRoomsRotor: {fileID: 0}
---- !u!212 &4823248100967895129
+--- !u!212 &8119382968842467634
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4823248100967895131}
+  m_GameObject: {fileID: 8119382968842467636}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -158,7 +203,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: f6978c48a50e1404fb3ac5f06c92afbe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e8f6b87ab5489ba4fa3251c6786aba61, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -169,21 +214,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4823248100967895128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4823248100967895131}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3fb01172ef651f429397d86059e41b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotorType: 0
-  energyDelta: 0
-  totalSystemEnergy: 0
-  allRotorsInSystem: []
-  roomTile: {fileID: 0}
-  rotorProperties: []

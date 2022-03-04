@@ -51,6 +51,7 @@ public class PropertyManager : MonoBehaviour
 		Style,
 		Rarity,
 		Age,
+		MachineState,
 	}
 
 	/// <summary>
