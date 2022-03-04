@@ -158,28 +158,28 @@ public class SettingsManager : MonoBehaviour
 
 	public void SetSettingsDisplays()
 	{
-		_rainFX.isOn = rainFX;
-		_vSync.isOn = vSync;
-		_fullscreenMode.isOn = fullscreenMode;
-		_parallaxBackground.isOn = parallaxBackground;
-		_doDaynightCycle.isOn = doDaynightCycle;
-		_doPostProcessing.isOn = doPostProcessing;
-		_antiAliasing.isOn = antiAliasing;
-		_colourBlindMode.isOn = colourBlindMode;
-		_showClouds.isOn = showClouds;
+		_rainFX.SetIsOnWithoutNotify(rainFX);
+		_vSync.SetIsOnWithoutNotify(vSync);
+		_fullscreenMode.SetIsOnWithoutNotify(fullscreenMode);
+		_parallaxBackground.SetIsOnWithoutNotify(parallaxBackground);
+		_doDaynightCycle.SetIsOnWithoutNotify(doDaynightCycle);
+		_doPostProcessing.SetIsOnWithoutNotify(doPostProcessing);
+		_antiAliasing.SetIsOnWithoutNotify(antiAliasing);
+		_colourBlindMode.SetIsOnWithoutNotify(colourBlindMode);
+		_showClouds.SetIsOnWithoutNotify(showClouds);
 
-		_musicVolume.value = musicVolume;
-		_interfaceVolume.value = interfaceVolume;
-		_ambientVolume.value = ambientVolume;
-		_fadeAudioInUI.isOn = fadeAudioInUI;
+		_musicVolume.SetValueWithoutNotify(musicVolume);
+		_interfaceVolume.SetValueWithoutNotify(interfaceVolume);
+		_ambientVolume.SetValueWithoutNotify(ambientVolume);
+		_fadeAudioInUI.SetIsOnWithoutNotify(fadeAudioInUI);
 
-		_zoomTowardsMouse.isOn = zoomTowardsMouse;
-		_invertScrollDirection.isOn = invertScrollDirection;
-		_smoothCameraMovement.isOn = smoothCameraMovement;
-		_developerMode.isOn = developerMode;
+		_zoomTowardsMouse.SetIsOnWithoutNotify(zoomTowardsMouse);
+		_invertScrollDirection.SetIsOnWithoutNotify(invertScrollDirection);
+		_smoothCameraMovement.SetIsOnWithoutNotify(smoothCameraMovement);
+		_developerMode.SetIsOnWithoutNotify(developerMode);
 
-		_showSubtitles.isOn = showSubtitles;
-		_fontSizeModifier.value = fontSizeModifier;
+		_showSubtitles.SetIsOnWithoutNotify(showSubtitles);
+		_fontSizeModifier.SetValueWithoutNotify(fontSizeModifier);
 
 		player_left.text = FormatKeyCodeString(GetKeyCode("player_left"));
 		player_right.text = FormatKeyCodeString(GetKeyCode("player_right"));
