@@ -224,6 +224,14 @@ public class InterfaceManager : MonoBehaviour
 		{
 			globalRefManager.propertyManager.GetPropertyDisplayer("MechInspector").tabSelectorButton.SetActive(false);
 		}
+		if (globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.itemContainer)
+		{
+
+		}
+		else
+		{
+
+		}
 
 	}
 

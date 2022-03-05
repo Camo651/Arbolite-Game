@@ -12,6 +12,7 @@ public class ContainedRoom : MonoBehaviour
 	public string tileNameInfoID;
 	public List<RoomTile> containedRooms;
 	public RoomTile rotorRoom;
+	public ItemContainer itemContainer;
 
 
 	public void SetRoomTint(Color tint)
@@ -21,5 +22,10 @@ public class ContainedRoom : MonoBehaviour
 			tile.spriteRenderer.color = tint;
 		}
 
+	}
+
+	private void Awake()
+	{
+		itemContainer = GetComponent<ItemContainer>();
 	}
 }
