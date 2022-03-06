@@ -17,6 +17,7 @@ public class UserInterface : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 	public Image mainInterfaceIcon;
 	public bool saveNotification;
 	public Tab[] tabs;
+	public TabMenuButton[] tabMenuButtons;
 	public int selectedTabIndex;
 	public bool isHovered;
 	public List<TranslationKey> interfaceKeys;
@@ -72,6 +73,21 @@ public class UserInterface : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 		foreach (Tab tab in tabs)
 		{
 			if (tab.tabIndex == index)
+				return tab;
+		}
+		return null;
+	}
+
+	/// <summary>
+	/// Gets the tab button from the children
+	/// </summary>
+	/// <param name="index"></param>
+	/// <returns>The tab button, given it exists</returns>
+	public TabMenuButton GetTabButton(int index)
+	{
+		foreach (TabMenuButton tab in tabMenuButtons)
+		{
+			if (tab.index == index)
 				return tab;
 		}
 		return null;

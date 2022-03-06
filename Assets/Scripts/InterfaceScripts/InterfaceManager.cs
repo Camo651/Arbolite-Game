@@ -18,6 +18,7 @@ public class InterfaceManager : MonoBehaviour
 	public Dictionary<string, UserInterface> allUserInterfaces;
 	public Dictionary<string, SO_NotificationType> notificationTypes;
 	[HideInInspector] public List<UserInterface> activeNotificationQueue;
+	public InformationHighlighter inspectorPropertyHighlight, inspectorItemHighlight;
 	//[HideInInspector] public Stack<UserInterface> pastNotificationsStack;
 
 	private void Start()
@@ -208,31 +209,31 @@ public class InterfaceManager : MonoBehaviour
 
 		if (globalRefManager.baseManager.editModePermSelectedRoomTile.canHavePlant)
 		{
-			globalRefManager.propertyManager.GetPropertyDisplayer("PlantInspector").tabSelectorButton.SetActive(true);
+			activeUserInterface.GetTabButton(1).gameObject.SetActive(true);
 			globalRefManager.propertyManager.GetPropertyDisplayer("PlantInspector").DisplayProperties(globalRefManager.baseManager.editModePermSelectedRoomTile.thisRoomsPlant!=null? globalRefManager.baseManager.editModePermSelectedRoomTile.thisRoomsPlant.plantProperties:null);
 		}
 		else
 		{
-			globalRefManager.propertyManager.GetPropertyDisplayer("PlantInspector").tabSelectorButton.SetActive(false);
+			activeUserInterface.GetTabButton(1).gameObject.SetActive(false);
 		}
 		if (globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.rotorRoom)
 		{
-			globalRefManager.propertyManager.GetPropertyDisplayer("MechInspector").tabSelectorButton.SetActive(true);
+			activeUserInterface.GetTabButton(2).gameObject.SetActive(true);
 			globalRefManager.propertyManager.GetPropertyDisplayer("MechInspector").DisplayProperties(globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.rotorRoom.thisRoomsRotor != null ? globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.rotorRoom.thisRoomsRotor.rotorProperties : null);
 		}
 		else
 		{
-			globalRefManager.propertyManager.GetPropertyDisplayer("MechInspector").tabSelectorButton.SetActive(false);
+			activeUserInterface.GetTabButton(2).gameObject.SetActive(false);
 		}
 		if (globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.itemContainer)
 		{
-
+			activeUserInterface.GetTabButton(3).gameObject.SetActive(true);
+			activeUserInterface.GetTab(3).transform.GetComponent<ItemDisplayer>().DisplayItems(globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.itemContainer.itemsInContainer);
 		}
 		else
 		{
-
+			activeUserInterface.GetTabButton(3).gameObject.SetActive(false);
 		}
-
 	}
 
 	/// <summary>
@@ -266,6 +267,9 @@ public class InterfaceManager : MonoBehaviour
 				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabSubtitle.text = sub;
 					//state + state prop
 				break;
+			case 3:
+				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabTitle.text = globalRefManager.langManager.GetTranslation("items_button");
+				break;
 		}
 	}
 
@@ -279,6 +283,8 @@ public class InterfaceManager : MonoBehaviour
 		activeUserInterface = null;
 		userIsHoveredOnInterfaceElement = false;
 		GetUserInterface("Home_Button").gameObject.SetActive(true);
+		inspectorItemHighlight.CloseHighlight();
+		inspectorPropertyHighlight.CloseHighlight();
 	}
 
 	//finds all the text elements in an interface and translates them
