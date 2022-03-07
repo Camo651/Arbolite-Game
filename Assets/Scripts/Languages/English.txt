@@ -1,7 +1,7 @@
 en_us                          "English"
 
 < USER INTERFACE DEFINITIONS >
-main_game_title                "Game Name"
+main_game_title                "Arbolite"
 pause_menu_paused              "Paused"
 pause_menu_resume              "Resume"
 pause_menu_settings            "Settings"
@@ -14,6 +14,9 @@ delete_modal_info              "You are about to destroy"
 delete_modal_title             "Confirm Destruction?"
 confirm_button                 "Confirm"
 cancel_button                  "Cancel"
+back_button                    "Back"
+use_button                     "Use"
+fill_button                    "Make"
 save_button                    "Save"
 reset_button                   "Reset"
 info_button                    "Info"
@@ -27,6 +30,9 @@ inspector_info_info            ""
 settings_menu_title            "Settings"
 inspector_info_delete          "Destroy"
 console_modal_title            "Console"
+resources_available_title      "Available Resources"
+available_resources_info       "Select a resource to make the blueprint with"
+
 setting_header_video           "Video"
 setting_header_audio           "Audio"
 setting_header_contols         "Controls"
@@ -58,6 +64,7 @@ setting_keyBindLeft            "Move Left"
 setting_keyBindCloseUI         "Close UI"
 setting_keyBindPause           "Pause Game"
 setting_keyBindOpenInv         "Open Inventory"
+
 no_plant_in_tile               "Nothing Here"
 mechinfo_producing             "Producing"
 mechinfo_energy_use            "Energy Usage"
@@ -65,6 +72,14 @@ mechinfo_energy_produce        "Energy Production"
 mechinfo_energy_carry          "Energy Carrying"
 mechinfo_state                 "State"
 
+homepage_title_main            "Home"
+homepage_title_building        "Building"
+homepage_title_advancements    "Advancements"
+homepage_title_market          "Market"
+
+homepage_building_buildings    "Buildings"
+homepage_building_blueprints   "Blueprints"
+homepage_building_button_use   "Use"
 
 
 < NOTIFICATIONS >

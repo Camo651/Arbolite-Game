@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class TreeNode : MonoBehaviour
 {
-	public TreeHandler treeHandler;
+	public TreeDisplayer treeDisplayer;
 	public TreeNode parentTreeNode;
 	public List<TreeNode> childedTreeNodes;
 	public Color nodeColour;

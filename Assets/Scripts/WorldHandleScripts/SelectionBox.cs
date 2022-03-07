@@ -5,7 +5,7 @@ using UnityEngine;
 public class SelectionBox : MonoBehaviour
 {
 	public GlobalRefManager globalRefManager;
-	public Queue<GameObject> activeNodes = new Queue<GameObject>(), inactiveNodes = new Queue<GameObject>();
+	public List<GameObject> activeNodes = new List<GameObject>(), inactiveNodes = new List<GameObject>();
 	public GameObject selectionNodePrefab;
 	public float nodesPerSide;
 	public Color boxColour;
@@ -46,6 +46,17 @@ public class SelectionBox : MonoBehaviour
 		}
 	}
 
+	private void FixedUpdate()
+	{
+		if(activeNodes.Count > 0 && !globalRefManager.baseManager.gameIsActivelyFrozen)
+		{
+			foreach (GameObject item in activeNodes)
+			{
+				item.transform.localScale = Vector3.one * .075f * (Mathf.Abs(Mathf.Sin(Time.time)) + .5f);
+			}
+		}
+	}
+
 	/// <summary>
 	/// Sets a node at a position. Makes a new node if there is not enough spares
 	/// </summary>
@@ -56,12 +67,13 @@ public class SelectionBox : MonoBehaviour
 		{
 			GameObject a = Instantiate(selectionNodePrefab, transform);
 			a.GetComponent<SpriteRenderer>().color = boxColour;
-			inactiveNodes.Enqueue(a);
+			inactiveNodes.Add(a);
 		}
-		GameObject node = inactiveNodes.Dequeue();
+		GameObject node = inactiveNodes[0];
+		inactiveNodes.RemoveAt(0);
 		node.transform.position = pos;
 		node.SetActive(true);
-		activeNodes.Enqueue(node);
+		activeNodes.Add(node);
 	}
 
 	/// <summary>
@@ -71,9 +83,10 @@ public class SelectionBox : MonoBehaviour
 	{
 		while(activeNodes.Count > 0)
 		{
-			activeNodes.Peek().SetActive(false);
-			activeNodes.Peek().transform.position = Vector3.zero;
-			inactiveNodes.Enqueue(activeNodes.Dequeue());
+			activeNodes[0].SetActive(false);
+			activeNodes[0].transform.position = Vector3.zero;
+			inactiveNodes.Add(activeNodes[0]);
+			activeNodes.RemoveAt(0);
 		}
 		activeNodes.Clear();
 	}

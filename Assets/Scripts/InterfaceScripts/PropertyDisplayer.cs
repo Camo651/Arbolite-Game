@@ -17,7 +17,7 @@ public class PropertyDisplayer : MonoBehaviour
 	/// <param name="rt">The RoomTile to display</param>
 	public void DisplayProperties(RoomTile rt)
 	{
-		DisplayProperties(rt.properties);
+		DisplayProperties(rt.roomContainer.properties);
 	}
 
 	/// <summary>

@@ -10,7 +10,7 @@ public class BaseManager : MonoBehaviour
 	public long globalUpdateID;
 	public PlayerState currentPlayerState;
 	public GameObject currentlySelectedRoom;
-	public string selectedRoomName;
+	public ContainedRoom selectedRoomToBuild;
 	private bool colliding, nodeConditionsMet;
 	public RoomTile editModeSelectedRoomTile, editModePermSelectedRoomTile;
 	public SelectionBox hoverSelect, clickedSelect;
@@ -56,7 +56,8 @@ public class BaseManager : MonoBehaviour
 			editModeSelectedRoomTile = null;
 
 			globalRefManager.playerManager.SetPhysicalPlayerState(state == PlayerState.PlayerMode);
-
+			if (selectedRoomToBuild)
+				globalRefManager.blueprintManager.UseBlueprintInWorld(false);
 			currentPlayerState = state;
 		}
 	}
@@ -70,7 +71,7 @@ public class BaseManager : MonoBehaviour
 			//build mode is for making new rooms
 			if (currentPlayerState == PlayerState.BuildMode)
 			{
-				if (selectedRoomName == "")
+				if (selectedRoomToBuild == null)
 				{
 					if (currentlySelectedRoom.transform.childCount > 0)
 					{
@@ -83,10 +84,10 @@ public class BaseManager : MonoBehaviour
 					if (currentlySelectedRoom.transform.childCount == 0)
 					{
 						currentlySelectedRoom.gameObject.SetActive(true);
-						ContainedRoom prefab = GetRoomPrefab(selectedRoomName);
+						ContainedRoom prefab = selectedRoomToBuild;
 						if(prefab == null)
 						{
-							SetPlayerState(PlayerState.PlayerMode);
+							SetPlayerState(PlayerState.EditMode);
 							return;
 						}
 						ContainedRoom cr = Instantiate(prefab.gameObject).GetComponent<ContainedRoom>();
@@ -155,9 +156,7 @@ public class BaseManager : MonoBehaviour
 						}
 						if (Input.GetMouseButtonDown(0) && !colliding && nodeConditionsMet) //place a copy of the ghost room at the postion if possible
 						{
-							globalRefManager.audioManager.Play(AudioManager.AudioClipType.Ambient,"little_click");
-							ContainedRoom cr = TryCreateRoomAtPos(new Vector2Int(Mathf.RoundToInt(currentlySelectedRoom.transform.position.x), Mathf.RoundToInt(currentlySelectedRoom.transform.position.y)), GetRoomPrefab(selectedRoomName),true);
-							Destroy(currentlySelectedRoom.transform.GetChild(0).gameObject);
+							PlaceTile();
 						}
 					}
 				}
@@ -202,6 +201,21 @@ public class BaseManager : MonoBehaviour
 				}
 			}
 		}
+	}
+
+	/// <summary>
+	/// Player placing a physical tile in the world
+	/// </summary>
+	public void PlaceTile()
+	{
+		globalRefManager.audioManager.Play(AudioManager.AudioClipType.Ambient, "little_click");
+		ContainedRoom cr = TryCreateRoomAtPos(new Vector2Int(Mathf.RoundToInt(currentlySelectedRoom.transform.position.x), Mathf.RoundToInt(currentlySelectedRoom.transform.position.y)), selectedRoomToBuild, true);
+		Destroy(currentlySelectedRoom.transform.GetChild(0).gameObject);
+
+		cr.properties.AddRange(globalRefManager.blueprintManager.selectedBlueprint.properties);
+		selectedRoomToBuild = null;
+		globalRefManager.blueprintManager.UseBlueprintInWorld(true);
+		SetPlayerState(PlayerState.EditMode);
 	}
 
 	/// <summary>

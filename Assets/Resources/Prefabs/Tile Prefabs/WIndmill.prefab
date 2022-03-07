@@ -141,7 +141,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 445907713838419427}
   childNodes: []
   canBeUpdated: 0
-  properties: []
   canHavePlant: 0
   canHaveMech: 0
   thisRoomsPlant: {fileID: 0}
@@ -256,7 +255,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 445907713897699327}
   childNodes: []
   canBeUpdated: 0
-  properties: []
   canHavePlant: 0
   canHaveMech: 0
   thisRoomsPlant: {fileID: 0}
@@ -371,7 +369,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 445907713951380439}
   childNodes: []
   canBeUpdated: 0
-  properties: []
   canHavePlant: 0
   canHaveMech: 0
   thisRoomsPlant: {fileID: 0}
@@ -486,7 +483,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 445907714129049076}
   childNodes: []
   canBeUpdated: 0
-  properties: []
   canHavePlant: 0
   canHaveMech: 0
   thisRoomsPlant: {fileID: 0}
@@ -601,7 +597,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 445907714142443390}
   childNodes: []
   canBeUpdated: 0
-  properties: []
   canHavePlant: 0
   canHaveMech: 0
   thisRoomsPlant: {fileID: 0}
@@ -716,7 +711,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 445907714200719728}
   childNodes: []
   canBeUpdated: 0
-  properties: []
   canHavePlant: 0
   canHaveMech: 0
   thisRoomsPlant: {fileID: 0}
@@ -831,7 +825,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 445907714249557515}
   childNodes: []
   canBeUpdated: 0
-  properties: []
   canHavePlant: 0
   canHaveMech: 0
   thisRoomsPlant: {fileID: 0}
@@ -947,7 +940,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 445907714443082432}
   childNodes: []
   canBeUpdated: 0
-  properties: []
   canHavePlant: 0
   canHaveMech: 0
   thisRoomsPlant: {fileID: 0}
@@ -1080,7 +1072,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 445907714717211501}
   childNodes: []
   canBeUpdated: 0
-  properties: []
   canHavePlant: 0
   canHaveMech: 0
   thisRoomsPlant: {fileID: 0}
@@ -1195,7 +1186,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 445907714765505308}
   childNodes: []
   canBeUpdated: 0
-  properties: []
   canHavePlant: 0
   canHaveMech: 0
   thisRoomsPlant: {fileID: 0}
@@ -1310,7 +1300,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 445907714845704264}
   childNodes: []
   canBeUpdated: 0
-  properties: []
   canHavePlant: 0
   canHaveMech: 0
   thisRoomsPlant: {fileID: 0}
@@ -1425,7 +1414,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 445907714861506186}
   childNodes: []
   canBeUpdated: 0
-  properties: []
   canHavePlant: 0
   canHaveMech: 0
   thisRoomsPlant: {fileID: 0}
@@ -1540,7 +1528,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 445907715113074238}
   childNodes: []
   canBeUpdated: 0
-  properties: []
   canHavePlant: 0
   canHaveMech: 0
   thisRoomsPlant: {fileID: 0}
@@ -1621,7 +1608,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 445907715289716657}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.0000001, y: 30.000002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 445907714129049077}
@@ -1684,6 +1671,8 @@ MonoBehaviour:
   - {fileID: 445907715113074237}
   - {fileID: 445907714443082439}
   rotorRoom: {fileID: 0}
+  itemContainer: {fileID: 0}
+  properties: []
 --- !u!1 &445907715294443889
 GameObject:
   m_ObjectHideFlags: 0
@@ -1743,7 +1732,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 445907715294443891}
   childNodes: []
   canBeUpdated: 0
-  properties: []
   canHavePlant: 0
   canHaveMech: 0
   thisRoomsPlant: {fileID: 0}
@@ -1858,7 +1846,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 445907715299668485}
   childNodes: []
   canBeUpdated: 0
-  properties: []
   canHavePlant: 0
   canHaveMech: 0
   thisRoomsPlant: {fileID: 0}
@@ -1973,7 +1960,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 445907715442522868}
   childNodes: []
   canBeUpdated: 0
-  properties: []
   canHavePlant: 0
   canHaveMech: 0
   thisRoomsPlant: {fileID: 0}
@@ -2088,7 +2074,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 445907715580930042}
   childNodes: []
   canBeUpdated: 0
-  properties: []
   canHavePlant: 0
   canHaveMech: 0
   thisRoomsPlant: {fileID: 0}
@@ -2203,7 +2188,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 445907715603333172}
   childNodes: []
   canBeUpdated: 0
-  properties: []
   canHavePlant: 0
   canHaveMech: 0
   thisRoomsPlant: {fileID: 0}

@@ -53,22 +53,6 @@ public class InterfaceManager : MonoBehaviour
 				CloseAllInterfaces();
 				return;
 			}
-			if (Input.GetKeyDown(globalRefManager.settingsManager.GetKeyCode("")))
-			{
-				globalRefManager.baseManager.SetPlayerState(BaseManager.PlayerState.PlayerMode);
-			}
-			if (Input.GetKeyDown(globalRefManager.settingsManager.GetKeyCode("mode_edit")))
-			{
-				globalRefManager.baseManager.SetPlayerState(BaseManager.PlayerState.EditMode);
-			}
-			if (Input.GetKeyDown(globalRefManager.settingsManager.GetKeyCode("mode_build")))
-			{
-				globalRefManager.baseManager.SetPlayerState(BaseManager.PlayerState.BuildMode);
-			}
-			if (Input.GetKeyDown(KeyCode.Alpha5))
-			{
-				globalRefManager.baseManager.selectedRoomName = "Big Room";
-			}
 			if(globalRefManager.settingsManager.developerMode && Input.GetKeyDown(KeyCode.Return))
 			{
 				if (activeUserInterface == null)
@@ -131,10 +115,19 @@ public class InterfaceManager : MonoBehaviour
 		SetBackgroundBlur(UI.interfaceType == UserInterface.InterfaceType.FullScreen || UI.interfaceType == UserInterface.InterfaceType.Modal);
 		globalRefManager.baseManager.gameIsActivelyFrozen = UI.interfaceType == UserInterface.InterfaceType.FullScreen || UI.interfaceType == UserInterface.InterfaceType.Modal;
 		GetUserInterface("Home_Button").gameObject.SetActive(false);
-		if(activeUserInterface.interfaceCallbackID == "Pause_Menu")
-			globalRefManager.audioManager.Play(AudioManager.AudioClipType.Interface, "toggle_pause");
-		else
-			globalRefManager.audioManager.Play(AudioManager.AudioClipType.Interface, "toggle_ui");
+
+		switch (UiName)
+		{
+			case "Pause_Menu":
+				globalRefManager.audioManager.Play(AudioManager.AudioClipType.Interface, "toggle_pause");
+				break;
+			case "Home":
+				activeUserInterface.SetInterfaceTab(0);
+				break;
+			default:
+				globalRefManager.audioManager.Play(AudioManager.AudioClipType.Interface, "toggle_ui");
+				break;
+		}
 	}
 
 	/// <summary>
@@ -413,5 +406,25 @@ public class InterfaceManager : MonoBehaviour
 	{
 		globalRefManager.audioManager.SetBackgroundMusicLowPass(state);
 		backgroundBlur.enabled = state;
+	}
+
+	/// <summary>
+	/// Called when a tab on the homepage UI is opened to initizlize its values
+	/// </summary>
+	/// <param name="index"></param>
+	public void SetHomepageTabValues(int index)
+	{
+		switch (index)
+		{
+			case 0://home
+				break;
+			case 1://building
+				globalRefManager.blueprintManager.Initialize();
+				break;
+			case 2://advancements
+				break;
+			case 3://market
+				break;
+		}
 	}
 }

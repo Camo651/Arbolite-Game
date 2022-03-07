@@ -26,7 +26,7 @@ public class UserInterface : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 	{
 		//indexes all the child keys
 		interfaceKeys = new List<TranslationKey>();
-		TranslationKey[] tryGetComp = transform.GetComponentsInChildren<TranslationKey>();
+		TranslationKey[] tryGetComp = transform.GetComponentsInChildren<TranslationKey>(true);
 		if(tryGetComp != null && tryGetComp.Length > 0)
 			foreach (TranslationKey key in tryGetComp)
 			{

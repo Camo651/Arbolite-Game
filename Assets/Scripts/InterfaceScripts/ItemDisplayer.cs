@@ -12,6 +12,10 @@ public class ItemDisplayer : MonoBehaviour
 	public Transform gridLayout;
 
 	public PropertyDisplayer itemHighlightPropertyDisp;
+
+	// These are for the bp inspector only
+	public BlueprintManager blueprintManager;
+	public GameObject validSelectionmButton;
 	public void DisplayItems(List<Item> items)
 	{
 		for (int i = 0; i < gridLayout.childCount; i++)
@@ -28,10 +32,21 @@ public class ItemDisplayer : MonoBehaviour
 			tag.itemInfo = items[i];
 		}
 		System.GC.Collect();
+		validSelectionmButton.SetActive(false);
 	}
 
 	public void HighlightItem(Item i)
 	{
+		if (blueprintManager)
+		{
+			blueprintManager.selectedItemToFillBlueprintWith = i;
+			validSelectionmButton.SetActive(true);
+			return;
+		}
+
+		if (!itemHighlightPropertyDisp)
+			return;
+
 		itemHighlightPropertyDisp.propertyManager.globalRefManager.interfaceManager.inspectorItemHighlight.OpenHighlight(i.GetHashCode(), i.itemName, itemHighlightPropertyDisp.propertyManager.globalRefManager.langManager.GetTranslation("item_subtitle"), "", i.itemIcon, Color.white);
 		itemHighlightPropertyDisp.DisplayProperties(i.itemProperties);
 	}

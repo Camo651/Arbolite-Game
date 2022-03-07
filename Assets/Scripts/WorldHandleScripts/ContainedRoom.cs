@@ -13,6 +13,7 @@ public class ContainedRoom : MonoBehaviour
 	public List<RoomTile> containedRooms;
 	public RoomTile rotorRoom;
 	public ItemContainer itemContainer;
+	public List<SO_Property> properties;
 
 
 	public void SetRoomTint(Color tint)

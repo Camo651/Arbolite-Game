@@ -7,6 +7,5 @@ using UnityEngine;
 /// </summary>
 public class TreeManager : MonoBehaviour
 {
-	public List<TreeHandler> activeTrees;
-	public GameObject TreeNodePrefab;
+	public List<TreeDisplayer> activeTrees;
 }

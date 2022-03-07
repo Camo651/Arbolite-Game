@@ -14,7 +14,6 @@ public class RoomTile : MonoBehaviour
 	public SpriteRenderer spriteRenderer;
 	public List<Node> childNodes;
 	public bool canBeUpdated;
-	public List<SO_Property> properties;
 	public bool canHavePlant, canHaveMech;
 	public PlantObject thisRoomsPlant;
 	public Rotor thisRoomsRotor;
