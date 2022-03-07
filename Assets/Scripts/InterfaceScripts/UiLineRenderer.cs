@@ -11,11 +11,6 @@ public class UiLineRenderer : MonoBehaviour
 	public RectTransform rt;
 	public Vector2 pos1, pos2;
 	public float lineWidth;
-	public void Update()
-	{
-		UpdateLine();
-	}
-
 	public void UpdateLine()
 	{
 		if (!rt)

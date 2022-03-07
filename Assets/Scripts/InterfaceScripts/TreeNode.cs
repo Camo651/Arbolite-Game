@@ -18,6 +18,10 @@ public class TreeNode : MonoBehaviour
 	public void UpdateLine()
 	{
 		lineRenderer.pos1 = transform.position + outgoingLineOffset;
-		lineRenderer.pos2 = parentTreeNode.transform.position + incomingLineOffset;
+		if (parentTreeNode)
+			lineRenderer.pos2 = parentTreeNode.transform.position + incomingLineOffset;
+		else
+			lineRenderer.pos2 = lineRenderer.pos1;
+		lineRenderer.UpdateLine();
 	}
 }

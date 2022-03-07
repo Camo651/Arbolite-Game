@@ -11,4 +11,17 @@ public class TreeDisplayer : MonoBehaviour
 	public TreeManager treeManager;
 	public string treeCallbackID;
 	public List<TreeNode> allTreeNodesInTree;
+
+	public void UpdateAllTreeNodes()
+	{
+		foreach(TreeNode node in allTreeNodesInTree)
+		{
+			node.UpdateLine();
+		}
+	}
+
+	public void Update()
+	{
+		UpdateAllTreeNodes();
+	}
 }
