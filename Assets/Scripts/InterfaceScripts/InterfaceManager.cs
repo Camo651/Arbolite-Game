@@ -19,6 +19,7 @@ public class InterfaceManager : MonoBehaviour
 	public Dictionary<string, SO_NotificationType> notificationTypes;
 	[HideInInspector] public List<UserInterface> activeNotificationQueue;
 	public InformationHighlighter inspectorPropertyHighlight, inspectorItemHighlight;
+	public TreeDisplayer advancementsTreeDisplayer;
 	//[HideInInspector] public Stack<UserInterface> pastNotificationsStack;
 
 	private void Start()
@@ -422,6 +423,7 @@ public class InterfaceManager : MonoBehaviour
 				globalRefManager.blueprintManager.Initialize();
 				break;
 			case 2://advancements
+				advancementsTreeDisplayer.DisplayTree();
 				break;
 			case 3://market
 				break;

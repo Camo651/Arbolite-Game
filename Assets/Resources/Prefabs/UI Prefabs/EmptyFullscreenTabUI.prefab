@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &441449008331923153
 RectTransform:
   m_ObjectHideFlags: 0
@@ -99,7 +99,9 @@ MonoBehaviour:
   mainInterfaceIcon: {fileID: 0}
   saveNotification: 0
   tabs: []
+  tabMenuButtons: []
   selectedTabIndex: 0
+  isHovered: 0
   interfaceKeys: []
 --- !u!1 &4436307469264629547
 GameObject:
@@ -191,6 +193,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tabMenuBkg: {fileID: 0}
   tabMenuText: {fileID: 0}
+  tabIndex: 0
+  tabTitle: {fileID: 0}
+  tabSubtitle: {fileID: 0}
+  tabDescrition: {fileID: 0}
 --- !u!1 &6767914299499339078
 GameObject:
   m_ObjectHideFlags: 0

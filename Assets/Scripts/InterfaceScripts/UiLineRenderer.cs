@@ -16,7 +16,7 @@ public class UiLineRenderer : MonoBehaviour
 		if (!rt)
 			rt = GetComponent<RectTransform>();
 		rt.sizeDelta = new Vector2(Vector2.Distance(pos1, pos2), lineWidth);
-		rt.anchoredPosition = Vector2.Lerp(pos1, pos2, .5f);
+		rt.position = Vector2.Lerp(pos1, pos2, .5f);
 		if(pos2.x - pos1.x != 0)
 			rt.localEulerAngles = Vector3.forward * Mathf.Rad2Deg * Mathf.Atan((pos2.y - pos1.y) / (pos2.x - pos1.x));
 
