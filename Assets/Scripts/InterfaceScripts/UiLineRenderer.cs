@@ -21,4 +21,5 @@ public class UiLineRenderer : MonoBehaviour
 			rt.localEulerAngles = Vector3.forward * Mathf.Rad2Deg * Mathf.Atan((pos2.y - pos1.y) / (pos2.x - pos1.x));
 
 	}
+
 }
