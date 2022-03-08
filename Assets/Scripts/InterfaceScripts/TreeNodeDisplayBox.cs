@@ -36,17 +36,5 @@ public class TreeNodeDisplayBox : MonoBehaviour
 			childedDisplayNodes.Add(c);
 			c.SetNodeDisplay(d.childedDataNodes[i], this, depth+1);
 		}
-
-		//if (childrenSpriteLine && c)
-		//{
-		//	childrenSpriteLine.GetComponent<Image>().color = treeDisplayer.nodeStateColours[(int)d.nodeState];
-		//	Vector2 pos1 = transform.position;
-		//	Vector2 pos2 = new Vector2(pos1.x, c.sideLine.transform.position.y);
-		//	childrenSpriteLine.position = Vector2.Lerp(pos1, pos2, .5f);
-		//	childrenSpriteLine.sizeDelta = new Vector2(3f,(pos1.y-pos2.y));
-		//}else if (!c)
-		//{
-		//	childrenSpriteLine.sizeDelta = Vector2.zero;
-		//}
 	}
 }
