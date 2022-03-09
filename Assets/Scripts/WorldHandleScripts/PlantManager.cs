@@ -157,6 +157,29 @@ public class PlantManager : MonoBehaviour
 	}
 
 
+	public void HarvestPlant(bool fullyDestroy)
+	{
+		PlantObject toHarvest = globalRefManager.baseManager.editModePermSelectedRoomTile.thisRoomsPlant;
+		if (toHarvest)
+		{
+			List<Item> resourceGain = null;//get the resource items from the plantobject
+			if(globalRefManager.itemManager.mainInventory.itemsInContainer.Count + resourceGain.Count <= globalRefManager.itemManager.mainInventory.containerCapacity)
+			{
+				globalRefManager.itemManager.mainInventory.AddItemsToContainer(resourceGain);
+			}
+
+			if (toHarvest.canBeHarvestedWithoutDestroy)
+			{
+				//harvest items and un-age ?
+			}
+			else
+			{
+				DestroyPlant(toHarvest);
+			}
+		}
+	}
+
+
 	private void FixedUpdate()
 	{
 		if (Random.value < .005 && !globalRefManager.baseManager.gameIsActivelyFrozen)

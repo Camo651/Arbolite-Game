@@ -23,8 +23,10 @@ info_button                    "Info"
 close_button                   "Close"
 plants_button                  "Plants"
 mech_button                    "Mech"
+harvest_button                 "Collect"
 items_button                   "Items"
 item_subtitle                  "Item"
+items_counter                  "Items"
 inspector_info_title           ""
 inspector_info_info            ""
 settings_menu_title            "Settings"
@@ -87,7 +89,8 @@ name_successfully_destroyed_tiles   "Destroyed!"
 info_successfully_destroyed_tiles   "Successfully Destroyed #0# Tiles"
 name_toggle_dev_mode                "Developer Mode #0#"
 info_toggle_dev_mode                "Press enter to open the console"
-
+name_container_full                 "Container Full"
+info_container_full                 ""
 
 
 < ERROR MESSAGES >

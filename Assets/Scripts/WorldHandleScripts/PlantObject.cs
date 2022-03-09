@@ -17,6 +17,9 @@ public class PlantObject : MonoBehaviour
 	SO_Property styleType;
 	SO_Property rarityType;
 	SO_Property ageType;
+	public bool canBeHarvestedWithoutDestroy;
+	public List<Item> allCurrentResources;
+	public List<Item> renewableResources;
 
 	/// <summary>
 	/// Generates the plants parts

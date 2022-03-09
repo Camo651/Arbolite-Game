@@ -16,7 +16,8 @@ public class ItemDisplayer : MonoBehaviour
 	// These are for the bp inspector only
 	public BlueprintManager blueprintManager;
 	public GameObject validSelectionmButton;
-	public void DisplayItems(List<Item> items)
+	public TMPro.TextMeshProUGUI itemCountBox;
+	public void DisplayItems(List<Item> items, string counter)
 	{
 		for (int i = 0; i < gridLayout.childCount; i++)
 		{
@@ -33,6 +34,8 @@ public class ItemDisplayer : MonoBehaviour
 		}
 		System.GC.Collect();
 		validSelectionmButton.SetActive(false);
+		if(itemCountBox)
+			itemCountBox.text = counter;
 	}
 
 	public void HighlightItem(Item i)

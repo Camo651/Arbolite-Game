@@ -11,7 +11,7 @@ public class DataNode: MonoBehaviour
 {
 	public enum NodeState
 	{
-		Visible,
+		Locked,
 		Unlocked,
 		Obtained
 	}
@@ -20,7 +20,6 @@ public class DataNode: MonoBehaviour
 	public TreeDisplayer treeDisplayer;
 	public DataNode parentTreeNode;
 	public List<DataNode> childedDataNodes;
-	public Color nodeColour;
 
 	public void LateUpdate()
 	{
@@ -38,5 +37,18 @@ public class DataNode: MonoBehaviour
 				childedDataNodes.Add(transform.GetChild(i).GetComponent<DataNode>());
 			}
 		}
+	}
+
+	public string GetNodeName()
+	{
+		return "Name";
+	}
+	public string GetNodeInfo()
+	{
+		return "Info";
+	}
+	public Sprite GetIcon()
+	{
+		return null;
 	}
 }

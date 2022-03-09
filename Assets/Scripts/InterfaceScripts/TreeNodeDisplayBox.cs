@@ -37,4 +37,9 @@ public class TreeNodeDisplayBox : MonoBehaviour
 			c.SetNodeDisplay(d.childedDataNodes[i], this, depth+1);
 		}
 	}
+
+	public void SetHighlight(bool state)
+	{
+		treeDisplayer.SetHighlightDisplay(state, dataNode.GetNodeName(), dataNode.GetNodeInfo(), dataNode.GetIcon(), dataNode.nodeState, new Vector3(transform.position.x +250, transform.position.y, 0f));
+	}
 }

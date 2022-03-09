@@ -111,7 +111,7 @@ public class BlueprintManager : MonoBehaviour
 					validResources.Add(item);
 				}
 			}
-			resDisp.DisplayItems(validResources);
+			resDisp.DisplayItems(validResources, "");
 		}
 		else
 		{

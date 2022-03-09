@@ -44,23 +44,84 @@ public class InterfaceManager : MonoBehaviour
 				SetMajorInterface("Home");
 				return;
 			}
-			if (activeUserInterface == null && Input.GetKeyDown(globalRefManager.settingsManager.GetKeyCode("pause_menu")))
+			else if (activeUserInterface == null && Input.GetKeyDown(globalRefManager.settingsManager.GetKeyCode("pause_menu")))
 			{
 				SetMajorInterface("Pause_Menu");
 				return;
 			}
-			if (Input.GetKeyDown(globalRefManager.settingsManager.GetKeyCode("close_UI")))
+			else if (Input.GetKeyDown(globalRefManager.settingsManager.GetKeyCode("close_UI")))
 			{
 				CloseAllInterfaces();
 				return;
 			}
-			if(globalRefManager.settingsManager.developerMode && Input.GetKeyDown(KeyCode.Return))
+			else if(globalRefManager.settingsManager.developerMode && Input.GetKeyDown(KeyCode.Return))
 			{
 				if (activeUserInterface == null)
 					SetMajorInterface("DevConsole");
 				else
 					CloseAllInterfaces();
 			}
+			else if (Input.GetKeyDown(KeyCode.Alpha1))
+			{
+				TrySetTabFromKeyPress(0);
+			}
+			else if (Input.GetKeyDown(KeyCode.Alpha2))
+			{
+				TrySetTabFromKeyPress(1);
+			}
+			else if (Input.GetKeyDown(KeyCode.Alpha3))
+			{
+				TrySetTabFromKeyPress(2);
+			}
+			else if (Input.GetKeyDown(KeyCode.Alpha4))
+			{
+				TrySetTabFromKeyPress(3);
+			}
+			else if (Input.GetKeyDown(KeyCode.Alpha5))
+			{
+				TrySetTabFromKeyPress(4);
+			}
+			else if (Input.GetKeyDown(KeyCode.Alpha6))
+			{
+				TrySetTabFromKeyPress(5);
+			}
+			else if (Input.GetKeyDown(KeyCode.Alpha7))
+			{
+				TrySetTabFromKeyPress(6);
+			}
+			else if (Input.GetKeyDown(KeyCode.Alpha8))
+			{
+				TrySetTabFromKeyPress(7);
+			}
+			else if (Input.GetKeyDown(KeyCode.Alpha9))
+			{
+				TrySetTabFromKeyPress(8);
+			}
+			else if (Input.GetKeyDown(KeyCode.Alpha0))
+			{
+				TrySetTabFromKeyPress(9);
+			}
+			else if (Input.GetKeyDown(KeyCode.BackQuote))
+			{
+				TrySetTabFromKeyPress(-1);
+			}
+		}
+	}
+
+	public void TrySetTabFromKeyPress(int index)
+	{
+		if(index == -1 && activeUserInterface)
+		{
+			activeUserInterface.SetInterfaceTab(-1);
+		}
+		else if (!activeUserInterface && index < 4)
+		{
+			SetMajorInterface("Home");
+			TrySetTabFromKeyPress(index);
+		}
+		else if(activeUserInterface && activeUserInterface.tabs.Length > index && activeUserInterface.GetTabButton(index).gameObject.activeInHierarchy)
+		{
+			activeUserInterface.SetInterfaceTab(index);
 		}
 	}
 	/// <summary>
@@ -222,7 +283,7 @@ public class InterfaceManager : MonoBehaviour
 		if (globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.itemContainer)
 		{
 			activeUserInterface.GetTabButton(3).gameObject.SetActive(true);
-			activeUserInterface.GetTab(3).transform.GetComponent<ItemDisplayer>().DisplayItems(globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.itemContainer.itemsInContainer);
+			activeUserInterface.GetTab(3).transform.GetComponent<ItemDisplayer>().DisplayItems(globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.itemContainer.itemsInContainer, globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.itemContainer.GetCount());
 		}
 		else
 		{
