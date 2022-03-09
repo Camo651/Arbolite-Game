@@ -11,6 +11,9 @@ public class ItemTag : MonoBehaviour
 
 	public int index;
 
+	/// <summary>
+	/// Called upon a button press in the inspector
+	/// </summary>
 	public void OnButtonPress()
 	{
 		if(itemInfo)

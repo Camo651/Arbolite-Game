@@ -9,6 +9,9 @@ using UnityEngine.UI;
 [ExecuteAlways]
 public class DataNode: MonoBehaviour
 {
+	/// <summary>
+	/// The possible states of a data tree node
+	/// </summary>
 	public enum NodeState
 	{
 		Locked,
@@ -26,6 +29,9 @@ public class DataNode: MonoBehaviour
 		SetNodeData();
 	}
 
+	/// <summary>
+	/// Sets the node's data and children
+	/// </summary>
 	public void SetNodeData()
 	{
 		parentTreeNode = transform.parent.GetComponent<DataNode>();
@@ -39,14 +45,28 @@ public class DataNode: MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Get the name of the data value of the current node
+	/// </summary>
+	/// <returns>The name of the data value of the current node</returns>
 	public string GetNodeName()
 	{
 		return "Name";
 	}
+
+	/// <summary>
+	/// Get the info of the data value of the current node
+	/// </summary>
+	/// <returns>The info of the data value of the current node</returns>
 	public string GetNodeInfo()
 	{
 		return "Info";
 	}
+
+	/// <summary>
+	/// Get the sprite icon of the data value of the current node
+	/// </summary>
+	/// <returns>The sprite icon of the data value of the current node</returns>
 	public Sprite GetIcon()
 	{
 		return null;

@@ -130,6 +130,8 @@ public class TerrainManager : MonoBehaviour
 		{
 			timeOfDay = 0;
 			dayCount++;
+			globalRefManager.statisticsManager.GetStat("days_played").AddStatValue(1);
+			globalRefManager.statisticsManager.UpdateStats();
 		}
 		timeOfDayNormalized = timeOfDay / dayCycleLength;
 

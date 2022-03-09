@@ -16,12 +16,14 @@ public class TreeDisplayer : MonoBehaviour
 	public DataNode dataRootNode;
 	public TreeNodeDisplayBox displayRootNode;
 	public Color[] nodeStateColours;
-	public GameObject NodeInfoHighlight;
+	public InformationHighlighter NodeInfoHighlight;
 
-
+	/// <summary>
+	/// Displays all the nodes in the tree starting from the dataRoot. Clears the current nodes first
+	/// </summary>
 	public void DisplayTree()
 	{
-		SetHighlightDisplay(false, "", "", null, DataNode.NodeState.Locked, Vector3.zero);
+		SetHighlightDisplay(false, null);
 		for (int i = 0; i < displayRootNode.childHolder.transform.childCount; i++)
 		{
 			Destroy(displayRootNode.childHolder.transform.GetChild(i));
@@ -30,13 +32,19 @@ public class TreeDisplayer : MonoBehaviour
 		displayRootNode.SetNodeDisplay(dataRootNode, null,-1);
 	}
 
-	public void SetHighlightDisplay(bool state, string title, string desc, Sprite icon, DataNode.NodeState node, Vector3 pos)
+	/// <summary>
+	/// Sets the data of the node highlight box
+	/// </summary>
+	/// <param name="state">The state of the node</param>
+	/// <param name="node">The node to be displayed</param>
+	public void SetHighlightDisplay(bool state, TreeNodeDisplayBox node)
 	{
-		NodeInfoHighlight.SetActive(state);
-		NodeInfoHighlight.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = title;
-		NodeInfoHighlight.transform.GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = desc;
-		NodeInfoHighlight.transform.GetChild(2).GetComponent<TMPro.TextMeshProUGUI>().text = node+"";
-		NodeInfoHighlight.transform.GetChild(3).GetComponent<UnityEngine.UI.Image>().sprite = icon;
-		NodeInfoHighlight.transform.position = pos;
+		if (!state || !node)
+		{
+			NodeInfoHighlight.CloseHighlight();
+			return;
+		}
+		NodeInfoHighlight.OpenHighlight(node.GetHashCode(), node.dataNode.GetNodeName(), node.dataNode.nodeState + "", node.dataNode.GetNodeInfo(), node.dataNode.GetIcon(), Color.white);
+		NodeInfoHighlight.transform.position = new Vector3(node.transform.GetChild(0).position.x + 80, node.transform.position.y, 0f);
 	}
 }

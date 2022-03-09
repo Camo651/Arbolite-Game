@@ -4,7 +4,7 @@ en_us                          "English"
 main_game_title                "Arbolite"
 pause_menu_paused              "Paused"
 pause_menu_resume              "Resume"
-pause_menu_settings            "Settings"
+pause_menu_settings            "Options"
 pause_menu_mainmenu            "Main Menu"
 pause_menu_feedback            "Feedback"
 pause_menu_photomode           "Photo Mode"
@@ -30,6 +30,8 @@ items_counter                  "Items"
 inspector_info_title           ""
 inspector_info_info            ""
 settings_menu_title            "Settings"
+stats_menu_title               "Stats"
+statistics_menu_title          "Statistics"
 inspector_info_delete          "Destroy"
 console_modal_title            "Console"
 resources_available_title      "Available Resources"
@@ -82,6 +84,15 @@ homepage_title_market          "Market"
 homepage_building_buildings    "Buildings"
 homepage_building_blueprints   "Blueprints"
 homepage_building_button_use   "Use"
+
+
+< TRACKED STATISTICS >
+stat_days_played               "Days Played"
+stat_tiles_placed              "Tiles Placed"
+stat_tiles_destroyed           "Tiles Destroyed"
+stat_sessions_played           "Sessions Played"
+stat_plants_harvested          "Plants Harvested"
+stat_advancements_unlocked     "Advancements"
 
 
 < NOTIFICATIONS >

@@ -17,6 +17,13 @@ public class ItemDisplayer : MonoBehaviour
 	public BlueprintManager blueprintManager;
 	public GameObject validSelectionmButton;
 	public TMPro.TextMeshProUGUI itemCountBox;
+
+	/// <summary>
+	/// Displays a list of items in the current displayer
+	/// </summary>
+	/// <param name="items">The items to be displayed</param>
+	/// <param name="counter">The text to be displayed in the counter</param>
+	/// <example>0 / 100</example>
 	public void DisplayItems(List<Item> items, string counter)
 	{
 		for (int i = 0; i < gridLayout.childCount; i++)
@@ -39,6 +46,10 @@ public class ItemDisplayer : MonoBehaviour
 			itemCountBox.text = counter;
 	}
 
+	/// <summary>
+	/// Attempts to highlight the currently selected item if possible
+	/// </summary>
+	/// <param name="i">The item object to be highlighted</param>
 	public void HighlightItem(Item i)
 	{
 		if (blueprintManager)

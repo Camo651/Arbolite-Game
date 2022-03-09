@@ -42,6 +42,10 @@ public class PropertyManager : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// The types of properties that a property class can use.
+	/// Must have a colour and icon defined for it in the inspector
+	/// </summary>
 	public enum PropertyType
 	{
 		None,
@@ -115,6 +119,11 @@ public class PropertyManager : MonoBehaviour
 		return propertyDisplays.ContainsKey(callbackID.ToLower()) ? propertyDisplays[callbackID.ToLower()] : null;
 	}
 
+	/// <summary>
+	/// Get the age value SO Property
+	/// </summary>
+	/// <param name="i">The index of the age</param>
+	/// <returns>The age property of value i, assuming it exists</returns>
 	public SO_Property GetAge(int i)
 	{
 		return GetProperty(PropertyType.Age, "age" + i);

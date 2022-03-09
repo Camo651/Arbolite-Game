@@ -69,6 +69,9 @@ public class PlantObject : MonoBehaviour
 		return a;
 	}
 
+	/// <summary>
+	/// Attempts to increment the plant objects growth stage
+	/// </summary>
 	public void TryGrowPlant()
 	{
 		if((ageType.AGE_GrowthStageModifier*speciesType.SPECIES_GrowthStageChance*styleType.STYLE_GrowthStageModifier) > Random.value)
@@ -79,6 +82,11 @@ public class PlantObject : MonoBehaviour
 			}
 		}
 	}
+
+	/// <summary>
+	/// Sets the growth stage to a certain stage
+	/// </summary>
+	/// <param name="stage"></param>
 	public void SetGrowthStage(SO_Property stage)
 	{
 		plantProperties.Remove(ageType);
@@ -91,6 +99,23 @@ public class PlantObject : MonoBehaviour
 			leaf.gameObject.SetActive(stage.AGE_HasLeaves);
 			leaf.SetPartValues(speciesType.SPECIES_LeafColour + new Color(stage.AGE_ColorTint, stage.AGE_ColorTint, stage.AGE_ColorTint, 1f));
 
+		}
+	}
+
+	/// <summary>
+	/// Get the resources from the plant object
+	/// </summary>
+	/// <param name="onlyRenewable">Should it return all the resources or just renewable ones?</param>
+	/// <returns>A list of items</returns>
+	public List<Item> GetPlantResources(bool onlyRenewable)
+	{
+		if (onlyRenewable)
+		{
+			return renewableResources;
+		}
+		else
+		{
+			return allCurrentResources;
 		}
 	}
 }

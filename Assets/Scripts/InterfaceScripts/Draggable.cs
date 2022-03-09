@@ -11,16 +11,28 @@ public class Draggable : MonoBehaviour
 	public bool isDragging;
 	public UnityEngine.UI.Image recentreButton;
 	public float recentreHighlightDistance;
+
+	/// <summary>
+	/// Start dragging the transform
+	/// </summary>
 	public void BeginDrag()
 	{
 		dragTransformOriginOffset = transform.position - Input.mousePosition;
 		isDragging = true;
 	}
+
+	/// <summary>
+	/// Finish dragging the transform
+	/// </summary>
 	public void EndDrag()
 	{
 		dragTransformOriginOffset = Vector3.zero;
 		isDragging = false;
 	}
+
+	/// <summary>
+	/// Standard unity update cycle. Handles the actual dragging of the transform
+	/// </summary>
 	private void Update()
 	{
 		if (isDragging)
@@ -42,6 +54,9 @@ public class Draggable : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Recentres the transform to the centre point
+	/// </summary>
 	public void RecentreDraggable()
 	{
 		transform.position = draggableOrigin;

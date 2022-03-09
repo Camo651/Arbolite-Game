@@ -13,7 +13,10 @@ public class BlueprintManager : MonoBehaviour
 	public Item selectedItemToFillBlueprintWith;
 	public UserInterface blueprintInspectorModal, resourceSelectorModal;
 
-
+	/// <summary>
+	/// Called upon the opening of the buildng tab being opened.
+	/// Initizlizes the values of the blueprints and sets their displays
+	/// </summary>
 	public void Initialize()
 	{
 		if (allBlueprints == null || allBlueprints.Count == 0)
@@ -29,6 +32,10 @@ public class BlueprintManager : MonoBehaviour
 			SortBlueprints();
 		}
 	}
+
+	/// <summary>
+	/// Sorts all the blueprints to show new, then unlocked, then locked.
+	/// </summary>
 	public void SortBlueprints()
 	{
 		List<Blueprint> n = new List<Blueprint>();
@@ -62,6 +69,9 @@ public class BlueprintManager : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Attempts to fill the currently selected blueprint with an item value, then move it to the building tab
+	/// </summary>
 	public void FillBlueprint()
 	{
 		if (selectedBlueprint && selectedItemToFillBlueprintWith)
@@ -79,6 +89,10 @@ public class BlueprintManager : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Selects or deselects the blueprint sel
+	/// </summary>
+	/// <param name="sel">The blueprint to be selected</param>
 	public void SelectBlueprint(Blueprint sel)
 	{
 		selectedBlueprint = sel;
@@ -97,6 +111,11 @@ public class BlueprintManager : MonoBehaviour
 
 	}
 
+	/// <summary>
+	/// Called from inspector when the 'Use' button of the blueprint inspector modal is pressed
+	/// Can either display the valid building materials in the resource highlight, or set the player to
+	/// build mode and close the UI so they can place the tile
+	/// </summary>
 	public void OnClickUseOnBlueprintInspectorModal()
 	{
 		if (!selectedBlueprint.isFilled)
@@ -121,13 +140,17 @@ public class BlueprintManager : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Deselects and removes the current blueprint or just deselects it
+	/// </summary>
+	/// <param name="consumed">Should the current blueprint be used up and removed or just placed and ignored</param>
 	public void UseBlueprintInWorld(bool consumed)
 	{
 		if (consumed)
 		{
 			filledBlueprints.Remove(selectedBlueprint);
 			Destroy(selectedBlueprint.gameObject);
-			selectedBlueprint = null;
 		}
+		selectedBlueprint = null;
 	}
 }
