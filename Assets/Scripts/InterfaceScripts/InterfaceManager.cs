@@ -20,6 +20,7 @@ public class InterfaceManager : MonoBehaviour
 	[HideInInspector] public List<UserInterface> activeNotificationQueue;
 	public InformationHighlighter inspectorPropertyHighlight, inspectorItemHighlight;
 	public TreeDisplayer advancementsTreeDisplayer;
+	public ItemDisplayer homepageInventoryView;
 	//[HideInInspector] public Stack<UserInterface> pastNotificationsStack;
 
 	private void Start()
@@ -122,6 +123,10 @@ public class InterfaceManager : MonoBehaviour
 		else if(activeUserInterface && activeUserInterface.tabs.Length > index && activeUserInterface.GetTabButton(index).gameObject.activeInHierarchy)
 		{
 			activeUserInterface.SetInterfaceTab(index);
+			if(activeUserInterface.interfaceCallbackID == "Home")
+			{
+				SetHomepageTabValues(index);
+			}
 		}
 	}
 	/// <summary>
@@ -479,6 +484,7 @@ public class InterfaceManager : MonoBehaviour
 		switch (index)
 		{
 			case 0://home
+				homepageInventoryView.DisplayItems(globalRefManager.itemManager.mainInventory.itemsInContainer, globalRefManager.itemManager.mainInventory.GetCount());
 				break;
 			case 1://building
 				globalRefManager.blueprintManager.Initialize();

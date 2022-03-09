@@ -26,9 +26,9 @@ public class Draggable : MonoBehaviour
 		if (isDragging)
 			transform.position = Input.mousePosition + dragTransformOriginOffset;
 
-		if(Input.mouseScrollDelta.y != 0)
+		zoomReal = Mathf.Clamp(zoomReal + (Input.mouseScrollDelta.y * zoomSpeed * (globalRefManager.settingsManager.invertScrollDirection ? -1 : 1)), zoomMin, zoomMax);
+		if (Input.mouseScrollDelta.y != 0)
 		{
-			zoomReal = Mathf.Clamp(zoomReal + (Input.mouseScrollDelta.y * zoomSpeed * (globalRefManager.settingsManager.invertScrollDirection?-1:1)), zoomMin, zoomMax);
 			transform.localScale = new Vector3(zoomReal, zoomReal, 1f);
 		}
 

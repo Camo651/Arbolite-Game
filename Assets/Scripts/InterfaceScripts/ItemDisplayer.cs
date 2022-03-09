@@ -13,7 +13,7 @@ public class ItemDisplayer : MonoBehaviour
 
 	public PropertyDisplayer itemHighlightPropertyDisp;
 
-	// These are for the bp inspector only
+	[Header("These are for the bp inspector only")]
 	public BlueprintManager blueprintManager;
 	public GameObject validSelectionmButton;
 	public TMPro.TextMeshProUGUI itemCountBox;
@@ -33,7 +33,8 @@ public class ItemDisplayer : MonoBehaviour
 			tag.itemInfo = items[i];
 		}
 		System.GC.Collect();
-		validSelectionmButton.SetActive(false);
+		if(validSelectionmButton)
+			validSelectionmButton.SetActive(false);
 		if(itemCountBox)
 			itemCountBox.text = counter;
 	}
@@ -49,7 +50,6 @@ public class ItemDisplayer : MonoBehaviour
 
 		if (!itemHighlightPropertyDisp)
 			return;
-
 		itemHighlightPropertyDisp.propertyManager.globalRefManager.interfaceManager.inspectorItemHighlight.OpenHighlight(i.GetHashCode(), i.itemName, itemHighlightPropertyDisp.propertyManager.globalRefManager.langManager.GetTranslation("item_subtitle"), "", i.itemIcon, Color.white);
 		itemHighlightPropertyDisp.DisplayProperties(i.itemProperties);
 	}

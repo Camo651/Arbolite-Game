@@ -40,6 +40,6 @@ public class TreeNodeDisplayBox : MonoBehaviour
 
 	public void SetHighlight(bool state)
 	{
-		treeDisplayer.SetHighlightDisplay(state, dataNode.GetNodeName(), dataNode.GetNodeInfo(), dataNode.GetIcon(), dataNode.nodeState, new Vector3(transform.position.x +250, transform.position.y, 0f));
+		treeDisplayer.SetHighlightDisplay(state, dataNode.GetNodeName(), dataNode.GetNodeInfo(), dataNode.GetIcon(), dataNode.nodeState, new Vector3(transform.GetChild(0).position.x +80, transform.position.y, 0f));
 	}
 }
