@@ -3579,6 +3579,10 @@ MonoBehaviour:
   childedDataNodes:
   - {fileID: 2017422416}
   - {fileID: 1387060652}
+  containedRoomTypeCheck: []
+  containerRoomValueCheck: 
+  statCheckCallbackIDs: []
+  statCheckValues: []
 --- !u!1 &134177053
 GameObject:
   m_ObjectHideFlags: 0
@@ -5813,6 +5817,10 @@ MonoBehaviour:
   treeDisplayer: {fileID: 718760790}
   parentTreeNode: {fileID: 296328781}
   childedDataNodes: []
+  containedRoomTypeCheck: []
+  containerRoomValueCheck: 
+  statCheckCallbackIDs: []
+  statCheckValues: []
 --- !u!1 &202075003
 GameObject:
   m_ObjectHideFlags: 0
@@ -7204,6 +7212,10 @@ MonoBehaviour:
   treeDisplayer: {fileID: 718760790}
   parentTreeNode: {fileID: 410982503}
   childedDataNodes: []
+  containedRoomTypeCheck: []
+  containerRoomValueCheck: 
+  statCheckCallbackIDs: []
+  statCheckValues: []
 --- !u!1 &282827686
 GameObject:
   m_ObjectHideFlags: 0
@@ -8055,6 +8067,10 @@ MonoBehaviour:
   - {fileID: 131237524}
   - {fileID: 306242777}
   - {fileID: 1461553096}
+  containedRoomTypeCheck: []
+  containerRoomValueCheck: 
+  statCheckCallbackIDs: []
+  statCheckValues: []
 --- !u!4 &296328782
 Transform:
   m_ObjectHideFlags: 0
@@ -8229,6 +8245,10 @@ MonoBehaviour:
   treeDisplayer: {fileID: 718760790}
   parentTreeNode: {fileID: 296328781}
   childedDataNodes: []
+  containedRoomTypeCheck: []
+  containerRoomValueCheck: 
+  statCheckCallbackIDs: []
+  statCheckValues: []
 --- !u!1 &307386916
 GameObject:
   m_ObjectHideFlags: 0
@@ -11172,6 +11192,10 @@ MonoBehaviour:
   - {fileID: 2094748510}
   - {fileID: 2031867833}
   - {fileID: 281530783}
+  containedRoomTypeCheck: []
+  containerRoomValueCheck: 
+  statCheckCallbackIDs: []
+  statCheckValues: []
 --- !u!1 &412323067
 GameObject:
   m_ObjectHideFlags: 0
@@ -22186,6 +22210,10 @@ MonoBehaviour:
   treeDisplayer: {fileID: 718760790}
   parentTreeNode: {fileID: 2031867833}
   childedDataNodes: []
+  containedRoomTypeCheck: []
+  containerRoomValueCheck: 
+  statCheckCallbackIDs: []
+  statCheckValues: []
 --- !u!4 &725051040
 Transform:
   m_ObjectHideFlags: 0
@@ -33053,6 +33081,17 @@ MonoBehaviour:
   treeDisplayer: {fileID: 718760790}
   parentTreeNode: {fileID: 410982503}
   childedDataNodes: []
+  containedRoomTypeCheck:
+  - {fileID: 6592185812487459200, guid: 0354336cc4feae340b128c95bf45f097, type: 3}
+  containerRoomValueCheck: 04000000
+  statCheckCallbackIDs:
+  - 3223134
+  - 1111
+  - 11
+  statCheckValues:
+  - 44
+  - 332
+  - 1
 --- !u!1 &1074854794
 GameObject:
   m_ObjectHideFlags: 0
@@ -36237,7 +36276,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000011581314}
+  m_AnchoredPosition: {x: 0, y: 0.00012512103}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1220749122
@@ -39659,6 +39698,10 @@ MonoBehaviour:
   treeDisplayer: {fileID: 718760790}
   parentTreeNode: {fileID: 1616295864}
   childedDataNodes: []
+  containedRoomTypeCheck: []
+  containerRoomValueCheck: 
+  statCheckCallbackIDs: []
+  statCheckValues: []
 --- !u!4 &1372126560
 Transform:
   m_ObjectHideFlags: 0
@@ -39753,6 +39796,10 @@ MonoBehaviour:
   treeDisplayer: {fileID: 718760790}
   parentTreeNode: {fileID: 131237524}
   childedDataNodes: []
+  containedRoomTypeCheck: []
+  containerRoomValueCheck: 
+  statCheckCallbackIDs: []
+  statCheckValues: []
 --- !u!1 &1392673652
 GameObject:
   m_ObjectHideFlags: 0
@@ -42427,6 +42474,10 @@ MonoBehaviour:
   treeDisplayer: {fileID: 718760790}
   parentTreeNode: {fileID: 296328781}
   childedDataNodes: []
+  containedRoomTypeCheck: []
+  containerRoomValueCheck: 
+  statCheckCallbackIDs: []
+  statCheckValues: []
 --- !u!4 &1461553097
 Transform:
   m_ObjectHideFlags: 0
@@ -44950,6 +45001,10 @@ MonoBehaviour:
   treeDisplayer: {fileID: 718760790}
   parentTreeNode: {fileID: 1651251937}
   childedDataNodes: []
+  containedRoomTypeCheck: []
+  containerRoomValueCheck: 
+  statCheckCallbackIDs: []
+  statCheckValues: []
 --- !u!1 &1514934033
 GameObject:
   m_ObjectHideFlags: 0
@@ -47218,6 +47273,10 @@ MonoBehaviour:
   treeDisplayer: {fileID: 718760790}
   parentTreeNode: {fileID: 2094748510}
   childedDataNodes: []
+  containedRoomTypeCheck: []
+  containerRoomValueCheck: 
+  statCheckCallbackIDs: []
+  statCheckValues: []
 --- !u!4 &1610928425
 Transform:
   m_ObjectHideFlags: 0
@@ -47544,6 +47603,10 @@ MonoBehaviour:
   - {fileID: 1651251937}
   - {fileID: 1634683022}
   - {fileID: 1372126559}
+  containedRoomTypeCheck: []
+  containerRoomValueCheck: 
+  statCheckCallbackIDs: []
+  statCheckValues: []
 --- !u!1 &1624122693
 GameObject:
   m_ObjectHideFlags: 0
@@ -48076,6 +48139,10 @@ MonoBehaviour:
   parentTreeNode: {fileID: 1616295864}
   childedDataNodes:
   - {fileID: 1684385873}
+  containedRoomTypeCheck: []
+  containerRoomValueCheck: 
+  statCheckCallbackIDs: []
+  statCheckValues: []
 --- !u!1 &1641467206
 GameObject:
   m_ObjectHideFlags: 0
@@ -48677,6 +48744,10 @@ MonoBehaviour:
   childedDataNodes:
   - {fileID: 1512208708}
   - {fileID: 1840034830}
+  containedRoomTypeCheck: []
+  containerRoomValueCheck: 
+  statCheckCallbackIDs: []
+  statCheckValues: []
 --- !u!1 &1656072667
 GameObject:
   m_ObjectHideFlags: 0
@@ -49207,6 +49278,10 @@ MonoBehaviour:
   treeDisplayer: {fileID: 718760790}
   parentTreeNode: {fileID: 1634683022}
   childedDataNodes: []
+  containedRoomTypeCheck: []
+  containerRoomValueCheck: 
+  statCheckCallbackIDs: []
+  statCheckValues: []
 --- !u!1 &1686546801
 GameObject:
   m_ObjectHideFlags: 0
@@ -52859,6 +52934,10 @@ MonoBehaviour:
   treeDisplayer: {fileID: 718760790}
   parentTreeNode: {fileID: 1651251937}
   childedDataNodes: []
+  containedRoomTypeCheck: []
+  containerRoomValueCheck: 
+  statCheckCallbackIDs: []
+  statCheckValues: []
 --- !u!1 &1845388020
 GameObject:
   m_ObjectHideFlags: 0
@@ -57033,6 +57112,10 @@ MonoBehaviour:
   treeDisplayer: {fileID: 718760790}
   parentTreeNode: {fileID: 131237524}
   childedDataNodes: []
+  containedRoomTypeCheck: []
+  containerRoomValueCheck: 
+  statCheckCallbackIDs: []
+  statCheckValues: []
 --- !u!1 &2023062457
 GameObject:
   m_ObjectHideFlags: 0
@@ -57785,6 +57868,10 @@ MonoBehaviour:
   childedDataNodes:
   - {fileID: 1616295864}
   - {fileID: 725051039}
+  containedRoomTypeCheck: []
+  containerRoomValueCheck: 
+  statCheckCallbackIDs: []
+  statCheckValues: []
 --- !u!4 &2031867834
 Transform:
   m_ObjectHideFlags: 0
@@ -59668,6 +59755,10 @@ MonoBehaviour:
   childedDataNodes:
   - {fileID: 1610928424}
   - {fileID: 296328781}
+  containedRoomTypeCheck: []
+  containerRoomValueCheck: 
+  statCheckCallbackIDs: []
+  statCheckValues: []
 --- !u!1 &2100291185
 GameObject:
   m_ObjectHideFlags: 0
