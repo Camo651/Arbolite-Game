@@ -33081,17 +33081,10 @@ MonoBehaviour:
   treeDisplayer: {fileID: 718760790}
   parentTreeNode: {fileID: 410982503}
   childedDataNodes: []
-  containedRoomTypeCheck:
-  - {fileID: 6592185812487459200, guid: 0354336cc4feae340b128c95bf45f097, type: 3}
-  containerRoomValueCheck: 04000000
-  statCheckCallbackIDs:
-  - 3223134
-  - 1111
-  - 11
-  statCheckValues:
-  - 44
-  - 332
-  - 1
+  containedRoomTypeCheck: []
+  containerRoomValueCheck: 
+  statCheckCallbackIDs: []
+  statCheckValues: []
 --- !u!1 &1074854794
 GameObject:
   m_ObjectHideFlags: 0
