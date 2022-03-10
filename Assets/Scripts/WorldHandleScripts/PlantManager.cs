@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -30,7 +29,7 @@ public class PlantManager : MonoBehaviour
 
 		treePresets = new Dictionary<string, SO_TreePreset>();
 		SO_TreePreset[] unsortedPresets = Resources.FindObjectsOfTypeAll<SO_TreePreset>();
-		foreach(SO_TreePreset item in unsortedPresets)
+		foreach (SO_TreePreset item in unsortedPresets)
 		{
 			if (treePresets.ContainsKey(item.callbackID))
 				treePresets[item.callbackID] = item;
@@ -104,7 +103,7 @@ public class PlantManager : MonoBehaviour
 	public SO_TreePreset GetRandomTreePresetWeighted(SO_Property biomeConditional)
 	{
 		List<SO_TreePreset> weights = new List<SO_TreePreset>();
-		foreach(SO_TreePreset preset in treePresets.Values)
+		foreach (SO_TreePreset preset in treePresets.Values)
 		{
 			SO_Property biome = GetPropertyFromType(preset.plantProperties, PropertyManager.PropertyType.Biome);
 			if (biomeConditional == null || biome == biomeConditional)
@@ -156,25 +155,29 @@ public class PlantManager : MonoBehaviour
 		}
 	}
 
-
+	/// <summary>
+	/// Harvests the currently selected plant object
+	/// </summary>
+	/// <param name="fullyDestroy">Should the plant attempt to save the base plant and harvest or simply remove it all together?</param>
 	public void HarvestPlant(bool fullyDestroy)
 	{
 		PlantObject toHarvest = globalRefManager.baseManager.editModePermSelectedRoomTile.thisRoomsPlant;
 		if (toHarvest)
 		{
-			List<Item> resourceGain = null;//get the resource items from the plantobject
-			if(globalRefManager.itemManager.mainInventory.itemsInContainer.Count + resourceGain.Count <= globalRefManager.itemManager.mainInventory.containerCapacity)
+			List<Item> resourceGain = toHarvest.GetPlantResources(!fullyDestroy && toHarvest.canBeHarvestedWithoutDestroy);
+			if (globalRefManager.itemManager.mainInventory.CanHoldXMoreItems(resourceGain.Count))
 			{
 				globalRefManager.itemManager.mainInventory.AddItemsToContainer(resourceGain);
-			}
 
-			if (toHarvest.canBeHarvestedWithoutDestroy)
-			{
-				//harvest items and un-age ?
-			}
-			else
-			{
-				DestroyPlant(toHarvest);
+				if (toHarvest.canBeHarvestedWithoutDestroy)
+				{
+					toHarvest.HarvestWithoutDestroy();
+				}
+				else
+				{
+					DestroyPlant(toHarvest);
+				}
+				globalRefManager.interfaceManager.CloseAllInterfaces();
 			}
 		}
 	}

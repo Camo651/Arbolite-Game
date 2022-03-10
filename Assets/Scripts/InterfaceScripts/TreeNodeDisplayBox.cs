@@ -14,7 +14,12 @@ public class TreeNodeDisplayBox : MonoBehaviour
 	public GameObject childHolder;
 	public DataNode dataNode;
 
-
+	/// <summary>
+	/// Sets the values of this display node and recursively calls its children
+	/// </summary>
+	/// <param name="d">The data node to derive the data from</param>
+	/// <param name="parent">This display node's parent node</param>
+	/// <param name="depth">The global depth of this trees node</param>
 	public void SetNodeDisplay(DataNode d, TreeNodeDisplayBox parent, int depth)
 	{
 		if (parent)
@@ -38,6 +43,10 @@ public class TreeNodeDisplayBox : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Set the state of the tree node highlight box
+	/// </summary>
+	/// <param name="state">The state to be set to</param>
 	public void SetHighlight(bool state)
 	{
 		treeDisplayer.SetHighlightDisplay(state, this);

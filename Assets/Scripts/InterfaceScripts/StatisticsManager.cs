@@ -12,7 +12,12 @@ public class StatisticsManager : MonoBehaviour
 	public List<RectTransform> barGraph;
 	public StatTrack selectedStat;
 	public TMPro.TextMeshProUGUI hoveredStatDisplay;
+	public Color barGraphbaseColour, barGraphHoverColour;
+	private GameObject hoveredBarGraph;
 
+	/// <summary>
+	/// Logs a new entry to the item histories for each stat
+	/// </summary>
 	public void UpdateStats()
 	{
 		//Need to manually add the buttons in for the list
@@ -25,19 +30,37 @@ public class StatisticsManager : MonoBehaviour
 		GetStat("advancements_unlocked").IncrementHistory();
 	}
 
+	/// <summary>
+	/// Sets the stat value display text to nothing
+	/// </summary>
 	public void CloseHoverStatDisplay()
 	{
 		hoveredStatDisplay.text = "";
-		return;
+		hoveredBarGraph.GetComponent<UnityEngine.UI.Image>().color = barGraphbaseColour;
+		hoveredBarGraph = null;
 	}
+
+	/// <summary>
+	/// Sets the stat value display text to the value of the entry at the sibling index of i
+	/// </summary>
+	/// <param name="i">The bar graph bar game object</param>
 	public void SetHoverStatDisplay(GameObject i)
 	{
 		if (selectedStat == null)
 			return;
 		int index = i.transform.GetSiblingIndex();
 		if (i && index < selectedStat.history.Count)
+		{
 			hoveredStatDisplay.text = selectedStat.history[index] + "";
+			i.GetComponent<UnityEngine.UI.Image>().color = barGraphHoverColour;
+			hoveredBarGraph = i;
+		}
 	}
+
+	/// <summary>
+	/// Sets the bars of the bar graph to show the history of stat
+	/// </summary>
+	/// <param name="stat">The stat tracker to display the values of</param>
 	public void SetBarGraphStat(StatTrack stat)
 	{
 		selectedStat = stat;
@@ -53,15 +76,19 @@ public class StatisticsManager : MonoBehaviour
 		{
 			if(i < stat.history.Count && relMax!=0f)
 			{
-				barGraph[i].sizeDelta = new Vector2(12f, Mathf.Lerp(0,300,stat.history[i]/relMax));
+				barGraph[i].sizeDelta = new Vector2(5f, Mathf.Lerp(0,300,stat.history[i]/relMax));
 			}
 			else
 			{
-				barGraph[i].sizeDelta = Vector2.right * 12f;
+				barGraph[i].sizeDelta = Vector2.right * 5f;
 			}
 		}
 	}
 
+	/// <summary>
+	/// Set the bargraph display to highlight the stat tracker from its callback id
+	/// </summary>
+	/// <param name="callbackID">The callback ID of the stat tracker</param>
 	public void SetGraph(string callbackID)
 	{
 		SetBarGraphStat(GetStat(callbackID));
@@ -108,14 +135,27 @@ public class StatTrack
 		history = new List<float>();
 	}
 
+	/// <summary>
+	/// Sets the current value of the stat tracker, overwritting it completely
+	/// </summary>
+	/// <param name="v">The new value of the stat</param>
 	public void SetStatValue(float v)
 	{
 		value = v;
 	}
+
+	/// <summary>
+	/// Increments the value by v
+	/// </summary>
+	/// <param name="v">The value to be added to the stat</param>
 	public void AddStatValue(float v)
 	{
 		value += v;
 	}
+
+	/// <summary>
+	/// Logs a new entry to the stat trackers history and deletes the overflow
+	/// </summary>
 	public void IncrementHistory()
 	{
 		history.Add(value);

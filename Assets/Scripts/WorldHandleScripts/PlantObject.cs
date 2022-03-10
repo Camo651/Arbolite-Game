@@ -83,6 +83,11 @@ public class PlantObject : MonoBehaviour
 		}
 	}
 
+	public void HarvestWithoutDestroy()
+	{
+		SetGrowthStage(roomTile.roomContainer.globalRefManager.propertyManager.GetAge(5));
+	}
+
 	/// <summary>
 	/// Sets the growth stage to a certain stage
 	/// </summary>

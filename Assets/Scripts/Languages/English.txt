@@ -102,6 +102,9 @@ name_toggle_dev_mode                "Developer Mode #0#"
 info_toggle_dev_mode                "Press enter to open the console"
 name_container_full                 "Container Full"
 info_container_full                 ""
+name_inventory_full                 "Inventory Full"
+info_inventory_full                 "Empty it out before collecting more items"
+
 
 
 < ERROR MESSAGES >
