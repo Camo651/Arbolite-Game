@@ -211,7 +211,7 @@ public class BaseManager : MonoBehaviour
 		globalRefManager.audioManager.Play(AudioManager.AudioClipType.Ambient, "little_click");
 		ContainedRoom cr = TryCreateRoomAtPos(new Vector2Int(Mathf.RoundToInt(currentlySelectedRoom.transform.position.x), Mathf.RoundToInt(currentlySelectedRoom.transform.position.y)), selectedRoomToBuild, true);
 		Destroy(currentlySelectedRoom.transform.GetChild(0).gameObject);
-
+		globalRefManager.statisticsManager.GetStat("tiles_placed").AddStatValue(1);
 		cr.properties.AddRange(globalRefManager.blueprintManager.selectedBlueprint.properties);
 		selectedRoomToBuild = null;
 		globalRefManager.blueprintManager.UseBlueprintInWorld(true);
@@ -272,6 +272,7 @@ public class BaseManager : MonoBehaviour
 	{
 		int count = roomsToDelete.Length;
 		globalRefManager.interfaceManager.SetWorldPositionViewerState(false, null);
+		globalRefManager.statisticsManager.GetStat("tiles_destroyed").AddStatValue(roomsToDelete.Length);
 		for (int i = 0; i < roomsToDelete.Length; i++)
 		{
 			DeleteRoom(roomsToDelete[i]);

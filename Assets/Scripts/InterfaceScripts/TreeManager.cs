@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class TreeManager : MonoBehaviour
 {
+	public GlobalRefManager globalRefManager;
 	public TreeNodeDisplayBox defaultTreeNodeDisplayBoxPrefab;
 	public List<TreeDisplayer> activeTrees;
 

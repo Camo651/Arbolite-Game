@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TreeNodeDisplayBox : MonoBehaviour
 {
@@ -12,7 +13,9 @@ public class TreeNodeDisplayBox : MonoBehaviour
 	public RectTransform childrenSpriteLine;
 	public Image sideLine;
 	public GameObject childHolder;
-	public DataNode dataNode;
+	[HideInInspector] public DataNode dataNode;
+	public TextMeshProUGUI titleBox;
+	public Image iconBox;
 
 	/// <summary>
 	/// Sets the values of this display node and recursively calls its children
@@ -34,6 +37,10 @@ public class TreeNodeDisplayBox : MonoBehaviour
 		dataNode = d;
 		backGroundImage.color = treeDisplayer.nodeStateColours[(int)d.nodeState];
 		sideLine.color = treeDisplayer.nodeStateColours[(int)d.nodeState];
+		if(titleBox)
+			titleBox.text = d.GetNodeName();
+		if(iconBox)
+			iconBox.sprite = d.GetIcon();
 		TreeNodeDisplayBox c = null;
 		for (int i = 0; i < d.childedDataNodes.Count; i++)
 		{

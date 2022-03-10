@@ -26,7 +26,7 @@ public class TreeDisplayer : MonoBehaviour
 		SetHighlightDisplay(false, null);
 		for (int i = 0; i < displayRootNode.childHolder.transform.childCount; i++)
 		{
-			Destroy(displayRootNode.childHolder.transform.GetChild(i));
+			Destroy(displayRootNode.childHolder.transform.GetChild(i).gameObject);
 		}
 		displayRootNode.treeDisplayer = this;
 		displayRootNode.SetNodeDisplay(dataRootNode, null,-1);

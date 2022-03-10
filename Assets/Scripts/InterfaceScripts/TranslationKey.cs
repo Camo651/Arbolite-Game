@@ -4,7 +4,7 @@ using TMPro;
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class TranslationKey : MonoBehaviour
 {
-	public TextMeshProUGUI textBox;
+	[HideInInspector]public TextMeshProUGUI textBox;
 	public string callBackID;
 
 	/// <summary>

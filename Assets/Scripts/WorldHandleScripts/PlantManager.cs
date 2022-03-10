@@ -177,6 +177,7 @@ public class PlantManager : MonoBehaviour
 				{
 					DestroyPlant(toHarvest);
 				}
+				globalRefManager.statisticsManager.GetStat("plants_harvested").AddStatValue(1);
 				globalRefManager.interfaceManager.CloseAllInterfaces();
 			}
 		}

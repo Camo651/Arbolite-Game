@@ -109,6 +109,10 @@ public class InterfaceManager : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Sets the tab state of the current user interface, or open the homepage and do so
+	/// </summary>
+	/// <param name="index">The tab index</param>
 	public void TrySetTabFromKeyPress(int index)
 	{
 		if(index == -1 && activeUserInterface)

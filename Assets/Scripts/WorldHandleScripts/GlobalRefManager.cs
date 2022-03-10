@@ -22,6 +22,7 @@ public class GlobalRefManager : MonoBehaviour
 	public BlueprintManager blueprintManager;
 	public ItemManager itemManager;
 	public StatisticsManager statisticsManager;
+	public TreeManager treeManager;
 	private void Awake()
 	{
 		baseManager.globalRefManager = this;

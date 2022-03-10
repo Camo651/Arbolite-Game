@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor;
 
 /// <summary>
 /// Stores the data of a tree node in a seprate location in the world that will never be deactived
@@ -24,9 +25,36 @@ public class DataNode: MonoBehaviour
 	public DataNode parentTreeNode;
 	public List<DataNode> childedDataNodes;
 
+	[HideInInspector] public List<GameObject> containedRoomTypeCheck; //use the callback ids for checks
+	[HideInInspector] public List<int> containerRoomValueCheck;
+	[HideInInspector] public List<string> statCheckCallbackIDs;
+	[HideInInspector] public List<float> statCheckValues;
+
 	public void LateUpdate()
 	{
 		SetNodeData();
+	}
+
+	public bool CheckConditionsMet()
+	{
+		int totalConditions = containedRoomTypeCheck.Count + statCheckCallbackIDs.Count;
+		int conditionsMet = 0;
+		StatisticsManager s = treeDisplayer.treeManager.globalRefManager.statisticsManager;
+		for (int i = 0; i < containedRoomTypeCheck.Count; i++)
+		{
+			if(containedRoomTypeCheck[i] && s.GetTimesPlaced(containedRoomTypeCheck[i].GetComponent<ContainedRoom>()) >= containerRoomValueCheck[i])
+			{
+				conditionsMet++;
+			}
+		}
+		for (int i = 0; i < statCheckCallbackIDs.Count; i++)
+		{
+			if(s.GetStat(statCheckCallbackIDs[i]).value >= statCheckValues[i])
+			{
+				conditionsMet++;
+			}
+		}
+		return conditionsMet == totalConditions;
 	}
 
 	/// <summary>
@@ -51,7 +79,7 @@ public class DataNode: MonoBehaviour
 	/// <returns>The name of the data value of the current node</returns>
 	public string GetNodeName()
 	{
-		return "Name";
+		return treeDisplayer.treeManager.globalRefManager.langManager.GetTranslation("");
 	}
 
 	/// <summary>
@@ -60,7 +88,7 @@ public class DataNode: MonoBehaviour
 	/// <returns>The info of the data value of the current node</returns>
 	public string GetNodeInfo()
 	{
-		return "Info";
+		return treeDisplayer.treeManager.globalRefManager.langManager.GetTranslation("");
 	}
 
 	/// <summary>
@@ -70,5 +98,80 @@ public class DataNode: MonoBehaviour
 	public Sprite GetIcon()
 	{
 		return null;
+	}
+}
+
+[CustomEditor(typeof(DataNode))]
+public class DataNodeEditor : Editor
+{
+	public override void OnInspectorGUI()
+	{
+		base.OnInspectorGUI();
+		DataNode node = (DataNode)target;
+
+		if (node.containedRoomTypeCheck == null)
+			node.containedRoomTypeCheck = new List<GameObject>();
+		if (node.containerRoomValueCheck == null)
+			node.containerRoomValueCheck = new List<int>();
+		if (node.statCheckCallbackIDs == null)
+			node.statCheckCallbackIDs = new List<string>();
+		if (node.statCheckValues == null)
+			node.statCheckValues = new List<float>();
+
+		GUILayout.Space(20);
+		GUILayout.Label("Room Parametres");
+		GUILayout.BeginHorizontal();
+		if(GUILayout.Button("Add Room"))
+		{
+			node.containedRoomTypeCheck.Add(null);
+		}
+		GUILayout.EndHorizontal();
+		GUILayout.BeginVertical();
+		for (int i = 0; i < node.containedRoomTypeCheck.Count; i++)
+		{
+			GUILayout.BeginHorizontal();
+			GUILayout.Label("Room " + i);
+			node.containedRoomTypeCheck[i] = (GameObject)EditorGUILayout.ObjectField(node.containedRoomTypeCheck[i], typeof(GameObject), false);
+			if(node.containerRoomValueCheck.Count <= i)
+			{
+				node.containerRoomValueCheck.Add(0);
+			}
+			node.containerRoomValueCheck[i] = EditorGUILayout.IntField(node.containerRoomValueCheck[i]);
+			if (GUILayout.Button("X"))
+			{
+				node.containedRoomTypeCheck.RemoveAt(i);
+				node.containerRoomValueCheck.RemoveAt(i);
+			}
+			GUILayout.EndHorizontal();
+		}
+		GUILayout.EndVertical();
+		GUILayout.Space(10);
+		GUILayout.Label("Stat Parametres");
+		GUILayout.BeginHorizontal();
+		if (GUILayout.Button("Add Stat"))
+		{
+			node.statCheckCallbackIDs.Add(null);
+		}
+		GUILayout.EndHorizontal();
+		GUILayout.BeginVertical();
+
+		for (int i = 0; i < node.statCheckCallbackIDs.Count; i++)
+		{
+			GUILayout.BeginHorizontal();
+			GUILayout.Label("Stat " + i);
+			node.statCheckCallbackIDs[i] = EditorGUILayout.TextField(node.statCheckCallbackIDs[i]);
+			if (node.statCheckValues.Count <= i)
+			{
+				node.statCheckValues.Add(0f);
+			}
+			node.statCheckValues[i] = EditorGUILayout.FloatField(node.statCheckValues[i]);
+			if (GUILayout.Button("X"))
+			{
+				node.statCheckCallbackIDs.RemoveAt(i);
+				node.statCheckValues.RemoveAt(i);
+			}
+			GUILayout.EndHorizontal();
+		}
+		GUILayout.EndVertical();
 	}
 }

@@ -374,6 +374,8 @@ MonoBehaviour:
   sideLine: {fileID: 3834882618363154582}
   childHolder: {fileID: 3834882618844849478}
   dataNode: {fileID: 0}
+  titleBox: {fileID: 6216949475412230911}
+  iconBox: {fileID: 5483869478291174344}
 --- !u!1 &3834882618363154580
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,45 @@ public class StatisticsManager : MonoBehaviour
 	public TMPro.TextMeshProUGUI hoveredStatDisplay;
 	public Color barGraphbaseColour, barGraphHoverColour;
 	private GameObject hoveredBarGraph;
+	public Dictionary<string, int> timesRoomsPlaced;
+
+	private void Awake()
+	{
+		GetStat("sessions_played").AddStatValue(1);
+	}
+
+	public int IncrementTimesPlaced(ContainedRoom room, int amount)
+	{
+		if (!room)
+			return 0;
+		return IncrementTimesPlaced(room.tileNameCallbackID, amount);
+	}
+	public int IncrementTimesPlaced(string callbackID, int amount)
+	{
+		if (!timesRoomsPlaced.ContainsKey(callbackID))
+			timesRoomsPlaced.Add(callbackID, 0);
+		timesRoomsPlaced[callbackID] += amount;
+		return timesRoomsPlaced[callbackID];
+	}
+
+	public int GetTimesPlaced(string callbackID)
+	{
+		if (timesRoomsPlaced.ContainsKey(callbackID))
+			return timesRoomsPlaced[callbackID];
+		return 0;
+	}
+	public int GetTimesPlaced(ContainedRoom room)
+	{
+		if (!room)
+			return 0;
+		return GetTimesPlaced(room.tileNameCallbackID);
+	}
+
+	public void SetBarGraphInit()
+	{
+		SetGraph("days_played");
+		CloseHoverStatDisplay();
+	}
 
 	/// <summary>
 	/// Logs a new entry to the item histories for each stat
@@ -35,8 +74,9 @@ public class StatisticsManager : MonoBehaviour
 	/// </summary>
 	public void CloseHoverStatDisplay()
 	{
-		hoveredStatDisplay.text = "";
-		hoveredBarGraph.GetComponent<UnityEngine.UI.Image>().color = barGraphbaseColour;
+		hoveredStatDisplay.text = selectedStat.GetStatName() + " : ";
+		if(hoveredBarGraph)
+			hoveredBarGraph.GetComponent<UnityEngine.UI.Image>().color = barGraphbaseColour;
 		hoveredBarGraph = null;
 	}
 
@@ -51,7 +91,7 @@ public class StatisticsManager : MonoBehaviour
 		int index = i.transform.GetSiblingIndex();
 		if (i && index < selectedStat.history.Count)
 		{
-			hoveredStatDisplay.text = selectedStat.history[index] + "";
+			hoveredStatDisplay.text = selectedStat.GetStatName() +" : "+selectedStat.history[index];
 			i.GetComponent<UnityEngine.UI.Image>().color = barGraphHoverColour;
 			hoveredBarGraph = i;
 		}
@@ -66,7 +106,7 @@ public class StatisticsManager : MonoBehaviour
 		selectedStat = stat;
 		if (stat == null)
 			return;
-		float relMax = 0;
+		float relMax = stat.value;
 		foreach (float f in stat.history)
 		{
 			if (f > relMax)
@@ -76,13 +116,14 @@ public class StatisticsManager : MonoBehaviour
 		{
 			if(i < stat.history.Count && relMax!=0f)
 			{
-				barGraph[i].sizeDelta = new Vector2(5f, Mathf.Lerp(0,300,stat.history[i]/relMax));
+				barGraph[i].sizeDelta = new Vector2(5f, Mathf.Lerp(0,300,(i==stat.history.Count-1?stat.value:stat.history[i])/relMax));
 			}
 			else
 			{
 				barGraph[i].sizeDelta = Vector2.right * 5f;
 			}
 		}
+		hoveredStatDisplay.text = selectedStat.GetStatName() + " : ";
 	}
 
 	/// <summary>
@@ -136,12 +177,24 @@ public class StatTrack
 	}
 
 	/// <summary>
+	/// Get the translated name of the stat
+	/// </summary>
+	/// <returns></returns>
+	public string GetStatName()
+	{
+		return statMan.globalRefManager.langManager.GetTranslation("stat_" + statCallbackID);
+	}
+
+	/// <summary>
 	/// Sets the current value of the stat tracker, overwritting it completely
 	/// </summary>
 	/// <param name="v">The new value of the stat</param>
 	public void SetStatValue(float v)
 	{
 		value = v;
+		if (history.Count == 0)
+			history.Add(value);
+		history[history.Count - 1] = value;
 	}
 
 	/// <summary>
@@ -150,7 +203,7 @@ public class StatTrack
 	/// <param name="v">The value to be added to the stat</param>
 	public void AddStatValue(float v)
 	{
-		value += v;
+		SetStatValue(value + v);
 	}
 
 	/// <summary>
