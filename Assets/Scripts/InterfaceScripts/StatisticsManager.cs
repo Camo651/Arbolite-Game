@@ -15,10 +15,12 @@ public class StatisticsManager : MonoBehaviour
 	public Color barGraphbaseColour, barGraphHoverColour;
 	private GameObject hoveredBarGraph;
 	public Dictionary<string, int> timesRoomsPlaced;
+	public List<DataNode> advancementLeaves;
 
 	private void Awake()
 	{
 		GetStat("sessions_played").AddStatValue(1);
+		advancementLeaves = new List<DataNode>();
 	}
 
 	public int IncrementTimesPlaced(ContainedRoom room, int amount)
