@@ -23,6 +23,18 @@ public class StatisticsManager : MonoBehaviour
 		advancementLeaves = new List<DataNode>();
 	}
 
+	public void CheckAdvancementLeaves()
+	{
+		for (int i = 0; i < advancementLeaves.Count;i++)
+		{
+			if (advancementLeaves[i].CheckConditionsMet())
+			{
+				advancementLeaves[i].nodeState = DataNode.NodeState.Obtained;
+				advancementLeaves.RemoveAt(i);
+			}
+		}
+	}
+
 	public int IncrementTimesPlaced(ContainedRoom room, int amount)
 	{
 		if (!room)

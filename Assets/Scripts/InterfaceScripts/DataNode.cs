@@ -37,6 +37,11 @@ public class DataNode: MonoBehaviour
 		SetNodeData();
 	}
 
+	private void Awake()
+	{
+		treeDisplayer.treeManager.globalRefManager.statisticsManager.advancementLeaves.Add(this);
+	}
+
 	public bool CheckConditionsMet()
 	{
 		int totalConditions = containedRoomTypeCheck.Count + statCheckCallbackIDs.Count;
