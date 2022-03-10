@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 
 /// <summary>
 /// Stores the data of a tree node in a seprate location in the world that will never be deactived
 /// </summary>
 [ExecuteAlways]
+[System.Serializable]
 public class DataNode: MonoBehaviour
 {
 	/// <summary>
@@ -107,6 +109,7 @@ public class DataNodeEditor : Editor
 	public override void OnInspectorGUI()
 	{
 		base.OnInspectorGUI();
+
 		DataNode node = (DataNode)target;
 
 		if (node.containedRoomTypeCheck == null)
@@ -173,5 +176,11 @@ public class DataNodeEditor : Editor
 			GUILayout.EndHorizontal();
 		}
 		GUILayout.EndVertical();
+
+		if (GUI.changed)
+		{
+			EditorUtility.SetDirty(node);
+			EditorSceneManager.MarkSceneDirty(node.gameObject.scene);
+		}
 	}
 }
