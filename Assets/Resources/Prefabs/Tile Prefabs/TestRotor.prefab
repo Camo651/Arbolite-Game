@@ -53,6 +53,8 @@ MonoBehaviour:
   containedRooms:
   - {fileID: 4823248100967895130}
   rotorRoom: {fileID: 0}
+  itemContainer: {fileID: 0}
+  properties: []
 --- !u!1 &4823248100967895131
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,7 +115,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 4823248100967895129}
   childNodes: []
   canBeUpdated: 0
-  properties: []
   canHavePlant: 0
   canHaveMech: 0
   thisRoomsPlant: {fileID: 0}

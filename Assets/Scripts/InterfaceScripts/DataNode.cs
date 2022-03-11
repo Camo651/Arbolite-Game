@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,6 +21,8 @@ public class DataNode: MonoBehaviour
 		Unlocked,
 		Obtained
 	}
+	public enum RoomCheckState {Place, Break}
+	public string nodeCallbackID;
 	public NodeState nodeState;
 	public GameObject unlocks;
 	public TreeDisplayer treeDisplayer;
@@ -31,15 +33,11 @@ public class DataNode: MonoBehaviour
 	[HideInInspector] public List<int> containerRoomValueCheck;
 	[HideInInspector] public List<string> statCheckCallbackIDs;
 	[HideInInspector] public List<float> statCheckValues;
+	[HideInInspector] public RoomCheckState roomCheckState;
 
 	public void LateUpdate()
 	{
 		SetNodeData();
-	}
-
-	private void Awake()
-	{
-		treeDisplayer.treeManager.globalRefManager.statisticsManager.advancementLeaves.Add(this);
 	}
 
 	public bool CheckConditionsMet()
@@ -49,9 +47,14 @@ public class DataNode: MonoBehaviour
 		StatisticsManager s = treeDisplayer.treeManager.globalRefManager.statisticsManager;
 		for (int i = 0; i < containedRoomTypeCheck.Count; i++)
 		{
-			if(containedRoomTypeCheck[i] && s.GetTimesPlaced(containedRoomTypeCheck[i].GetComponent<ContainedRoom>()) >= containerRoomValueCheck[i])
+			switch (roomCheckState)
 			{
-				conditionsMet++;
+				case RoomCheckState.Place:
+					conditionsMet+= (containedRoomTypeCheck[i] && s.GetTimesPlaced(containedRoomTypeCheck[i].GetComponent<ContainedRoom>()) >= containerRoomValueCheck[i])?1:0;
+					break;
+				case RoomCheckState.Break:
+					conditionsMet+= (containedRoomTypeCheck[i] && s.GetTimesDestroyed(containedRoomTypeCheck[i].GetComponent<ContainedRoom>()) >= containerRoomValueCheck[i])?1:0;
+					break;
 			}
 		}
 		for (int i = 0; i < statCheckCallbackIDs.Count; i++)
@@ -86,7 +89,7 @@ public class DataNode: MonoBehaviour
 	/// <returns>The name of the data value of the current node</returns>
 	public string GetNodeName()
 	{
-		return treeDisplayer.treeManager.globalRefManager.langManager.GetTranslation("");
+		return treeDisplayer.treeManager.globalRefManager.langManager.GetTranslation("advnc_name_"+nodeCallbackID);
 	}
 
 	/// <summary>
@@ -95,7 +98,7 @@ public class DataNode: MonoBehaviour
 	/// <returns>The info of the data value of the current node</returns>
 	public string GetNodeInfo()
 	{
-		return treeDisplayer.treeManager.globalRefManager.langManager.GetTranslation("");
+		return treeDisplayer.treeManager.globalRefManager.langManager.GetTranslation("advnc_info_"+nodeCallbackID);
 	}
 
 	/// <summary>
@@ -139,11 +142,13 @@ public class DataNodeEditor : Editor
 		{
 			GUILayout.BeginHorizontal();
 			GUILayout.Label("Room " + i);
+			node.roomCheckState = (DataNode.RoomCheckState)EditorGUILayout.EnumPopup("",node.roomCheckState,GUILayout.MinWidth(10));
 			node.containedRoomTypeCheck[i] = (GameObject)EditorGUILayout.ObjectField(node.containedRoomTypeCheck[i], typeof(GameObject), false);
 			if(node.containerRoomValueCheck.Count <= i)
 			{
 				node.containerRoomValueCheck.Add(0);
 			}
+			GUILayout.Label("≥");
 			node.containerRoomValueCheck[i] = EditorGUILayout.IntField(node.containerRoomValueCheck[i]);
 			if (GUILayout.Button("X"))
 			{
@@ -172,6 +177,7 @@ public class DataNodeEditor : Editor
 			{
 				node.statCheckValues.Add(0f);
 			}
+			GUILayout.Label("≥");
 			node.statCheckValues[i] = EditorGUILayout.FloatField(node.statCheckValues[i]);
 			if (GUILayout.Button("X"))
 			{

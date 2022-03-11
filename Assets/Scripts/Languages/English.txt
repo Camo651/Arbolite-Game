@@ -104,6 +104,20 @@ name_container_full                 "Container Full"
 info_container_full                 ""
 name_inventory_full                 "Inventory Full"
 info_inventory_full                 "Empty it out before collecting more items"
+name_advancement_unlocked           "Advancement Unlocked!"
+info_advancement_unlocked           "#0#"
+
+
+
+< ADVANCEMENTS >
+advnc_name_root                     "Welcome to Arbolite!"
+advnc_info_root                     "Open the game for the first time"
+advnc_name_dirty                    "Dirty"
+advnc_info_dirty                    "Break a piece of dirt"
+advnc_name_rocksolid                "Rock Solid"
+advnc_info_rocksolid                "Break a piece of bedrock"
+advnc_name_needashovel              "Need a shovel?"
+advnc_info_needashovel              "Break 5 pieces of dirt"
 
 
 

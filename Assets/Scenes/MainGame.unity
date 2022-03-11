@@ -3527,62 +3527,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 131133947}
   m_CullTransparentMesh: 1
---- !u!1 &131237522
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 131237523}
-  - component: {fileID: 131237524}
-  m_Layer: 0
-  m_Name: AdvancementsRootDataNode (9)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &131237523
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 131237522}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2017422415}
-  - {fileID: 1387060651}
-  m_Father: {fileID: 296328782}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &131237524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 131237522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46fd350eb16c1de45accc0a664a6f14e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodeState: 0
-  unlocks: {fileID: 0}
-  treeDisplayer: {fileID: 718760790}
-  parentTreeNode: {fileID: 296328781}
-  childedDataNodes:
-  - {fileID: 2017422416}
-  - {fileID: 1387060652}
-  containedRoomTypeCheck: []
-  containerRoomValueCheck: 
-  statCheckCallbackIDs: []
-  statCheckValues: []
 --- !u!1 &134177053
 GameObject:
   m_ObjectHideFlags: 0
@@ -5769,58 +5713,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!1 &194276068
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 194276069}
-  - component: {fileID: 194276070}
-  m_Layer: 0
-  m_Name: AdvancementsRootDataNode (8)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &194276069
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 194276068}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 296328782}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &194276070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 194276068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46fd350eb16c1de45accc0a664a6f14e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodeState: 0
-  unlocks: {fileID: 0}
-  treeDisplayer: {fileID: 718760790}
-  parentTreeNode: {fileID: 296328781}
-  childedDataNodes: []
-  containedRoomTypeCheck: []
-  containerRoomValueCheck: 
-  statCheckCallbackIDs: []
-  statCheckValues: []
 --- !u!1 &202075003
 GameObject:
   m_ObjectHideFlags: 0
@@ -7164,58 +7056,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -10.6781, y: -10.2393}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &281530781
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 281530782}
-  - component: {fileID: 281530783}
-  m_Layer: 0
-  m_Name: AdvancementsRootDataNode (4)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &281530782
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 281530781}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 410982502}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &281530783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 281530781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46fd350eb16c1de45accc0a664a6f14e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodeState: 0
-  unlocks: {fileID: 0}
-  treeDisplayer: {fileID: 718760790}
-  parentTreeNode: {fileID: 410982503}
-  childedDataNodes: []
-  containedRoomTypeCheck: []
-  containerRoomValueCheck: 
-  statCheckCallbackIDs: []
-  statCheckValues: []
 --- !u!1 &282827686
 GameObject:
   m_ObjectHideFlags: 0
@@ -8029,66 +7869,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 292435784}
   m_CullTransparentMesh: 1
---- !u!1 &296328780
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 296328782}
-  - component: {fileID: 296328781}
-  m_Layer: 0
-  m_Name: AdvancementsRootDataNode (7)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &296328781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 296328780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46fd350eb16c1de45accc0a664a6f14e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodeState: 0
-  unlocks: {fileID: 0}
-  treeDisplayer: {fileID: 718760790}
-  parentTreeNode: {fileID: 2094748510}
-  childedDataNodes:
-  - {fileID: 194276070}
-  - {fileID: 131237524}
-  - {fileID: 306242777}
-  - {fileID: 1461553096}
-  containedRoomTypeCheck: []
-  containerRoomValueCheck: 
-  statCheckCallbackIDs: []
-  statCheckValues: []
---- !u!4 &296328782
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 296328780}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 194276069}
-  - {fileID: 131237523}
-  - {fileID: 306242776}
-  - {fileID: 1461553097}
-  m_Father: {fileID: 2094748509}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &306182574
 GameObject:
   m_ObjectHideFlags: 0
@@ -8197,58 +7977,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 306182574}
   m_CullTransparentMesh: 1
---- !u!1 &306242775
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 306242776}
-  - component: {fileID: 306242777}
-  m_Layer: 0
-  m_Name: AdvancementsRootDataNode (11)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &306242776
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 306242775}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 296328782}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &306242777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 306242775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46fd350eb16c1de45accc0a664a6f14e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodeState: 0
-  unlocks: {fileID: 0}
-  treeDisplayer: {fileID: 718760790}
-  parentTreeNode: {fileID: 296328781}
-  childedDataNodes: []
-  containedRoomTypeCheck: []
-  containerRoomValueCheck: 
-  statCheckCallbackIDs: []
-  statCheckValues: []
 --- !u!1 &307386916
 GameObject:
   m_ObjectHideFlags: 0
@@ -11165,9 +10893,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1071643262}
-  - {fileID: 2094748509}
-  - {fileID: 2031867834}
-  - {fileID: 281530782}
+  - {fileID: 1721622940}
   m_Father: {fileID: 850053222}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11183,19 +10909,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46fd350eb16c1de45accc0a664a6f14e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodeState: 0
+  nodeCallbackID: root
+  nodeState: 1
   unlocks: {fileID: 0}
   treeDisplayer: {fileID: 718760790}
   parentTreeNode: {fileID: 0}
   childedDataNodes:
   - {fileID: 1071643263}
-  - {fileID: 2094748510}
-  - {fileID: 2031867833}
-  - {fileID: 281530783}
+  - {fileID: 1721622941}
   containedRoomTypeCheck: []
   containerRoomValueCheck: 
-  statCheckCallbackIDs: []
-  statCheckValues: []
+  statCheckCallbackIDs:
+  - sessions_played
+  statCheckValues:
+  - 1
+  roomCheckState: 0
 --- !u!1 &412323067
 GameObject:
   m_ObjectHideFlags: 0
@@ -22176,58 +21904,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -4.2323, y: -2.4185}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &725051038
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 725051040}
-  - component: {fileID: 725051039}
-  m_Layer: 0
-  m_Name: AdvancementsRootDataNode (6)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &725051039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 725051038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46fd350eb16c1de45accc0a664a6f14e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodeState: 2
-  unlocks: {fileID: 0}
-  treeDisplayer: {fileID: 718760790}
-  parentTreeNode: {fileID: 2031867833}
-  childedDataNodes: []
-  containedRoomTypeCheck: []
-  containerRoomValueCheck: 
-  statCheckCallbackIDs: []
-  statCheckValues: []
---- !u!4 &725051040
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 725051038}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2031867834}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &730199336
 GameObject:
   m_ObjectHideFlags: 0
@@ -26062,7 +25738,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1476829826}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.99161106
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -31150,28 +30826,7 @@ MonoBehaviour:
   hoveredStatDisplay: {fileID: 2024166183}
   barGraphbaseColour: {r: 1, g: 1, b: 1, a: 1}
   barGraphHoverColour: {r: 0.7607843, g: 0.9607843, b: 1, a: 1}
-  advancementLeaves:
-  - {fileID: 131237524}
-  - {fileID: 194276070}
-  - {fileID: 281530783}
-  - {fileID: 296328781}
-  - {fileID: 306242777}
-  - {fileID: 410982503}
-  - {fileID: 725051039}
-  - {fileID: 1071643263}
-  - {fileID: 1372126559}
-  - {fileID: 1387060652}
-  - {fileID: 1461553096}
-  - {fileID: 1512208708}
-  - {fileID: 1610928424}
-  - {fileID: 1616295864}
-  - {fileID: 1634683022}
-  - {fileID: 1651251937}
-  - {fileID: 1684385873}
-  - {fileID: 1840034830}
-  - {fileID: 2017422416}
-  - {fileID: 2031867833}
-  - {fileID: 2094748510}
+  advancements: []
 --- !u!1 &1002548903
 GameObject:
   m_ObjectHideFlags: 0
@@ -33066,7 +32721,7 @@ GameObject:
   - component: {fileID: 1071643262}
   - component: {fileID: 1071643263}
   m_Layer: 0
-  m_Name: AdvancementsRootDataNode (2)
+  m_Name: Break dirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33082,7 +32737,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1892833938}
   m_Father: {fileID: 410982502}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -33098,15 +32754,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46fd350eb16c1de45accc0a664a6f14e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nodeCallbackID: dirty
   nodeState: 0
   unlocks: {fileID: 0}
   treeDisplayer: {fileID: 718760790}
   parentTreeNode: {fileID: 410982503}
-  childedDataNodes: []
-  containedRoomTypeCheck: []
-  containerRoomValueCheck: 
+  childedDataNodes:
+  - {fileID: 1892833937}
+  containedRoomTypeCheck:
+  - {fileID: 2167368265013687752, guid: 0a701ea1aaa4b534c8dd1a27a003006f, type: 3}
+  containerRoomValueCheck: 01000000
   statCheckCallbackIDs: []
   statCheckValues: []
+  roomCheckState: 1
 --- !u!1 &1074854794
 GameObject:
   m_ObjectHideFlags: 0
@@ -39679,58 +39339,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1367224900}
   m_CullTransparentMesh: 1
---- !u!1 &1372126558
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1372126560}
-  - component: {fileID: 1372126559}
-  m_Layer: 0
-  m_Name: AdvancementsRootDataNode (7)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1372126559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1372126558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46fd350eb16c1de45accc0a664a6f14e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodeState: 2
-  unlocks: {fileID: 0}
-  treeDisplayer: {fileID: 718760790}
-  parentTreeNode: {fileID: 1616295864}
-  childedDataNodes: []
-  containedRoomTypeCheck: []
-  containerRoomValueCheck: 
-  statCheckCallbackIDs: []
-  statCheckValues: []
---- !u!4 &1372126560
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1372126558}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1616295863}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1380286487
 GameObject:
   m_ObjectHideFlags: 0
@@ -39763,58 +39371,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1387060650
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1387060651}
-  - component: {fileID: 1387060652}
-  m_Layer: 0
-  m_Name: AdvancementsRootDataNode (11)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1387060651
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1387060650}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 131237523}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1387060652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1387060650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46fd350eb16c1de45accc0a664a6f14e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodeState: 0
-  unlocks: {fileID: 0}
-  treeDisplayer: {fileID: 718760790}
-  parentTreeNode: {fileID: 131237524}
-  childedDataNodes: []
-  containedRoomTypeCheck: []
-  containerRoomValueCheck: 
-  statCheckCallbackIDs: []
-  statCheckValues: []
 --- !u!1 &1392673652
 GameObject:
   m_ObjectHideFlags: 0
@@ -42455,58 +42011,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1459896904}
   m_CullTransparentMesh: 1
---- !u!1 &1461553095
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1461553097}
-  - component: {fileID: 1461553096}
-  m_Layer: 0
-  m_Name: AdvancementsRootDataNode (12)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1461553096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461553095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46fd350eb16c1de45accc0a664a6f14e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodeState: 0
-  unlocks: {fileID: 0}
-  treeDisplayer: {fileID: 718760790}
-  parentTreeNode: {fileID: 296328781}
-  childedDataNodes: []
-  containedRoomTypeCheck: []
-  containerRoomValueCheck: 
-  statCheckCallbackIDs: []
-  statCheckValues: []
---- !u!4 &1461553097
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461553095}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 296328782}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1469981625
 GameObject:
   m_ObjectHideFlags: 0
@@ -44968,58 +44472,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1508946503}
   m_CullTransparentMesh: 1
---- !u!1 &1512208706
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1512208707}
-  - component: {fileID: 1512208708}
-  m_Layer: 0
-  m_Name: AdvancementsRootDataNode (7)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1512208707
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1512208706}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1651251936}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1512208708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1512208706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46fd350eb16c1de45accc0a664a6f14e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodeState: 2
-  unlocks: {fileID: 0}
-  treeDisplayer: {fileID: 718760790}
-  parentTreeNode: {fileID: 1651251937}
-  childedDataNodes: []
-  containedRoomTypeCheck: []
-  containerRoomValueCheck: 
-  statCheckCallbackIDs: []
-  statCheckValues: []
 --- !u!1 &1514934033
 GameObject:
   m_ObjectHideFlags: 0
@@ -47254,58 +46706,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1608439884}
   m_CullTransparentMesh: 1
---- !u!1 &1610928423
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1610928425}
-  - component: {fileID: 1610928424}
-  m_Layer: 0
-  m_Name: AdvancementsRootDataNode (6)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1610928424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1610928423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46fd350eb16c1de45accc0a664a6f14e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodeState: 0
-  unlocks: {fileID: 0}
-  treeDisplayer: {fileID: 718760790}
-  parentTreeNode: {fileID: 2094748510}
-  childedDataNodes: []
-  containedRoomTypeCheck: []
-  containerRoomValueCheck: 
-  statCheckCallbackIDs: []
-  statCheckValues: []
---- !u!4 &1610928425
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1610928423}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2094748509}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1611112901
 GameObject:
   m_ObjectHideFlags: 0
@@ -47564,64 +46964,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1616284866}
   m_CullTransparentMesh: 1
---- !u!1 &1616295862
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1616295863}
-  - component: {fileID: 1616295864}
-  m_Layer: 0
-  m_Name: AdvancementsRootDataNode (4)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1616295863
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1616295862}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1651251936}
-  - {fileID: 1634683021}
-  - {fileID: 1372126560}
-  m_Father: {fileID: 2031867834}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1616295864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1616295862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46fd350eb16c1de45accc0a664a6f14e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodeState: 2
-  unlocks: {fileID: 0}
-  treeDisplayer: {fileID: 718760790}
-  parentTreeNode: {fileID: 2031867833}
-  childedDataNodes:
-  - {fileID: 1651251937}
-  - {fileID: 1634683022}
-  - {fileID: 1372126559}
-  containedRoomTypeCheck: []
-  containerRoomValueCheck: 
-  statCheckCallbackIDs: []
-  statCheckValues: []
 --- !u!1 &1624122693
 GameObject:
   m_ObjectHideFlags: 0
@@ -48104,60 +47446,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632168073}
   m_CullTransparentMesh: 1
---- !u!1 &1634683020
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1634683021}
-  - component: {fileID: 1634683022}
-  m_Layer: 0
-  m_Name: AdvancementsRootDataNode (6)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1634683021
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1634683020}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1684385872}
-  m_Father: {fileID: 1616295863}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1634683022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1634683020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46fd350eb16c1de45accc0a664a6f14e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodeState: 2
-  unlocks: {fileID: 0}
-  treeDisplayer: {fileID: 718760790}
-  parentTreeNode: {fileID: 1616295864}
-  childedDataNodes:
-  - {fileID: 1684385873}
-  containedRoomTypeCheck: []
-  containerRoomValueCheck: 
-  statCheckCallbackIDs: []
-  statCheckValues: []
 --- !u!1 &1641467206
 GameObject:
   m_ObjectHideFlags: 0
@@ -48707,62 +47995,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1648195557}
   m_CullTransparentMesh: 1
---- !u!1 &1651251935
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1651251936}
-  - component: {fileID: 1651251937}
-  m_Layer: 0
-  m_Name: AdvancementsRootDataNode (5)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1651251936
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1651251935}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1512208707}
-  - {fileID: 1840034829}
-  m_Father: {fileID: 1616295863}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1651251937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1651251935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46fd350eb16c1de45accc0a664a6f14e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodeState: 2
-  unlocks: {fileID: 0}
-  treeDisplayer: {fileID: 718760790}
-  parentTreeNode: {fileID: 1616295864}
-  childedDataNodes:
-  - {fileID: 1512208708}
-  - {fileID: 1840034830}
-  containedRoomTypeCheck: []
-  containerRoomValueCheck: 
-  statCheckCallbackIDs: []
-  statCheckValues: []
 --- !u!1 &1656072667
 GameObject:
   m_ObjectHideFlags: 0
@@ -49245,58 +48477,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!1 &1684385871
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1684385872}
-  - component: {fileID: 1684385873}
-  m_Layer: 0
-  m_Name: AdvancementsRootDataNode (8)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1684385872
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1684385871}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1634683021}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1684385873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1684385871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46fd350eb16c1de45accc0a664a6f14e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodeState: 2
-  unlocks: {fileID: 0}
-  treeDisplayer: {fileID: 718760790}
-  parentTreeNode: {fileID: 1634683022}
-  childedDataNodes: []
-  containedRoomTypeCheck: []
-  containerRoomValueCheck: 
-  statCheckCallbackIDs: []
-  statCheckValues: []
 --- !u!1 &1686546801
 GameObject:
   m_ObjectHideFlags: 0
@@ -50436,6 +49616,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1719162645}
   m_CullTransparentMesh: 1
+--- !u!1 &1721622939
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1721622940}
+  - component: {fileID: 1721622941}
+  m_Layer: 0
+  m_Name: Break stone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1721622940
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721622939}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 410982502}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1721622941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721622939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46fd350eb16c1de45accc0a664a6f14e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeCallbackID: rocksolid
+  nodeState: 0
+  unlocks: {fileID: 0}
+  treeDisplayer: {fileID: 718760790}
+  parentTreeNode: {fileID: 410982503}
+  childedDataNodes: []
+  containedRoomTypeCheck:
+  - {fileID: 6592185812487459200, guid: 0354336cc4feae340b128c95bf45f097, type: 3}
+  containerRoomValueCheck: 01000000
+  statCheckCallbackIDs: []
+  statCheckValues: []
+  roomCheckState: 1
 --- !u!1 &1725571056
 GameObject:
   m_ObjectHideFlags: 0
@@ -52901,58 +52136,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1830285372}
   m_CullTransparentMesh: 1
---- !u!1 &1840034828
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1840034829}
-  - component: {fileID: 1840034830}
-  m_Layer: 0
-  m_Name: AdvancementsRootDataNode (8)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1840034829
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1840034828}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1651251936}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1840034830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1840034828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46fd350eb16c1de45accc0a664a6f14e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodeState: 2
-  unlocks: {fileID: 0}
-  treeDisplayer: {fileID: 718760790}
-  parentTreeNode: {fileID: 1651251937}
-  childedDataNodes: []
-  containedRoomTypeCheck: []
-  containerRoomValueCheck: 
-  statCheckCallbackIDs: []
-  statCheckValues: []
 --- !u!1 &1845388020
 GameObject:
   m_ObjectHideFlags: 0
@@ -54138,6 +53321,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1892326579}
   m_CullTransparentMesh: 1
+--- !u!1 &1892833936
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1892833938}
+  - component: {fileID: 1892833937}
+  m_Layer: 0
+  m_Name: Break 5 dirt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1892833937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892833936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46fd350eb16c1de45accc0a664a6f14e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeCallbackID: needashovel
+  nodeState: 0
+  unlocks: {fileID: 0}
+  treeDisplayer: {fileID: 718760790}
+  parentTreeNode: {fileID: 1071643263}
+  childedDataNodes: []
+  containedRoomTypeCheck:
+  - {fileID: 2167368265013687752, guid: 0a701ea1aaa4b534c8dd1a27a003006f, type: 3}
+  containerRoomValueCheck: 05000000
+  statCheckCallbackIDs: []
+  statCheckValues: []
+  roomCheckState: 1
+--- !u!4 &1892833938
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892833936}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1071643262}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1901568830
 GameObject:
   m_ObjectHideFlags: 0
@@ -57079,58 +56317,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2015566135}
   m_CullTransparentMesh: 1
---- !u!1 &2017422414
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2017422415}
-  - component: {fileID: 2017422416}
-  m_Layer: 0
-  m_Name: AdvancementsRootDataNode (10)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2017422415
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2017422414}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 131237523}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2017422416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2017422414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46fd350eb16c1de45accc0a664a6f14e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodeState: 0
-  unlocks: {fileID: 0}
-  treeDisplayer: {fileID: 718760790}
-  parentTreeNode: {fileID: 131237524}
-  childedDataNodes: []
-  containedRoomTypeCheck: []
-  containerRoomValueCheck: 
-  statCheckCallbackIDs: []
-  statCheckValues: []
 --- !u!1 &2023062457
 GameObject:
   m_ObjectHideFlags: 0
@@ -57847,62 +57033,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2029914090}
   m_CullTransparentMesh: 1
---- !u!1 &2031867832
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2031867834}
-  - component: {fileID: 2031867833}
-  m_Layer: 0
-  m_Name: AdvancementsRootDataNode (5)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2031867833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2031867832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46fd350eb16c1de45accc0a664a6f14e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodeState: 0
-  unlocks: {fileID: 0}
-  treeDisplayer: {fileID: 718760790}
-  parentTreeNode: {fileID: 410982503}
-  childedDataNodes:
-  - {fileID: 1616295864}
-  - {fileID: 725051039}
-  containedRoomTypeCheck: []
-  containerRoomValueCheck: 
-  statCheckCallbackIDs: []
-  statCheckValues: []
---- !u!4 &2031867834
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2031867832}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1616295863}
-  - {fileID: 725051040}
-  m_Father: {fileID: 410982502}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2034558248
 GameObject:
   m_ObjectHideFlags: 0
@@ -59718,62 +58848,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textBox: {fileID: 0}
   callBackID: pause_menu_resume
---- !u!1 &2094748508
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2094748509}
-  - component: {fileID: 2094748510}
-  m_Layer: 0
-  m_Name: AdvancementsRootDataNode (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2094748509
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2094748508}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1610928425}
-  - {fileID: 296328782}
-  m_Father: {fileID: 410982502}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2094748510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2094748508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46fd350eb16c1de45accc0a664a6f14e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodeState: 1
-  unlocks: {fileID: 0}
-  treeDisplayer: {fileID: 718760790}
-  parentTreeNode: {fileID: 410982503}
-  childedDataNodes:
-  - {fileID: 1610928424}
-  - {fileID: 296328781}
-  containedRoomTypeCheck: []
-  containerRoomValueCheck: 
-  statCheckCallbackIDs: []
-  statCheckValues: []
 --- !u!1 &2100291185
 GameObject:
   m_ObjectHideFlags: 0

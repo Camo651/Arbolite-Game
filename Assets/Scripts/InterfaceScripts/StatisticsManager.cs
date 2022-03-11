@@ -14,32 +14,41 @@ public class StatisticsManager : MonoBehaviour
 	public TMPro.TextMeshProUGUI hoveredStatDisplay;
 	public Color barGraphbaseColour, barGraphHoverColour;
 	private GameObject hoveredBarGraph;
-	public Dictionary<string, int> timesRoomsPlaced;
-	public List<DataNode> advancementLeaves;
+	public Dictionary<string, int> timesRoomsPlaced = new Dictionary<string, int>();
+	public Dictionary<string, int> timesRoomsDestoyed = new Dictionary<string, int>();
+	public List<DataNode> advancements;
 
 	private void Awake()
 	{
-		GetStat("sessions_played").AddStatValue(1);
-		advancementLeaves = new List<DataNode>();
+		advancements = new List<DataNode>(FindObjectsOfType<DataNode>());
 	}
-
+	private void Start()
+	{
+		GetStat("sessions_played").AddStatValue(1);
+	}
 	public void CheckAdvancementLeaves()
 	{
-		for (int i = 0; i < advancementLeaves.Count;i++)
+		for (int i = 0; i < advancements.Count;i++)
 		{
-			if (advancementLeaves[i].nodeState == DataNode.NodeState.Unlocked && advancementLeaves[i].CheckConditionsMet())
+			if (advancements[i].nodeState == DataNode.NodeState.Unlocked && advancements[i].CheckConditionsMet())
 			{
-				advancementLeaves[i].nodeState = DataNode.NodeState.Obtained;
-				advancementLeaves.RemoveAt(i);
+				advancements[i].nodeState = DataNode.NodeState.Obtained;
+				globalRefManager.interfaceManager.EnqueueNotification("advancement_unlocked", "advancement_unlocked", new string[] { advancements[i].GetNodeName() });
+				foreach (DataNode node in advancements[i].childedDataNodes)
+				{
+					if (node.nodeState == DataNode.NodeState.Locked)
+						node.nodeState = DataNode.NodeState.Unlocked;
+				}
 			}
 		}
 	}
 
+	#region Times Placed
 	public int IncrementTimesPlaced(ContainedRoom room, int amount)
 	{
 		if (!room)
 			return 0;
-		return IncrementTimesPlaced(room.tileNameCallbackID, amount);
+		return IncrementTimesPlaced(room.tileNameInfoID, amount);
 	}
 	public int IncrementTimesPlaced(string callbackID, int amount)
 	{
@@ -59,9 +68,37 @@ public class StatisticsManager : MonoBehaviour
 	{
 		if (!room)
 			return 0;
-		return GetTimesPlaced(room.tileNameCallbackID);
+		return GetTimesPlaced(room.tileNameInfoID);
+	}
+	#endregion
+	#region Times Destroyed
+	public int IncrementTimesDestroyed(ContainedRoom room, int amount)
+	{
+		if (!room)
+			return 0;
+		return IncrementTimesDestroyed(room.tileNameInfoID, amount);
+	}
+	public int IncrementTimesDestroyed(string callbackID, int amount)
+	{
+		if (!timesRoomsDestoyed.ContainsKey(callbackID))
+			timesRoomsDestoyed.Add(callbackID, 0);
+		timesRoomsDestoyed[callbackID] += amount;
+		return timesRoomsDestoyed[callbackID];
 	}
 
+	public int GetTimesDestroyed(string callbackID)
+	{
+		if (timesRoomsDestoyed.ContainsKey(callbackID))
+			return timesRoomsDestoyed[callbackID];
+		return 0;
+	}
+	public int GetTimesDestroyed(ContainedRoom room)
+	{
+		if (!room)
+			return 0;
+		return GetTimesDestroyed(room.tileNameInfoID);
+	}
+	#endregion
 	public void SetBarGraphInit()
 	{
 		SetGraph("days_played");
@@ -209,6 +246,8 @@ public class StatTrack
 		if (history.Count == 0)
 			history.Add(value);
 		history[history.Count - 1] = value;
+
+		statMan.StartCoroutine(StatCheckDelay());
 	}
 
 	/// <summary>
@@ -230,5 +269,11 @@ public class StatTrack
 		{
 			history.RemoveAt(0);
 		}
+	}
+
+	private IEnumerator StatCheckDelay()
+	{
+		yield return new WaitForEndOfFrame();
+		statMan.CheckAdvancementLeaves();
 	}
 }
