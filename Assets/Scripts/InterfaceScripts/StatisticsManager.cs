@@ -27,7 +27,7 @@ public class StatisticsManager : MonoBehaviour
 	{
 		for (int i = 0; i < advancementLeaves.Count;i++)
 		{
-			if (advancementLeaves[i].CheckConditionsMet())
+			if (advancementLeaves[i].nodeState == DataNode.NodeState.Unlocked && advancementLeaves[i].CheckConditionsMet())
 			{
 				advancementLeaves[i].nodeState = DataNode.NodeState.Obtained;
 				advancementLeaves.RemoveAt(i);
