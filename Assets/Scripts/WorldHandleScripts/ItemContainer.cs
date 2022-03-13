@@ -72,7 +72,7 @@ public class ItemContainer : MonoBehaviour
 	{
 		itemsInContainer.Remove(item);
 		itemManager.allItem.Remove(item);
-		Destroy(item.gameObject);
+		item.itemExists = false;
 	}
 
 	/// <summary>

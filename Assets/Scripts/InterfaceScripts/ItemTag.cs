@@ -16,7 +16,7 @@ public class ItemTag : MonoBehaviour
 	/// </summary>
 	public void OnButtonPress()
 	{
-		if(itemInfo)
+		if(itemInfo != null)
 			displayer.HighlightItem(itemInfo);
 	}
 }

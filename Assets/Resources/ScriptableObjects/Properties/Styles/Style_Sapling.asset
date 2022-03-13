@@ -22,6 +22,8 @@ MonoBehaviour:
   AGE_GrowthScale: 0
   AGE_HasLeaves: 0
   AGE_ColorTint: 0
+  GENERAL_ItemDropMultiplier: 1
+  QUALITY_itemQuality: 0
   GENERAL_PlantParts:
   - {fileID: 3541636560401482161, guid: f380626a1fa7efa4e8f244a9142ff9d4, type: 3}
   - {fileID: 3437349399860069259, guid: bd8555215ab1192468d01e5fc694f8f4, type: 3}

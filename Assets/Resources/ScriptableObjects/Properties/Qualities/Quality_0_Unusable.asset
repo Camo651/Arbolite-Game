@@ -10,19 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23b9abb2fa628cd48b23a15f5b94ca2f, type: 3}
-  m_Name: Age_4
+  m_Name: Quality_0_Unusable
   m_EditorClassIdentifier: 
-  callbackID: age4
-  propertyType: 6
+  callbackID: quality0
+  propertyType: 8
   SPECIES_BaseColour: {r: 0, g: 0, b: 0, a: 0}
   SPECIES_LeafColour: {r: 0, g: 0, b: 0, a: 0}
   SPECIES_GrowthStageChance: 0
   STYLE_GrowthStageModifier: 0
-  AGE_GrowthStageModifier: 0.222
-  AGE_GrowthScale: 0.861
-  AGE_HasLeaves: 1
-  AGE_ColorTint: 0.046
+  AGE_GrowthStageModifier: 0
+  AGE_GrowthScale: 0
+  AGE_HasLeaves: 0
+  AGE_ColorTint: 0
+  GENERAL_ItemDropMultiplier: 0
+  QUALITY_itemQuality: 0
   GENERAL_PlantParts: []
   RARITY_Weight: 0
-  AGE_Value: 4
+  AGE_Value: 0
   GENERAL_Properties: []

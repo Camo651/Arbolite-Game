@@ -16,6 +16,8 @@ public class SO_Property : ScriptableObject
 	[HideInInspector] public float AGE_GrowthScale;
 	[HideInInspector] public bool AGE_HasLeaves;
 	[HideInInspector] public float AGE_ColorTint;
+	[HideInInspector] public float GENERAL_ItemDropMultiplier;
+	[HideInInspector] public int QUALITY_itemQuality;
 	public List<GameObject> GENERAL_PlantParts;
 	[HideInInspector] public float RARITY_Weight;
 	[HideInInspector] public int AGE_Value;

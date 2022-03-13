@@ -18,8 +18,6 @@ public class PlantObject : MonoBehaviour
 	SO_Property rarityType;
 	SO_Property ageType;
 	public bool canBeHarvestedWithoutDestroy;
-	public List<Item> allCurrentResources;
-	public List<Item> renewableResources;
 
 	/// <summary>
 	/// Generates the plants parts
@@ -114,13 +112,17 @@ public class PlantObject : MonoBehaviour
 	/// <returns>A list of items</returns>
 	public List<Item> GetPlantResources(bool onlyRenewable)
 	{
-		if (onlyRenewable)
+		List<Item> items = new List<Item>();
+
+		//get values
+		//loop and make items
+		//add to list
+
+		if (!onlyRenewable)
 		{
-			return renewableResources;
+			//do same as ^^ but for non renewables
 		}
-		else
-		{
-			return allCurrentResources;
-		}
+
+		return items;
 	}
 }

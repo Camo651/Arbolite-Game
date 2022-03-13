@@ -74,7 +74,7 @@ public class BlueprintManager : MonoBehaviour
 	/// </summary>
 	public void FillBlueprint()
 	{
-		if (selectedBlueprint && selectedItemToFillBlueprintWith)
+		if (selectedBlueprint && selectedItemToFillBlueprintWith != null)
 		{
 			Blueprint a = Instantiate(selectedBlueprint, buildingGridLayout.transform).GetComponent<Blueprint>();
 			filledBlueprints.Add(a);
@@ -125,7 +125,7 @@ public class BlueprintManager : MonoBehaviour
 			List<Item> validResources = new List<Item>();
 			foreach (Item item in globalRefManager.itemManager.allItem)
 			{
-				if (item && item.isValidBuildingMaterial)
+				if (item != null && item.itemExists && item.isValidBuildingMaterial)
 				{
 					validResources.Add(item);
 				}
