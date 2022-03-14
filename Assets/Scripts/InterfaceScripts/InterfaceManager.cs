@@ -178,10 +178,7 @@ public class InterfaceManager : MonoBehaviour
 			ThrowErrorMessage("interface_not_found_error_message");
 			return;
 		}
-		if(activeUserInterface!=null)
-			activeUserInterface.gameObject.SetActive(false);
 		activeUserInterface = UI;
-		activeUserInterface.gameObject.SetActive(true);
 		SetInterfaceLanguage(UI);
 		SetBackgroundBlur(UI.interfaceType == UserInterface.InterfaceType.FullScreen || UI.interfaceType == UserInterface.InterfaceType.Modal);
 		globalRefManager.baseManager.gameIsActivelyFrozen = UI.interfaceType == UserInterface.InterfaceType.FullScreen || UI.interfaceType == UserInterface.InterfaceType.Modal;
@@ -198,6 +195,35 @@ public class InterfaceManager : MonoBehaviour
 			default:
 				globalRefManager.audioManager.Play(AudioManager.AudioClipType.Interface, "toggle_ui");
 				break;
+		}
+		StartCoroutine(TweenInterfaceAlpha(activeUserInterface, true, 25f));
+	}
+
+	/// <summary>
+	/// Fade the alpha of a menu
+	/// </summary>
+	/// <param name="group">The group to affect</param>
+	/// <param name="state">The end state of the tween</param>
+	/// <returns></returns>
+	public IEnumerator TweenInterfaceAlpha(UserInterface u, bool state, float time)
+	{
+		if (u)
+		{
+			if(state)
+				u.gameObject.SetActive(true);
+			CanvasGroup group = u.GetComponent<CanvasGroup>();
+			if (group)
+			{
+				group.alpha = state ? 0 : 1;
+				for (int i = 0; i < time; i++)
+				{
+					yield return null;
+					group.alpha = Mathf.Clamp01(state?(i / time):((time-i)/time));
+				}
+				group.alpha = state ? 1 : 0;
+			}
+			if(!state)
+				u.gameObject.SetActive(false);
 		}
 	}
 
@@ -342,8 +368,7 @@ public class InterfaceManager : MonoBehaviour
 	{
 		SetBackgroundBlur(false);
 		globalRefManager.baseManager.gameIsActivelyFrozen = false;
-		if(activeUserInterface)
-			activeUserInterface.gameObject.SetActive(false);
+		StartCoroutine(TweenInterfaceAlpha(activeUserInterface, false, 25f));
 		activeUserInterface = null;
 		userIsHoveredOnInterfaceElement = false;
 		GetUserInterface("Home_Button").gameObject.SetActive(true);

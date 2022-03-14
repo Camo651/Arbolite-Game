@@ -167,8 +167,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -11.7843, y: 10.4549}
-  m_SizeDelta: {x: -31.4731, y: -32.6243}
+  m_AnchoredPosition: {x: -10.0923, y: 10.454901}
+  m_SizeDelta: {x: -34.8571, y: -32.6243}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8387734144116382419
 CanvasRenderer:
@@ -382,6 +382,7 @@ MonoBehaviour:
   mainInterfaceIcon: {fileID: 1410709143634031191}
   saveNotification: 0
   tabs: []
+  tabMenuButtons: []
   selectedTabIndex: 0
   isHovered: 0
   interfaceKeys: []
