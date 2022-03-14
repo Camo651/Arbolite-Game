@@ -172,6 +172,7 @@ public class InterfaceManager : MonoBehaviour
 	/// <param name="UiName">The callback ID of the UI element in the scene</param>
 	public void SetMajorInterface(string UiName)
 	{
+		CloseAllInterfacesNoTween();
 		UserInterface UI = GetUserInterface(UiName);
 		if(UI == errorModal)
 		{
@@ -375,6 +376,20 @@ public class InterfaceManager : MonoBehaviour
 		inspectorItemHighlight.CloseHighlight();
 		inspectorPropertyHighlight.CloseHighlight();
 	}
+
+	public void CloseAllInterfacesNoTween()
+	{
+		SetBackgroundBlur(false);
+		globalRefManager.baseManager.gameIsActivelyFrozen = false;
+		if(activeUserInterface)
+			activeUserInterface.gameObject.SetActive(false);
+		activeUserInterface = null;
+		userIsHoveredOnInterfaceElement = false;
+		GetUserInterface("Home_Button").gameObject.SetActive(true);
+		inspectorItemHighlight.CloseHighlight();
+		inspectorPropertyHighlight.CloseHighlight();
+	}
+
 
 	//finds all the text elements in an interface and translates them
 	public void SetInterfaceLanguage(UserInterface ui)
