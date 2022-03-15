@@ -25,6 +25,7 @@ public class PropertyEditor : Editor
 				p.SPECIES_BaseColour = EditorGUILayout.ColorField("Base Colour", p.SPECIES_BaseColour + new Color(0, 0, 0, 1f));
 				p.SPECIES_LeafColour = EditorGUILayout.ColorField("Leaf Colour", p.SPECIES_LeafColour + new Color(0, 0, 0, 1f));
 				p.SPECIES_GrowthStageChance = EditorGUILayout.Slider("Chance to grow each random tick", p.SPECIES_GrowthStageChance, 0f, 1f);
+				p.GENERAL_ItemDropMultiplier = EditorGUILayout.FloatField("Item drop multiplier", p.GENERAL_ItemDropMultiplier);
 				break;
 
 			case PropertyManager.PropertyType.Rarity:
@@ -44,6 +45,9 @@ public class PropertyEditor : Editor
 				break;
 			case PropertyManager.PropertyType.Quality:
 				p.QUALITY_itemQuality = EditorGUILayout.IntField("Item Quality", p.QUALITY_itemQuality);
+				break;
+			case PropertyManager.PropertyType.Resource:
+				p.RES_IsValidBuildingMaterial = EditorGUILayout.Toggle("Is Valid Building Material", p.RES_IsValidBuildingMaterial);
 				break;
 		}
 		GUILayout.EndVertical();

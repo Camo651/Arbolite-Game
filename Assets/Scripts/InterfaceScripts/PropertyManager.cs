@@ -94,11 +94,11 @@ public class PropertyManager : MonoBehaviour
 	/// Get a property scriptable from the lookup
 	/// </summary>
 	/// <param name="type">The type of property</param>
-	/// <param name="indexID">The callback ID if the property</param>
+	/// <param name="callbackID">The callback ID if the property</param>
 	/// <returns>The property scriptable, given it exists</returns>
-	public SO_Property GetProperty(PropertyType type, string indexID)
+	public SO_Property GetProperty(PropertyType type, string callbackID)
 	{
-		return GetProperty("prop_" + type + "_" + indexID);
+		return GetProperty("prop_" + type + "_" + callbackID);
 	}
 
 	/// <summary>

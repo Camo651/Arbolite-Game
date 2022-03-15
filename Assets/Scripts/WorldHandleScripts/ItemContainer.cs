@@ -35,6 +35,8 @@ public class ItemContainer : MonoBehaviour
 
 		if (!itemManager.allItem.Contains(item))
 			itemManager.allItem.Add(item);
+
+		item.itemContainer = this;
 	}
 
 	/// <summary>
@@ -62,6 +64,7 @@ public class ItemContainer : MonoBehaviour
 		itemsInContainer.Add(item);
 		if (!itemManager.allItem.Contains(item))
 			itemManager.allItem.Add(item);
+		item.itemContainer = this;
 	}
 
 	/// <summary>

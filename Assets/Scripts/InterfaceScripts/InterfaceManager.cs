@@ -182,24 +182,10 @@ public class InterfaceManager : MonoBehaviour
 			return;
 		}
 		activeUserInterface = UI;
-		SetInterfaceLanguage(UI);
-		SetBackgroundBlur(UI.interfaceType == UserInterface.InterfaceType.FullScreen || UI.interfaceType == UserInterface.InterfaceType.Modal);
 		globalRefManager.baseManager.gameIsActivelyFrozen = UI.interfaceType == UserInterface.InterfaceType.FullScreen || UI.interfaceType == UserInterface.InterfaceType.Modal;
 		GetUserInterface("Home_Button").gameObject.SetActive(false);
-
-		switch (UiName)
-		{
-			case "Pause_Menu":
-				globalRefManager.audioManager.Play(AudioManager.AudioClipType.Interface, "toggle_pause");
-				break;
-			case "Home":
-				activeUserInterface.SetInterfaceTab(0);
-				break;
-			default:
-				globalRefManager.audioManager.Play(AudioManager.AudioClipType.Interface, "toggle_ui");
-				break;
-		}
-		StartCoroutine(TweenInterfaceAlpha(activeUserInterface, true, 25f));
+		bool blur = UI.interfaceType == UserInterface.InterfaceType.FullScreen || UI.interfaceType == UserInterface.InterfaceType.Modal;
+		StartCoroutine(TweenInterfaceAlpha(activeUserInterface, true, 25f, blur));
 	}
 
 	/// <summary>
@@ -208,12 +194,30 @@ public class InterfaceManager : MonoBehaviour
 	/// <param name="group">The group to affect</param>
 	/// <param name="state">The end state of the tween</param>
 	/// <returns></returns>
-	public IEnumerator TweenInterfaceAlpha(UserInterface u, bool state, float time)
+	public IEnumerator TweenInterfaceAlpha(UserInterface u, bool state, float time, bool blurBackground)
 	{
 		if (u)
 		{
-			if(state)
+			if (state)
+			{
 				u.gameObject.SetActive(true);
+				if (blurBackground)
+					SetBackgroundBlur(true);
+				SetInterfaceLanguage(u);
+				switch (u.interfaceCallbackID)
+				{
+					case "Pause_Menu":
+						globalRefManager.audioManager.Play(AudioManager.AudioClipType.Interface, "toggle_pause");
+						break;
+					case "Home":
+						activeUserInterface.SetInterfaceTab(0);
+						SetHomepageTabValues(0);
+						break;
+					default:
+						globalRefManager.audioManager.Play(AudioManager.AudioClipType.Interface, "toggle_ui");
+						break;
+				}
+			}
 			CanvasGroup group = u.GetComponent<CanvasGroup>();
 			if (group)
 			{
@@ -226,8 +230,11 @@ public class InterfaceManager : MonoBehaviour
 				}
 				group.alpha = state ? 1 : 0;
 			}
-			if(!state)
+			if (!state)
+			{
 				u.gameObject.SetActive(false);
+				SetBackgroundBlur(false);
+			}
 		}
 	}
 
@@ -367,28 +374,38 @@ public class InterfaceManager : MonoBehaviour
 		}
 	}
 
-	//close the currently open interface
+	/// <summary>
+	/// Closes the currently open interface menu and tweens it out
+	/// </summary>
 	public void CloseAllInterfaces()
 	{
-		SetBackgroundBlur(false);
 		globalRefManager.baseManager.gameIsActivelyFrozen = false;
-		StartCoroutine(TweenInterfaceAlpha(activeUserInterface, false, 25f));
+		StartCoroutine(TweenInterfaceAlpha(activeUserInterface, false, 25f, false));
 		activeUserInterface = null;
 		userIsHoveredOnInterfaceElement = false;
 		GetUserInterface("Home_Button").gameObject.SetActive(true);
-		inspectorItemHighlight.CloseHighlight();
-		inspectorPropertyHighlight.CloseHighlight();
+		CloseInspectorHighlights();
 	}
 
+	/// <summary>
+	/// Immidiately closes the currently hovered interface with no tween or animation
+	/// </summary>
 	public void CloseAllInterfacesNoTween()
 	{
-		SetBackgroundBlur(false);
 		globalRefManager.baseManager.gameIsActivelyFrozen = false;
 		if(activeUserInterface)
 			activeUserInterface.gameObject.SetActive(false);
 		activeUserInterface = null;
 		userIsHoveredOnInterfaceElement = false;
 		GetUserInterface("Home_Button").gameObject.SetActive(true);
+		CloseInspectorHighlights();
+	}
+
+	/// <summary>
+	/// Closes the inspector's highlight tabs
+	/// </summary>
+	public void CloseInspectorHighlights()
+	{
 		inspectorItemHighlight.CloseHighlight();
 		inspectorPropertyHighlight.CloseHighlight();
 	}
@@ -489,9 +506,8 @@ public class InterfaceManager : MonoBehaviour
 	public void EnqueueNotification(string _type, string customCallbackIDForData, string[] customData)
 	{
 		SO_NotificationType type = GetNotificationType(_type);
-		GameObject note = Instantiate(notificationInterfacePrefab);
+		GameObject note = Instantiate(notificationInterfacePrefab, notificationHolder.transform);
 		note.SetActive(true);
-		note.transform.SetParent(notificationHolder.transform);
 		UserInterface ui = note.GetComponent<UserInterface>();
 		SetInterfaceLanguage(ui, type, customCallbackIDForData, customData);
 		ui.mainInterfaceIcon.sprite = type.notificationIcon;
@@ -508,8 +524,7 @@ public class InterfaceManager : MonoBehaviour
 	public void DequeueNotification(UserInterface ui)
 	{
 		activeNotificationQueue.Remove(ui);
-		if(ui)
-			Destroy(ui.gameObject);
+		StartCoroutine(TweenInterfaceAlpha(ui, false, 15f, false));
 	}
 
 	/// <summary>

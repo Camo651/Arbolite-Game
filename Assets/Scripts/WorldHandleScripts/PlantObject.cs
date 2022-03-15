@@ -112,17 +112,53 @@ public class PlantObject : MonoBehaviour
 	/// <returns>A list of items</returns>
 	public List<Item> GetPlantResources(bool onlyRenewable)
 	{
+		PropertyManager pman = roomTile.roomContainer.globalRefManager.propertyManager;
 		List<Item> items = new List<Item>();
+		float multiplier = ageType.GENERAL_ItemDropMultiplier * speciesType.GENERAL_ItemDropMultiplier * styleType.GENERAL_ItemDropMultiplier;
+		float baseCount = multiplier;
+		float leafCount = leafParts.Count * multiplier;
+		float fruitCount = 0;
 
-		//get values
-		//loop and make items
-		//add to list
-
-		if (!onlyRenewable)
+		if (onlyRenewable)
 		{
-			//do same as ^^ but for non renewables
+			for (int i = 0; i < leafCount / 2f; i++)
+			{
+				Item item = new Item(null);
+				List<SO_Property> itemProps = new List<SO_Property>() { pman.GetProperty(PropertyManager.PropertyType.Resource, "leaves"), speciesType, ageType.GENERAL_Properties[0] };
+				item.SetItemProperties(itemProps);
+				items.Add(item);
+			}
+			for (int i = 0; i < fruitCount; i++)
+			{
+				Item item = new Item(null);
+				item.SetItemProperties(null);
+				items.Add(item);
+			}
 		}
-
+		else
+		{
+			for (int i = 0; i < baseCount; i++)
+			{
+				Item item = new Item(null);
+				List<SO_Property> itemProps = new List<SO_Property>() { pman.GetProperty(PropertyManager.PropertyType.Resource, "log"),speciesType,ageType.GENERAL_Properties[0] };
+				item.SetItemProperties(itemProps);
+				item.isValidBuildingMaterial = true;
+				items.Add(item);
+			}
+			for (int i = 0; i < leafCount; i++)
+			{
+				Item item = new Item(null);
+				List<SO_Property> itemProps = new List<SO_Property>() { pman.GetProperty(PropertyManager.PropertyType.Resource, "leaves"), speciesType, ageType.GENERAL_Properties[0] };
+				item.SetItemProperties(itemProps);
+				items.Add(item);
+			}
+			for (int i = 0; i < fruitCount; i++)
+			{
+				Item item = new Item(null);
+				item.SetItemProperties(null);
+				items.Add(item);
+			}
+		}
 		return items;
 	}
 }

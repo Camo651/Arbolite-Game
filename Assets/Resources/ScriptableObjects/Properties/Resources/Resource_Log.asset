@@ -22,7 +22,10 @@ MonoBehaviour:
   AGE_GrowthScale: 0
   AGE_HasLeaves: 0
   AGE_ColorTint: 0
+  GENERAL_ItemDropMultiplier: 0
+  QUALITY_itemQuality: 0
   GENERAL_PlantParts: []
   RARITY_Weight: 0
   AGE_Value: 0
+  RES_IsValidBuildingMaterial: 1
   GENERAL_Properties: []

@@ -39,7 +39,6 @@ public class ItemDisplayer : MonoBehaviour
 			tag.displayer = this;
 			tag.itemInfo = items[i];
 		}
-		System.GC.Collect();
 		if(validSelectionmButton)
 			validSelectionmButton.SetActive(false);
 		if(itemCountBox)

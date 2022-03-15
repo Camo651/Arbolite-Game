@@ -20,6 +20,7 @@ public class AestheticAnimator : MonoBehaviour
 	[HideInInspector] public GlobalRefManager globalRefManager;
 	public AestAnimType animType;
 	public GameObject animatedComponent;
+	public Rotor conditionalRotor;
 	[Space(10)]
 	[HideInInspector] public float spinningSpeed;
 	[HideInInspector] public float slidingSpeed, slidingDistance;
@@ -34,6 +35,8 @@ public class AestheticAnimator : MonoBehaviour
 	private void FixedUpdate()
 	{
 		if (!animatedComponent || globalRefManager.baseManager.gameIsActivelyFrozen)
+			return;
+		if (conditionalRotor && !conditionalRotor.GetRotorActivity())
 			return;
 
 		switch (animType)

@@ -17,6 +17,8 @@ public class Rotor : MonoBehaviour
 
 	public RotorType rotorType;
 	public float energyDelta;
+	public bool rotorIsEnabled;
+	public bool systemHasSufficientEnergy;
 	public float totalSystemEnergy;
 	public List<Rotor> allRotorsInSystem;
 	public RoomTile roomTile;
@@ -45,6 +47,7 @@ public class Rotor : MonoBehaviour
 		{
 			rotor.totalSystemEnergy = totalEnergy;
 			rotor.allRotorsInSystem = allRotorsInSystem;
+			systemHasSufficientEnergy = totalEnergy >= 0;
 		}
 
 	}
@@ -67,7 +70,17 @@ public class Rotor : MonoBehaviour
 		}
 	}
 
+	public bool GetRotorActivity()
+	{
+		if (rotorType == RotorType.Machine && !systemHasSufficientEnergy)
+			return false;
+		return rotorIsEnabled;
+	}
 
+	/// <summary>
+	/// Get a list of all the items that this rotor produces
+	/// </summary>
+	/// <returns></returns>
 	public string GetRotorProductionItems()
 	{
 		string a = "";

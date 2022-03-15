@@ -150,7 +150,7 @@ public class BlueprintManager : MonoBehaviour
 		{
 			filledBlueprints.Remove(selectedBlueprint);
 			Destroy(selectedBlueprint.gameObject);
+			selectedBlueprint = null;
 		}
-		selectedBlueprint = null;
 	}
 }

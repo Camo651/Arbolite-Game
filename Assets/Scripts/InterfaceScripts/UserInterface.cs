@@ -46,6 +46,7 @@ public class UserInterface : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 	/// <param name="index">An index that exists in the array. -1 to close it</param>
 	public void SetInterfaceTab(int index)
 	{
+		interfaceManager.CloseInspectorHighlights();
 		if(index == -1)
 		{
 			interfaceManager.CloseAllInterfaces();

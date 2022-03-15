@@ -1009,6 +1009,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotorType: 1
   energyDelta: 50
+  rotorIsEnabled: 0
+  systemHasSufficientEnergy: 0
   totalSystemEnergy: 0
   allRotorsInSystem: []
   roomTile: {fileID: 0}
@@ -2290,6 +2292,7 @@ MonoBehaviour:
   globalRefManager: {fileID: 0}
   animType: 1
   animatedComponent: {fileID: 274604713113918368}
+  conditionalRotor: {fileID: 3610489465004249400}
   spinningSpeed: -0.75
   slidingSpeed: 0
   slidingDistance: 0

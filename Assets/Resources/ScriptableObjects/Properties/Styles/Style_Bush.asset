@@ -30,4 +30,5 @@ MonoBehaviour:
   - {fileID: 6375998864392980201, guid: 64ce815c1f385f3428c031ab8da4159b, type: 3}
   RARITY_Weight: 0
   AGE_Value: 0
+  RES_IsValidBuildingMaterial: 0
   GENERAL_Properties: []

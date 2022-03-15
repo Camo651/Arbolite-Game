@@ -21,6 +21,7 @@ public class SO_Property : ScriptableObject
 	public List<GameObject> GENERAL_PlantParts;
 	[HideInInspector] public float RARITY_Weight;
 	[HideInInspector] public int AGE_Value;
+	[HideInInspector] public bool RES_IsValidBuildingMaterial;
 	public List<SO_Property> GENERAL_Properties;
 
 	public List<PlantPart> GetPlantParts()
