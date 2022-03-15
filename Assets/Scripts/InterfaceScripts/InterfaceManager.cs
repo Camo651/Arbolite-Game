@@ -172,6 +172,8 @@ public class InterfaceManager : MonoBehaviour
 	/// <param name="UiName">The callback ID of the UI element in the scene</param>
 	public void SetMajorInterface(string UiName)
 	{
+		if (activeUserInterface && activeUserInterface.interfaceCallbackID == UiName)
+			return;
 		CloseAllInterfacesNoTween();
 		UserInterface UI = GetUserInterface(UiName);
 		if(UI == errorModal)
@@ -215,10 +217,11 @@ public class InterfaceManager : MonoBehaviour
 			CanvasGroup group = u.GetComponent<CanvasGroup>();
 			if (group)
 			{
+				WaitForSeconds waitForSeconds = new WaitForSeconds(.005f);
 				group.alpha = state ? 0 : 1;
 				for (int i = 0; i < time; i++)
 				{
-					yield return null;
+					yield return waitForSeconds;
 					group.alpha = Mathf.Clamp01(state?(i / time):((time-i)/time));
 				}
 				group.alpha = state ? 1 : 0;
