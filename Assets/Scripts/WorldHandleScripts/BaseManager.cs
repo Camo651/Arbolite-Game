@@ -322,6 +322,10 @@ public class BaseManager : MonoBehaviour
 		foreach(RoomTile rt in room.containedRooms)
 		{
 			roomIndexingVectors[rt.GetIndexdTilePosition().y][rt.GetIndexdTilePosition().x] = null;
+			if (rt.thisRoomsPlant)
+			{
+				globalRefManager.plantManager.HarvestPlant(rt.thisRoomsPlant, true);
+			}
 		}
 		foreach(RoomTile rt in room.containedRooms)
 		{

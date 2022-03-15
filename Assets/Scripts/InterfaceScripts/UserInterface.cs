@@ -145,8 +145,6 @@ public class UserInterface : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 	public IEnumerator DelayToClose(int seconds)
 	{
 		yield return new WaitForSeconds(seconds);
-		while (interfaceManager.globalRefManager.baseManager.gameIsActivelyFrozen)
-			yield return null;
 		if (isHovered)
 			interfaceManager.SetInterfaceHoverState(false);
 		interfaceManager.DequeueNotification(this);

@@ -28787,7 +28787,7 @@ GameObject:
   - component: {fileID: 947645187}
   - component: {fileID: 947645186}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: CollectPlantButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28888,7 +28888,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 998491157}
         m_TargetAssemblyTypeName: PlantManager, Assembly-CSharp
-        m_MethodName: HarvestPlant
+        m_MethodName: HarvestSelectedPlant
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -34626,7 +34626,7 @@ GameObject:
   - component: {fileID: 1173641443}
   - component: {fileID: 1173641442}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: DestroyPlantButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34727,7 +34727,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 998491157}
         m_TargetAssemblyTypeName: PlantManager, Assembly-CSharp
-        m_MethodName: HarvestPlant
+        m_MethodName: HarvestSelectedPlant
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

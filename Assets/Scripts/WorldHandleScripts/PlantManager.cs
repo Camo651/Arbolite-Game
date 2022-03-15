@@ -155,13 +155,18 @@ public class PlantManager : MonoBehaviour
 		}
 	}
 
+	public void HarvestSelectedPlant(bool fullyDestroy)
+	{
+		PlantObject toHarvest = globalRefManager.baseManager.editModePermSelectedRoomTile.thisRoomsPlant;
+		HarvestPlant(toHarvest, fullyDestroy);
+	}
+
 	/// <summary>
 	/// Harvests the currently selected plant object
 	/// </summary>
 	/// <param name="fullyDestroy">Should the plant attempt to save the base plant and harvest or simply remove it all together?</param>
-	public void HarvestPlant(bool fullyDestroy)
+	public void HarvestPlant(PlantObject toHarvest, bool fullyDestroy)
 	{
-		PlantObject toHarvest = globalRefManager.baseManager.editModePermSelectedRoomTile.thisRoomsPlant;
 		if (toHarvest)
 		{
 			List<Item> resourceGain = toHarvest.GetPlantResources(!fullyDestroy && toHarvest.canBeHarvestedWithoutDestroy);
@@ -169,7 +174,7 @@ public class PlantManager : MonoBehaviour
 			{
 				globalRefManager.itemManager.mainInventory.AddItemsToContainer(resourceGain);
 
-				if (toHarvest.canBeHarvestedWithoutDestroy)
+				if (toHarvest.canBeHarvestedWithoutDestroy && !fullyDestroy)
 				{
 					toHarvest.HarvestWithoutDestroy();
 				}

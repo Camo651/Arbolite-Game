@@ -27,5 +27,6 @@ MonoBehaviour:
   GENERAL_PlantParts: []
   RARITY_Weight: 0
   AGE_Value: 5
+  RES_IsValidBuildingMaterial: 0
   GENERAL_Properties:
   - {fileID: 11400000, guid: 0158c910ca07620449a16481bae6e125, type: 2}
