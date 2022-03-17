@@ -320,7 +320,7 @@ public class InterfaceManager : MonoBehaviour
 		if (globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.rotorRoom)
 		{
 			activeUserInterface.GetTabButton(2).gameObject.SetActive(true);
-			globalRefManager.propertyManager.GetPropertyDisplayer("MechInspector").DisplayProperties(globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.rotorRoom.thisRoomsRotor != null ? globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.rotorRoom.thisRoomsRotor.rotorProperties : null);
+			globalRefManager.propertyManager.GetPropertyDisplayer("MechInspector").DisplayProperties(globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.rotorRoom.thisRoomsRotor != null ? globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.rotorRoom.thisRoomsRotor.GetRotorProperties() : null);
 		}
 		else
 		{
@@ -364,8 +364,9 @@ public class InterfaceManager : MonoBehaviour
 																							"produce" :
 																							"carry")) + " : " +
 																							(sel.rotorRoom.thisRoomsRotor.rotorType == Rotor.RotorType.Driveshaft ? sel.rotorRoom.thisRoomsRotor.totalSystemEnergy : Mathf.Abs(sel.rotorRoom.thisRoomsRotor.energyDelta));
-				sub += "\n - " + globalRefManager.langManager.GetTranslation("mechinfo_state") + " : " + globalRefManager.langManager.GetTranslation("name_prop_machinestate_" + ("" + sel.rotorRoom.thisRoomsRotor.GetRotorState().callbackID.ToLower()));
+				sub += "\n - " + globalRefManager.langManager.GetTranslation("mechinfo_state") + " : " + globalRefManager.langManager.GetTranslation("name_prop_machinestate_" + ("" + sel.rotorRoom.thisRoomsRotor.rotorStateProperty.callbackID.ToLower()));
 				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabSubtitle.text = sub;
+				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabToggle.SetIsOnWithoutNotify(globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.rotorRoom.thisRoomsRotor.rotorIsEnabled);
 					//state + state prop
 				break;
 			case 3:
@@ -556,6 +557,14 @@ public class InterfaceManager : MonoBehaviour
 				break;
 			case 3://market
 				break;
+		}
+	}
+
+	public void ToggleSelectedRotorState(Toggle t)
+	{
+		if (globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.rotorRoom)
+		{
+			globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.rotorRoom.thisRoomsRotor.ToggleRotorState(t);
 		}
 	}
 }

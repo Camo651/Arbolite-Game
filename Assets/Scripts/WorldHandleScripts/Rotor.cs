@@ -22,7 +22,8 @@ public class Rotor : MonoBehaviour
 	public float totalSystemEnergy;
 	public List<Rotor> allRotorsInSystem;
 	public RoomTile roomTile;
-	public List<SO_Property> rotorProperties;
+	public SO_Property rotorStateProperty;
+	public List<SO_Property> rotorProductionProperties;
 
 	/// <summary>
 	/// Updates all the energy values in the current system
@@ -84,7 +85,7 @@ public class Rotor : MonoBehaviour
 	public string GetRotorProductionItems()
 	{
 		string a = "";
-		foreach (SO_Property property in rotorProperties)
+		foreach (SO_Property property in rotorProductionProperties)
 		{
 			if (property.propertyType == PropertyManager.PropertyType.Resource)
 				a += roomTile.roomContainer.globalRefManager.langManager.GetTranslation("name_prop_resource_" + (property.callbackID.ToLower())) + ", ";
@@ -93,13 +94,31 @@ public class Rotor : MonoBehaviour
 		return a.Contains(",") ? a.Remove(a.LastIndexOf(',')) : a;
 	}
 
-	public SO_Property GetRotorState()
+	public SO_Property GetRotorStatePropType(string callbackID)
 	{
-		foreach (SO_Property property in rotorProperties)
+		return roomTile.roomContainer.globalRefManager.propertyManager.GetProperty(PropertyManager.PropertyType.MachineState, callbackID);
+	}
+
+	public void ToggleRotorState(UnityEngine.UI.Toggle toggle)
+	{
+		rotorIsEnabled = toggle.isOn;
+		SetRotorStateFromValues();
+	}
+
+	public void SetRotorStateFromValues()
+	{
+		if (!rotorIsEnabled)
 		{
-			if (property.propertyType == PropertyManager.PropertyType.MachineState)
-				return property;
+			rotorStateProperty = GetRotorStatePropType("off");
+			return;
 		}
-		return null;
+		rotorStateProperty = GetRotorStatePropType((rotorType!=RotorType.Machine || systemHasSufficientEnergy)?"working":"broken");
+	}
+	public List<SO_Property> GetRotorProperties()
+	{
+		List<SO_Property> toRet = new List<SO_Property>();
+		toRet.Add(rotorStateProperty);
+		toRet.AddRange(rotorProductionProperties);
+		return toRet;
 	}
 }

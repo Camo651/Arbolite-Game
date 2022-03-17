@@ -216,7 +216,7 @@ name_prop_machinestate_broken  "Broken"
 info_prop_machinestate_broken  "Broken"
 name_prop_machinestate_working "Working"
 info_prop_machinestate_working "Working"
-name_prop_machinestate_off     "Off"
+name_prop_machinestate_off     "Disabled"
 info_prop_machinestate_off     "Off"
 
 name_prop_quality_quality0     "Unusable"

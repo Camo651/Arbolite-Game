@@ -11,6 +11,7 @@ public class Tab : MonoBehaviour
 	public int tabIndex;
 	[Space(10)]
 	public TextMeshProUGUI tabTitle, tabSubtitle, tabDescrition;
+	public Toggle tabToggle;
 
 	/// <summary>
 	/// Enables and disabled the current tab, handles tab menu button pressing as well
