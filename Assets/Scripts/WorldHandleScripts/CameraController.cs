@@ -11,7 +11,10 @@ public class CameraController : MonoBehaviour
 	public float cameraAccelSpeed;
 	[Tooltip("Min Max")] public Vector2 cameraZoomBounds;
 	private Vector3 trueCameraPosition = Vector3.back * 10;
-	private float cameraZoomAccelereation = 0;
+	public float cameraZoomAccelereation = 0;
+	public Vector2 keyInput = Vector2.zero;
+	public float cameraRawInputAccel, camRawDeccelMult;
+	public float camZoomRawAccel;
 
 	private void Update()
 	{
@@ -22,12 +25,12 @@ public class CameraController : MonoBehaviour
 				if (globalRefManager.settingsManager.smoothCameraMovement)
 				{
 					if (Input.mouseScrollDelta.y != 0)
-						cameraZoomAccelereation = Input.mouseScrollDelta.y * (globalRefManager.settingsManager.invertScrollDirection ? 1f : -1f);
+						cameraZoomAccelereation = Mathf.Clamp(cameraZoomAccelereation + (Input.mouseScrollDelta.y * (globalRefManager.settingsManager.invertScrollDirection ? 1f : -1f)) * Time.deltaTime * 50f,-1,1);
 					else
 					{
 						//stops the camera from deccelerating when it reaches a low enough speed
-						if (Mathf.Abs(cameraZoomAccelereation) > 0.1f)
-							cameraZoomAccelereation -= (cameraAccelSpeed * Time.deltaTime * Mathf.Sign(cameraZoomAccelereation));
+						if (Mathf.Abs(cameraZoomAccelereation) > 0.05f)
+							cameraZoomAccelereation -= (cameraAccelSpeed * Time.deltaTime * camZoomRawAccel * Mathf.Sign(cameraZoomAccelereation));
 						else
 							cameraZoomAccelereation = 0f;
 					}
@@ -49,8 +52,42 @@ public class CameraController : MonoBehaviour
 				}
 
 				//Camera Movements
-				trueCameraPosition.x = Mathf.Clamp(trueCameraPosition.x + (Input.GetAxis("Horizontal") * cameraMoveSpeed.x * mainCamera.orthographicSize * Time.deltaTime), cameraBounds.x + (mainCamera.orthographicSize * mainCamera.aspect), cameraBounds.y - (mainCamera.orthographicSize * mainCamera.aspect));
-				trueCameraPosition.y = Mathf.Clamp(trueCameraPosition.y + (Input.GetAxis("Vertical") * cameraMoveSpeed.y * mainCamera.orthographicSize * Time.deltaTime), cameraBounds.z + mainCamera.orthographicSize, cameraBounds.w - mainCamera.orthographicSize);
+				if (Input.anyKey)
+				{
+					switch (
+						Input.GetKey(globalRefManager.settingsManager.GetKeyCode("player_right")),
+						Input.GetKey(globalRefManager.settingsManager.GetKeyCode("player_left")))
+					{
+						case (true, true):keyInput.x += 0; ;break;
+						case (false, false):keyInput.x += 0; ;break;
+						case (true, false):keyInput.x += cameraRawInputAccel;break;
+						case (false, true):keyInput.x += -cameraRawInputAccel; break;
+					}
+					switch (
+						Input.GetKey(globalRefManager.settingsManager.GetKeyCode("player_up")),
+						Input.GetKey(globalRefManager.settingsManager.GetKeyCode("player_down")))
+					{
+						case (true, true): keyInput.y += 0; ; break;
+						case (false, false): keyInput.y += 0; ; break;
+						case (true, false): keyInput.y += cameraRawInputAccel; break;
+						case (false, true): keyInput.y += -cameraRawInputAccel; break;
+					}
+					keyInput.x = Mathf.Clamp(keyInput.x, -1, 1);
+					keyInput.y = Mathf.Clamp(keyInput.y, -1, 1);
+				}
+
+				trueCameraPosition.x = Mathf.Clamp(trueCameraPosition.x + (keyInput.x * cameraMoveSpeed.x * mainCamera.orthographicSize * Time.deltaTime), cameraBounds.x + (mainCamera.orthographicSize * mainCamera.aspect), cameraBounds.y - (mainCamera.orthographicSize * mainCamera.aspect));
+				trueCameraPosition.y = Mathf.Clamp(trueCameraPosition.y + (keyInput.y * cameraMoveSpeed.y * mainCamera.orthographicSize * Time.deltaTime), cameraBounds.z + mainCamera.orthographicSize, cameraBounds.w - mainCamera.orthographicSize);
+
+				if (Mathf.Abs(keyInput.x) > 0.1f)
+					keyInput.x -= (cameraRawInputAccel * Time.deltaTime * camRawDeccelMult * Mathf.Sign(keyInput.x));
+				else
+					keyInput.x = 0f;
+				if (Mathf.Abs(keyInput.y) > 0.1f)
+					keyInput.y -= (cameraRawInputAccel * Time.deltaTime * camRawDeccelMult * Mathf.Sign(keyInput.y));
+				else
+					keyInput.y = 0f;
+
 			}
 			else
 			{

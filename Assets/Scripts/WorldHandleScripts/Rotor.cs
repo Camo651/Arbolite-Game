@@ -50,7 +50,7 @@ public class Rotor : MonoBehaviour
 			rotor.allRotorsInSystem = allRotorsInSystem;
 			systemHasSufficientEnergy = totalEnergy >= 0;
 		}
-
+		roomTile.roomContainer.globalRefManager.interfaceManager.SetValuesForInspector(2);
 	}
 
 	/// <summary>
@@ -110,9 +110,12 @@ public class Rotor : MonoBehaviour
 		if (!rotorIsEnabled)
 		{
 			rotorStateProperty = GetRotorStatePropType("off");
-			return;
 		}
-		rotorStateProperty = GetRotorStatePropType((rotorType!=RotorType.Machine || systemHasSufficientEnergy)?"working":"broken");
+		else
+		{
+			rotorStateProperty = GetRotorStatePropType((rotorType != RotorType.Machine || systemHasSufficientEnergy) ? "working" : "broken");
+		}
+		roomTile.roomContainer.globalRefManager.interfaceManager.SetValuesForInspector(2);
 	}
 	public List<SO_Property> GetRotorProperties()
 	{

@@ -306,12 +306,10 @@ public class InterfaceManager : MonoBehaviour
 		activeUserInterface.SetInterfaceTab(0);
 		activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabTitle.text = globalRefManager.langManager.GetTranslation("name_" + globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.tileNameInfoID.ToLower());
 		activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabDescrition.text = globalRefManager.langManager.GetTranslation("info_" + globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.tileNameInfoID.ToLower());
-		globalRefManager.propertyManager.GetPropertyDisplayer("TileInspector").DisplayProperties(globalRefManager.baseManager.editModePermSelectedRoomTile);
 
 		if (globalRefManager.baseManager.editModePermSelectedRoomTile.canHavePlant)
 		{
 			activeUserInterface.GetTabButton(1).gameObject.SetActive(true);
-			globalRefManager.propertyManager.GetPropertyDisplayer("PlantInspector").DisplayProperties(globalRefManager.baseManager.editModePermSelectedRoomTile.thisRoomsPlant!=null? globalRefManager.baseManager.editModePermSelectedRoomTile.thisRoomsPlant.plantProperties:null);
 		}
 		else
 		{
@@ -320,7 +318,6 @@ public class InterfaceManager : MonoBehaviour
 		if (globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.rotorRoom)
 		{
 			activeUserInterface.GetTabButton(2).gameObject.SetActive(true);
-			globalRefManager.propertyManager.GetPropertyDisplayer("MechInspector").DisplayProperties(globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.rotorRoom.thisRoomsRotor != null ? globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.rotorRoom.thisRoomsRotor.GetRotorProperties() : null);
 		}
 		else
 		{
@@ -329,7 +326,6 @@ public class InterfaceManager : MonoBehaviour
 		if (globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.itemContainer)
 		{
 			activeUserInterface.GetTabButton(3).gameObject.SetActive(true);
-			activeUserInterface.GetTab(3).transform.GetComponent<ItemDisplayer>().DisplayItems(globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.itemContainer.itemsInContainer, globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.itemContainer.GetCount());
 		}
 		else
 		{
@@ -343,17 +339,24 @@ public class InterfaceManager : MonoBehaviour
 	/// <param name="index">The menu index</param>
 	public void SetValuesForInspector(int index)
 	{
-		ContainedRoom sel = globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer;
+		RoomTile tile = globalRefManager.baseManager.editModePermSelectedRoomTile;
+		if (!tile)
+			return;
+		ContainedRoom sel = tile.roomContainer;
 		switch (index)
 		{
 			case 0:
 				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabTitle.text = globalRefManager.langManager.GetTranslation("name_" + sel.tileNameInfoID.ToLower());
 				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabDescrition.text = globalRefManager.langManager.GetTranslation("info_" + sel.tileNameInfoID.ToLower());
+				globalRefManager.propertyManager.GetPropertyDisplayer("TileInspector").DisplayProperties(globalRefManager.baseManager.editModePermSelectedRoomTile);
 				break;
 			case 1:
 				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabTitle.text = globalRefManager.baseManager.editModePermSelectedRoomTile.thisRoomsPlant != null ? globalRefManager.baseManager.editModePermSelectedRoomTile.thisRoomsPlant.GetPlantFullName() : globalRefManager.langManager.GetTranslation("no_plant_in_tile");
+				globalRefManager.propertyManager.GetPropertyDisplayer("PlantInspector").DisplayProperties(globalRefManager.baseManager.editModePermSelectedRoomTile.thisRoomsPlant!=null? globalRefManager.baseManager.editModePermSelectedRoomTile.thisRoomsPlant.plantProperties:null);
 				break;
 			case 2:
+				if (!sel.rotorRoom)
+					return;
 				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabTitle.text = globalRefManager.langManager.GetTranslation("name_" + sel.tileNameInfoID.ToLower());
 				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabDescrition.text = globalRefManager.langManager.GetTranslation("info_" + sel.tileNameInfoID.ToLower());
 				string sub = "";
@@ -367,10 +370,11 @@ public class InterfaceManager : MonoBehaviour
 				sub += "\n - " + globalRefManager.langManager.GetTranslation("mechinfo_state") + " : " + globalRefManager.langManager.GetTranslation("name_prop_machinestate_" + ("" + sel.rotorRoom.thisRoomsRotor.rotorStateProperty.callbackID.ToLower()));
 				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabSubtitle.text = sub;
 				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabToggle.SetIsOnWithoutNotify(globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.rotorRoom.thisRoomsRotor.rotorIsEnabled);
-					//state + state prop
+				globalRefManager.propertyManager.GetPropertyDisplayer("MechInspector").DisplayProperties(globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.rotorRoom.thisRoomsRotor != null ? globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.rotorRoom.thisRoomsRotor.GetRotorProperties() : null);
 				break;
 			case 3:
 				activeUserInterface.GetTab(activeUserInterface.selectedTabIndex).tabTitle.text = globalRefManager.langManager.GetTranslation("items_button");
+				activeUserInterface.GetTab(3).transform.GetComponent<ItemDisplayer>().DisplayItems(globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.itemContainer.itemsInContainer, globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.itemContainer.GetCount());
 				break;
 		}
 	}
@@ -560,6 +564,10 @@ public class InterfaceManager : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Toggles the state of the currently selected rotor
+	/// </summary>
+	/// <param name="t">The toggle that is controlling the state value</param>
 	public void ToggleSelectedRotorState(Toggle t)
 	{
 		if (globalRefManager.baseManager.editModePermSelectedRoomTile.roomContainer.rotorRoom)

@@ -45,6 +45,14 @@ public class TreeDisplayer : MonoBehaviour
 			return;
 		}
 		NodeInfoHighlight.OpenHighlight(node.GetHashCode(), node.dataNode.GetNodeName(), node.dataNode.nodeState + "", node.dataNode.GetNodeInfo(), node.dataNode.GetIcon(), Color.white);
-		NodeInfoHighlight.transform.position = new Vector3(node.transform.GetChild(0).position.x + 80, node.transform.position.y, 0f);
+		isHovered = state;
+	}
+	private bool isHovered;
+	private void Update()
+	{
+		if (isHovered)
+		{
+			NodeInfoHighlight.transform.position = Input.mousePosition;
+		}
 	}
 }
