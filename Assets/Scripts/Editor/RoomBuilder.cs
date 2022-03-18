@@ -34,7 +34,6 @@ public class RoomBuilder : Editor
 					{
 						RoomTile a = new GameObject("Room " + x + ", " + y + " of " + cont.tileNameCallbackID).AddComponent<RoomTile>();
 						cont.containedRooms.Add(a);
-						//a.tileType = (SO_TileType)AssetDatabase.LoadAssetAtPath("Assets/ScriptableObjects/TileTypes/DefaultTile.asset", typeof(SO_TileType));
 						a.spriteRenderer = a.gameObject.AddComponent<SpriteRenderer>();
 						a.spriteRenderer.sortingOrder = 5;
 						a.spriteRenderer.sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Images/Square.png", typeof(Sprite));

@@ -131,6 +131,10 @@ public class InterfaceManager : MonoBehaviour
 			{
 				SetHomepageTabValues(index);
 			}
+			else if(activeUserInterface.interfaceCallbackID == "Inspector")
+			{
+				SetValuesForInspector(index);
+			}
 		}
 	}
 	/// <summary>
@@ -139,7 +143,6 @@ public class InterfaceManager : MonoBehaviour
 	private void InitializeUserInterface()
 	{
 		SetBackgroundBlur(false);
-		globalRefManager.baseManager.gameIsActivelyFrozen = false;
 		allUserInterfaces = new Dictionary<string, UserInterface>();
 #pragma warning disable
 		UserInterface[] _unsortedInterfaces = (UserInterface[])FindObjectsOfTypeAll(typeof(UserInterface));
@@ -182,7 +185,6 @@ public class InterfaceManager : MonoBehaviour
 			return;
 		}
 		activeUserInterface = UI;
-		globalRefManager.baseManager.gameIsActivelyFrozen = UI.interfaceType == UserInterface.InterfaceType.FullScreen || UI.interfaceType == UserInterface.InterfaceType.Modal;
 		GetUserInterface("Home_Button").gameObject.SetActive(false);
 		bool blur = UI.interfaceType == UserInterface.InterfaceType.FullScreen || UI.interfaceType == UserInterface.InterfaceType.Modal;
 		StartCoroutine(TweenInterfaceAlpha(activeUserInterface, true, 25f, blur));
@@ -255,7 +257,6 @@ public class InterfaceManager : MonoBehaviour
 	{
 		CloseAllInterfaces();
 		SetBackgroundBlur(true);
-		globalRefManager.baseManager.gameIsActivelyFrozen = true;
 		activeUserInterface = errorModal;
 		activeUserInterface.gameObject.SetActive(true);
 		SetInterfaceLanguage(errorModal);
@@ -384,7 +385,6 @@ public class InterfaceManager : MonoBehaviour
 	/// </summary>
 	public void CloseAllInterfaces()
 	{
-		globalRefManager.baseManager.gameIsActivelyFrozen = false;
 		StartCoroutine(TweenInterfaceAlpha(activeUserInterface, false, 25f, false));
 		activeUserInterface = null;
 		userIsHoveredOnInterfaceElement = false;
@@ -540,6 +540,7 @@ public class InterfaceManager : MonoBehaviour
 	{
 		globalRefManager.audioManager.SetBackgroundMusicLowPass(state);
 		backgroundBlur.enabled = state;
+		globalRefManager.baseManager.gameIsActivelyFrozen = state;
 	}
 
 	/// <summary>
