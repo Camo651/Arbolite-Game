@@ -125,13 +125,13 @@ public class PlantObject : MonoBehaviour
 			{
 				Item item = new Item(null);
 				List<SO_Property> itemProps = new List<SO_Property>() { pman.GetProperty(PropertyManager.PropertyType.Resource, "leaves"), speciesType, ageType.GENERAL_Properties[0] };
-				item.SetItemProperties(itemProps);
+				item.SetItemProperties(itemProps, roomTile.roomContainer.globalRefManager);
 				items.Add(item);
 			}
 			for (int i = 0; i < fruitCount; i++)
 			{
 				Item item = new Item(null);
-				item.SetItemProperties(null);
+				item.SetItemProperties(null, roomTile.roomContainer.globalRefManager);
 				items.Add(item);
 			}
 		}
@@ -141,7 +141,7 @@ public class PlantObject : MonoBehaviour
 			{
 				Item item = new Item(null);
 				List<SO_Property> itemProps = new List<SO_Property>() { pman.GetProperty(PropertyManager.PropertyType.Resource, "log"),speciesType,ageType.GENERAL_Properties[0] };
-				item.SetItemProperties(itemProps);
+				item.SetItemProperties(itemProps, roomTile.roomContainer.globalRefManager);
 				item.isValidBuildingMaterial = true;
 				items.Add(item);
 			}
@@ -149,13 +149,13 @@ public class PlantObject : MonoBehaviour
 			{
 				Item item = new Item(null);
 				List<SO_Property> itemProps = new List<SO_Property>() { pman.GetProperty(PropertyManager.PropertyType.Resource, "leaves"), speciesType, ageType.GENERAL_Properties[0] };
-				item.SetItemProperties(itemProps);
+				item.SetItemProperties(itemProps, roomTile.roomContainer.globalRefManager);
 				items.Add(item);
 			}
 			for (int i = 0; i < fruitCount; i++)
 			{
 				Item item = new Item(null);
-				item.SetItemProperties(null);
+				item.SetItemProperties(null, roomTile.roomContainer.globalRefManager);
 				items.Add(item);
 			}
 		}

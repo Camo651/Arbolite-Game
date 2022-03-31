@@ -65,6 +65,8 @@ public class ItemDisplayer : MonoBehaviour
 	}
 	public void SetItemInfoHover(bool state, Item i)
 	{
+		if (!hoverInfoHighlight)
+			return;
 		hoverInfoHighlight.OpenHighlight(i.GetHashCode(), i.itemName, null, null, i.itemIcon, Color.white);
 		hoverInfoHighlight.LockToCursor(state);
 		hoverInfoHighlight.propDisp.DisplayProperties(i.itemProperties);

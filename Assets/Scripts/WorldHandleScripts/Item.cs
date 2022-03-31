@@ -26,4 +26,11 @@ public class Item
 		//concat a name for the item
 		itemContainer.itemManager.globalRefManager.propertyManager.GetPropertyFromType(p, PropertyManager.PropertyType.Species);
 	}
+	public void SetItemProperties(List<SO_Property> p, GlobalRefManager grm)
+	{
+		itemProperties.AddRange(p);
+		//isolate the major props
+		//concat a name for the item
+		grm.propertyManager.GetPropertyFromType(p, PropertyManager.PropertyType.Species);
+	}
 }
