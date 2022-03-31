@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 public class UserInterface : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
 	// any UI panel in game
-	[HideInInspector]public InterfaceManager interfaceManager;
+	public InterfaceManager interfaceManager;
 	public Image interfaceBackground;
 	public InterfaceType interfaceType;
 	public string interfaceCallbackID;
@@ -24,6 +24,8 @@ public class UserInterface : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
 	private void Awake()
 	{
+		if (!interfaceManager)
+			interfaceManager = FindObjectOfType<InterfaceManager>(false);
 		//indexes all the child keys
 		interfaceKeys = new List<TranslationKey>();
 		TranslationKey[] tryGetComp = transform.GetComponentsInChildren<TranslationKey>(true);

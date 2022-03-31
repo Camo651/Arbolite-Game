@@ -131,4 +131,23 @@ public class PropertyManager : MonoBehaviour
 		return GetProperty(PropertyType.Age, "age" + i);
 	}
 
+
+	/// <summary>
+	/// Get the property from the type in this object
+	/// </summary>
+	/// <param name="pl">The list of properties in the object</param>
+	/// <param name="type">The property type</param>
+	/// <returns>The property type in the object, given it exists</returns>
+	public SO_Property GetPropertyFromType(List<SO_Property> pl, PropertyType type)
+	{
+		foreach (SO_Property p in pl)
+		{
+			if (p.propertyType == type)
+			{
+				return p;
+			}
+		}
+		return null;
+	}
+
 }

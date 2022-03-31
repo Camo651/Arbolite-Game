@@ -72,6 +72,7 @@ public class SettingsManager : MonoBehaviour
 	public TextMeshProUGUI close_UI;
 	public TextMeshProUGUI pause_menu;
 	public TextMeshProUGUI home_menu;
+	public TextMeshProUGUI confirm_option;
 	public TextMeshProUGUI LanguageOptionDisplay;
 
 	private readonly List<KeyCode> ReservedKeys = new List<KeyCode>()
@@ -188,6 +189,8 @@ public class SettingsManager : MonoBehaviour
 		close_UI.text = FormatKeyCodeString(GetKeyCode("close_UI"));
 		pause_menu.text = FormatKeyCodeString(GetKeyCode("pause_menu"));
 		home_menu.text = FormatKeyCodeString(GetKeyCode("home_menu"));
+		confirm_option.text = FormatKeyCodeString(GetKeyCode("confirm_option"));
+
 
 		SetLanguage();
 	}
@@ -229,6 +232,7 @@ public class SettingsManager : MonoBehaviour
 		keyCodes.Add("home_menu", KeyCode.E);
 		keyCodes.Add("mode_build", KeyCode.Alpha1);
 		keyCodes.Add("mode_edit", KeyCode.Alpha2);
+		keyCodes.Add("confirm_option", KeyCode.Return);
 	}
 
 	public void SetKeybind(TextMeshProUGUI box)
@@ -279,6 +283,49 @@ public class SettingsManager : MonoBehaviour
 			case KeyCode.Backspace:return "Bksp";
 			case KeyCode.LeftControl:return "LCtr";
 			case KeyCode.RightControl:return "RCtr";
+			case KeyCode.Alpha0:return "0";
+			case KeyCode.Alpha1:return "1";
+			case KeyCode.Alpha2:return "2";
+			case KeyCode.Alpha3:return "3";
+			case KeyCode.Alpha4:return "4";
+			case KeyCode.Alpha5:return "5";
+			case KeyCode.Alpha6:return "6";
+			case KeyCode.Alpha7:return "7";
+			case KeyCode.Alpha8:return "8";
+			case KeyCode.Alpha9:return "9";
+			case KeyCode.Keypad0:return "KP 0";
+			case KeyCode.Keypad1:return "KP 1";
+			case KeyCode.Keypad2:return "KP 2";
+			case KeyCode.Keypad3:return "KP 3";
+			case KeyCode.Keypad4:return "KP 4";
+			case KeyCode.Keypad5:return "KP 5";
+			case KeyCode.Keypad6:return "KP 6";
+			case KeyCode.Keypad7:return "KP 7";
+			case KeyCode.Keypad8:return "KP 8";
+			case KeyCode.Keypad9:return "KP 9";
+			case KeyCode.KeypadEnter:return "KP Enter";
+			case KeyCode.KeypadDivide:return "KP /";
+			case KeyCode.KeypadMultiply:return "KP *";
+			case KeyCode.KeypadMinus:return "KP -";
+			case KeyCode.KeypadPlus:return "KP +";
+			case KeyCode.KeypadPeriod:return "KP .";
+			case KeyCode.Plus:return "+";
+			case KeyCode.Minus:return "-";
+			case KeyCode.Backslash:return (""+((char)92));// \ makes lnb
+			case KeyCode.Slash:return "/";
+			case KeyCode.CapsLock:return "Caps";
+			case KeyCode.Insert:return "Ins";
+			case KeyCode.Home:return "Home";
+			case KeyCode.BackQuote:return "`";
+			case KeyCode.Period:return ".";
+			case KeyCode.Comma:return ",";
+			case KeyCode.Semicolon:return ";";
+			case KeyCode.Asterisk:return "'";
+			case KeyCode.RightBracket:return "[";
+			case KeyCode.LeftBracket:return "]";
+			case KeyCode.Equals:return "=";
+			case KeyCode.Underscore:return "_";
+			case KeyCode.Tilde:return "~";
 
 			default: return k + "";
 		}

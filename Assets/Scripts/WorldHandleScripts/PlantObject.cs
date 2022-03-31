@@ -24,11 +24,11 @@ public class PlantObject : MonoBehaviour
 	/// </summary>
 	public void GeneratePlant()
 	{
-		biomeType = roomTile.roomContainer.globalRefManager.plantManager.GetPropertyFromType(plantProperties, PropertyManager.PropertyType.Biome);
-		speciesType = roomTile.roomContainer.globalRefManager.plantManager.GetPropertyFromType(plantProperties, PropertyManager.PropertyType.Species);
-		styleType = roomTile.roomContainer.globalRefManager.plantManager.GetPropertyFromType(plantProperties, PropertyManager.PropertyType.Style);
-		rarityType = roomTile.roomContainer.globalRefManager.plantManager.GetPropertyFromType(plantProperties, PropertyManager.PropertyType.Rarity);
-		ageType = roomTile.roomContainer.globalRefManager.plantManager.GetPropertyFromType(plantProperties, PropertyManager.PropertyType.Age);
+		biomeType = roomTile.roomContainer.globalRefManager.propertyManager.GetPropertyFromType(plantProperties, PropertyManager.PropertyType.Biome);
+		speciesType = roomTile.roomContainer.globalRefManager.propertyManager.GetPropertyFromType(plantProperties, PropertyManager.PropertyType.Species);
+		styleType = roomTile.roomContainer.globalRefManager.propertyManager.GetPropertyFromType(plantProperties, PropertyManager.PropertyType.Style);
+		rarityType = roomTile.roomContainer.globalRefManager.propertyManager.GetPropertyFromType(plantProperties, PropertyManager.PropertyType.Rarity);
+		ageType = roomTile.roomContainer.globalRefManager.propertyManager.GetPropertyFromType(plantProperties, PropertyManager.PropertyType.Age);
 
 		basePart = Instantiate(styleType.GENERAL_PlantParts[Random.Range(0,styleType.GENERAL_PlantParts.Count)], transform).GetComponent<PlantPart>();
 		basePart.parentPlant = this;

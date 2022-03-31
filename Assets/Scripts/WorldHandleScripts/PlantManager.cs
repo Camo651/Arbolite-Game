@@ -105,10 +105,10 @@ public class PlantManager : MonoBehaviour
 		List<SO_TreePreset> weights = new List<SO_TreePreset>();
 		foreach (SO_TreePreset preset in treePresets.Values)
 		{
-			SO_Property biome = GetPropertyFromType(preset.plantProperties, PropertyManager.PropertyType.Biome);
+			SO_Property biome = globalRefManager.propertyManager.GetPropertyFromType(preset.plantProperties, PropertyManager.PropertyType.Biome);
 			if (biomeConditional == null || biome == biomeConditional)
 			{
-				SO_Property rarityProp = GetPropertyFromType(preset.plantProperties, PropertyManager.PropertyType.Rarity);
+				SO_Property rarityProp = globalRefManager.propertyManager.GetPropertyFromType(preset.plantProperties, PropertyManager.PropertyType.Rarity);
 				float rarity = rarityProp ? rarityProp.RARITY_Weight : 0f;
 				for (int i = 0; i < rarity * plantDistributionMultiplier; i++)
 				{
@@ -117,24 +117,6 @@ public class PlantManager : MonoBehaviour
 			}
 		}
 		return weights.Count > 0 ? weights[Random.Range(0, weights.Count)] : defaultTreePreset;
-	}
-
-	/// <summary>
-	/// Get the property from the type in this object
-	/// </summary>
-	/// <param name="pl">The list of properties in the object</param>
-	/// <param name="type">The property type</param>
-	/// <returns>The property type in the object, given it exists</returns>
-	public SO_Property GetPropertyFromType(List<SO_Property> pl, PropertyManager.PropertyType type)
-	{
-		foreach (SO_Property p in pl)
-		{
-			if (p.propertyType == type)
-			{
-				return p;
-			}
-		}
-		return null;
 	}
 
 	/// <summary>

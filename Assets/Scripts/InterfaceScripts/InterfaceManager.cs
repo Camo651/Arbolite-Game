@@ -55,6 +55,11 @@ public class InterfaceManager : MonoBehaviour
 				CloseAllInterfaces();
 				return;
 			}
+			else if (Input.GetKeyDown(globalRefManager.settingsManager.GetKeyCode("confirm_option")))
+			{
+				CloseAllInterfaces();
+				return;
+			}
 			else if(globalRefManager.settingsManager.developerMode && Input.GetKeyDown(KeyCode.Return))
 			{
 				if (activeUserInterface == null)
@@ -196,14 +201,14 @@ public class InterfaceManager : MonoBehaviour
 	/// <param name="group">The group to affect</param>
 	/// <param name="state">The end state of the tween</param>
 	/// <returns></returns>
-	public IEnumerator TweenInterfaceAlpha(UserInterface u, bool state, float time, bool blurBackground)
+	public IEnumerator TweenInterfaceAlpha(UserInterface u, bool state, float time, bool changeBkgBlur)
 	{
 		if (u)
 		{
 			if (state)
 			{
 				u.gameObject.SetActive(true);
-				if (blurBackground)
+				if (changeBkgBlur)
 					SetBackgroundBlur(true);
 				SetInterfaceLanguage(u);
 				switch (u.interfaceCallbackID)
@@ -235,7 +240,8 @@ public class InterfaceManager : MonoBehaviour
 			if (!state)
 			{
 				u.gameObject.SetActive(false);
-				SetBackgroundBlur(false);
+				if(changeBkgBlur)
+					SetBackgroundBlur(false);
 			}
 		}
 	}
@@ -385,7 +391,7 @@ public class InterfaceManager : MonoBehaviour
 	/// </summary>
 	public void CloseAllInterfaces()
 	{
-		StartCoroutine(TweenInterfaceAlpha(activeUserInterface, false, 25f, false));
+		StartCoroutine(TweenInterfaceAlpha(activeUserInterface, false, 25f, true));
 		activeUserInterface = null;
 		userIsHoveredOnInterfaceElement = false;
 		GetUserInterface("Home_Button").gameObject.SetActive(true);

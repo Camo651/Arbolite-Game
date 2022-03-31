@@ -12,7 +12,7 @@ public class ItemDisplayer : MonoBehaviour
 	public Transform gridLayout;
 
 	public PropertyDisplayer itemHighlightPropertyDisp;
-
+	public InformationHighlighter hoverInfoHighlight;
 	[Header("These are for the bp inspector only")]
 	public BlueprintManager blueprintManager;
 	public GameObject validSelectionmButton;
@@ -60,7 +60,13 @@ public class ItemDisplayer : MonoBehaviour
 
 		if (!itemHighlightPropertyDisp)
 			return;
-		itemHighlightPropertyDisp.propertyManager.globalRefManager.interfaceManager.inspectorItemHighlight.OpenHighlight(i.GetHashCode(), i.itemName, itemHighlightPropertyDisp.propertyManager.globalRefManager.langManager.GetTranslation("item_subtitle"), "", i.itemIcon, Color.white);
+		itemHighlightPropertyDisp.propertyManager.globalRefManager.interfaceManager.inspectorItemHighlight.OpenHighlight(i.GetHashCode(), i.itemName, itemHighlightPropertyDisp.propertyManager.globalRefManager.langManager.GetTranslation("item_subtitle"), null, i.itemIcon, Color.white);
 		itemHighlightPropertyDisp.DisplayProperties(i.itemProperties);
+	}
+	public void SetItemInfoHover(bool state, Item i)
+	{
+		hoverInfoHighlight.OpenHighlight(i.GetHashCode(), i.itemName, null, null, i.itemIcon, Color.white);
+		hoverInfoHighlight.LockToCursor(state);
+		hoverInfoHighlight.propDisp.DisplayProperties(i.itemProperties);
 	}
 }

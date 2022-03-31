@@ -22,5 +22,8 @@ public class Item
 	public void SetItemProperties(List<SO_Property> p)
 	{
 		itemProperties.AddRange(p);
+		//isolate the major props
+		//concat a name for the item
+		itemContainer.itemManager.globalRefManager.propertyManager.GetPropertyFromType(p, PropertyManager.PropertyType.Species);
 	}
 }

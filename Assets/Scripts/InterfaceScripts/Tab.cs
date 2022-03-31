@@ -22,5 +22,8 @@ public class Tab : MonoBehaviour
 		gameObject.SetActive(state);
 		tabMenuBkg.color = state ? Color.white : new Color(0.1960784f, 0.1960784f, 0.1960784f, 1f);
 		tabMenuText.color = !state ? Color.white : new Color(0.1960784f, 0.1960784f, 0.1960784f, 1f);
+
+		if (GetComponent<ItemDisplayer>())
+			GetComponent<ItemDisplayer>().hoverInfoHighlight.LockToCursor(false);
 	}
 }

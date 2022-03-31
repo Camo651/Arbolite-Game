@@ -19,4 +19,8 @@ public class ItemTag : MonoBehaviour
 		if(itemInfo != null)
 			displayer.HighlightItem(itemInfo);
 	}
+	public void OnHover(bool hoverState)
+	{
+		displayer.SetItemInfoHover(hoverState, itemInfo);
+	}
 }
